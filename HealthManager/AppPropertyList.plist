@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>class</key>
+		<string>MainViewController</string>
+		<key>titleName</key>
+		<string>301医院慢性病管理</string>
+	</dict>
+	<dict>
+		<key>class</key>
+		<string>BloodViewController</string>
+		<key>titleName</key>
+		<string>血压监测</string>
+	</dict>
+	<dict>
+		<key>class</key>
+		<string>DoctorViewController</string>
+		<key>titleName</key>
+		<string>我的医生</string>
+	</dict>
+	<dict>
+		<key>class</key>
+		<string>AlertViewController</string>
+		<key>titleName</key>
+		<string>预警消息</string>
+	</dict>
+	<dict>
+		<key>class</key>
+		<string>ManagerViewController</string>
+		<key>titleName</key>
+		<string>药品管家</string>
+	</dict>
+	<dict>
+		<key>class</key>
+		<string>KnowledgeViewController</string>
+		<key>titleName</key>
+		<string>健康常识</string>
+	</dict>
+	<dict>
+		<key>class</key>
+		<string>SettingViewController</string>
+		<key>titleName</key>
+		<string>设置</string>
+	</dict>
+	<dict>
+		<key>class</key>
+		<string>MoreViewController</string>
+		<key>titleName</key>
+		<string>更多</string>
+	</dict>
+</array>
+</plist>
