@@ -16,7 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"%@",NSHomeDirectory());
+    NSLog(@"%@",NSHomeDirectory());/////////////////////
     self.propertyList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"AppPropertyList" ofType:@"plist"]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
