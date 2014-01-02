@@ -73,14 +73,14 @@
             cell.textLabel.text = @"公告";
         }
         else if (indexPath.row == 1)
-        {
-            cell.textLabel.text = @"关注微信公告账号";
-        }
-        else if (indexPath.row == 2)
-        {
-            cell.textLabel.text = @"关于301";
-        }
-        else if (indexPath.row == 3)
+//        {
+//            cell.textLabel.text = @"关注微信公告账号";
+//        }
+//        else if (indexPath.row == 2)
+//        {
+//            cell.textLabel.text = @"关于301";
+//        }
+//        else if (indexPath.row == 3)
         {
             cell.textLabel.text = @"意见反馈";
         }
@@ -100,7 +100,8 @@
     switch (section)
     {
         case 0:
-            return 4;
+//            return 4;
+            return 2;
             break;
         case 1:
             return 1;
@@ -131,14 +132,14 @@
             NSLog(@"公告");
         }
         else if (indexPath.row == 1)
-        {
-            NSLog(@"关注微信公告账号");
-        }
-        else if (indexPath.row == 2)
-        {
-            NSLog(@"关于301");
-        }
-        else if (indexPath.row == 3)
+//        {
+//            NSLog(@"关注微信公告账号");
+//        }
+//        else if (indexPath.row == 2)
+//        {
+//            NSLog(@"关于301");
+//        }
+//        else if (indexPath.row == 3)
         {
             NSLog(@"意见反馈");
         }
