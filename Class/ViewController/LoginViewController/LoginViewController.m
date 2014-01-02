@@ -67,8 +67,8 @@
             break;
     }
     
-    MainViewController *mainViewCtl = [MainViewController new];
-    [self presentViewController:mainViewCtl animated:YES completion:NULL];
+    UINavigationController *mainNavCtl = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
+    [self presentViewController:mainNavCtl animated:YES completion:NULL];
     
 }
 @end
