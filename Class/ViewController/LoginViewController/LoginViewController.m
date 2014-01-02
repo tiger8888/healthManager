@@ -66,5 +66,9 @@
         default:
             break;
     }
+    
+    MainViewController *mainViewCtl = [MainViewController new];
+    [self presentViewController:mainViewCtl animated:YES completion:NULL];
+    
 }
 @end
