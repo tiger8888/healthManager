@@ -79,7 +79,12 @@
     [_baseScrollView addSubview:scrollView];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blood_table_hit"]];
-    imageView.frame = CGRectMake(DEVICE_WIDTH -170, 5, 150, 20);
+//    imageView.frame = CGRectMake(DEVICE_WIDTH -170, 5, 150, 20);
+    static CGFloat imageCenterX = 0;
+    if ( imageCenterX == 0)
+        imageCenterX = (DEVICE_WIDTH - imageView.frame.size.width) / 2;
+    
+    imageView.frame = CGRectMake(imageCenterX, 5, 150, 20);
     [scrollView addSubview:imageView];
     
     //*********Page3
