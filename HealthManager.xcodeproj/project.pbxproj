@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A8D5F51876A23C0015432A /* QuartzCore.framework */; };
+		37A92D7B187B8A3A0059DB25 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A92D7A187B8A3A0059DB25 /* LineChartView.m */; };
 		8B94AB031848663200CA5869 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB021848663200CA5869 /* Foundation.framework */; };
 		8B94AB051848663200CA5869 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB041848663200CA5869 /* CoreGraphics.framework */; };
 		8B94AB071848663200CA5869 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB061848663200CA5869 /* UIKit.framework */; };
@@ -113,6 +115,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37A8D5F51876A23C0015432A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		37A92D79187B8A3A0059DB25 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
+		37A92D7A187B8A3A0059DB25 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
 		8B94AAFF1848663200CA5869 /* HealthManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B94AB021848663200CA5869 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B94AB041848663200CA5869 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -247,6 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */,
 				8B94AB051848663200CA5869 /* CoreGraphics.framework in Frameworks */,
 				8B94AB091848663200CA5869 /* CoreData.framework in Frameworks */,
 				8B94AB071848663200CA5869 /* UIKit.framework in Frameworks */,
@@ -294,6 +300,7 @@
 		8B94AB011848663200CA5869 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37A8D5F51876A23C0015432A /* QuartzCore.framework */,
 				8B94AB021848663200CA5869 /* Foundation.framework */,
 				8B94AB041848663200CA5869 /* CoreGraphics.framework */,
 				8B94AB061848663200CA5869 /* UIKit.framework */,
@@ -365,6 +372,8 @@
 		8B94AB3F1848669F00CA5869 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				37A92D79187B8A3A0059DB25 /* LineChartView.h */,
+				37A92D7A187B8A3A0059DB25 /* LineChartView.m */,
 				B8831AAF186DA2CF00333DA2 /* AFNetworking */,
 				B8E312BC18520DDB007E819E /* LSSegment.h */,
 				B8E312BD18520DDB007E819E /* LSSegment.m */,
@@ -781,6 +790,7 @@
 				B87D12BA184CE88400279DDC /* AlertViewController.m in Sources */,
 				B87D12C2184CE88400279DDC /* LoginViewController.m in Sources */,
 				B8E312CD18520FB3007E819E /* DoctorCell.m in Sources */,
+				37A92D7B187B8A3A0059DB25 /* LineChartView.m in Sources */,
 				B8997D7D1853244000C12CE7 /* BloodRecord.m in Sources */,
 				8BEB9FC8184C540500ECF974 /* RootSuperViewController.m in Sources */,
 				8B94AB111848663300CA5869 /* main.m in Sources */,
