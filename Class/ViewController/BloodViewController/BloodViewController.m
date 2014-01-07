@@ -194,7 +194,7 @@
 #pragma mark - custom method
 - (LineChartView *)buildLineChartView {
     LineChartView *lineChartView;
-    lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, 320, 360)];
+    lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 25, 320, 340)];
     NSMutableArray *pointArr = [[NSMutableArray alloc]init];
     
     //竖轴
