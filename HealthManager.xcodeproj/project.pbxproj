@@ -18,6 +18,8 @@
 		37A92E35187BF5A60059DB25 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A92E2A187BF5A60059DB25 /* AFURLConnectionOperation.m */; };
 		37A92E36187BF5A60059DB25 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A92E2C187BF5A60059DB25 /* AFXMLRequestOperation.m */; };
 		37A92E37187BF5A60059DB25 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A92E2E187BF5A60059DB25 /* UIImageView+AFNetworking.m */; };
+		37A92E3C187BF8A30059DB25 /* Knowledge.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A92E3B187BF8A30059DB25 /* Knowledge.m */; };
+		37A92E3F187BF8B70059DB25 /* KnowledgeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A92E3E187BF8B70059DB25 /* KnowledgeStore.m */; };
 		8B94AB031848663200CA5869 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB021848663200CA5869 /* Foundation.framework */; };
 		8B94AB051848663200CA5869 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB041848663200CA5869 /* CoreGraphics.framework */; };
 		8B94AB071848663200CA5869 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB061848663200CA5869 /* UIKit.framework */; };
@@ -137,6 +139,10 @@
 		37A92E2C187BF5A60059DB25 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = ../AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		37A92E2D187BF5A60059DB25 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "../UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		37A92E2E187BF5A60059DB25 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "../UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		37A92E3A187BF8A30059DB25 /* Knowledge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Knowledge.h; sourceTree = "<group>"; };
+		37A92E3B187BF8A30059DB25 /* Knowledge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Knowledge.m; sourceTree = "<group>"; };
+		37A92E3D187BF8B70059DB25 /* KnowledgeStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeStore.h; sourceTree = "<group>"; };
+		37A92E3E187BF8B70059DB25 /* KnowledgeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeStore.m; sourceTree = "<group>"; };
 		8B94AAFF1848663200CA5869 /* HealthManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B94AB021848663200CA5869 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B94AB041848663200CA5869 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -274,6 +280,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37A92E38187BF7B00059DB25 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				37A92E3A187BF8A30059DB25 /* Knowledge.h */,
+				37A92E3B187BF8A30059DB25 /* Knowledge.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		37A92E39187BF7B00059DB25 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				37A92E3D187BF8B70059DB25 /* KnowledgeStore.h */,
+				37A92E3E187BF8B70059DB25 /* KnowledgeStore.m */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		8B94AAF61848663200CA5869 = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +379,8 @@
 		8B94AB371848669F00CA5869 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				37A92E38187BF7B00059DB25 /* Model */,
+				37A92E39187BF7B00059DB25 /* Store */,
 				B87D1296184CE88400279DDC /* AlertViewController */,
 				B87D129A184CE88400279DDC /* BloodViewController */,
 				B87D129E184CE88400279DDC /* DoctorViewController */,
@@ -783,6 +809,7 @@
 				B8E312BE18520DDB007E819E /* LSSegment.m in Sources */,
 				B85024031861FF0B0080DB1D /* DoctorModel.m in Sources */,
 				B87D12C0184CE88400279DDC /* KnowledgeViewController.m in Sources */,
+				37A92E3F187BF8B70059DB25 /* KnowledgeStore.m in Sources */,
 				B85023FF1861F6A10080DB1D /* SuperListViewController.m in Sources */,
 				B8831ACF186DA33700333DA2 /* HttpRequestManager.m in Sources */,
 				B87D12C6184CE88400279DDC /* ManagerViewController.m in Sources */,
@@ -794,6 +821,7 @@
 				8BEB9FC8184C540500ECF974 /* RootSuperViewController.m in Sources */,
 				8B94AB111848663300CA5869 /* main.m in Sources */,
 				B8997D7418530C8100C12CE7 /* LSBackGrayView.m in Sources */,
+				37A92E3C187BF8A30059DB25 /* Knowledge.m in Sources */,
 				8B94AB181848663300CA5869 /* HealthManager.xcdatamodeld in Sources */,
 				37A92E37187BF5A60059DB25 /* UIImageView+AFNetworking.m in Sources */,
 				B88319CF186D2ED500333DA2 /* BackButtonViewController.m in Sources */,
