@@ -13,6 +13,7 @@
 {
     UITapGestureRecognizer *_tgr;
     UIScrollView *_baseScrollView;
+    LineChartView *bloodLineChar;
 }
 @end
 
@@ -88,8 +89,8 @@
     imageView.frame = CGRectMake(imageCenterX, 5, 150, 20);
     [scrollView addSubview:imageView];
     
-    LineChartView *bloodChar = [self buildLineChartView];
-    [scrollView addSubview:bloodChar];
+    bloodLineChar = [self buildLineChartView];
+    [scrollView addSubview:bloodLineChar];
     
     //*********Page3
     _tableView.frame = CGRectMake(DEVICE_WIDTH *2, 0, DEVICE_WIDTH, DEVICE_HEIGHT -88);
@@ -190,7 +191,16 @@
     [self.lowPressure resignFirstResponder];
     [self.pulse resignFirstResponder];
 }
-
+#pragma mark - ScrollView Delegate Method
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    NSLog(@"scroll...");
+}
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    NSLog(@"zooming");
+    return bloodLineChar;
+}
 #pragma mark - custom method
 - (LineChartView *)buildLineChartView {
     LineChartView *lineChartView;

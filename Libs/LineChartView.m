@@ -73,7 +73,7 @@
         
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, vOrdinateLabelWidth, coordinateLabelHeight)];
         [label setCenter:CGPointMake(vOrdinateLabelCenterX, beginPoint.y)];
-        [label setTextAlignment:UITextAlignmentCenter];
+        [label setTextAlignment:NSTextAlignmentCenter];
         [label setBackgroundColor:[UIColor clearColor]];
         [label setTextColor:coordinateLabelFontColor];
         [label setText:[vDesc objectAtIndex:i]];
@@ -101,7 +101,7 @@
         endPoint = CGPointMake(x, newCoordinateY);
         if ( i==6 || i==14 || i==21 || i==29 ) {
             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(x-labelCenterXOffset, hOrdinateLabelCenterY, coordinateLabelWidth, coordinateLabelHeight)];
-            [label setTextAlignment:UITextAlignmentCenter];
+            [label setTextAlignment:NSTextAlignmentCenter];
             [label setBackgroundColor:[UIColor clearColor]];
             [label setTextColor:coordinateLabelFontColor];
             [label setText:[NSString stringWithFormat:@"%@", [hDesc objectAtIndex:i] ]];
