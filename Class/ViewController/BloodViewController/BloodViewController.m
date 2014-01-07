@@ -7,6 +7,7 @@
 //
 
 #import "BloodViewController.h"
+#import "LineChartView.h"
 
 @interface BloodViewController ()
 {
@@ -86,6 +87,9 @@
     
     imageView.frame = CGRectMake(imageCenterX, 5, 150, 20);
     [scrollView addSubview:imageView];
+    
+    LineChartView *bloodChar = [self buildLineChartView];
+    [scrollView addSubview:bloodChar];
     
     //*********Page3
     _tableView.frame = CGRectMake(DEVICE_WIDTH *2, 0, DEVICE_WIDTH, DEVICE_HEIGHT -88);
@@ -185,5 +189,59 @@
     [self.highPressure resignFirstResponder];
     [self.lowPressure resignFirstResponder];
     [self.pulse resignFirstResponder];
+}
+
+#pragma mark - custom method
+- (LineChartView *)buildLineChartView {
+    LineChartView *lineChartView;
+    lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, 320, 360)];
+    NSMutableArray *pointArr = [[NSMutableArray alloc]init];
+    
+    //竖轴
+    NSMutableArray *vArr = [[NSMutableArray alloc] init];
+    for (int i=0; i<16; i++) {
+        [vArr addObject:[NSString stringWithFormat:@"%d",i*20]];
+    }
+    
+    //横轴
+    NSMutableArray *hArr = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *bloodItem = [NSMutableArray new];
+    int bloodValue = 0;
+    for (int i=1; i<31; i++) {
+        [hArr addObject: [NSString stringWithFormat:@"%d",i]];
+        bloodValue = arc4random()%110 + 90;
+        //        if (i%2==0)bloodValue = 130;
+        //        else bloodValue = 150;
+        [bloodItem addObject:[NSValue valueWithCGPoint:CGPointMake(i, bloodValue)]];
+    }
+    [pointArr addObject:[bloodItem copy] ];
+    [bloodItem removeAllObjects];
+    
+    for (int i=1; i<31; i++) {
+        [hArr addObject: [NSString stringWithFormat:@"%d",i]];
+        bloodValue = arc4random()%70 + 60;
+        //        if (i%2==0)bloodValue = 130;
+        //        else bloodValue = 150;
+        [bloodItem addObject:[NSValue valueWithCGPoint:CGPointMake(i, bloodValue)]];
+    }
+    [pointArr addObject:[bloodItem copy]];
+    [bloodItem removeAllObjects];
+    
+    for (int i=1; i<31; i++) {
+        [hArr addObject: [NSString stringWithFormat:@"%d",i]];
+        bloodValue = arc4random()%30 + 60;
+        //        if (i%2==0)bloodValue = 130;
+        //        else bloodValue = 150;
+        [bloodItem addObject:[NSValue valueWithCGPoint:CGPointMake(i, bloodValue)]];
+    }
+    [pointArr addObject:[bloodItem copy]];
+    bloodItem = NULL;
+    
+    [lineChartView setBloodArray:pointArr];
+    [lineChartView setHDesc:hArr];
+    [lineChartView setVDesc:vArr];
+    
+    return lineChartView;
 }
 @end
