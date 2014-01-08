@@ -12,5 +12,5 @@
 
 + (KnowledgeStore *)sharedStore;
 
-- (void)fetchTopInfo:(int)count withCompletion:(void (^)(KnowledgeStore *obj, NSError *err))block;
+- (void)fetchTopInfo:(int)count withCompletion:(void (^)(NSMutableArray *obj, NSError *err))block;
 @end

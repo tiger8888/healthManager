@@ -7,7 +7,9 @@
 //
 
 #import "KnowledgeStore.h"
-#import "af'
+#import "AFNetworking.h"
+#import "AFHTTPClient.h"
+#import "Knowledge.h"
 
 @implementation KnowledgeStore
 
@@ -19,7 +21,27 @@
     return knowledgeStore;
 }
 
-- (void)fetchTopInfo:(int)count withCompletion:(void (^)(KnowledgeStore *obj, NSError *err))block {
-    
+- (void)fetchTopInfo:(int)count withCompletion:(void (^)(NSMutableArray *obj, NSError *err))block {
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.19.7.43:8080/BloodPressure/health"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/us/rss/topsongs/limit=%d/json", count]]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        NSArray *result = (NSArray *)[[JSON objectForKey:@"feed"] objectForKey:@"entry"];
+        NSMutableArray *knowledgeArr = [NSMutableArray new];
+        int resultCount = (int)[result count];
+        
+        for (int i=0; i < resultCount; i++) {
+            Knowledge *knowledge = [Knowledge new];
+            [knowledge setTitle:[[[result objectAtIndex:i] objectForKey:@"im:name"] objectForKey:@"label"]];
+            [knowledge setId:(int)[[[[result objectAtIndex:i] objectForKey:@"id"] objectForKey:@"attributes"] objectForKey:@"im:id"] ];
+            [knowledge setContent:[[[result objectAtIndex:i] objectForKey:@"im:name"] objectForKey:@"label"]];
+            [knowledgeArr addObject:knowledge];
+        }
+        
+        block(knowledgeArr, NULL);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"%@",error);
+    }];
+    [operation start];
 }
 @end

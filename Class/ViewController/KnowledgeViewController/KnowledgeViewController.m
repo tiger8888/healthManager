@@ -7,9 +7,13 @@
 //
 
 #import "KnowledgeViewController.h"
+#import "KnowledgeStore.h"
+#import "Knowledge.h"
 
 @interface KnowledgeViewController ()
-
+{
+    NSMutableArray *_knowledgeArr;
+}
 @end
 
 @implementation KnowledgeViewController
@@ -19,6 +23,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+
     }
     return self;
 }
@@ -27,6 +33,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[KnowledgeStore sharedStore] fetchTopInfo:10 withCompletion:^(NSMutableArray *obj, NSError *err) {
+        _knowledgeArr = obj;
+        [_tableView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,12 +60,15 @@
         [cell addSubview:imageView];
         cell.textLabel.font = [UIFont systemFontOfSize:20];
     }
-    cell.textLabel.text = @"123";
+    
+    Knowledge *knowledgeItem = [_knowledgeArr objectAtIndex:[indexPath row]];
+    cell.textLabel.text = knowledgeItem.title;
+    
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return [_knowledgeArr count];
 }
 @end
