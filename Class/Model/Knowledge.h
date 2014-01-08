@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Knowledge : NSObject
+@property (nonatomic) int id;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *content;
 @end

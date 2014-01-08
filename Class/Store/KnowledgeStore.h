@@ -10,4 +10,7 @@
 
 @interface KnowledgeStore : NSObject
 
++ (KnowledgeStore *)sharedStore;
+
+- (void)fetchTopInfo:(int)count withCompletion:(void (^)(KnowledgeStore *obj, NSError *err))block;
 @end
