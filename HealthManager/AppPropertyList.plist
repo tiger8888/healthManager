@@ -50,5 +50,11 @@
 		<key>titleName</key>
 		<string>更多</string>
 	</dict>
+	<dict>
+		<key>class</key>
+		<string>KnowledgeDetailViewController</string>
+		<key>titleName</key>
+		<string>健康常识详细信息</string>
+	</dict>
 </array>
 </plist>

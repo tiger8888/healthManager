@@ -13,4 +13,6 @@
 + (KnowledgeStore *)sharedStore;
 
 - (void)fetchTopInfo:(int)count withCompletion:(void (^)(NSMutableArray *obj, NSError *err))block;
+- (void)fetchTopwithCompletion:(void (^)(NSMutableArray *obj, NSError *err))block;
+- (void)fetchDetailInfo:(NSString *)url withCompletion:(void (^)(NSMutableArray *obj, NSError *err))block;
 @end

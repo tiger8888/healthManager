@@ -9,10 +9,12 @@
 #import "KnowledgeViewController.h"
 #import "KnowledgeStore.h"
 #import "Knowledge.h"
+#import "KnowledgeDetailViewController.h"
 
 @interface KnowledgeViewController ()
 {
     NSMutableArray *_knowledgeArr;
+    UIActivityIndicatorView *_activityIndicatorLoading;
 }
 @end
 
@@ -33,9 +35,26 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[KnowledgeStore sharedStore] fetchTopInfo:10 withCompletion:^(NSMutableArray *obj, NSError *err) {
+    
+    _activityIndicatorLoading = [UIActivityIndicatorView new];
+    _activityIndicatorLoading.frame = CGRectMake(_backButtonItem.frame.size.width, (_navigationBar.frame.size.height-32)/2, 32, 32);
+    _activityIndicatorLoading.hidden = false;
+    [_activityIndicatorLoading startAnimating];
+    [_navigationBar addSubview:_activityIndicatorLoading];
+     
+//    [[KnowledgeStore sharedStore] fetchTopInfo:10 withCompletion:^(NSMutableArray *obj, NSError *err) {
+    [[KnowledgeStore sharedStore] fetchTopwithCompletion:^(NSMutableArray *obj, NSError *err) {
         _knowledgeArr = obj;
-        [_tableView reloadData];
+        if (_knowledgeArr) {
+            [_tableView reloadData];
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示信息" message:@"暂无信息" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+        }
+        
+        _activityIndicatorLoading.hidden = YES;
+        [_activityIndicatorLoading stopAnimating];
     }];
 }
 
@@ -70,5 +89,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_knowledgeArr count];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    KnowledgeDetailViewController *detailViewCtl = [[KnowledgeDetailViewController alloc] initWithCategory:8];
+    Knowledge *knowledge = [_knowledgeArr objectAtIndex:[indexPath row]];
+    detailViewCtl.url = knowledge.url;
+    [self.navigationController pushViewController:detailViewCtl animated:YES];
 }
 @end

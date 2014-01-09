@@ -9,11 +9,15 @@
 #import "Knowledge.h"
 
 @implementation Knowledge
-@synthesize id, title, content;
+@synthesize id, title, content, url;
 
 - (void)readFromJSONDictionary:(NSDictionary *)data {
     self.title = [data objectForKey:@"title"];
-    self.id = (int)[data objectForKey:@"id"];
-    self.content = [data objectForKey:@"content"];
+    if ( [data objectForKey:@"id"] )
+        self.id = (int)[data objectForKey:@"id"];
+    if ( [data objectForKey:@"content"] )
+        self.content = [data objectForKey:@"content"];
+    if ( [data objectForKey:@"url"] )
+        self.url = [data objectForKey:@"url"];
 }
 @end

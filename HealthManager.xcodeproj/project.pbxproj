@@ -16,6 +16,9 @@
 		372F3681187CF143007B0F67 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 372F367B187CF143007B0F67 /* AFURLConnectionOperation.m */; };
 		372F3682187CF143007B0F67 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 372F367D187CF143007B0F67 /* AFXMLRequestOperation.m */; };
 		372F3683187CF143007B0F67 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 372F367F187CF143007B0F67 /* UIImageView+AFNetworking.m */; };
+		37A3E568187E2E0600F075B0 /* KnowledgeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A3E567187E2E0600F075B0 /* KnowledgeDetailViewController.m */; };
+		37A3E56A187E2E2900F075B0 /* KnowledgeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E569187E2E2900F075B0 /* KnowledgeDetailViewController.xib */; };
+		37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E56B187E31B500F075B0 /* AppPropertyList.plist */; };
 		37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A8D5F51876A23C0015432A /* QuartzCore.framework */; };
 		37A92D7B187B8A3A0059DB25 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A92D7A187B8A3A0059DB25 /* LineChartView.m */; };
 		37A92E3C187BF8A30059DB25 /* Knowledge.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A92E3B187BF8A30059DB25 /* Knowledge.m */; };
@@ -76,7 +79,6 @@
 		B85023FF1861F6A10080DB1D /* SuperListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B85023FE1861F6A10080DB1D /* SuperListViewController.m */; };
 		B85024031861FF0B0080DB1D /* DoctorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B85024021861FF0B0080DB1D /* DoctorModel.m */; };
 		B8502407186200D40080DB1D /* RootSuperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8502406186200D40080DB1D /* RootSuperCell.m */; };
-		B86F6BD718560D6A0088BDCC /* AppPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = B86F6BD618560D6A0088BDCC /* AppPropertyList.plist */; };
 		B87D12BA184CE88400279DDC /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D1298184CE88400279DDC /* AlertViewController.m */; };
 		B87D12BB184CE88400279DDC /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D1299184CE88400279DDC /* AlertViewController.xib */; };
 		B87D12BC184CE88400279DDC /* BloodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D129C184CE88400279DDC /* BloodViewController.m */; };
@@ -135,6 +137,10 @@
 		372F367D187CF143007B0F67 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = Libs/AFXMLRequestOperation.m; sourceTree = SOURCE_ROOT; };
 		372F367E187CF143007B0F67 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "Libs/UIImageView+AFNetworking.h"; sourceTree = SOURCE_ROOT; };
 		372F367F187CF143007B0F67 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "Libs/UIImageView+AFNetworking.m"; sourceTree = SOURCE_ROOT; };
+		37A3E566187E2E0600F075B0 /* KnowledgeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeDetailViewController.h; sourceTree = "<group>"; };
+		37A3E567187E2E0600F075B0 /* KnowledgeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeDetailViewController.m; sourceTree = "<group>"; };
+		37A3E569187E2E2900F075B0 /* KnowledgeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KnowledgeDetailViewController.xib; sourceTree = "<group>"; };
+		37A3E56B187E31B500F075B0 /* AppPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppPropertyList.plist; path = HealthManager/AppPropertyList.plist; sourceTree = SOURCE_ROOT; };
 		37A8D5F51876A23C0015432A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		37A92D79187B8A3A0059DB25 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
 		37A92D7A187B8A3A0059DB25 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
@@ -207,7 +213,6 @@
 		B85024021861FF0B0080DB1D /* DoctorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorModel.m; sourceTree = "<group>"; };
 		B8502405186200D40080DB1D /* RootSuperCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSuperCell.h; sourceTree = "<group>"; };
 		B8502406186200D40080DB1D /* RootSuperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSuperCell.m; sourceTree = "<group>"; };
-		B86F6BD618560D6A0088BDCC /* AppPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppPropertyList.plist; path = ../../HealthManager/AppPropertyList.plist; sourceTree = "<group>"; };
 		B87D1297184CE88400279DDC /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
 		B87D1298184CE88400279DDC /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
 		B87D1299184CE88400279DDC /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
@@ -481,7 +486,7 @@
 		B8232281185F48EA005F2409 /* plist */ = {
 			isa = PBXGroup;
 			children = (
-				B86F6BD618560D6A0088BDCC /* AppPropertyList.plist */,
+				37A3E56B187E31B500F075B0 /* AppPropertyList.plist */,
 			);
 			path = plist;
 			sourceTree = "<group>";
@@ -550,6 +555,9 @@
 				B87D12A3184CE88400279DDC /* KnowledgeViewController.h */,
 				B87D12A4184CE88400279DDC /* KnowledgeViewController.m */,
 				B87D12A5184CE88400279DDC /* KnowledgeViewController.xib */,
+				37A3E566187E2E0600F075B0 /* KnowledgeDetailViewController.h */,
+				37A3E567187E2E0600F075B0 /* KnowledgeDetailViewController.m */,
+				37A3E569187E2E2900F075B0 /* KnowledgeDetailViewController.xib */,
 			);
 			name = KnowledgeViewController;
 			path = ViewController/KnowledgeViewController;
@@ -729,6 +737,7 @@
 				B87D12CB184CE88400279DDC /* SettingViewController.xib in Resources */,
 				B823228D185F48EA005F2409 /* bt_cancel@2x.png in Resources */,
 				B8232282185F48EA005F2409 /* arrow@2x.png in Resources */,
+				37A3E56A187E2E2900F075B0 /* KnowledgeDetailViewController.xib in Resources */,
 				B8232287185F48EA005F2409 /* blood_segment_selected_1@2x.png in Resources */,
 				B82322A5185F48EA005F2409 /* portrait@2x.png in Resources */,
 				B823228F185F48EA005F2409 /* bt_login@2x.png in Resources */,
@@ -736,6 +745,7 @@
 				8B94AB0F1848663300CA5869 /* InfoPlist.strings in Resources */,
 				B8232298185F48EA005F2409 /* Icon-114.png in Resources */,
 				B82322A6185F48EA005F2409 /* textfield@2x.png in Resources */,
+				37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */,
 				B82322A3185F48EA005F2409 /* main_btn_7@2x.png in Resources */,
 				B823228B185F48EA005F2409 /* blood_texfield@2x.png in Resources */,
 				B823229A185F48EA005F2409 /* Icon-Small@2x.png in Resources */,
@@ -752,7 +762,6 @@
 				B87D12C9184CE88400279DDC /* MoreViewController.xib in Resources */,
 				B8232297185F48EA005F2409 /* doctorButton@2x.png in Resources */,
 				B82322A2185F48EA005F2409 /* main_btn_6@2x.png in Resources */,
-				B86F6BD718560D6A0088BDCC /* AppPropertyList.plist in Resources */,
 				B87D12C3184CE88400279DDC /* LoginViewController.xib in Resources */,
 				B87D12C7184CE88400279DDC /* ManagerViewController.xib in Resources */,
 				B823228A185F48EA005F2409 /* blood_table_hit@2x.png in Resources */,
@@ -806,6 +815,7 @@
 				372F3676187CF12B007B0F67 /* AFJSONRequestOperation.m in Sources */,
 				B87D12C4184CE88400279DDC /* MainViewController.m in Sources */,
 				B8E312BE18520DDB007E819E /* LSSegment.m in Sources */,
+				37A3E568187E2E0600F075B0 /* KnowledgeDetailViewController.m in Sources */,
 				B85024031861FF0B0080DB1D /* DoctorModel.m in Sources */,
 				B87D12C0184CE88400279DDC /* KnowledgeViewController.m in Sources */,
 				37A92E3F187BF8B70059DB25 /* KnowledgeStore.m in Sources */,

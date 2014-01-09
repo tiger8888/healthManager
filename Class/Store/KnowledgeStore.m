@@ -44,4 +44,61 @@
     }];
     [operation start];
 }
+
+- (void)fetchTopwithCompletion:(void (^)(NSMutableArray *obj, NSError *err))block {
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mobile.9500.cn/95app/xiaotieshi/getxiaotieshilistmore.jsp?type=iphone"]];
+    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+
+        NSArray *result = (NSArray *)[JSON objectForKey:@"xiaotieshi"];
+        NSMutableArray *knowledgeArr = [NSMutableArray new];
+        
+        if ( result ) {
+            int resultCount = (int)[result count];
+            
+            for (int i=0; i < resultCount; i++) {
+                Knowledge *knowledge = [Knowledge new];
+                [knowledge setUrl:[[result objectAtIndex:i] objectForKey:@"url"]];
+                [knowledge setTitle:[[result objectAtIndex:i] objectForKey:@"title"]];
+                [knowledgeArr addObject:knowledge];
+            }
+        }
+        block(knowledgeArr, NULL);
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"%@", response);
+        NSLog(@"=====");
+        NSLog(@"%@",error);
+    }];
+    [operation start];
+}
+
+- (void)fetchDetailInfo:(NSString *)url withCompletion:(void (^)(NSMutableArray *obj, NSError *err))block {
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        NSLog(@"%@", JSON);
+//        NSArray *result = (NSArray *)[JSON objectForKey:@"xiaotieshi"];
+//        NSMutableArray *knowledgeArr = [NSMutableArray new];
+//        
+//        if ( result ) {
+//            int resultCount = (int)[result count];
+//            
+//            for (int i=0; i < resultCount; i++) {
+//                Knowledge *knowledge = [Knowledge new];
+//                [knowledge setUrl:[[result objectAtIndex:i] objectForKey:@"url"]];
+//                [knowledge setTitle:[[result objectAtIndex:i] objectForKey:@"title"]];
+//                [knowledgeArr addObject:knowledge];
+//            }
+//        }
+//        block(knowledgeArr, NULL);
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"%@", response);
+        NSLog(@"=====");
+        NSLog(@"%@",error);
+    }];
+    [operation start];
+}
 @end
