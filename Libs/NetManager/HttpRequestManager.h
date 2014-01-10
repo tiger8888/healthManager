@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "AFNetworking.h"
 @interface HttpRequestManager : NSObject
 
 typedef void (^LSDataBlock)(NSData *data);
 typedef void (^LSJSONBlock)(NSDictionary *jsonObject);
+
++ (HttpRequestManager *)sharedManager;
 
 - (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block;
 

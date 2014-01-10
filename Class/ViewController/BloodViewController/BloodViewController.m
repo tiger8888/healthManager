@@ -34,6 +34,19 @@
     // Do any additional setup after loading the view from its nib.
     
     [self layoutView];
+//    NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
+//    [parameter setObject:@"1388888" forKey:@"phoneNumber"];
+//    /**
+//     *  请求方法：
+//     *  首先找出单例
+//     *  @param  字典就是要传的json格式的参数
+//     *  @param  字符串就是你要请求的接口
+//     *  @param  block是你回调的方法
+//     *  @return 不需要返回值
+//     */
+//    [[HttpRequestManager sharedManager] requestWithParameters:parameter interface:@"login.json" completionHandle:^(NSDictionary *jsonObject) {
+//        NSLog(@"请求结束");
+//    }];
 
 }
 

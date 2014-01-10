@@ -49,13 +49,13 @@ static HttpRequestManager *_sharedManager;
 
 - (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block
 {
-//    AFHTTPClient *requestOperation = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASEURL]];
-//    [requestOperation setParameterEncoding:AFJSONParameterEncoding];
-//    
-//    [requestOperation postPath:interface parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        block(responseObject);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        
-//    }];
+    AFHTTPClient *requestOperation = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASEURL]];
+    [requestOperation setParameterEncoding:AFJSONParameterEncoding];
+    
+    [requestOperation postPath:interface parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        block(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
 }
 @end

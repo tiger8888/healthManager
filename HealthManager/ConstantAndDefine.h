@@ -20,6 +20,7 @@ typedef enum {
     kMore
 } kPartType;
 
+#define BASEURL @"www.baidu.com:8080"
 #define DEVICE_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define DEVICE_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define FULLSCREEN CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT -44)
@@ -46,6 +47,7 @@ typedef enum {
 
 #import "LSBackGrayView.h"
 #import "BloodRecord.h"
+#import "HttpRequestManager.h"
 #endif
 
 
