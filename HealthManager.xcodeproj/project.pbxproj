@@ -48,6 +48,8 @@
 		8BFE178B187FEC5700D1F48A /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE1778187FEC5600D1F48A /* zbar-help.html */; };
 		8BFE178C187FEC5700D1F48A /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE1779187FEC5600D1F48A /* zbar-helpicons.png */; };
 		8BFE178D187FEC5700D1F48A /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE177A187FEC5700D1F48A /* zbar-samples.png */; };
+		8BFE178F187FECDC00D1F48A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFE178E187FECDC00D1F48A /* SystemConfiguration.framework */; };
+		8BFE1791187FECE300D1F48A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFE1790187FECE300D1F48A /* MobileCoreServices.framework */; };
 		B8232282185F48EA005F2409 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823225C185F48EA005F2409 /* arrow@2x.png */; };
 		B8232283185F48EA005F2409 /* bbi_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823225D185F48EA005F2409 /* bbi_left@2x.png */; };
 		B8232284185F48EA005F2409 /* blood_segment_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823225E185F48EA005F2409 /* blood_segment_1@2x.png */; };
@@ -108,7 +110,6 @@
 		B87D12CB184CE88400279DDC /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D12B9184CE88400279DDC /* SettingViewController.xib */; };
 		B88319CF186D2ED500333DA2 /* BackButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88319CE186D2ED500333DA2 /* BackButtonViewController.m */; };
 		B88319D2186D348E00333DA2 /* NavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88319D1186D348E00333DA2 /* NavigationBarViewController.m */; };
-		B8831ACF186DA33700333DA2 /* HttpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8831ACE186DA33700333DA2 /* HttpRequestManager.m */; };
 		B8997D7D1853244000C12CE7 /* BloodRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B8997D7C1853244000C12CE7 /* BloodRecord.m */; };
 		B8997D7F1853245600C12CE7 /* BloodRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8997D7E1853245600C12CE7 /* BloodRecord.xib */; };
 		B8E312CD18520FB3007E819E /* DoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E312CC18520FB3007E819E /* DoctorCell.m */; };
@@ -210,6 +211,8 @@
 		8BFE1778187FEC5600D1F48A /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		8BFE1779187FEC5600D1F48A /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		8BFE177A187FEC5700D1F48A /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		8BFE178E187FECDC00D1F48A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8BFE1790187FECE300D1F48A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B823225C185F48EA005F2409 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		B823225D185F48EA005F2409 /* bbi_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bbi_left@2x.png"; sourceTree = "<group>"; };
 		B823225E185F48EA005F2409 /* blood_segment_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blood_segment_1@2x.png"; sourceTree = "<group>"; };
@@ -284,8 +287,6 @@
 		B88319CE186D2ED500333DA2 /* BackButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackButtonViewController.m; sourceTree = "<group>"; };
 		B88319D0186D348E00333DA2 /* NavigationBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarViewController.h; sourceTree = "<group>"; };
 		B88319D1186D348E00333DA2 /* NavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarViewController.m; sourceTree = "<group>"; };
-		B8831ACD186DA33700333DA2 /* HttpRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequestManager.h; sourceTree = "<group>"; };
-		B8831ACE186DA33700333DA2 /* HttpRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequestManager.m; sourceTree = "<group>"; };
 		B8997D7B1853244000C12CE7 /* BloodRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecord.h; sourceTree = "<group>"; };
 		B8997D7C1853244000C12CE7 /* BloodRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecord.m; sourceTree = "<group>"; };
 		B8997D7E1853245600C12CE7 /* BloodRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BloodRecord.xib; sourceTree = "<group>"; };
@@ -299,9 +300,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BFE1791187FECE300D1F48A /* MobileCoreServices.framework in Frameworks */,
+				8BFE178F187FECDC00D1F48A /* SystemConfiguration.framework in Frameworks */,
+				8BFE1789187FEC5700D1F48A /* libzbar.a in Frameworks */,
 				37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */,
 				8B94AB051848663200CA5869 /* CoreGraphics.framework in Frameworks */,
-				8BFE1789187FEC5700D1F48A /* libzbar.a in Frameworks */,
 				8B94AB091848663200CA5869 /* CoreData.framework in Frameworks */,
 				8B94AB071848663200CA5869 /* UIKit.framework in Frameworks */,
 				8B94AB031848663200CA5869 /* Foundation.framework in Frameworks */,
@@ -345,7 +348,6 @@
 			children = (
 				8BFE173C187FEC5600D1F48A /* Libs */,
 				8B94AB371848669F00CA5869 /* Class */,
-				B8831ACC186DA2FF00333DA2 /* Manager */,
 				8B94AB401848669F00CA5869 /* Resource */,
 				8B94AB0A1848663200CA5869 /* HealthManager */,
 				8B94AB271848663300CA5869 /* HealthManagerTests */,
@@ -366,6 +368,8 @@
 		8B94AB011848663200CA5869 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8BFE1790187FECE300D1F48A /* MobileCoreServices.framework */,
+				8BFE178E187FECDC00D1F48A /* SystemConfiguration.framework */,
 				37A8D5F51876A23C0015432A /* QuartzCore.framework */,
 				8B94AB021848663200CA5869 /* Foundation.framework */,
 				8B94AB041848663200CA5869 /* CoreGraphics.framework */,
@@ -766,16 +770,6 @@
 			path = ViewController/SettingViewController;
 			sourceTree = "<group>";
 		};
-		B8831ACC186DA2FF00333DA2 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				B8831ACD186DA33700333DA2 /* HttpRequestManager.h */,
-				B8831ACE186DA33700333DA2 /* HttpRequestManager.m */,
-			);
-			name = Manager;
-			path = Libs;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -950,7 +944,6 @@
 				B87D12C0184CE88400279DDC /* KnowledgeViewController.m in Sources */,
 				37A92E3F187BF8B70059DB25 /* KnowledgeStore.m in Sources */,
 				B85023FF1861F6A10080DB1D /* SuperListViewController.m in Sources */,
-				B8831ACF186DA33700333DA2 /* HttpRequestManager.m in Sources */,
 				B87D12C6184CE88400279DDC /* ManagerViewController.m in Sources */,
 				B87D12BA184CE88400279DDC /* AlertViewController.m in Sources */,
 				8BFE1785187FEC5700D1F48A /* LSBackGrayView.m in Sources */,

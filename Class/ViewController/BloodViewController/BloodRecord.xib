@@ -5,13 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BloodViewController">
-            <connections>
-                <outlet property="highPressure" destination="Ehg-sY-77M" id="3Vn-fJ-AfB"/>
-                <outlet property="lowPressure" destination="hLQ-W8-qiJ" id="OJy-Lp-I0Q"/>
-                <outlet property="pulse" destination="Ovb-M4-h6G" id="l35-Fl-h1G"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BloodViewController"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="Smv-7j-axv" customClass="BloodRecord">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -36,42 +30,15 @@
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   请输入数值" textAlignment="center" minimumFontSize="17" background="blood_texfield.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ehg-sY-77M">
-                    <rect key="frame" x="119" y="52" width="173" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="eeQ-dd-kkt"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   请输入数值" textAlignment="center" minimumFontSize="17" background="blood_texfield.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hLQ-W8-qiJ">
-                    <rect key="frame" x="119" y="118" width="173" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="tdK-sW-9dK"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   请输入数值" textAlignment="center" minimumFontSize="17" background="blood_texfield.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ovb-M4-h6G">
-                    <rect key="frame" x="119" y="187" width="173" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="hc1-4X-NEe"/>
-                    </connections>
-                </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPr-6n-7RI">
-                    <rect key="frame" x="105" y="263" width="110" height="35"/>
+                    <rect key="frame" x="150" y="266" width="110" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" backgroundImage="bt_pop_ok.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="saveBTBClick:" destination="-1" eventType="touchUpInside" id="hWJ-eV-8aK"/>
+                        <action selector="saveBTBClick:" destination="Smv-7j-axv" eventType="touchUpInside" id="vtr-1e-Gko"/>
                     </connections>
                 </button>
             </subviews>
@@ -80,7 +47,6 @@
         </view>
     </objects>
     <resources>
-        <image name="blood_texfield.png" width="173" height="36"/>
         <image name="bt_pop_ok.png" width="110" height="35"/>
     </resources>
 </document>

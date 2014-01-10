@@ -29,9 +29,10 @@
 }
 */
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.hidden = YES;
     [self removeFromSuperview];
+
 }
 @end

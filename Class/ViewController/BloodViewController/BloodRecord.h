@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LSTextField.h"
 
+typedef void(^SaveBlock)(NSString *,NSString *,NSString *);
 @interface BloodRecord : UIView
+{
+    SaveBlock _saveBlock;
+}
+@property (strong, nonatomic) LSTextField *highPressure;
+@property (strong, nonatomic) LSTextField *lowPressure;
+@property (strong, nonatomic) LSTextField *pulse;
+
+- (void)setSaveBlock:(void(^)(NSString *,NSString *,NSString *))saveBlock;
+
+- (IBAction)saveBTBClick:(id)sender;
 
 @end
