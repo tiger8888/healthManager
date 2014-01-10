@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSArray *hDesc;
 @property (nonatomic, strong) NSArray *vDesc;
 
-//点信息
+//点信息a
 @property (nonatomic, strong) NSArray *bloodArray;
 
 @end
