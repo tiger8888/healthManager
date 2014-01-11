@@ -8,8 +8,6 @@
 
 #import "LineChartView.h"
 
-#define PI 3.1415926535979323846
-
 @interface LineChartView()
 {
 }
@@ -181,7 +179,7 @@
         goPoint = CGPointMake(newCoordinateX+(p1.x-1)*hGap, newCoordinateY-p1.y);
 		CGContextAddLineToPoint(context, goPoint.x, goPoint.y);
         //画端点圆
-        CGContextAddArc(context, goPoint.x, goPoint.y, 2, 0, 2*PI, 0);
+        CGContextAddArc(context, goPoint.x, goPoint.y, 2, 0, 2*M_PI, 0);
         CGContextFillPath(context);
     }
 }

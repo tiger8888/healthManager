@@ -15,7 +15,6 @@ typedef void (^LSJSONBlock)(NSDictionary *jsonObject);
 
 + (HttpRequestManager *)sharedManager;
 
-- (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block;
-
+- (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView;
 
 @end

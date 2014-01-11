@@ -12,10 +12,9 @@
 #import "KnowledgeDetailViewController.h"
 
 @interface KnowledgeViewController ()
-{
-    NSMutableArray *_knowledgeArr;
-    UIActivityIndicatorView *_activityIndicatorLoading;
-}
+//{
+//    NSMutableArray *_knowledgeArr;
+//}
 @end
 
 @implementation KnowledgeViewController
@@ -31,30 +30,44 @@
     return self;
 }
 
+- (void)loadView
+{
+    [super loadView];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _activityIndicatorLoading = [UIActivityIndicatorView new];
-    _activityIndicatorLoading.frame = CGRectMake(_backButtonItem.frame.size.width, (_navigationBar.frame.size.height-32)/2, 32, 32);
-    _activityIndicatorLoading.hidden = false;
-    [_activityIndicatorLoading startAnimating];
-    [_navigationBar addSubview:_activityIndicatorLoading];
-     
+//    _activityIndicatorLoading = [UIActivityIndicatorView new];
+//    _activityIndicatorLoading.frame = CGRectMake(_backButtonItem.frame.size.width, (_navigationBar.frame.size.height-32)/2, 32, 32);
+//    _activityIndicatorLoading.hidden = false;
+//    [_activityIndicatorLoading startAnimating];
+//    [_navigationBar addSubview:_activityIndicatorLoading];
+    
 //    [[KnowledgeStore sharedStore] fetchTopInfo:10 withCompletion:^(NSMutableArray *obj, NSError *err) {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [[KnowledgeStore sharedStore] fetchTopwithCompletion:^(NSMutableArray *obj, NSError *err) {
-        _knowledgeArr = obj;
-        if (_knowledgeArr) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+        _dataSource = obj;
+        if (_dataSource)
+        {
             [_tableView reloadData];
         }
-        else {
+        else
+        {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示信息" message:@"暂无信息" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alert show];
         }
         
-        _activityIndicatorLoading.hidden = YES;
-        [_activityIndicatorLoading stopAnimating];
+//        _activityIndicatorLoading.hidden = YES;
+//        [_activityIndicatorLoading stopAnimating];
     }];
 }
 
@@ -80,21 +93,16 @@
         cell.textLabel.font = [UIFont systemFontOfSize:20];
     }
     
-    Knowledge *knowledgeItem = [_knowledgeArr objectAtIndex:[indexPath row]];
+    Knowledge *knowledgeItem = [_dataSource objectAtIndex:[indexPath row]];
     cell.textLabel.text = knowledgeItem.title;
     
     return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_knowledgeArr count];
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KnowledgeDetailViewController *detailViewCtl = [[KnowledgeDetailViewController alloc] initWithCategory:8];
-    Knowledge *knowledge = [_knowledgeArr objectAtIndex:[indexPath row]];
+    Knowledge *knowledge = [_dataSource objectAtIndex:[indexPath row]];
     detailViewCtl.url = knowledge.url;
     [self.navigationController pushViewController:detailViewCtl animated:YES];
 }

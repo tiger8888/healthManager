@@ -85,7 +85,6 @@
     tmpView.layer.cornerRadius = 8.0f;
     [backView addSubview:tmpView];
     
-    
     NSString *htmlStr = [NSString stringWithFormat:@"<p>您申请 <b >%@%d</b> 医师成为您的专属医生，%@%d 医生将为您提供一对一的医疗服务。</p>",@"人名",index.row,@"人名",index.row];
     
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(20, 10, 220, 100)];

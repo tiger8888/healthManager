@@ -47,15 +47,21 @@ static HttpRequestManager *_sharedManager;
     return self;
 }
 
-- (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block
+- (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView
 {
+    [MBProgressHUD showHUDAddedTo:superView animated:YES];
+
     AFHTTPClient *requestOperation = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASEURL]];
     [requestOperation setParameterEncoding:AFJSONParameterEncoding];
     
     [requestOperation postPath:interface parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [MBProgressHUD hideHUDForView:superView animated:YES];
+
         block(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [MBProgressHUD hideHUDForView:superView animated:YES];
+
+        failedBlock();
     }];
 }
 @end

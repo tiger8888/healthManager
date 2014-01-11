@@ -16,21 +16,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //注释一下NSLog(@"%@",NSHomeDirectory());/////////////////////
+    NSLog(@"%@",NSHomeDirectory());/////////////////////
     self.propertyList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"AppPropertyList" ofType:@"plist"]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-    NSNumber *login = [userDef objectForKey:@"login"];
-    if (!login || [login intValue] == 0)
-    {
-        self.window.rootViewController = [[LoginViewController alloc] init];
-    }
-    else
-    {
+//    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+//    NSNumber *login = [userDef objectForKey:@"login"];
+//    if (!login || [login intValue] == 0)
+//    {
+//        self.window.rootViewController = [[LoginViewController alloc] init];
+//    }
+//    else
+//    {
         self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
-    }
+//    }
 
     
     self.window.backgroundColor = [UIColor whiteColor];
