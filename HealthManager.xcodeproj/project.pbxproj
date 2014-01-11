@@ -43,7 +43,6 @@
 		8BFE1786187FEC5700D1F48A /* LSSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE1757187FEC5600D1F48A /* LSSegment.m */; };
 		8BFE1787187FEC5700D1F48A /* LSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE1759187FEC5600D1F48A /* LSTextField.m */; };
 		8BFE1788187FEC5700D1F48A /* HttpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE175C187FEC5600D1F48A /* HttpRequestManager.m */; };
-		8BFE1789187FEC5700D1F48A /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFE1775187FEC5600D1F48A /* libzbar.a */; };
 		8BFE178A187FEC5700D1F48A /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE1777187FEC5600D1F48A /* zbar-back.png */; };
 		8BFE178B187FEC5700D1F48A /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE1778187FEC5600D1F48A /* zbar-help.html */; };
 		8BFE178C187FEC5700D1F48A /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE1779187FEC5600D1F48A /* zbar-helpicons.png */; };
@@ -302,7 +301,6 @@
 			files = (
 				8BFE1791187FECE300D1F48A /* MobileCoreServices.framework in Frameworks */,
 				8BFE178F187FECDC00D1F48A /* SystemConfiguration.framework in Frameworks */,
-				8BFE1789187FEC5700D1F48A /* libzbar.a in Frameworks */,
 				37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */,
 				8B94AB051848663200CA5869 /* CoreGraphics.framework in Frameworks */,
 				8B94AB091848663200CA5869 /* CoreData.framework in Frameworks */,

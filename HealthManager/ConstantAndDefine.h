@@ -45,6 +45,8 @@ typedef enum {
 #import "SettingViewController.h"
 #import "MoreViewController.h"
 
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #import "LSBackGrayView.h"
 #import "BloodRecord.h"
 #import "HttpRequestManager.h"
