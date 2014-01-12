@@ -8,7 +8,6 @@
 
 #import "KnowledgeViewController.h"
 #import "KnowledgeStore.h"
-#import "Knowledge.h"
 #import "KnowledgeDetailViewController.h"
 
 @interface KnowledgeViewController ()
@@ -102,8 +101,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KnowledgeDetailViewController *detailViewCtl = [[KnowledgeDetailViewController alloc] initWithCategory:8];
-    Knowledge *knowledge = [_dataSource objectAtIndex:[indexPath row]];
-    detailViewCtl.url = knowledge.url;
+//    Knowledge *knowledge = [_dataSource objectAtIndex:[indexPath row]];
+//    detailViewCtl.url = knowledge.url;
+    /**
+     *  这里我感觉考虑到今后的拓展性传模型比较好，不管评论收藏还是分享都需要模型的其他属性
+     */
+    detailViewCtl.knowledgeModel = [_dataSource objectAtIndex:[indexPath row]];
     [self.navigationController pushViewController:detailViewCtl animated:YES];
 }
 @end

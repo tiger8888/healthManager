@@ -10,5 +10,6 @@
 
 @interface KnowledgeDetailViewController : BackButtonViewController<UIWebViewDelegate>
 
-@property (nonatomic, strong) NSString *url;
+//@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) Knowledge *knowledgeModel;
 @end

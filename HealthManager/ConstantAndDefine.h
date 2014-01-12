@@ -49,6 +49,10 @@ typedef enum {
 #import "KnowledgeViewController.h"
 #import "SettingViewController.h"
 #import "MoreViewController.h"
+/**
+ *  模型类
+ */
+#import "Knowledge.h"
 
 /**
  *  控件，工具，库等

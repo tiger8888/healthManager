@@ -24,7 +24,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        hGap = 9;
+        hGap = 15;
         vGap = 20;
         self.backgroundColor = [UIColor whiteColor];
     }
@@ -51,7 +51,7 @@
     int coordinateLabelHeight = 20;
     int coordinateLabelWidth = vOrdinateLabelWidth;
     //横轴坐标值的标签与坐标横轴的间隙
-    int gapBetweenLabelAndHordinate = 5;
+    int gapBetweenLabelAndHordinate = 20;
     
     UIColor *coordinateLabelFontColor = [UIColor colorWithRed:51.0f/255.0f green:51.0f/255.0f blue:51.0f/255.0f alpha:1.0f];
 

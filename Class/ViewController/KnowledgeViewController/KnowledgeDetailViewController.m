@@ -29,14 +29,14 @@
 #pragma mark - Layout Method
 - (void)showContentOnWebView
 {
-    if (self.url)
+    if (self.knowledgeModel.url)
     {
 //        _activityIndicatorLoading = [UIActivityIndicatorView new];
 //        _activityIndicatorLoading.frame = CGRectMake(_backButtonItem.frame.size.width, (_navigationBar.frame.size.height-32)/2, 32, 32);
 //        _activityIndicatorLoading.hidden = YES;
 //        [_navigationBar addSubview:_activityIndicatorLoading];
         
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:_url]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.knowledgeModel.url]];
         UIWebView *webView = [[UIWebView alloc] initWithFrame:FULLSCREEN];
         webView.delegate = self;
         [webView loadRequest:request];
