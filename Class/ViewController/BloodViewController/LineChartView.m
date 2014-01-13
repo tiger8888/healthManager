@@ -57,7 +57,8 @@
 
     //坐标原点
     int newCoordinateX = vOrdinateLabelWidth;//x位置由纵坐标数值的标签宽度决定
-    int newCoordinateY = self.frame.size.height - ( gapBetweenLabelAndHordinate*2 + coordinateLabelHeight );//为横轴坐标值的标签高度及上下间隙留出空间
+//    int newCoordinateY = self.frame.size.height - ( gapBetweenLabelAndHordinate*2 + coordinateLabelHeight );//为横轴坐标值的标签高度及上下间隙留出空间
+    int newCoordinateY = coordinateLabelHeight/2;
     
     int x = self.frame.size.width;
     int y = newCoordinateY;
@@ -65,7 +66,7 @@
     int vOrdinateLabelCenterX = newCoordinateX/2;
     
     //画水平线
-    for (int i=0; i<vDesc.count; i++) {
+    for (int i=vDesc.count - 1; i>0; i--) {
         beginPoint = CGPointMake(newCoordinateX, y);
         endPoint = CGPointMake(x, y);
         
@@ -84,21 +85,20 @@
             CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
         }
         
-        y -= vGap;
+        y += vGap;
     }
     CGContextStrokePath(context);
     
     
     //画垂直线
     x = newCoordinateX;
-    y += vGap;
-    int hOrdinateLabelCenterY = newCoordinateY+5;
+    y -= vGap;
     int labelCenterXOffset = (int)(10 + floor(hGap/2));//可以在改进，自动适配显示文字的宽度
     for (int i=0; i<hDesc.count; i++) {
         beginPoint = CGPointMake(x, y);
         endPoint = CGPointMake(x, newCoordinateY);
         if ( i==6 || i==14 || i==21 || i==29 ) {
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(x-labelCenterXOffset, hOrdinateLabelCenterY, coordinateLabelWidth, coordinateLabelHeight)];
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(x-labelCenterXOffset, y, coordinateLabelWidth, coordinateLabelHeight)];
             [label setTextAlignment:NSTextAlignmentCenter];
             [label setBackgroundColor:[UIColor clearColor]];
             [label setTextColor:coordinateLabelFontColor];
@@ -159,13 +159,13 @@
     CGPoint goPoint;
 	int i = 1;
     p1.x += newCoordinateX;
-    p1.y = newCoordinateY-p1.y;
+    p1.y = newCoordinateY+p1.y;
 	CGContextMoveToPoint(context, p1.x, p1.y);
     
 	for (; i<bloodItemCount; i++)
 	{
 		p1 = [[bloodItem objectAtIndex:i] CGPointValue];
-        goPoint = CGPointMake(newCoordinateX+(p1.x-1)*hGap, newCoordinateY-p1.y);
+        goPoint = CGPointMake(newCoordinateX+(p1.x-1)*hGap, newCoordinateY+p1.y);
 		CGContextAddLineToPoint(context, goPoint.x, goPoint.y);
     }
     CGContextSetStrokeColorWithColor(context, colorRef);
@@ -176,7 +176,7 @@
     for (i=0; i<bloodItemCount; i++)
 	{
 		p1 = [[bloodItem objectAtIndex:i] CGPointValue];
-        goPoint = CGPointMake(newCoordinateX+(p1.x-1)*hGap, newCoordinateY-p1.y);
+        goPoint = CGPointMake(newCoordinateX+(p1.x-1)*hGap, newCoordinateY+p1.y);
 		CGContextAddLineToPoint(context, goPoint.x, goPoint.y);
         //画端点圆
         CGContextAddArc(context, goPoint.x, goPoint.y, 2, 0, 2*M_PI, 0);
