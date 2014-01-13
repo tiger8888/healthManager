@@ -28,6 +28,9 @@
 		8B94AB241848663300CA5869 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB081848663200CA5869 /* CoreData.framework */; };
 		8B94AB2C1848663300CA5869 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B94AB2A1848663300CA5869 /* InfoPlist.strings */; };
 		8B94AB2E1848663300CA5869 /* HealthManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B94AB2D1848663300CA5869 /* HealthManagerTests.m */; };
+		8BBD958F1883D0FA00C9A1BC /* BloodRecordQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBD958E1883D0FA00C9A1BC /* BloodRecordQueue.m */; };
+		8BBD95921883D15200C9A1BC /* BloodRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBD95911883D15200C9A1BC /* BloodRecordModel.m */; };
+		8BBD959B1883ECA400C9A1BC /* BloodRecordDailyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBD959A1883ECA400C9A1BC /* BloodRecordDailyData.m */; };
 		8BEB9FC8184C540500ECF974 /* RootSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEB9FC6184C540500ECF974 /* RootSuperViewController.m */; };
 		8BFE177B187FEC5700D1F48A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE173F187FEC5600D1F48A /* AFHTTPClient.m */; };
 		8BFE177C187FEC5700D1F48A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE1741187FEC5600D1F48A /* AFHTTPRequestOperation.m */; };
@@ -156,6 +159,12 @@
 		8B94AB2B1848663300CA5869 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8B94AB2D1848663300CA5869 /* HealthManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthManagerTests.m; sourceTree = "<group>"; };
 		8B94AB5B184866AE00CA5869 /* ConstantAndDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstantAndDefine.h; sourceTree = "<group>"; };
+		8BBD958D1883D0FA00C9A1BC /* BloodRecordQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecordQueue.h; sourceTree = "<group>"; };
+		8BBD958E1883D0FA00C9A1BC /* BloodRecordQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecordQueue.m; sourceTree = "<group>"; };
+		8BBD95901883D15200C9A1BC /* BloodRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecordModel.h; sourceTree = "<group>"; };
+		8BBD95911883D15200C9A1BC /* BloodRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecordModel.m; sourceTree = "<group>"; };
+		8BBD95991883ECA400C9A1BC /* BloodRecordDailyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecordDailyData.h; sourceTree = "<group>"; };
+		8BBD959A1883ECA400C9A1BC /* BloodRecordDailyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecordDailyData.m; sourceTree = "<group>"; };
 		8BEB9FC5184C540500ECF974 /* RootSuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSuperViewController.h; sourceTree = "<group>"; };
 		8BEB9FC6184C540500ECF974 /* RootSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSuperViewController.m; sourceTree = "<group>"; };
 		8BFE173E187FEC5600D1F48A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -333,6 +342,10 @@
 			children = (
 				37A92E3A187BF8A30059DB25 /* Knowledge.h */,
 				37A92E3B187BF8A30059DB25 /* Knowledge.m */,
+				8BBD95901883D15200C9A1BC /* BloodRecordModel.h */,
+				8BBD95911883D15200C9A1BC /* BloodRecordModel.m */,
+				8BBD95991883ECA400C9A1BC /* BloodRecordDailyData.h */,
+				8BBD959A1883ECA400C9A1BC /* BloodRecordDailyData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -694,6 +707,8 @@
 				B8997D7B1853244000C12CE7 /* BloodRecord.h */,
 				B8997D7C1853244000C12CE7 /* BloodRecord.m */,
 				B8997D7E1853245600C12CE7 /* BloodRecord.xib */,
+				8BBD958D1883D0FA00C9A1BC /* BloodRecordQueue.h */,
+				8BBD958E1883D0FA00C9A1BC /* BloodRecordQueue.m */,
 			);
 			name = BloodViewController;
 			path = ViewController/BloodViewController;
@@ -942,6 +957,7 @@
 				B88319D2186D348E00333DA2 /* NavigationBarViewController.m in Sources */,
 				8BFE1782187FEC5700D1F48A /* AFXMLRequestOperation.m in Sources */,
 				B87D12C8184CE88400279DDC /* MoreViewController.m in Sources */,
+				8BBD959B1883ECA400C9A1BC /* BloodRecordDailyData.m in Sources */,
 				9C911B0918810299004CD648 /* MBProgressHUD.m in Sources */,
 				B87D12CA184CE88400279DDC /* SettingViewController.m in Sources */,
 				8BFE177D187FEC5700D1F48A /* AFImageRequestOperation.m in Sources */,
@@ -964,6 +980,7 @@
 				B87D12C6184CE88400279DDC /* ManagerViewController.m in Sources */,
 				B87D12BA184CE88400279DDC /* AlertViewController.m in Sources */,
 				8BFE1785187FEC5700D1F48A /* LSBackGrayView.m in Sources */,
+				8BBD95921883D15200C9A1BC /* BloodRecordModel.m in Sources */,
 				B87D12C2184CE88400279DDC /* LoginViewController.m in Sources */,
 				B8E312CD18520FB3007E819E /* DoctorCell.m in Sources */,
 				B8997D7D1853244000C12CE7 /* BloodRecord.m in Sources */,
@@ -972,6 +989,7 @@
 				37A92E3C187BF8A30059DB25 /* Knowledge.m in Sources */,
 				8B94AB181848663300CA5869 /* HealthManager.xcdatamodeld in Sources */,
 				8BFE1783187FEC5700D1F48A /* UIImageView+AFNetworking.m in Sources */,
+				8BBD958F1883D0FA00C9A1BC /* BloodRecordQueue.m in Sources */,
 				B88319CF186D2ED500333DA2 /* BackButtonViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
