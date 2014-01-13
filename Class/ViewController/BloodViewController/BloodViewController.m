@@ -125,7 +125,6 @@
 {
     LineChartView *lineChartView;
     lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_HEIGHT, DEVICE_HEIGHT -88 -20)];
-    NSMutableArray *pointArr = [[NSMutableArray alloc]init];
     
     //竖轴
     NSMutableArray *vArr = [[NSMutableArray alloc] init];
@@ -140,36 +139,22 @@
     int bloodValue = 0;
     for (int i=1; i<31; i++) {
         [hArr addObject: [NSString stringWithFormat:@"%d",i]];
+        NSMutableDictionary *item = [NSMutableDictionary new];
+        
         bloodValue = arc4random()%110 + 90;
-        //        if (i%2==0)bloodValue = 130;
-        //        else bloodValue = 150;
-        [bloodItem addObject:[NSValue valueWithCGPoint:CGPointMake(i, bloodValue)]];
-    }
-    [pointArr addObject:[bloodItem copy]];
-    [bloodItem removeAllObjects];
-    
-    for (int i=1; i<31; i++)
-    {
-        [hArr addObject: [NSString stringWithFormat:@"%d",i]];
+        [item setObject:[NSString stringWithFormat:@"%d",bloodValue] forKey:@"highPressure"];
+        
         bloodValue = arc4random()%70 + 60;
-        //        if (i%2==0)bloodValue = 130;
-        //        else bloodValue = 150;
-        [bloodItem addObject:[NSValue valueWithCGPoint:CGPointMake(i, bloodValue)]];
-    }
-    [pointArr addObject:[bloodItem copy]];
-    [bloodItem removeAllObjects];
-    
-    for (int i=1; i<31; i++) {
-        [hArr addObject: [NSString stringWithFormat:@"%d",i]];
+        [item setObject:[NSString stringWithFormat:@"%d",bloodValue] forKey:@"lowPressure"];
+        
         bloodValue = arc4random()%30 + 60;
+        [item setObject:[NSString stringWithFormat:@"%d",bloodValue] forKey:@"pulse"];
         //        if (i%2==0)bloodValue = 130;
         //        else bloodValue = 150;
-        [bloodItem addObject:[NSValue valueWithCGPoint:CGPointMake(i, bloodValue)]];
+        [bloodItem addObject:item];
     }
-    [pointArr addObject:[bloodItem copy]];
-    bloodItem = NULL;
     
-    [lineChartView setBloodArray:pointArr];
+    [lineChartView setBloodArray:bloodItem];
     [lineChartView setHDesc:hArr];
     [lineChartView setVDesc:vArr];
     
