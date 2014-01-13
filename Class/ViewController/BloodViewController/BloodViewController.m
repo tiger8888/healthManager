@@ -199,7 +199,6 @@
     [formatter setDateFormat:@" yyyy.MM.dd  hh:mm:ss"];
     
     cell.textLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:0]];
-
     return cell;
 }
 
