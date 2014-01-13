@@ -111,6 +111,7 @@
     scrollView.tag = 2;
     scrollView.maximumZoomScale = 3.0f;
     scrollView.delegate = self;
+    scrollView.contentSize = CGSizeMake(640, scrollView.frame.size.height);
     [_baseScrollView addSubview:scrollView];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blood_table_hit"]];
