@@ -65,6 +65,20 @@
     [superView addSubview:self];
     view = nil;
     _delegate = delegate;
+    [self setDefaultImage:0];
+}
+
+- (void)setDefaultImage:(NSUInteger)defaultImage
+{
+//    if (defaultImage <= _images.count)
+//    {
+        UIButton *button = [self.subviews objectAtIndex:defaultImage];
+        [button setImage:_selectedImages[defaultImage] forState:UIControlStateNormal];
+//    }
+//    else
+//    {
+//        NSLog(@"数组越界");
+//    }
 }
 
 - (void)segmentSelected:(UIButton *)button

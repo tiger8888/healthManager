@@ -92,6 +92,7 @@
         [arr2 addObject:str2];
     }
     [[LSSegment alloc] initWithImageArray:arr1 andHighLightImages:arr2 frame:CGRectMake(0, 44, DEVICE_WIDTH, 44) superView:self.view delegate:self];
+    
 }
 
 #pragma mark 创建录入界面
