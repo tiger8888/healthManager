@@ -114,7 +114,7 @@
     [_baseScrollView addSubview:scrollView];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blood_table_hit"]];
-    imageView.frame = CGRectMake(DEVICE_WIDTH *2 -170, 5, 150, 20);
+    imageView.frame = CGRectMake(DEVICE_WIDTH *1.5 -75, 5, 150, 20);
     [_baseScrollView addSubview:imageView];
     
     _bloodLineChar = [self buildLineChartView];
