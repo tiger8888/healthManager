@@ -40,12 +40,13 @@
 }
 
 #pragma mark - Layout Method
-- (void)layoutView
+- (void)createTableView
 {
-    _tableView.scrollEnabled = NO;
-
+    _tableView = [[UITableView alloc] initWithFrame:FULLSCREEN style:UITableViewStyleGrouped];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [self.view addSubview:_tableView];
 }
-
 #pragma mark - TableView Delegate Method
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -132,13 +133,13 @@
         else
         {
             NSLog(@"提前提醒时间");
-            SettingRemindTimeViewController *settingRemindTimeViewCtl = [SettingRemindTimeViewController new];
-            settingRemindTimeViewCtl.selectedValue = _settingRemindTime;
-            settingRemindTimeViewCtl.dismissBlock = ^(NSString *time){
-                _settingRemindTime = time;
-                [_tableView reloadData];
-            };
-            [self.navigationController pushViewController:settingRemindTimeViewCtl animated:YES];
+//            SettingRemindTimeViewController *settingRemindTimeViewCtl = [SettingRemindTimeViewController new];
+//            settingRemindTimeViewCtl.selectedValue = _settingRemindTime;
+//            settingRemindTimeViewCtl.dismissBlock = ^(NSString *time){
+//                _settingRemindTime = time;
+//                [_tableView reloadData];
+//            };
+//            [self.navigationController pushViewController:settingRemindTimeViewCtl animated:YES];
         }
     }
     else if (indexPath.section == 1)

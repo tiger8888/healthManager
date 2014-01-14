@@ -43,7 +43,13 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
+}
 
+- (void)layoutView
+{
+    _tableView.backgroundView = nil;
+    _tableView.backgroundColor = UICOLORFROMRGB(0xf4f5f6);
+    _tableView.scrollEnabled = NO;
 }
 
 #pragma mark - TableViewDelegate Method

@@ -73,11 +73,11 @@
     [self createSegment];
     //*********Page1
     _bloodRecord = [self createBloodRecord];
-    
-    //*********Page2
-    [self createAnalysis];
     //*********Page3
     [self createTable];
+    //*********Page2
+    [self createAnalysis];
+    
 }
 
 #pragma mark 创建段落
@@ -105,9 +105,13 @@
         [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:[NSDate dateWithTimeIntervalSinceNow:0]];
         _dataSource = [[BloodRecordManager sharedBloodRecordManager] fetchAllDate];
         [_tableView reloadData];
+        [self setLineChartDataSource:_bloodLineChar];
+        [_bloodLineChar setNeedsDisplay];
+
     }];
     return bloodRecord;
 }
+
 #pragma mark 创建走势图界面
 - (void)createAnalysis
 {
@@ -130,41 +134,22 @@
 
 - (LineChartView *)buildLineChartView
 {
-    LineChartView *lineChartView;
-    lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_HEIGHT, DEVICE_HEIGHT -88 -20)];
     
+    LineChartView *lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_HEIGHT, DEVICE_HEIGHT -88 -20)];
     //竖轴
     NSMutableArray *vArr = [[NSMutableArray alloc] init];
     for (int i=0; i<16; i++) {
         [vArr addObject:[NSString stringWithFormat:@"%d",i*20]];
     }
-    
     //横轴
     NSMutableArray *hArr = [[NSMutableArray alloc] init];
-    
-    NSMutableArray *bloodItem = [NSMutableArray new];
-    int bloodValue = 0;
     for (int i=1; i<31; i++) {
         [hArr addObject: [NSString stringWithFormat:@"%d",i]];
-        NSMutableDictionary *item = [NSMutableDictionary new];
-        
-        bloodValue = arc4random()%110 + 90;
-        [item setObject:[NSString stringWithFormat:@"%d",bloodValue] forKey:@"highPressure"];
-        
-        bloodValue = arc4random()%70 + 60;
-        [item setObject:[NSString stringWithFormat:@"%d",bloodValue] forKey:@"lowPressure"];
-        
-        bloodValue = arc4random()%30 + 60;
-        [item setObject:[NSString stringWithFormat:@"%d",bloodValue] forKey:@"pulse"];
-        //        if (i%2==0)bloodValue = 130;
-        //        else bloodValue = 150;
-        [bloodItem addObject:item];
     }
-    
-    [lineChartView setBloodArray:bloodItem];
     [lineChartView setHDesc:hArr];
     [lineChartView setVDesc:vArr];
     
+    [self setLineChartDataSource:lineChartView];
     return lineChartView;
 }
 
@@ -265,6 +250,23 @@
     [_bloodRecord.lowPressure.textField resignFirstResponder];
     [_bloodRecord.pulse.textField resignFirstResponder];
     _baseScrollView.contentOffset = CGPointMake(DEVICE_WIDTH *index, 0);
+}
+
+- (void)setLineChartDataSource:(LineChartView *)lineChartView
+{
+    
+    NSMutableArray *bloodItem = [NSMutableArray new];
+    for (id dateModel in _dataSource) {
+        NSMutableDictionary *item = [NSMutableDictionary new];
+
+        NSManagedObject *recordModel = [[[BloodRecordManager sharedBloodRecordManager] fetchRecordBy:dateModel] lastObject];
+        [item setObject:[recordModel valueForKey:@"highPressure"] forKey:@"highPressure"];
+        [item setObject:[recordModel valueForKey:@"lowPressure"] forKey:@"lowPressure"];
+        [item setObject:[recordModel valueForKey:@"pulse"] forKey:@"pulse"];
+        [bloodItem addObject:item];
+        
+    }
+    [lineChartView setBloodArray:bloodItem];
 }
 
 @end

@@ -37,15 +37,17 @@
 }
 
 #pragma mark - Layout Method
+- (void)createTableView
+{
+    _tableView = [[UITableView alloc] initWithFrame:FULLSCREEN style:UITableViewStyleGrouped];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [self.view addSubview:_tableView];
+}
+
 - (void)layoutView
 {
-//    UITableView *tableView = [[UITableView alloc] initWithFrame:FULLSCREEN style:UITableViewStyleGrouped];
-//    tableView.backgroundColor = UICOLORFROMRGB(0xf4f5f6);
-//    tableView.dataSource = self;
-//    tableView.delegate = self;
-//    tableView.scrollEnabled = NO;
-//    tableView.backgroundView = nil;
-//    [self.view addSubview:tableView];
+    [super layoutView];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(20, 380, 269, 44);
