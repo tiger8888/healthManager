@@ -20,8 +20,7 @@ typedef enum {
     kMore
 } kPartType;
 
-#define BASEURL @"www.baidu.com:8080"
-#define BLOODRECORDPATH [NSHomeDirectory() stringByAppendingPathComponent:@"/Documents/BloodRecordData"]
+#define BASEURL @"118.194.241.209:8080"
 #define DEVICE_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define DEVICE_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define FULLSCREEN CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT -44 -20)
@@ -56,7 +55,7 @@ typedef enum {
  *  模型类
  */
 #import "Knowledge.h"
-#import "BloodRecordModel.h"
+
 /**
  *  控件，工具，库等
  */
