@@ -1,5 +1,5 @@
 //
-//  BloodRecordQueue.h
+//  BloodRecordDateData.h
 //  HealthManager
 //
 //  Created by LiShuo on 14-1-13.
@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BloodRecordModel.h"
 
-@interface BloodRecordQueue : NSObject <NSCoding>
+@interface BloodRecordDateData : NSObject
 
-@property (nonatomic, strong) NSMutableArray *queue;
+@property (nonatomic, copy) NSString *dateStr;
 
 @end

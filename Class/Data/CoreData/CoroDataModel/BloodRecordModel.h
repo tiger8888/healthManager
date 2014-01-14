@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BloodRecordModel : NSObject <NSCoding
->
+@interface BloodRecordModel : NSObject
 
 @property (nonatomic, copy) NSString *highPressure;
 @property (nonatomic, copy) NSString *lowPressure;

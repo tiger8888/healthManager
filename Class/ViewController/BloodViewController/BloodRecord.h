@@ -18,7 +18,7 @@ typedef void(^SaveBlock)(NSString *,NSString *,NSString *);
 @property (strong, nonatomic) LSTextField *lowPressure;
 @property (strong, nonatomic) LSTextField *pulse;
 
-- (void)setSaveBlock:(void(^)(NSString *,NSString *,NSString *))saveBlock;
+- (void)setSaveBlock:(void(^)(NSString *highPressure,NSString *lowPressure,NSString *pulse))saveBlock;
 
 - (IBAction)saveBTBClick:(id)sender;
 

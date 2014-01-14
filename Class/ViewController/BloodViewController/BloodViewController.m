@@ -8,7 +8,7 @@
 
 #import "BloodViewController.h"
 #import "LineChartView.h"
-
+#import "BloodRecordManager.h"
 @interface BloodViewController ()
 {
     UIScrollView *_baseScrollView;
@@ -101,6 +101,11 @@
     BloodRecord *bloodRecord = [[[NSBundle mainBundle] loadNibNamed:@"BloodRecord" owner:self options:nil] firstObject];
     bloodRecord.frame = CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT -88 -20);
     [_baseScrollView addSubview:bloodRecord];
+    [bloodRecord setSaveBlock:^(NSString *highPressure, NSString *lowPressure, NSString *pulse) {
+        [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:[NSDate dateWithTimeIntervalSinceNow:0]];
+        _dataSource = [[BloodRecordManager sharedBloodRecordManager] fetchAllDate];
+        [_tableView reloadData];
+    }];
     return bloodRecord;
 }
 #pragma mark 创建走势图界面
@@ -166,6 +171,7 @@
 #pragma mark 创建表格界面
 - (void)createTable
 {
+    _dataSource = [[BloodRecordManager sharedBloodRecordManager] fetchAllDate];
     _tableView.frame = CGRectMake(DEVICE_WIDTH *2, 0, DEVICE_WIDTH, DEVICE_HEIGHT -88 -20);
     [_baseScrollView addSubview:_tableView];
 }
@@ -181,21 +187,18 @@
         imageView.frame = CGRectMake(280, 4, 35, 35);
         [cell addSubview:imageView];
     }
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@" yyyy.MM.dd  hh:mm:ss"];
     
-    cell.textLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+    
+    cell.textLabel.text = [_dataSource[indexPath.row] valueForKey:@"dateStr"];
     return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 25;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"详细%d",indexPath.row);
+    //找出数据源对应的日期模型
+    id dateModel = _dataSource[indexPath.row];
+    
     [tableView cellForRowAtIndexPath:indexPath].selected = NO;
     LSBackGrayView *backView = [[LSBackGrayView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.view addSubview:backView];
@@ -211,6 +214,17 @@
     imageView.frame = CGRectMake(260 +10, 150 -16, 33, 33);
     [backView addSubview:imageView];
     
+    //传入日期模型获取录入数据（现在时取最后一次所以用lastObject）
+    NSManagedObject *recordModel = [[[BloodRecordManager sharedBloodRecordManager] fetchRecordBy:dateModel] lastObject];
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
+    label1.text = [recordModel valueForKey:@"highPressure"];
+    [backView addSubview:label1];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, 300, 30)];
+    label2.text = [recordModel valueForKey:@"lowPressure"];;
+    [backView addSubview:label2];
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 300, 30)];
+    label3.text = [recordModel valueForKey:@"pulse"];;
+    [backView addSubview:label3];
 }
 
 #pragma mark - ScrollView Delegate Method

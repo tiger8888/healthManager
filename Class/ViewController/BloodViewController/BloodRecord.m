@@ -49,7 +49,7 @@
  // Drawing code
  }
  */
-- (void)setSaveBlock:(void (^)(NSString *, NSString *, NSString *))saveBlock
+- (void)setSaveBlock:(void(^)(NSString *highPressure,NSString *lowPressure,NSString *pulse))saveBlock;
 {
     _saveBlock = saveBlock;
 }
