@@ -7,9 +7,12 @@
 //
 
 #import "SettingViewController.h"
+#import "SettingRemindTimeViewController.h"
 
 @interface SettingViewController ()
-
+{
+    NSString *_settingRemindTime;
+}
 @end
 
 @implementation SettingViewController
@@ -51,21 +54,33 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentity];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        cell.textLabel.font = [UIFont systemFontOfSize:17];
     }
     if (indexPath.section == 0)
     {
         if (indexPath.row == 0)
         {
             cell.textLabel.text = @"服药声音提醒";
+            
         }
         else
         {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentity];
             cell.textLabel.text = @"提前提醒时间";
+            _settingRemindTime = [[NSUserDefaults standardUserDefaults] objectForKey:@"settingRemindTime"];
+            if (!_settingRemindTime) {
+                _settingRemindTime = @"15";
+                [[NSUserDefaults standardUserDefaults] setObject:_settingRemindTime forKey:@"settingRemindTime"];
+            }
+            cell.detailTextLabel.text =  [_settingRemindTime stringByAppendingString:@"分钟"];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }
     else if (indexPath.section == 1)
     {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentity];
         cell.textLabel.text = @"清除缓存";
+        cell.detailTextLabel.text = @"缓存大小：3M";
     }
     else
     {
@@ -117,6 +132,13 @@
         else
         {
             NSLog(@"提前提醒时间");
+            SettingRemindTimeViewController *settingRemindTimeViewCtl = [SettingRemindTimeViewController new];
+            settingRemindTimeViewCtl.selectedValue = _settingRemindTime;
+            settingRemindTimeViewCtl.dismissBlock = ^(NSString *time){
+                _settingRemindTime = time;
+                [_tableView reloadData];
+            };
+            [self.navigationController pushViewController:settingRemindTimeViewCtl animated:YES];
         }
     }
     else if (indexPath.section == 1)
@@ -126,8 +148,14 @@
     else
     {
         NSLog(@"重新选择“我的医生”");
+        /**
+         * 目前缺少的操作：提醒用户：将清除用户与医生的关系，让用户进行确认
+         */
+        DoctorViewController *myDoctorViewCtl = [[DoctorViewController alloc] initWithCategory:2];
+        [self.navigationController pushViewController:myDoctorViewCtl animated:YES];
     }
 }
+
 @end
 
 

@@ -6,8 +6,6 @@
 //  Copyright (c) 2013年 LiShuo. All rights reserved.
 //
 
-#import "RootSuperViewController.h"
-
 @interface SettingViewController : SuperListViewController <UITableViewDataSource,UITableViewDelegate>
 
 
