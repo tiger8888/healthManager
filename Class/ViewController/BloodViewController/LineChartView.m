@@ -176,7 +176,10 @@
     CGContextRestoreGState(context);
 }
 
-- (void)drawBloodLineCharWith:(CGContextRef)context withArray:bloodItem withFillColor:(CGColorRef)colorRef {
+- (void)drawBloodLineCharWith:(CGContextRef)context withArray:(NSArray *)bloodItem withFillColor:(CGColorRef)colorRef {
+    if (bloodItem.count == 0) {
+        return;
+    }
     int bloodItemCount = [bloodItem count];
 	CGPoint p1 = CGPointMake(0, [[bloodItem objectAtIndex:0] floatValue]);
     CGPoint goPoint;

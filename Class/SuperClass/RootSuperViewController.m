@@ -40,7 +40,7 @@
 #pragma mark - Layout Method
 - (void)setViewFrameForiOS7
 {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+    if (IS_IOS7)
     {
         self.view.bounds = CGRectMake(0, -20, DEVICE_WIDTH, DEVICE_HEIGHT -20);
     }

@@ -13,17 +13,16 @@
 - (id)initWithFrame:(CGRect)frame andBackgroundImage:(NSString *)backgroundImageName andEditingBackgroundImage:(NSString *)editBackgroundImageName
 {
     self = [self initWithFrame:frame];
-    if (self) {
+    if (self)
+    {
         // Initialization code
         self.frame = frame;
-        
         
         UIImage *backgroundImage = [UIImage imageNamed:backgroundImageName];
         self.backgroundImage = backgroundImage;
         
         UIImage *editBackgroundImage = [UIImage imageNamed:editBackgroundImageName];
         self.editBackgroundImage = editBackgroundImage;
-        
         
     }
     return self;
@@ -37,11 +36,11 @@
         self.backgroundColor = [UIColor clearColor];
         _background = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         [self addSubview:_background];
+        
         _textField = [[UITextField alloc] initWithFrame:CGRectMake(self.retract, 0, frame.size.width -self.retract, frame.size.height)];
+        
         _textField.delegate = self;
         [self addSubview:_textField];
-        
-        NSLog(@"%d",[self.subviews count]);
     }
     return self;
 }
@@ -58,7 +57,14 @@
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    _textField.frame = CGRectMake(self.retract, 0, frame.size.width -self.retract, frame.size.height);
+    if (IS_IOS7)
+    {
+        _textField.frame = CGRectMake(self.retract, 0, frame.size.width -self.retract, frame.size.height);
+    }
+    else
+    {
+        _textField.frame = CGRectMake(self.retract, 7, frame.size.width -self.retract, frame.size.height);
+    }
 }
 
 - (void)setRetract:(CGFloat)retract
@@ -80,6 +86,7 @@
 {
     _returnClickedBlock = returnKeyClickedBlock;
 }
+
 #pragma mark - TextFieldDelegate Method
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {

@@ -102,6 +102,11 @@
     bloodRecord.frame = CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT -88 -20);
     [_baseScrollView addSubview:bloodRecord];
     [bloodRecord setSaveBlock:^(NSString *highPressure, NSString *lowPressure, NSString *pulse) {
+        if (!stringIsValidNumber(highPressure) || !stringIsValidNumber(lowPressure) || !stringIsValidNumber(pulse))
+        {
+            NSLog(@"飞合法");
+            return ;
+        }
         [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:[NSDate dateWithTimeIntervalSinceNow:0]];
         _dataSource = [[BloodRecordManager sharedBloodRecordManager] fetchAllDate];
         [_tableView reloadData];
@@ -199,17 +204,30 @@
     imageView.frame = CGRectMake(260 +10, 150 -16, 33, 33);
     [backView addSubview:imageView];
     
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 40, 240, 1)];
+    view.backgroundColor = [UIColor lightGrayColor];
+    [tmpView addSubview:view];
     //传入日期模型获取录入数据（现在时取最后一次所以用lastObject）
     NSManagedObject *recordModel = [[[BloodRecordManager sharedBloodRecordManager] fetchRecordBy:dateModel] lastObject];
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
-    label1.text = [recordModel valueForKey:@"highPressure"];
-    [backView addSubview:label1];
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, 300, 30)];
-    label2.text = [recordModel valueForKey:@"lowPressure"];;
-    [backView addSubview:label2];
-    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 300, 30)];
-    label3.text = [recordModel valueForKey:@"pulse"];;
-    [backView addSubview:label3];
+    UILabel *label0 = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 230, 40)];
+    label0.font = [UIFont systemFontOfSize:20];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy.MM.dd  HH:mm"];
+    label0.text = [formatter stringFromDate:[recordModel valueForKey:@"date"]];
+    [tmpView addSubview:label0];
+    
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, 200, 40)];
+    label1.font = [UIFont systemFontOfSize:20];
+    label1.text = [NSString stringWithFormat:@"高压:  %@ mm/hg",[recordModel valueForKey:@"highPressure"]];
+    [tmpView addSubview:label1];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(50, 90, 200, 40)];
+    label2.font = [UIFont systemFontOfSize:20];
+    label2.text = [NSString stringWithFormat:@"低压:  %@ mm/hg",[recordModel valueForKey:@"lowPressure"]];
+    [tmpView addSubview:label2];
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(50, 130, 200, 40)];
+    label3.font = [UIFont systemFontOfSize:20];
+    label3.text = [NSString stringWithFormat:@"脉搏:  %@/min",[recordModel valueForKey:@"pulse"]];
+    [tmpView addSubview:label3];
 }
 
 #pragma mark - ScrollView Delegate Method
@@ -252,6 +270,7 @@
     _baseScrollView.contentOffset = CGPointMake(DEVICE_WIDTH *index, 0);
 }
 
+#pragma mark - Other Method
 - (void)setLineChartDataSource:(LineChartView *)lineChartView
 {
     
@@ -269,4 +288,17 @@
     [lineChartView setBloodArray:bloodItem];
 }
 
+BOOL stringIsValidNumber(NSString *checkString)
+{
+    NSString *stricterFilterString = @"^[0-9]*$";
+    NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stricterFilterString];
+    if ([test evaluateWithObject:checkString] && [checkString integerValue] <= 300)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
 @end

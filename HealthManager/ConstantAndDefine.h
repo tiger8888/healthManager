@@ -26,6 +26,7 @@ typedef enum {
 #define FULLSCREEN CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT -44 -20)
 #define IS_IPHONE4 (CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size))
 #define IS_IPHONE5 (CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size))
+#define IS_IOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0
 #define UICOLORFROMRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define FONT_DETAIL [UIFont systemFontOfSize:14]
 /**
