@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 LiShuo. All rights reserved.
 //
 
-@interface SettingViewController :SuperListViewController
+@interface SettingViewController :SuperListViewController <UIAlertViewDelegate>
 
 
 @end

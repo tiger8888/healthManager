@@ -46,5 +46,9 @@
 {
     _model = model;
     _name.text = [_model objectForKey:@"name"];
+    _title.text = [_model objectForKey:@"profesTitle"];
+//    _department.text = [_model objectForKey:@"office"];
+    _introduce.text = [NSString stringWithFormat:@"擅长及简介:%@",[_model objectForKey:@"profesIntro"]];
+//    [_profileImage setImageWithURL:[NSURL URLWithString:[_model objectForKey:@"picUrl"]] placeholderImage:nil];
 }
 @end

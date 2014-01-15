@@ -7,15 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		37A3E568187E2E0600F075B0 /* KnowledgeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A3E567187E2E0600F075B0 /* KnowledgeDetailViewController.m */; };
-		37A3E56A187E2E2900F075B0 /* KnowledgeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E569187E2E2900F075B0 /* KnowledgeDetailViewController.xib */; };
 		37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E56B187E31B500F075B0 /* AppPropertyList.plist */; };
 		37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A8D5F51876A23C0015432A /* QuartzCore.framework */; };
-		37A92E3F187BF8B70059DB25 /* KnowledgeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A92E3E187BF8B70059DB25 /* KnowledgeStore.m */; };
-		8B3404991884EECB005D8C42 /* BloodRecordDateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3404911884EECB005D8C42 /* BloodRecordDateData.m */; };
-		8B34049A1884EECB005D8C42 /* BloodRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3404931884EECB005D8C42 /* BloodRecordModel.m */; };
-		8B34049B1884EECB005D8C42 /* BloodRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3404961884EECB005D8C42 /* BloodRecordManager.m */; };
-		8B34049C1884EECB005D8C42 /* Knowledge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3404981884EECB005D8C42 /* Knowledge.m */; };
 		8B94AB031848663200CA5869 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB021848663200CA5869 /* Foundation.framework */; };
 		8B94AB051848663200CA5869 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB041848663200CA5869 /* CoreGraphics.framework */; };
 		8B94AB071848663200CA5869 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB061848663200CA5869 /* UIKit.framework */; };
@@ -31,7 +24,6 @@
 		8B94AB241848663300CA5869 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB081848663200CA5869 /* CoreData.framework */; };
 		8B94AB2C1848663300CA5869 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B94AB2A1848663300CA5869 /* InfoPlist.strings */; };
 		8B94AB2E1848663300CA5869 /* HealthManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B94AB2D1848663300CA5869 /* HealthManagerTests.m */; };
-		8BEB9FC8184C540500ECF974 /* RootSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEB9FC6184C540500ECF974 /* RootSuperViewController.m */; };
 		8BFE177B187FEC5700D1F48A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE173F187FEC5600D1F48A /* AFHTTPClient.m */; };
 		8BFE177C187FEC5700D1F48A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE1741187FEC5600D1F48A /* AFHTTPRequestOperation.m */; };
 		8BFE177D187FEC5700D1F48A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE1743187FEC5600D1F48A /* AFImageRequestOperation.m */; };
@@ -47,12 +39,49 @@
 		8BFE1788187FEC5700D1F48A /* HttpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE175C187FEC5600D1F48A /* HttpRequestManager.m */; };
 		8BFE178F187FECDC00D1F48A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFE178E187FECDC00D1F48A /* SystemConfiguration.framework */; };
 		8BFE1791187FECE300D1F48A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFE1790187FECE300D1F48A /* MobileCoreServices.framework */; };
+		9C0BFFAE1886D944002845D9 /* BloodRecordDateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF641886D944002845D9 /* BloodRecordDateData.m */; };
+		9C0BFFAF1886D944002845D9 /* BloodRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF661886D944002845D9 /* BloodRecordModel.m */; };
+		9C0BFFB01886D944002845D9 /* BloodRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF691886D944002845D9 /* BloodRecordManager.m */; };
+		9C0BFFB11886D944002845D9 /* Knowledge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF6B1886D944002845D9 /* Knowledge.m */; };
+		9C0BFFB21886D944002845D9 /* KnowledgeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF6E1886D944002845D9 /* KnowledgeStore.m */; };
+		9C0BFFB31886D944002845D9 /* BackButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF711886D944002845D9 /* BackButtonViewController.m */; };
+		9C0BFFB41886D944002845D9 /* RootSuperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF741886D944002845D9 /* RootSuperCell.m */; };
+		9C0BFFB51886D944002845D9 /* NavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF761886D944002845D9 /* NavigationBarViewController.m */; };
+		9C0BFFB61886D944002845D9 /* RootSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF781886D944002845D9 /* RootSuperViewController.m */; };
+		9C0BFFB71886D944002845D9 /* SuperListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF7A1886D944002845D9 /* SuperListViewController.m */; };
+		9C0BFFB81886D944002845D9 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF7E1886D944002845D9 /* AlertViewController.m */; };
+		9C0BFFB91886D944002845D9 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFF7F1886D944002845D9 /* AlertViewController.xib */; };
+		9C0BFFBA1886D944002845D9 /* BloodRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF821886D944002845D9 /* BloodRecord.m */; };
+		9C0BFFBB1886D944002845D9 /* BloodRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFF831886D944002845D9 /* BloodRecord.xib */; };
+		9C0BFFBC1886D944002845D9 /* BloodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF851886D944002845D9 /* BloodViewController.m */; };
+		9C0BFFBD1886D944002845D9 /* BloodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFF861886D944002845D9 /* BloodViewController.xib */; };
+		9C0BFFBE1886D944002845D9 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF881886D944002845D9 /* LineChartView.m */; };
+		9C0BFFBF1886D944002845D9 /* DoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF8B1886D944002845D9 /* DoctorCell.m */; };
+		9C0BFFC01886D944002845D9 /* DoctorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFF8C1886D944002845D9 /* DoctorCell.xib */; };
+		9C0BFFC11886D944002845D9 /* DoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF8E1886D944002845D9 /* DoctorViewController.m */; };
+		9C0BFFC21886D944002845D9 /* DoctorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFF8F1886D944002845D9 /* DoctorViewController.xib */; };
+		9C0BFFC31886D944002845D9 /* KnowledgeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF921886D944002845D9 /* KnowledgeDetailViewController.m */; };
+		9C0BFFC41886D944002845D9 /* KnowledgeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFF931886D944002845D9 /* KnowledgeDetailViewController.xib */; };
+		9C0BFFC51886D944002845D9 /* KnowledgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF951886D944002845D9 /* KnowledgeViewController.m */; };
+		9C0BFFC61886D944002845D9 /* KnowledgeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFF961886D944002845D9 /* KnowledgeViewController.xib */; };
+		9C0BFFC71886D944002845D9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF991886D944002845D9 /* LoginViewController.m */; };
+		9C0BFFC81886D944002845D9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFF9A1886D944002845D9 /* LoginViewController.xib */; };
+		9C0BFFC91886D944002845D9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF9D1886D944002845D9 /* MainViewController.m */; };
+		9C0BFFCA1886D944002845D9 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFF9E1886D944002845D9 /* MainViewController.xib */; };
+		9C0BFFCB1886D944002845D9 /* ManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFFA11886D944002845D9 /* ManagerViewController.m */; };
+		9C0BFFCC1886D944002845D9 /* ManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFFA21886D944002845D9 /* ManagerViewController.xib */; };
+		9C0BFFCD1886D944002845D9 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFFA51886D944002845D9 /* MoreViewController.m */; };
+		9C0BFFCE1886D944002845D9 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFFA61886D944002845D9 /* MoreViewController.xib */; };
+		9C0BFFCF1886D944002845D9 /* SettingRemindTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFFA91886D944002845D9 /* SettingRemindTimeViewController.m */; };
+		9C0BFFD01886D944002845D9 /* SettingRemindTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFFAA1886D944002845D9 /* SettingRemindTimeViewController.xib */; };
+		9C0BFFD11886D944002845D9 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFFAC1886D944002845D9 /* SettingViewController.m */; };
+		9C0BFFD21886D944002845D9 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFFAD1886D944002845D9 /* SettingViewController.xib */; };
+		9C0BFFD61886DA30002845D9 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFFD51886DA30002845D9 /* SessionViewController.m */; };
 		9C911AFA1880555D004CD648 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C911AF41880555D004CD648 /* libzbar.a */; };
 		9C911AFB1880555D004CD648 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C911AF61880555D004CD648 /* zbar-back.png */; };
 		9C911AFC1880555D004CD648 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 9C911AF71880555D004CD648 /* zbar-help.html */; };
 		9C911AFD1880555D004CD648 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C911AF81880555D004CD648 /* zbar-helpicons.png */; };
 		9C911AFE1880555D004CD648 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C911AF91880555D004CD648 /* zbar-samples.png */; };
-		9C911B011880FC16004CD648 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C911B001880FC16004CD648 /* LineChartView.m */; };
 		9C911B0918810299004CD648 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C911B0618810299004CD648 /* MBProgressHUD.m */; };
 		B8232282185F48EA005F2409 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823225C185F48EA005F2409 /* arrow@2x.png */; };
 		B8232283185F48EA005F2409 /* bbi_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823225D185F48EA005F2409 /* bbi_left@2x.png */; };
@@ -91,32 +120,6 @@
 		B82322A4185F48EA005F2409 /* navigation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823227E185F48EA005F2409 /* navigation@2x.png */; };
 		B82322A5185F48EA005F2409 /* portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823227F185F48EA005F2409 /* portrait@2x.png */; };
 		B82322A6185F48EA005F2409 /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8232280185F48EA005F2409 /* textfield@2x.png */; };
-		B85023FF1861F6A10080DB1D /* SuperListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B85023FE1861F6A10080DB1D /* SuperListViewController.m */; };
-		B8502407186200D40080DB1D /* RootSuperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8502406186200D40080DB1D /* RootSuperCell.m */; };
-		B87D12BA184CE88400279DDC /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D1298184CE88400279DDC /* AlertViewController.m */; };
-		B87D12BB184CE88400279DDC /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D1299184CE88400279DDC /* AlertViewController.xib */; };
-		B87D12BC184CE88400279DDC /* BloodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D129C184CE88400279DDC /* BloodViewController.m */; };
-		B87D12BD184CE88400279DDC /* BloodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D129D184CE88400279DDC /* BloodViewController.xib */; };
-		B87D12BE184CE88400279DDC /* DoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D12A0184CE88400279DDC /* DoctorViewController.m */; };
-		B87D12BF184CE88400279DDC /* DoctorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D12A1184CE88400279DDC /* DoctorViewController.xib */; };
-		B87D12C0184CE88400279DDC /* KnowledgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D12A4184CE88400279DDC /* KnowledgeViewController.m */; };
-		B87D12C1184CE88400279DDC /* KnowledgeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D12A5184CE88400279DDC /* KnowledgeViewController.xib */; };
-		B87D12C2184CE88400279DDC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D12A8184CE88400279DDC /* LoginViewController.m */; };
-		B87D12C3184CE88400279DDC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D12A9184CE88400279DDC /* LoginViewController.xib */; };
-		B87D12C4184CE88400279DDC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D12AC184CE88400279DDC /* MainViewController.m */; };
-		B87D12C5184CE88400279DDC /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D12AD184CE88400279DDC /* MainViewController.xib */; };
-		B87D12C6184CE88400279DDC /* ManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D12B0184CE88400279DDC /* ManagerViewController.m */; };
-		B87D12C7184CE88400279DDC /* ManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D12B1184CE88400279DDC /* ManagerViewController.xib */; };
-		B87D12C8184CE88400279DDC /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D12B4184CE88400279DDC /* MoreViewController.m */; };
-		B87D12C9184CE88400279DDC /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D12B5184CE88400279DDC /* MoreViewController.xib */; };
-		B87D12CA184CE88400279DDC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D12B8184CE88400279DDC /* SettingViewController.m */; };
-		B87D12CB184CE88400279DDC /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D12B9184CE88400279DDC /* SettingViewController.xib */; };
-		B88319CF186D2ED500333DA2 /* BackButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88319CE186D2ED500333DA2 /* BackButtonViewController.m */; };
-		B88319D2186D348E00333DA2 /* NavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88319D1186D348E00333DA2 /* NavigationBarViewController.m */; };
-		B8997D7D1853244000C12CE7 /* BloodRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B8997D7C1853244000C12CE7 /* BloodRecord.m */; };
-		B8997D7F1853245600C12CE7 /* BloodRecord.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8997D7E1853245600C12CE7 /* BloodRecord.xib */; };
-		B8E312CD18520FB3007E819E /* DoctorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E312CC18520FB3007E819E /* DoctorCell.m */; };
-		B8E312CF185210FB007E819E /* DoctorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8E312CE185210FB007E819E /* DoctorCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,21 +133,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		37A3E566187E2E0600F075B0 /* KnowledgeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeDetailViewController.h; sourceTree = "<group>"; };
-		37A3E567187E2E0600F075B0 /* KnowledgeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeDetailViewController.m; sourceTree = "<group>"; };
-		37A3E569187E2E2900F075B0 /* KnowledgeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KnowledgeDetailViewController.xib; sourceTree = "<group>"; };
 		37A3E56B187E31B500F075B0 /* AppPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppPropertyList.plist; path = HealthManager/AppPropertyList.plist; sourceTree = SOURCE_ROOT; };
 		37A8D5F51876A23C0015432A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		37A92E3D187BF8B70059DB25 /* KnowledgeStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeStore.h; sourceTree = "<group>"; };
-		37A92E3E187BF8B70059DB25 /* KnowledgeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeStore.m; sourceTree = "<group>"; };
-		8B3404901884EECB005D8C42 /* BloodRecordDateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecordDateData.h; sourceTree = "<group>"; };
-		8B3404911884EECB005D8C42 /* BloodRecordDateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecordDateData.m; sourceTree = "<group>"; };
-		8B3404921884EECB005D8C42 /* BloodRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecordModel.h; sourceTree = "<group>"; };
-		8B3404931884EECB005D8C42 /* BloodRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecordModel.m; sourceTree = "<group>"; };
-		8B3404951884EECB005D8C42 /* BloodRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecordManager.h; sourceTree = "<group>"; };
-		8B3404961884EECB005D8C42 /* BloodRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecordManager.m; sourceTree = "<group>"; };
-		8B3404971884EECB005D8C42 /* Knowledge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Knowledge.h; sourceTree = "<group>"; };
-		8B3404981884EECB005D8C42 /* Knowledge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Knowledge.m; sourceTree = "<group>"; };
 		8B94AAFF1848663200CA5869 /* HealthManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B94AB021848663200CA5869 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B94AB041848663200CA5869 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -164,8 +154,6 @@
 		8B94AB2B1848663300CA5869 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8B94AB2D1848663300CA5869 /* HealthManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthManagerTests.m; sourceTree = "<group>"; };
 		8B94AB5B184866AE00CA5869 /* ConstantAndDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstantAndDefine.h; sourceTree = "<group>"; };
-		8BEB9FC5184C540500ECF974 /* RootSuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSuperViewController.h; sourceTree = "<group>"; };
-		8BEB9FC6184C540500ECF974 /* RootSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSuperViewController.m; sourceTree = "<group>"; };
 		8BFE173E187FEC5600D1F48A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		8BFE173F187FEC5600D1F48A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		8BFE1740187FEC5600D1F48A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -195,6 +183,69 @@
 		8BFE175C187FEC5600D1F48A /* HttpRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequestManager.m; sourceTree = "<group>"; };
 		8BFE178E187FECDC00D1F48A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8BFE1790187FECE300D1F48A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		9C0BFF631886D944002845D9 /* BloodRecordDateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecordDateData.h; sourceTree = "<group>"; };
+		9C0BFF641886D944002845D9 /* BloodRecordDateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecordDateData.m; sourceTree = "<group>"; };
+		9C0BFF651886D944002845D9 /* BloodRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecordModel.h; sourceTree = "<group>"; };
+		9C0BFF661886D944002845D9 /* BloodRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecordModel.m; sourceTree = "<group>"; };
+		9C0BFF681886D944002845D9 /* BloodRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecordManager.h; sourceTree = "<group>"; };
+		9C0BFF691886D944002845D9 /* BloodRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecordManager.m; sourceTree = "<group>"; };
+		9C0BFF6A1886D944002845D9 /* Knowledge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Knowledge.h; sourceTree = "<group>"; };
+		9C0BFF6B1886D944002845D9 /* Knowledge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Knowledge.m; sourceTree = "<group>"; };
+		9C0BFF6D1886D944002845D9 /* KnowledgeStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeStore.h; sourceTree = "<group>"; };
+		9C0BFF6E1886D944002845D9 /* KnowledgeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeStore.m; sourceTree = "<group>"; };
+		9C0BFF701886D944002845D9 /* BackButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackButtonViewController.h; sourceTree = "<group>"; };
+		9C0BFF711886D944002845D9 /* BackButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackButtonViewController.m; sourceTree = "<group>"; };
+		9C0BFF731886D944002845D9 /* RootSuperCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSuperCell.h; sourceTree = "<group>"; };
+		9C0BFF741886D944002845D9 /* RootSuperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSuperCell.m; sourceTree = "<group>"; };
+		9C0BFF751886D944002845D9 /* NavigationBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarViewController.h; sourceTree = "<group>"; };
+		9C0BFF761886D944002845D9 /* NavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarViewController.m; sourceTree = "<group>"; };
+		9C0BFF771886D944002845D9 /* RootSuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSuperViewController.h; sourceTree = "<group>"; };
+		9C0BFF781886D944002845D9 /* RootSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSuperViewController.m; sourceTree = "<group>"; };
+		9C0BFF791886D944002845D9 /* SuperListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperListViewController.h; sourceTree = "<group>"; };
+		9C0BFF7A1886D944002845D9 /* SuperListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperListViewController.m; sourceTree = "<group>"; };
+		9C0BFF7D1886D944002845D9 /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		9C0BFF7E1886D944002845D9 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
+		9C0BFF7F1886D944002845D9 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
+		9C0BFF811886D944002845D9 /* BloodRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecord.h; sourceTree = "<group>"; };
+		9C0BFF821886D944002845D9 /* BloodRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecord.m; sourceTree = "<group>"; };
+		9C0BFF831886D944002845D9 /* BloodRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BloodRecord.xib; sourceTree = "<group>"; };
+		9C0BFF841886D944002845D9 /* BloodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodViewController.h; sourceTree = "<group>"; };
+		9C0BFF851886D944002845D9 /* BloodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodViewController.m; sourceTree = "<group>"; };
+		9C0BFF861886D944002845D9 /* BloodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BloodViewController.xib; sourceTree = "<group>"; };
+		9C0BFF871886D944002845D9 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
+		9C0BFF881886D944002845D9 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
+		9C0BFF8A1886D944002845D9 /* DoctorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorCell.h; sourceTree = "<group>"; };
+		9C0BFF8B1886D944002845D9 /* DoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorCell.m; sourceTree = "<group>"; };
+		9C0BFF8C1886D944002845D9 /* DoctorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorCell.xib; sourceTree = "<group>"; };
+		9C0BFF8D1886D944002845D9 /* DoctorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorViewController.h; sourceTree = "<group>"; };
+		9C0BFF8E1886D944002845D9 /* DoctorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorViewController.m; sourceTree = "<group>"; };
+		9C0BFF8F1886D944002845D9 /* DoctorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorViewController.xib; sourceTree = "<group>"; };
+		9C0BFF911886D944002845D9 /* KnowledgeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeDetailViewController.h; sourceTree = "<group>"; };
+		9C0BFF921886D944002845D9 /* KnowledgeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeDetailViewController.m; sourceTree = "<group>"; };
+		9C0BFF931886D944002845D9 /* KnowledgeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KnowledgeDetailViewController.xib; sourceTree = "<group>"; };
+		9C0BFF941886D944002845D9 /* KnowledgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeViewController.h; sourceTree = "<group>"; };
+		9C0BFF951886D944002845D9 /* KnowledgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeViewController.m; sourceTree = "<group>"; };
+		9C0BFF961886D944002845D9 /* KnowledgeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KnowledgeViewController.xib; sourceTree = "<group>"; };
+		9C0BFF981886D944002845D9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		9C0BFF991886D944002845D9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		9C0BFF9A1886D944002845D9 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		9C0BFF9C1886D944002845D9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		9C0BFF9D1886D944002845D9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		9C0BFF9E1886D944002845D9 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		9C0BFFA01886D944002845D9 /* ManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagerViewController.h; sourceTree = "<group>"; };
+		9C0BFFA11886D944002845D9 /* ManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagerViewController.m; sourceTree = "<group>"; };
+		9C0BFFA21886D944002845D9 /* ManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagerViewController.xib; sourceTree = "<group>"; };
+		9C0BFFA41886D944002845D9 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		9C0BFFA51886D944002845D9 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		9C0BFFA61886D944002845D9 /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
+		9C0BFFA81886D944002845D9 /* SettingRemindTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingRemindTimeViewController.h; sourceTree = "<group>"; };
+		9C0BFFA91886D944002845D9 /* SettingRemindTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingRemindTimeViewController.m; sourceTree = "<group>"; };
+		9C0BFFAA1886D944002845D9 /* SettingRemindTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingRemindTimeViewController.xib; sourceTree = "<group>"; };
+		9C0BFFAB1886D944002845D9 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		9C0BFFAC1886D944002845D9 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		9C0BFFAD1886D944002845D9 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		9C0BFFD41886DA30002845D9 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
+		9C0BFFD51886DA30002845D9 /* SessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
 		9C911AE01880555D004CD648 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		9C911AE11880555D004CD648 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
 		9C911AE21880555D004CD648 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -220,8 +271,6 @@
 		9C911AF71880555D004CD648 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		9C911AF81880555D004CD648 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		9C911AF91880555D004CD648 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
-		9C911AFF1880FC16004CD648 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
-		9C911B001880FC16004CD648 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
 		9C911B0518810299004CD648 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		9C911B0618810299004CD648 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		B823225C185F48EA005F2409 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
@@ -261,47 +310,6 @@
 		B823227E185F48EA005F2409 /* navigation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation@2x.png"; sourceTree = "<group>"; };
 		B823227F185F48EA005F2409 /* portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portrait@2x.png"; sourceTree = "<group>"; };
 		B8232280185F48EA005F2409 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
-		B85023FD1861F6A10080DB1D /* SuperListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperListViewController.h; sourceTree = "<group>"; };
-		B85023FE1861F6A10080DB1D /* SuperListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperListViewController.m; sourceTree = "<group>"; };
-		B8502405186200D40080DB1D /* RootSuperCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSuperCell.h; sourceTree = "<group>"; };
-		B8502406186200D40080DB1D /* RootSuperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSuperCell.m; sourceTree = "<group>"; };
-		B87D1297184CE88400279DDC /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
-		B87D1298184CE88400279DDC /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
-		B87D1299184CE88400279DDC /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
-		B87D129B184CE88400279DDC /* BloodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodViewController.h; sourceTree = "<group>"; };
-		B87D129C184CE88400279DDC /* BloodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodViewController.m; sourceTree = "<group>"; };
-		B87D129D184CE88400279DDC /* BloodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BloodViewController.xib; sourceTree = "<group>"; };
-		B87D129F184CE88400279DDC /* DoctorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorViewController.h; sourceTree = "<group>"; };
-		B87D12A0184CE88400279DDC /* DoctorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorViewController.m; sourceTree = "<group>"; };
-		B87D12A1184CE88400279DDC /* DoctorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorViewController.xib; sourceTree = "<group>"; };
-		B87D12A3184CE88400279DDC /* KnowledgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeViewController.h; sourceTree = "<group>"; };
-		B87D12A4184CE88400279DDC /* KnowledgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeViewController.m; sourceTree = "<group>"; };
-		B87D12A5184CE88400279DDC /* KnowledgeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KnowledgeViewController.xib; sourceTree = "<group>"; };
-		B87D12A7184CE88400279DDC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		B87D12A8184CE88400279DDC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		B87D12A9184CE88400279DDC /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		B87D12AB184CE88400279DDC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		B87D12AC184CE88400279DDC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		B87D12AD184CE88400279DDC /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		B87D12AF184CE88400279DDC /* ManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagerViewController.h; sourceTree = "<group>"; };
-		B87D12B0184CE88400279DDC /* ManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagerViewController.m; sourceTree = "<group>"; };
-		B87D12B1184CE88400279DDC /* ManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagerViewController.xib; sourceTree = "<group>"; };
-		B87D12B3184CE88400279DDC /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
-		B87D12B4184CE88400279DDC /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
-		B87D12B5184CE88400279DDC /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
-		B87D12B7184CE88400279DDC /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		B87D12B8184CE88400279DDC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
-		B87D12B9184CE88400279DDC /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
-		B88319CD186D2ED500333DA2 /* BackButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackButtonViewController.h; sourceTree = "<group>"; };
-		B88319CE186D2ED500333DA2 /* BackButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackButtonViewController.m; sourceTree = "<group>"; };
-		B88319D0186D348E00333DA2 /* NavigationBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarViewController.h; sourceTree = "<group>"; };
-		B88319D1186D348E00333DA2 /* NavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarViewController.m; sourceTree = "<group>"; };
-		B8997D7B1853244000C12CE7 /* BloodRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodRecord.h; sourceTree = "<group>"; };
-		B8997D7C1853244000C12CE7 /* BloodRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecord.m; sourceTree = "<group>"; };
-		B8997D7E1853245600C12CE7 /* BloodRecord.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BloodRecord.xib; sourceTree = "<group>"; };
-		B8E312CB18520FB3007E819E /* DoctorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorCell.h; sourceTree = "<group>"; };
-		B8E312CC18520FB3007E819E /* DoctorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorCell.m; sourceTree = "<group>"; };
-		B8E312CE185210FB007E819E /* DoctorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,59 +342,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		37A92E39187BF7B00059DB25 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				37A92E3D187BF8B70059DB25 /* KnowledgeStore.h */,
-				37A92E3E187BF8B70059DB25 /* KnowledgeStore.m */,
-			);
-			path = Store;
-			sourceTree = "<group>";
-		};
-		8B34048D1884EECB005D8C42 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				8B34048E1884EECB005D8C42 /* CoreData */,
-				8B3404971884EECB005D8C42 /* Knowledge.h */,
-				8B3404981884EECB005D8C42 /* Knowledge.m */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		8B34048E1884EECB005D8C42 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				8B34048F1884EECB005D8C42 /* CoroDataModel */,
-				8B3404941884EECB005D8C42 /* Manager */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		8B34048F1884EECB005D8C42 /* CoroDataModel */ = {
-			isa = PBXGroup;
-			children = (
-				8B3404901884EECB005D8C42 /* BloodRecordDateData.h */,
-				8B3404911884EECB005D8C42 /* BloodRecordDateData.m */,
-				8B3404921884EECB005D8C42 /* BloodRecordModel.h */,
-				8B3404931884EECB005D8C42 /* BloodRecordModel.m */,
-			);
-			path = CoroDataModel;
-			sourceTree = "<group>";
-		};
-		8B3404941884EECB005D8C42 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				8B3404951884EECB005D8C42 /* BloodRecordManager.h */,
-				8B3404961884EECB005D8C42 /* BloodRecordManager.m */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		8B94AAF61848663200CA5869 = {
 			isa = PBXGroup;
 			children = (
 				8BFE173C187FEC5600D1F48A /* Libs */,
-				8B94AB371848669F00CA5869 /* Class */,
+				9C0BFF5F1886D944002845D9 /* Class */,
 				8B94AB401848669F00CA5869 /* Resource */,
 				8B94AB0A1848663200CA5869 /* HealthManager */,
 				8B94AB271848663300CA5869 /* HealthManagerTests */,
@@ -461,25 +421,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8B94AB371848669F00CA5869 /* Class */ = {
-			isa = PBXGroup;
-			children = (
-				8B34048D1884EECB005D8C42 /* Data */,
-				37A92E39187BF7B00059DB25 /* Store */,
-				B87D1296184CE88400279DDC /* AlertViewController */,
-				B87D129A184CE88400279DDC /* BloodViewController */,
-				B87D129E184CE88400279DDC /* DoctorViewController */,
-				B87D12A2184CE88400279DDC /* KnowledgeViewController */,
-				B87D12A6184CE88400279DDC /* LoginViewController */,
-				B87D12AA184CE88400279DDC /* MainViewController */,
-				B87D12AE184CE88400279DDC /* ManagerViewController */,
-				B87D12B2184CE88400279DDC /* MoreViewController */,
-				B87D12B6184CE88400279DDC /* SettingViewController */,
-				8BEB9FC4184C53E500ECF974 /* SuperClass */,
-			);
-			path = Class;
-			sourceTree = "<group>";
-		};
 		8B94AB401848669F00CA5869 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,22 +428,6 @@
 				B8232281185F48EA005F2409 /* plist */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		8BEB9FC4184C53E500ECF974 /* SuperClass */ = {
-			isa = PBXGroup;
-			children = (
-				B8502404186200B60080DB1D /* Cell */,
-				8BEB9FC5184C540500ECF974 /* RootSuperViewController.h */,
-				8BEB9FC6184C540500ECF974 /* RootSuperViewController.m */,
-				B88319D0186D348E00333DA2 /* NavigationBarViewController.h */,
-				B88319D1186D348E00333DA2 /* NavigationBarViewController.m */,
-				B88319CD186D2ED500333DA2 /* BackButtonViewController.h */,
-				B88319CE186D2ED500333DA2 /* BackButtonViewController.m */,
-				B85023FD1861F6A10080DB1D /* SuperListViewController.h */,
-				B85023FE1861F6A10080DB1D /* SuperListViewController.m */,
-			);
-			path = SuperClass;
 			sourceTree = "<group>";
 		};
 		8BFE173C187FEC5600D1F48A /* Libs */ = {
@@ -563,6 +488,220 @@
 				8BFE175C187FEC5600D1F48A /* HttpRequestManager.m */,
 			);
 			path = NetManager;
+			sourceTree = "<group>";
+		};
+		9C0BFF5F1886D944002845D9 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF601886D944002845D9 /* Data */,
+				9C0BFF6C1886D944002845D9 /* Store */,
+				9C0BFF6F1886D944002845D9 /* SuperClass */,
+				9C0BFF7B1886D944002845D9 /* ViewController */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		9C0BFF601886D944002845D9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF611886D944002845D9 /* CoreData */,
+				9C0BFF6A1886D944002845D9 /* Knowledge.h */,
+				9C0BFF6B1886D944002845D9 /* Knowledge.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9C0BFF611886D944002845D9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF621886D944002845D9 /* CoroDataModel */,
+				9C0BFF671886D944002845D9 /* Manager */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		9C0BFF621886D944002845D9 /* CoroDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF631886D944002845D9 /* BloodRecordDateData.h */,
+				9C0BFF641886D944002845D9 /* BloodRecordDateData.m */,
+				9C0BFF651886D944002845D9 /* BloodRecordModel.h */,
+				9C0BFF661886D944002845D9 /* BloodRecordModel.m */,
+			);
+			path = CoroDataModel;
+			sourceTree = "<group>";
+		};
+		9C0BFF671886D944002845D9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF681886D944002845D9 /* BloodRecordManager.h */,
+				9C0BFF691886D944002845D9 /* BloodRecordManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		9C0BFF6C1886D944002845D9 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF6D1886D944002845D9 /* KnowledgeStore.h */,
+				9C0BFF6E1886D944002845D9 /* KnowledgeStore.m */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		9C0BFF6F1886D944002845D9 /* SuperClass */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF701886D944002845D9 /* BackButtonViewController.h */,
+				9C0BFF711886D944002845D9 /* BackButtonViewController.m */,
+				9C0BFF721886D944002845D9 /* Cell */,
+				9C0BFF751886D944002845D9 /* NavigationBarViewController.h */,
+				9C0BFF761886D944002845D9 /* NavigationBarViewController.m */,
+				9C0BFF771886D944002845D9 /* RootSuperViewController.h */,
+				9C0BFF781886D944002845D9 /* RootSuperViewController.m */,
+				9C0BFF791886D944002845D9 /* SuperListViewController.h */,
+				9C0BFF7A1886D944002845D9 /* SuperListViewController.m */,
+			);
+			path = SuperClass;
+			sourceTree = "<group>";
+		};
+		9C0BFF721886D944002845D9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF731886D944002845D9 /* RootSuperCell.h */,
+				9C0BFF741886D944002845D9 /* RootSuperCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		9C0BFF7B1886D944002845D9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFFD31886D9F8002845D9 /* SessionViewController */,
+				9C0BFF7C1886D944002845D9 /* AlertViewController */,
+				9C0BFF801886D944002845D9 /* BloodViewController */,
+				9C0BFF891886D944002845D9 /* DoctorViewController */,
+				9C0BFF901886D944002845D9 /* KnowledgeViewController */,
+				9C0BFF971886D944002845D9 /* LoginViewController */,
+				9C0BFF9B1886D944002845D9 /* MainViewController */,
+				9C0BFF9F1886D944002845D9 /* ManagerViewController */,
+				9C0BFFA31886D944002845D9 /* MoreViewController */,
+				9C0BFFA71886D944002845D9 /* SettingViewController */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9C0BFF7C1886D944002845D9 /* AlertViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF7D1886D944002845D9 /* AlertViewController.h */,
+				9C0BFF7E1886D944002845D9 /* AlertViewController.m */,
+				9C0BFF7F1886D944002845D9 /* AlertViewController.xib */,
+			);
+			path = AlertViewController;
+			sourceTree = "<group>";
+		};
+		9C0BFF801886D944002845D9 /* BloodViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF811886D944002845D9 /* BloodRecord.h */,
+				9C0BFF821886D944002845D9 /* BloodRecord.m */,
+				9C0BFF831886D944002845D9 /* BloodRecord.xib */,
+				9C0BFF841886D944002845D9 /* BloodViewController.h */,
+				9C0BFF851886D944002845D9 /* BloodViewController.m */,
+				9C0BFF861886D944002845D9 /* BloodViewController.xib */,
+				9C0BFF871886D944002845D9 /* LineChartView.h */,
+				9C0BFF881886D944002845D9 /* LineChartView.m */,
+			);
+			path = BloodViewController;
+			sourceTree = "<group>";
+		};
+		9C0BFF891886D944002845D9 /* DoctorViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF8A1886D944002845D9 /* DoctorCell.h */,
+				9C0BFF8B1886D944002845D9 /* DoctorCell.m */,
+				9C0BFF8C1886D944002845D9 /* DoctorCell.xib */,
+				9C0BFF8D1886D944002845D9 /* DoctorViewController.h */,
+				9C0BFF8E1886D944002845D9 /* DoctorViewController.m */,
+				9C0BFF8F1886D944002845D9 /* DoctorViewController.xib */,
+			);
+			path = DoctorViewController;
+			sourceTree = "<group>";
+		};
+		9C0BFF901886D944002845D9 /* KnowledgeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF911886D944002845D9 /* KnowledgeDetailViewController.h */,
+				9C0BFF921886D944002845D9 /* KnowledgeDetailViewController.m */,
+				9C0BFF931886D944002845D9 /* KnowledgeDetailViewController.xib */,
+				9C0BFF941886D944002845D9 /* KnowledgeViewController.h */,
+				9C0BFF951886D944002845D9 /* KnowledgeViewController.m */,
+				9C0BFF961886D944002845D9 /* KnowledgeViewController.xib */,
+			);
+			path = KnowledgeViewController;
+			sourceTree = "<group>";
+		};
+		9C0BFF971886D944002845D9 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF981886D944002845D9 /* LoginViewController.h */,
+				9C0BFF991886D944002845D9 /* LoginViewController.m */,
+				9C0BFF9A1886D944002845D9 /* LoginViewController.xib */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		9C0BFF9B1886D944002845D9 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFF9C1886D944002845D9 /* MainViewController.h */,
+				9C0BFF9D1886D944002845D9 /* MainViewController.m */,
+				9C0BFF9E1886D944002845D9 /* MainViewController.xib */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		9C0BFF9F1886D944002845D9 /* ManagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFFA01886D944002845D9 /* ManagerViewController.h */,
+				9C0BFFA11886D944002845D9 /* ManagerViewController.m */,
+				9C0BFFA21886D944002845D9 /* ManagerViewController.xib */,
+			);
+			path = ManagerViewController;
+			sourceTree = "<group>";
+		};
+		9C0BFFA31886D944002845D9 /* MoreViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFFA41886D944002845D9 /* MoreViewController.h */,
+				9C0BFFA51886D944002845D9 /* MoreViewController.m */,
+				9C0BFFA61886D944002845D9 /* MoreViewController.xib */,
+			);
+			path = MoreViewController;
+			sourceTree = "<group>";
+		};
+		9C0BFFA71886D944002845D9 /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFFA81886D944002845D9 /* SettingRemindTimeViewController.h */,
+				9C0BFFA91886D944002845D9 /* SettingRemindTimeViewController.m */,
+				9C0BFFAA1886D944002845D9 /* SettingRemindTimeViewController.xib */,
+				9C0BFFAB1886D944002845D9 /* SettingViewController.h */,
+				9C0BFFAC1886D944002845D9 /* SettingViewController.m */,
+				9C0BFFAD1886D944002845D9 /* SettingViewController.xib */,
+			);
+			path = SettingViewController;
+			sourceTree = "<group>";
+		};
+		9C0BFFD31886D9F8002845D9 /* SessionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BFFD41886DA30002845D9 /* SessionViewController.h */,
+				9C0BFFD51886DA30002845D9 /* SessionViewController.m */,
+			);
+			path = SessionViewController;
 			sourceTree = "<group>";
 		};
 		9C911ADC1880555D004CD648 /* ZBarSDK */ = {
@@ -690,125 +829,6 @@
 			path = plist;
 			sourceTree = "<group>";
 		};
-		B8502404186200B60080DB1D /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				B8502405186200D40080DB1D /* RootSuperCell.h */,
-				B8502406186200D40080DB1D /* RootSuperCell.m */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		B87D1296184CE88400279DDC /* AlertViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B87D1297184CE88400279DDC /* AlertViewController.h */,
-				B87D1298184CE88400279DDC /* AlertViewController.m */,
-				B87D1299184CE88400279DDC /* AlertViewController.xib */,
-			);
-			name = AlertViewController;
-			path = ViewController/AlertViewController;
-			sourceTree = "<group>";
-		};
-		B87D129A184CE88400279DDC /* BloodViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9C911AFF1880FC16004CD648 /* LineChartView.h */,
-				9C911B001880FC16004CD648 /* LineChartView.m */,
-				B87D129B184CE88400279DDC /* BloodViewController.h */,
-				B87D129C184CE88400279DDC /* BloodViewController.m */,
-				B87D129D184CE88400279DDC /* BloodViewController.xib */,
-				B8997D7B1853244000C12CE7 /* BloodRecord.h */,
-				B8997D7C1853244000C12CE7 /* BloodRecord.m */,
-				B8997D7E1853245600C12CE7 /* BloodRecord.xib */,
-			);
-			name = BloodViewController;
-			path = ViewController/BloodViewController;
-			sourceTree = "<group>";
-		};
-		B87D129E184CE88400279DDC /* DoctorViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B87D129F184CE88400279DDC /* DoctorViewController.h */,
-				B87D12A0184CE88400279DDC /* DoctorViewController.m */,
-				B87D12A1184CE88400279DDC /* DoctorViewController.xib */,
-				B8E312CB18520FB3007E819E /* DoctorCell.h */,
-				B8E312CC18520FB3007E819E /* DoctorCell.m */,
-				B8E312CE185210FB007E819E /* DoctorCell.xib */,
-			);
-			name = DoctorViewController;
-			path = ViewController/DoctorViewController;
-			sourceTree = "<group>";
-		};
-		B87D12A2184CE88400279DDC /* KnowledgeViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B87D12A3184CE88400279DDC /* KnowledgeViewController.h */,
-				B87D12A4184CE88400279DDC /* KnowledgeViewController.m */,
-				B87D12A5184CE88400279DDC /* KnowledgeViewController.xib */,
-				37A3E566187E2E0600F075B0 /* KnowledgeDetailViewController.h */,
-				37A3E567187E2E0600F075B0 /* KnowledgeDetailViewController.m */,
-				37A3E569187E2E2900F075B0 /* KnowledgeDetailViewController.xib */,
-			);
-			name = KnowledgeViewController;
-			path = ViewController/KnowledgeViewController;
-			sourceTree = "<group>";
-		};
-		B87D12A6184CE88400279DDC /* LoginViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B87D12A7184CE88400279DDC /* LoginViewController.h */,
-				B87D12A8184CE88400279DDC /* LoginViewController.m */,
-				B87D12A9184CE88400279DDC /* LoginViewController.xib */,
-			);
-			name = LoginViewController;
-			path = ViewController/LoginViewController;
-			sourceTree = "<group>";
-		};
-		B87D12AA184CE88400279DDC /* MainViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B87D12AB184CE88400279DDC /* MainViewController.h */,
-				B87D12AC184CE88400279DDC /* MainViewController.m */,
-				B87D12AD184CE88400279DDC /* MainViewController.xib */,
-			);
-			name = MainViewController;
-			path = ViewController/MainViewController;
-			sourceTree = "<group>";
-		};
-		B87D12AE184CE88400279DDC /* ManagerViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B87D12AF184CE88400279DDC /* ManagerViewController.h */,
-				B87D12B0184CE88400279DDC /* ManagerViewController.m */,
-				B87D12B1184CE88400279DDC /* ManagerViewController.xib */,
-			);
-			name = ManagerViewController;
-			path = ViewController/ManagerViewController;
-			sourceTree = "<group>";
-		};
-		B87D12B2184CE88400279DDC /* MoreViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B87D12B3184CE88400279DDC /* MoreViewController.h */,
-				B87D12B4184CE88400279DDC /* MoreViewController.m */,
-				B87D12B5184CE88400279DDC /* MoreViewController.xib */,
-			);
-			name = MoreViewController;
-			path = ViewController/MoreViewController;
-			sourceTree = "<group>";
-		};
-		B87D12B6184CE88400279DDC /* SettingViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B87D12B7184CE88400279DDC /* SettingViewController.h */,
-				B87D12B8184CE88400279DDC /* SettingViewController.m */,
-				B87D12B9184CE88400279DDC /* SettingViewController.xib */,
-			);
-			name = SettingViewController;
-			path = ViewController/SettingViewController;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -887,26 +907,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8E312CF185210FB007E819E /* DoctorCell.xib in Resources */,
-				B87D12C1184CE88400279DDC /* KnowledgeViewController.xib in Resources */,
+				9C0BFFBD1886D944002845D9 /* BloodViewController.xib in Resources */,
 				B8232283185F48EA005F2409 /* bbi_left@2x.png in Resources */,
 				B823229E185F48EA005F2409 /* main_btn_2@2x.png in Resources */,
 				9C911AFC1880555D004CD648 /* zbar-help.html in Resources */,
-				B87D12C5184CE88400279DDC /* MainViewController.xib in Resources */,
-				B87D12CB184CE88400279DDC /* SettingViewController.xib in Resources */,
 				B823228D185F48EA005F2409 /* bt_cancel@2x.png in Resources */,
 				B8232282185F48EA005F2409 /* arrow@2x.png in Resources */,
-				37A3E56A187E2E2900F075B0 /* KnowledgeDetailViewController.xib in Resources */,
 				B8232287185F48EA005F2409 /* blood_segment_selected_1@2x.png in Resources */,
 				B82322A5185F48EA005F2409 /* portrait@2x.png in Resources */,
 				B823228F185F48EA005F2409 /* bt_login@2x.png in Resources */,
 				B8232293185F48EA005F2409 /* bt_pop_ok@2x.png in Resources */,
 				8B94AB0F1848663300CA5869 /* InfoPlist.strings in Resources */,
+				9C0BFFC61886D944002845D9 /* KnowledgeViewController.xib in Resources */,
 				B8232298185F48EA005F2409 /* Icon-114.png in Resources */,
 				B82322A6185F48EA005F2409 /* textfield@2x.png in Resources */,
+				9C0BFFCA1886D944002845D9 /* MainViewController.xib in Resources */,
 				37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */,
 				B82322A3185F48EA005F2409 /* main_btn_7@2x.png in Resources */,
 				B823228B185F48EA005F2409 /* blood_texfield@2x.png in Resources */,
+				9C0BFFCC1886D944002845D9 /* ManagerViewController.xib in Resources */,
 				B823229A185F48EA005F2409 /* Icon-Small@2x.png in Resources */,
 				B8232296185F48EA005F2409 /* Default@2x.png in Resources */,
 				B8232290185F48EA005F2409 /* bt_logoff@2x.png in Resources */,
@@ -917,32 +936,34 @@
 				8B94AB1A1848663300CA5869 /* Images.xcassets in Resources */,
 				B82322A0185F48EA005F2409 /* main_btn_4@2x.png in Resources */,
 				B8232294185F48EA005F2409 /* bt_save@2x.png in Resources */,
-				B8997D7F1853245600C12CE7 /* BloodRecord.xib in Resources */,
-				B87D12C9184CE88400279DDC /* MoreViewController.xib in Resources */,
 				B8232297185F48EA005F2409 /* doctorButton@2x.png in Resources */,
 				B82322A2185F48EA005F2409 /* main_btn_6@2x.png in Resources */,
-				B87D12C3184CE88400279DDC /* LoginViewController.xib in Resources */,
+				9C0BFFD01886D944002845D9 /* SettingRemindTimeViewController.xib in Resources */,
 				9C911AFD1880555D004CD648 /* zbar-helpicons.png in Resources */,
-				B87D12C7184CE88400279DDC /* ManagerViewController.xib in Resources */,
 				B823228A185F48EA005F2409 /* blood_table_hit@2x.png in Resources */,
+				9C0BFFD21886D944002845D9 /* SettingViewController.xib in Resources */,
+				9C0BFFB91886D944002845D9 /* AlertViewController.xib in Resources */,
 				B8232284185F48EA005F2409 /* blood_segment_1@2x.png in Resources */,
-				B87D12BF184CE88400279DDC /* DoctorViewController.xib in Resources */,
 				B8232291185F48EA005F2409 /* bt_ok@2x.png in Resources */,
 				9C911AFB1880555D004CD648 /* zbar-back.png in Resources */,
 				B823228E185F48EA005F2409 /* bt_forget@2x.png in Resources */,
-				B87D12BB184CE88400279DDC /* AlertViewController.xib in Resources */,
 				9C911AFE1880555D004CD648 /* zbar-samples.png in Resources */,
 				B8232292185F48EA005F2409 /* bt_pop_cancel@2x.png in Resources */,
 				B823229F185F48EA005F2409 /* main_btn_3@2x.png in Resources */,
 				B823229C185F48EA005F2409 /* login_background@2x.png in Resources */,
+				9C0BFFC21886D944002845D9 /* DoctorViewController.xib in Resources */,
 				B8232289185F48EA005F2409 /* blood_segment_selected_3@2x.png in Resources */,
 				B8232285185F48EA005F2409 /* blood_segment_2@2x.png in Resources */,
+				9C0BFFCE1886D944002845D9 /* MoreViewController.xib in Resources */,
+				9C0BFFC41886D944002845D9 /* KnowledgeDetailViewController.xib in Resources */,
 				B8232288185F48EA005F2409 /* blood_segment_selected_2@2x.png in Resources */,
+				9C0BFFC01886D944002845D9 /* DoctorCell.xib in Resources */,
 				B8232299185F48EA005F2409 /* Icon-72.png in Resources */,
 				B82322A4185F48EA005F2409 /* navigation@2x.png in Resources */,
-				B87D12BD184CE88400279DDC /* BloodViewController.xib in Resources */,
+				9C0BFFC81886D944002845D9 /* LoginViewController.xib in Resources */,
 				B8232295185F48EA005F2409 /* Default-568h@2x.png in Resources */,
 				B8232286185F48EA005F2409 /* blood_segment_3@2x.png in Resources */,
+				9C0BFFBB1886D944002845D9 /* BloodRecord.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,45 +983,47 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BFE177C187FEC5700D1F48A /* AFHTTPRequestOperation.m in Sources */,
+				9C0BFFC91886D944002845D9 /* MainViewController.m in Sources */,
 				8B94AB151848663300CA5869 /* AppDelegate.m in Sources */,
-				B8502407186200D40080DB1D /* RootSuperCell.m in Sources */,
-				8B34049C1884EECB005D8C42 /* Knowledge.m in Sources */,
+				9C0BFFAF1886D944002845D9 /* BloodRecordModel.m in Sources */,
 				8BFE1786187FEC5700D1F48A /* LSSegment.m in Sources */,
-				B88319D2186D348E00333DA2 /* NavigationBarViewController.m in Sources */,
+				9C0BFFCF1886D944002845D9 /* SettingRemindTimeViewController.m in Sources */,
+				9C0BFFBA1886D944002845D9 /* BloodRecord.m in Sources */,
 				8BFE1782187FEC5700D1F48A /* AFXMLRequestOperation.m in Sources */,
-				B87D12C8184CE88400279DDC /* MoreViewController.m in Sources */,
+				9C0BFFCD1886D944002845D9 /* MoreViewController.m in Sources */,
+				9C0BFFB01886D944002845D9 /* BloodRecordManager.m in Sources */,
 				9C911B0918810299004CD648 /* MBProgressHUD.m in Sources */,
-				B87D12CA184CE88400279DDC /* SettingViewController.m in Sources */,
 				8BFE177D187FEC5700D1F48A /* AFImageRequestOperation.m in Sources */,
 				8BFE177B187FEC5700D1F48A /* AFHTTPClient.m in Sources */,
+				9C0BFFB51886D944002845D9 /* NavigationBarViewController.m in Sources */,
 				8BFE1781187FEC5700D1F48A /* AFURLConnectionOperation.m in Sources */,
 				8BFE1780187FEC5700D1F48A /* AFPropertyListRequestOperation.m in Sources */,
-				B87D12BE184CE88400279DDC /* DoctorViewController.m in Sources */,
-				B87D12BC184CE88400279DDC /* BloodViewController.m in Sources */,
-				9C911B011880FC16004CD648 /* LineChartView.m in Sources */,
 				8BFE177E187FEC5700D1F48A /* AFJSONRequestOperation.m in Sources */,
+				9C0BFFC31886D944002845D9 /* KnowledgeDetailViewController.m in Sources */,
+				9C0BFFB31886D944002845D9 /* BackButtonViewController.m in Sources */,
 				8BFE1787187FEC5700D1F48A /* LSTextField.m in Sources */,
+				9C0BFFCB1886D944002845D9 /* ManagerViewController.m in Sources */,
+				9C0BFFAE1886D944002845D9 /* BloodRecordDateData.m in Sources */,
 				8BFE1788187FEC5700D1F48A /* HttpRequestManager.m in Sources */,
-				8B3404991884EECB005D8C42 /* BloodRecordDateData.m in Sources */,
-				B87D12C4184CE88400279DDC /* MainViewController.m in Sources */,
+				9C0BFFD61886DA30002845D9 /* SessionViewController.m in Sources */,
+				9C0BFFBF1886D944002845D9 /* DoctorCell.m in Sources */,
+				9C0BFFC11886D944002845D9 /* DoctorViewController.m in Sources */,
+				9C0BFFBE1886D944002845D9 /* LineChartView.m in Sources */,
+				9C0BFFD11886D944002845D9 /* SettingViewController.m in Sources */,
+				9C0BFFB71886D944002845D9 /* SuperListViewController.m in Sources */,
+				9C0BFFBC1886D944002845D9 /* BloodViewController.m in Sources */,
 				8BFE177F187FEC5700D1F48A /* AFNetworkActivityIndicatorManager.m in Sources */,
-				37A3E568187E2E0600F075B0 /* KnowledgeDetailViewController.m in Sources */,
-				8B34049A1884EECB005D8C42 /* BloodRecordModel.m in Sources */,
-				8B34049B1884EECB005D8C42 /* BloodRecordManager.m in Sources */,
-				B87D12C0184CE88400279DDC /* KnowledgeViewController.m in Sources */,
-				37A92E3F187BF8B70059DB25 /* KnowledgeStore.m in Sources */,
-				B85023FF1861F6A10080DB1D /* SuperListViewController.m in Sources */,
-				B87D12C6184CE88400279DDC /* ManagerViewController.m in Sources */,
-				B87D12BA184CE88400279DDC /* AlertViewController.m in Sources */,
 				8BFE1785187FEC5700D1F48A /* LSBackGrayView.m in Sources */,
-				B87D12C2184CE88400279DDC /* LoginViewController.m in Sources */,
-				B8E312CD18520FB3007E819E /* DoctorCell.m in Sources */,
-				B8997D7D1853244000C12CE7 /* BloodRecord.m in Sources */,
-				8BEB9FC8184C540500ECF974 /* RootSuperViewController.m in Sources */,
+				9C0BFFC51886D944002845D9 /* KnowledgeViewController.m in Sources */,
 				8B94AB111848663300CA5869 /* main.m in Sources */,
 				8B94AB181848663300CA5869 /* HealthManager.xcdatamodeld in Sources */,
+				9C0BFFB11886D944002845D9 /* Knowledge.m in Sources */,
+				9C0BFFB81886D944002845D9 /* AlertViewController.m in Sources */,
+				9C0BFFB41886D944002845D9 /* RootSuperCell.m in Sources */,
+				9C0BFFC71886D944002845D9 /* LoginViewController.m in Sources */,
+				9C0BFFB21886D944002845D9 /* KnowledgeStore.m in Sources */,
+				9C0BFFB61886D944002845D9 /* RootSuperViewController.m in Sources */,
 				8BFE1783187FEC5700D1F48A /* UIImageView+AFNetworking.m in Sources */,
-				B88319CF186D2ED500333DA2 /* BackButtonViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

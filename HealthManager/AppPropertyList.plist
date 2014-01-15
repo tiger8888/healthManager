@@ -58,7 +58,7 @@
 	</dict>
 	<dict>
 		<key>class</key>
-		<string>XXXViewController</string>
+		<string>SessionViewController</string>
 		<key>titleName</key>
 		<string>医患交流</string>
 	</dict>

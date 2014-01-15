@@ -61,11 +61,6 @@
     return cell;
 }
 
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return 5;
-//}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 140;
@@ -79,7 +74,7 @@
     [self.view addSubview:backView];
     
     UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 300, 300)];
-    lable.text = [NSString stringWithFormat:@"index:%d",indexPath.row];
+    lable.text = [NSString stringWithFormat:@"医生介绍:%@",[_dataSource[indexPath.row] objectForKey:@"profesIntro"]];
     [backView addSubview:lable];
 }
 
@@ -96,8 +91,8 @@
     tmpView.layer.borderWidth = 2.0f;
     tmpView.layer.cornerRadius = 8.0f;
     [backView addSubview:tmpView];
-    
-    NSString *htmlStr = [NSString stringWithFormat:@"<p>您申请 <b >%@%d</b> 医师成为您的专属医生，%@%d 医生将为您提供一对一的医疗服务。</p>",@"人名",index.row,@"人名",index.row];
+    NSString *name = [_dataSource[index.row] objectForKey:@"name"];
+    NSString *htmlStr = [NSString stringWithFormat:@"<p>您申请 <b >%@</b> 医师成为您的专属医生，%@ 医生将为您提供一对一的医疗服务。</p>",name,name];
     
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(20, 10, 220, 100)];
     [webView loadHTMLString:htmlStr baseURL:nil];
@@ -117,10 +112,25 @@
 }
 
 #pragma mark - Event Method
+- (void)backButtonClick
+{
+    NSLog(@"back");
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 - (void)popButtonClick:(id)sender
 {
     UIButton *button = (UIButton *)sender;
-    NSLog(@"%d",button.tag);
+    NSDictionary *dict = _dataSource[button.tag];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    [userDef setObject:[dict objectForKey:@"doctorId"] forKey:@"myDoctorID"];
+    [userDef synchronize];
+    
+    NSString *classStr = [[[(AppDelegate *)([UIApplication sharedApplication].delegate) propertyList] objectAtIndex:9] objectForKey:@"class"];
+    Class class = NSClassFromString(classStr);
+    UIViewController * viewController = [[class alloc] initWithCategory:9];
+    
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

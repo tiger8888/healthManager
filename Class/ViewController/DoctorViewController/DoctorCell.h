@@ -17,6 +17,10 @@
 @interface DoctorCell : RootSuperCell
 
 @property (strong, nonatomic) IBOutlet UILabel *name;
+@property (strong, nonatomic) IBOutlet UILabel *title;
+@property (strong, nonatomic) IBOutlet UILabel *department;
+@property (strong, nonatomic) IBOutlet UILabel *introduce;
+@property (strong, nonatomic) IBOutlet UIImageView *profileImage;
 
 @property (nonatomic, strong) NSDictionary *model;
 @property (nonatomic, weak) id <DoctorCellDelegate>delegate;

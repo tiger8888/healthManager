@@ -116,10 +116,10 @@
     return 3;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 45;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 45;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -152,8 +152,42 @@
         /**
          * 目前缺少的操作：提醒用户：将清除用户与医生的关系，让用户进行确认
          */
-        DoctorViewController *myDoctorViewCtl = [[DoctorViewController alloc] initWithCategory:2];
-        [self.navigationController pushViewController:myDoctorViewCtl animated:YES];
+        NSNumber *doctorID = [[NSUserDefaults standardUserDefaults] objectForKey:@"myDoctorID"];
+        if (doctorID == nil || [doctorID intValue] == 0)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您尚未选取任何医生，请先进入我的医生界面选择您的私人医生" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            alert.tag = 3;
+            [alert show];
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您将重新选择医生" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            alert.tag = 3;
+            [alert show];
+        }
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (alertView.tag) {
+        case 3:
+        {
+            if (buttonIndex == 0) {
+                return;
+            }
+            else if (buttonIndex == 1)
+            {
+                NSLog(@"中心薛泽");
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"myDoctorID"];
+                DoctorViewController *myDoctorViewCtl = [[DoctorViewController alloc] initWithCategory:2];
+                [self.navigationController pushViewController:myDoctorViewCtl animated:YES];
+            }
+        }
+            break;
+            
+        default:
+            break;
     }
 }
 
