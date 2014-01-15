@@ -41,4 +41,10 @@
         [_delegate delegateOnClick:self];
     }
 }
+
+- (void)setModel:(NSDictionary *)model
+{
+    _model = model;
+    _name.text = [_model objectForKey:@"name"];
+}
 @end

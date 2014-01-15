@@ -27,6 +27,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSString *patientId = [[NSUserDefaults standardUserDefaults] objectForKey:@"patientId"];
+    
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:[NSString stringWithFormat:@"patient/doctor/list/1.json"] completionHandle:^(id returnObject) {
+        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+        
+        NSDictionary * returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+        _dataSource = [[returnDict objectForKey:@"resultInfo"] objectForKey:@"list"];
+        [_tableView reloadData];
+        
+    } failed:^{
+        
+    } hitSuperView:self.view method:kGet];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,14 +57,14 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"DoctorCell" owner:nil options:nil] firstObject];
         cell.delegate = self;
     }
-
+    cell.model = _dataSource[indexPath.row];
     return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 5;
-}
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return 5;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -47,21 +47,46 @@ static HttpRequestManager *_sharedManager;
     return self;
 }
 
-- (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView
+- (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView method:(requestMethod)method
 {
     [MBProgressHUD showHUDAddedTo:superView animated:YES];
 
     AFHTTPClient *requestOperation = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASEURL]];
     [requestOperation setParameterEncoding:AFJSONParameterEncoding];
     
-    [requestOperation postPath:interface parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [MBProgressHUD hideHUDForView:superView animated:YES];
-
-        block(responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [MBProgressHUD hideHUDForView:superView animated:YES];
-
-        failedBlock();
-    }];
+    switch (method) {
+        case kGet:
+        {
+            [requestOperation getPath:interface parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                
+                [MBProgressHUD hideHUDForView:superView animated:YES];
+                block(responseObject);
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                
+                [MBProgressHUD hideHUDForView:superView animated:YES];
+                failedBlock();
+                
+            }];
+        }
+            break;
+        case kPost:
+        {
+            [requestOperation postPath:interface parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+                
+                [MBProgressHUD hideHUDForView:superView animated:YES];
+                block(responseObject);
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                
+                [MBProgressHUD hideHUDForView:superView animated:YES];
+                failedBlock();
+                
+            }];
+        }
+            break;
+        default:
+            break;
+    }
 }
 @end

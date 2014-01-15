@@ -10,11 +10,16 @@
 #import "AFNetworking.h"
 @interface HttpRequestManager : NSObject
 
+typedef enum
+{
+    kGet = 1,
+    kPost
+} requestMethod;
+
 typedef void (^LSDataBlock)(NSData *data);
-typedef void (^LSJSONBlock)(NSDictionary *jsonObject);
+typedef void (^LSJSONBlock)(id returnObject);
 
 + (HttpRequestManager *)sharedManager;
 
-- (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView;
-
+- (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView method:(requestMethod)method;
 @end

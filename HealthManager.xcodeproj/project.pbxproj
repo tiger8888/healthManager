@@ -92,7 +92,6 @@
 		B82322A5185F48EA005F2409 /* portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823227F185F48EA005F2409 /* portrait@2x.png */; };
 		B82322A6185F48EA005F2409 /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8232280185F48EA005F2409 /* textfield@2x.png */; };
 		B85023FF1861F6A10080DB1D /* SuperListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B85023FE1861F6A10080DB1D /* SuperListViewController.m */; };
-		B85024031861FF0B0080DB1D /* DoctorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B85024021861FF0B0080DB1D /* DoctorModel.m */; };
 		B8502407186200D40080DB1D /* RootSuperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8502406186200D40080DB1D /* RootSuperCell.m */; };
 		B87D12BA184CE88400279DDC /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D1298184CE88400279DDC /* AlertViewController.m */; };
 		B87D12BB184CE88400279DDC /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87D1299184CE88400279DDC /* AlertViewController.xib */; };
@@ -264,8 +263,6 @@
 		B8232280185F48EA005F2409 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
 		B85023FD1861F6A10080DB1D /* SuperListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperListViewController.h; sourceTree = "<group>"; };
 		B85023FE1861F6A10080DB1D /* SuperListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperListViewController.m; sourceTree = "<group>"; };
-		B85024011861FF0B0080DB1D /* DoctorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorModel.h; sourceTree = "<group>"; };
-		B85024021861FF0B0080DB1D /* DoctorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorModel.m; sourceTree = "<group>"; };
 		B8502405186200D40080DB1D /* RootSuperCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSuperCell.h; sourceTree = "<group>"; };
 		B8502406186200D40080DB1D /* RootSuperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootSuperCell.m; sourceTree = "<group>"; };
 		B87D1297184CE88400279DDC /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
@@ -693,15 +690,6 @@
 			path = plist;
 			sourceTree = "<group>";
 		};
-		B85024001861FEDC0080DB1D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B85024011861FF0B0080DB1D /* DoctorModel.h */,
-				B85024021861FF0B0080DB1D /* DoctorModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		B8502404186200B60080DB1D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,7 +729,6 @@
 		B87D129E184CE88400279DDC /* DoctorViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B85024001861FEDC0080DB1D /* Model */,
 				B87D129F184CE88400279DDC /* DoctorViewController.h */,
 				B87D12A0184CE88400279DDC /* DoctorViewController.m */,
 				B87D12A1184CE88400279DDC /* DoctorViewController.xib */,
@@ -998,7 +985,6 @@
 				B87D12C4184CE88400279DDC /* MainViewController.m in Sources */,
 				8BFE177F187FEC5700D1F48A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				37A3E568187E2E0600F075B0 /* KnowledgeDetailViewController.m in Sources */,
-				B85024031861FF0B0080DB1D /* DoctorModel.m in Sources */,
 				8B34049A1884EECB005D8C42 /* BloodRecordModel.m in Sources */,
 				8B34049B1884EECB005D8C42 /* BloodRecordManager.m in Sources */,
 				B87D12C0184CE88400279DDC /* KnowledgeViewController.m in Sources */,

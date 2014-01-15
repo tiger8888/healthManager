@@ -40,11 +40,26 @@
 - (IBAction)buttonClick:(id)sender
 {
     UIButton *button = (UIButton *)sender;
-    UIViewController *viewController;
-    NSUInteger category = button.tag;
+    if (button.tag == 2) {
+        NSNumber *myDoctorID = [[NSUserDefaults standardUserDefaults] objectForKey:@"myDoctorID"];
+        if (!myDoctorID || [myDoctorID intValue] == 0)
+        {
+            [self goToFunctionPart:2];
+        }
+        else
+        {
+            [self goToFunctionPart:9];
+        }
+        return;
+    }
+    [self goToFunctionPart:button.tag];
+}
+
+- (void)goToFunctionPart:(NSUInteger)category
+{
     NSString *classStr = [[[(AppDelegate *)([UIApplication sharedApplication].delegate) propertyList] objectAtIndex:category] objectForKey:@"class"];
     Class class = NSClassFromString(classStr);
-    viewController = [[class alloc] initWithCategory:category];
+    UIViewController * viewController = [[class alloc] initWithCategory:category];
     
     [self.navigationController pushViewController:viewController animated:YES];
 }

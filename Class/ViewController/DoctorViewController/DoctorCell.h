@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DoctorModel.h"
 
 @protocol DoctorCellDelegate <NSObject>
 
@@ -17,9 +16,12 @@
 
 @interface DoctorCell : RootSuperCell
 
+@property (strong, nonatomic) IBOutlet UILabel *name;
 
-@property (nonatomic, strong) DoctorModel *model;
+@property (nonatomic, strong) NSDictionary *model;
 @property (nonatomic, weak) id <DoctorCellDelegate>delegate;
+
+
 
 - (IBAction)cellButtonClick:(id)sender;
 
