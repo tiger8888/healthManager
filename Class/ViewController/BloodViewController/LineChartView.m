@@ -65,7 +65,7 @@
     int vOrdinateLabelCenterX = _newCoordinateX/2;
     
     //画水平线
-    for (int i=vDesc.count - 1; i>0; i--) {
+    for (int i=vDesc.count - 1; i>-1; i--) {
         beginPoint = CGPointMake(_newCoordinateX, y);
         endPoint = CGPointMake(x, y);
         
@@ -86,6 +86,7 @@
         
         y += vGap;
     }
+    
     CGContextStrokePath(context);
     
     
@@ -116,6 +117,9 @@
         x += hGap;
     }
 
+    //转换纵坐标为实际高度值
+    _newCoordinateY = y;
+    
     CGContextStrokePath(context);
     
     [self drawBloodCharWith:context];
@@ -185,7 +189,7 @@
     CGPoint goPoint;
 	int i = 1;
     p1.x += _newCoordinateX;
-    p1.y = _newCoordinateY+p1.y;
+    p1.y = _newCoordinateY-p1.y;
 	CGContextMoveToPoint(context, p1.x, p1.y);
     
     NSMutableArray *drawPoint = [NSMutableArray new];
@@ -194,7 +198,7 @@
 	for (; i<bloodItemCount; i++)
 	{
 		p1 = CGPointMake(i, [[bloodItem objectAtIndex:i] floatValue]);
-        goPoint = CGPointMake(_newCoordinateX + p1.x*hGap, _newCoordinateY+p1.y);
+        goPoint = CGPointMake(_newCoordinateX + p1.x*hGap, _newCoordinateY-p1.y);
         [drawPoint addObject:[NSValue valueWithCGPoint:goPoint]];
 		CGContextAddLineToPoint(context, goPoint.x, goPoint.y);
     }
@@ -224,13 +228,13 @@
     CGPoint goPoint;
 	int i = 1;
     p1.x += _newCoordinateX;
-    p1.y = _newCoordinateY+p1.y;
+    p1.y = _newCoordinateY-p1.y;
 	CGContextMoveToPoint(context, p1.x, p1.y);
     
 	for (; i<bloodItemCount; i++)
 	{
 		p1 = [[bloodItem objectAtIndex:i] CGPointValue];
-        goPoint = CGPointMake(_newCoordinateX+(p1.x-1)*hGap, _newCoordinateY+p1.y);
+        goPoint = CGPointMake(_newCoordinateX+(p1.x-1)*hGap, _newCoordinateY-p1.y);
 		CGContextAddLineToPoint(context, goPoint.x, goPoint.y);
     }
     CGContextSetStrokeColorWithColor(context, colorRef);
@@ -241,7 +245,7 @@
     for (i=0; i<bloodItemCount; i++)
 	{
 		p1 = [[bloodItem objectAtIndex:i] CGPointValue];
-        goPoint = CGPointMake(_newCoordinateX+(p1.x-1)*hGap, _newCoordinateY+p1.y);
+        goPoint = CGPointMake(_newCoordinateX+(p1.x-1)*hGap, _newCoordinateY-p1.y);
 		CGContextAddLineToPoint(context, goPoint.x, goPoint.y);
         //画端点圆
         CGContextAddArc(context, goPoint.x, goPoint.y, 2, 0, 2*M_PI, 0);
