@@ -65,7 +65,8 @@
     int vOrdinateLabelCenterX = _newCoordinateX/2;
     
     //画水平线
-    for (int i=vDesc.count - 1; i>-1; i--) {
+    for (int i = (int)vDesc.count -1; i > -1; i--)
+    {
         beginPoint = CGPointMake(_newCoordinateX, y);
         endPoint = CGPointMake(x, y);
         
@@ -129,7 +130,7 @@
     highPressure = [NSMutableArray new];
     lowPressure = [NSMutableArray new];
     pulse = [NSMutableArray new];
-    int bloodArrayCount = [bloodArray count];
+    NSUInteger bloodArrayCount = [bloodArray count];
     if ( bloodArrayCount>0 ) {
         for (NSDictionary *item in bloodArray) {
             [highPressure addObject:[item objectForKey:@"highPressure"]];
@@ -184,7 +185,7 @@
     if (bloodItem.count == 0) {
         return;
     }
-    int bloodItemCount = [bloodItem count];
+    NSUInteger bloodItemCount = [bloodItem count];
 	CGPoint p1 = CGPointMake(0, [[bloodItem objectAtIndex:0] floatValue]);
     CGPoint goPoint;
 	int i = 1;
@@ -223,7 +224,7 @@
  */
 - (void)drawBloodLineCharWith:(CGContextRef)context withPoint:(NSArray *)bloodItem withFillColor:(CGColorRef)colorRef {
     
-    int bloodItemCount = [bloodItem count];
+    NSUInteger bloodItemCount = [bloodItem count];
 	CGPoint p1 = [[bloodItem objectAtIndex:0] CGPointValue];
     CGPoint goPoint;
 	int i = 1;

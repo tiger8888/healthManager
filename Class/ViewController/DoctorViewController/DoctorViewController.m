@@ -68,7 +68,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"详细%d",indexPath.row);
+    NSLog(@"详细%ld",indexPath.row);
     [tableView cellForRowAtIndexPath:indexPath].selected = NO;
     LSBackGrayView *backView = [[LSBackGrayView alloc] initWithFrame:FULLSCREEN];
     [self.view addSubview:backView];

@@ -171,7 +171,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"详细%d",indexPath.row);
+    NSLog(@"详细%ld",indexPath.row);
     //找出数据源对应的日期模型
     id dateModel = _dataSource[indexPath.row];
     
@@ -229,7 +229,7 @@
 }
 
 #pragma mark - Event Method
-- (void)segmentDidSelectedAtIndex:(int)index
+- (void)segmentDidSelectedAtIndex:(NSUInteger)index
 {
     switch (index) {
         case 0:

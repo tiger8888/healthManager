@@ -10,7 +10,7 @@
 
 @protocol LSSegmentDelegate <NSObject>
 
-- (void)segmentDidSelectedAtIndex:(int)index;
+- (void)segmentDidSelectedAtIndex:(NSUInteger)index;
 
 @end
 
