@@ -68,10 +68,10 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentity];
             cell.textLabel.text = @"提前提醒时间";
-            _settingRemindTime = [[NSUserDefaults standardUserDefaults] objectForKey:@"settingRemindTime"];
+            _settingRemindTime = [[NSUserDefaults standardUserDefaults] objectForKey:SETTING_REMIND_TIME_KEY];
             if (!_settingRemindTime) {
                 _settingRemindTime = @"15";
-                [[NSUserDefaults standardUserDefaults] setObject:_settingRemindTime forKey:@"settingRemindTime"];
+                [[NSUserDefaults standardUserDefaults] setObject:_settingRemindTime forKey:SETTING_REMIND_TIME_KEY];
             }
             cell.detailTextLabel.text =  [_settingRemindTime stringByAppendingString:@"分钟"];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -133,13 +133,13 @@
         else
         {
             NSLog(@"提前提醒时间");
-//            SettingRemindTimeViewController *settingRemindTimeViewCtl = [SettingRemindTimeViewController new];
-//            settingRemindTimeViewCtl.selectedValue = _settingRemindTime;
-//            settingRemindTimeViewCtl.dismissBlock = ^(NSString *time){
-//                _settingRemindTime = time;
-//                [_tableView reloadData];
-//            };
-//            [self.navigationController pushViewController:settingRemindTimeViewCtl animated:YES];
+            SettingRemindTimeViewController *settingRemindTimeViewCtl = [SettingRemindTimeViewController new];
+            settingRemindTimeViewCtl.selectedValue = _settingRemindTime;
+            settingRemindTimeViewCtl.dismissBlock = ^(NSString *time){
+                _settingRemindTime = time;
+                [_tableView reloadData];
+            };
+            [self.navigationController pushViewController:settingRemindTimeViewCtl animated:YES];
         }
     }
     else if (indexPath.section == 1)
