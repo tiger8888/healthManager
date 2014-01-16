@@ -45,17 +45,11 @@
 - (void)setModel:(NSDictionary *)model
 {
     _model = model;
-    _name.text = [_model objectForKey:@"name"];
-    _title.text = [_model objectForKey:@"profesTitle"];
-//    _department.text = [_model objectForKey:@"office"];
-    _introduce.text = [NSString stringWithFormat:@"擅长及简介:%@",[_model objectForKey:@"profesIntro"]];
-    NSString *url = [_model objectForKey:@"picUrl"];
-    if ([url isKindOfClass:[NSNull class]]) {
-        _profileImage.image = [UIImage imageNamed:@"defaultProfile"];
-    }
-    else
-    {
-        [_profileImage setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"defaultProfile"]];
-     }
+    _name.text = [_model categoryObjectForKey:@"name"];
+    _title.text = [_model categoryObjectForKey:@"profesTitle"];
+    _department.text = [_model categoryObjectForKey:@"office"];
+    _introduce.text = [NSString stringWithFormat:@"擅长及简介:%@",[_model categoryObjectForKey:@"profesIntro"]];
+    [_profileImage setImageWithURL:[NSURL URLWithString:[_model categoryObjectForKey:@"picUrl"]] placeholderImage:[UIImage imageNamed:@"defaultProfile"]];
+    
 }
 @end

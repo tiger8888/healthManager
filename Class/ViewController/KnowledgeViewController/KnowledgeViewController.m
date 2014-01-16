@@ -47,7 +47,7 @@
 //    [_navigationBar addSubview:_activityIndicatorLoading];
     
 //    [[KnowledgeStore sharedStore] fetchTopInfo:10 withCompletion:^(NSMutableArray *obj, NSError *err) {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:_tableView animated:YES];
 
     [[KnowledgeStore sharedStore] fetchTopwithCompletion:^(NSMutableArray *obj, NSError *err) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
