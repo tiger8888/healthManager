@@ -62,7 +62,11 @@
         if (indexPath.row == 0)
         {
             cell.textLabel.text = @"服药声音提醒";
-            
+            UISwitch *soundSwitch = [UISwitch new];
+            soundSwitch.frame = CGRectMake(cell.bounds.size.width - 100, (cell.bounds.size.height - soundSwitch.frame.size.height) /2, 0.0,  0.0);
+            [soundSwitch addTarget:self action:@selector(switchSoundChanged:) forControlEvents:UIControlEventValueChanged];
+            [cell addSubview:soundSwitch];
+            cell.selected = NO;
         }
         else
         {
@@ -119,6 +123,16 @@
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    return 45;
+//}
+
+//-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.section == 0 && indexPath.row == 0) {
+//        return nil;
+//    }
+//    else {
+//        return indexPath;
+//    }
 //}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -191,6 +205,10 @@
     }
 }
 
+- (void)switchSoundChanged:(id)sender {
+    UISwitch *switchCtl = (UISwitch *)sender;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:switchCtl.on] forKey:SETTING_REMIND_SOUND_KEY];
+}
 @end
 
 

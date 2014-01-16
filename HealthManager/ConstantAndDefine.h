@@ -30,6 +30,7 @@ typedef enum {
 #define UICOLORFROMRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define FONT_DETAIL [UIFont systemFontOfSize:14]
 #define SETTING_REMIND_TIME_KEY @"settingRemindTime"
+#define SETTING_REMIND_SOUND_KEY @"settingRemindSound"
 /**
  *  基类
  */

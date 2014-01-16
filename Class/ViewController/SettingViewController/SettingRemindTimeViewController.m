@@ -10,7 +10,7 @@
 
 @interface SettingRemindTimeViewController ()
 {
-    NSMutableArray *_timeArr;
+    NSArray *_timeArr;
 }
 @end
 
@@ -21,11 +21,7 @@
 {
     [super viewDidLoad];
     
-    _timeArr = [NSMutableArray new];
-    [_timeArr addObject:[NSString stringWithFormat:@"%d", 1]];
-    for (int i=5; i<61; i+=5) {
-        [_timeArr addObject:[NSString stringWithFormat:@"%d", i]];
-    }
+    _timeArr = [NSArray arrayWithObjects:@"15", @"30", @"60", @"120", nil];
 }
 
 - (void)didReceiveMemoryWarning
