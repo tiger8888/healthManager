@@ -85,7 +85,7 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentity];
         cell.textLabel.text = @"清除缓存";
-        cell.detailTextLabel.text = @"缓存大小：3M";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"缓存大小：%@", [self getCacheSize]];
     }
     else
     {
@@ -208,6 +208,47 @@
 - (void)switchSoundChanged:(id)sender {
     UISwitch *switchCtl = (UISwitch *)sender;
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:switchCtl.on] forKey:SETTING_REMIND_SOUND_KEY];
+}
+
+- (NSString *)getCacheSize {
+    NSString *fileTotalSize;
+    float total = 0.0f;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cachePath = [paths objectAtIndex:0];
+    
+    NSDirectoryEnumerator *fileEnumerator = [[NSFileManager defaultManager] enumeratorAtPath:cachePath];
+
+    for (NSString *fileName in fileEnumerator) {
+        NSString *filePath = [[cachePath stringByAppendingString:@"/" ] stringByAppendingString: fileName];
+        NSDictionary *fileArrts = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
+
+        if (fileArrts) {
+            NSNumber *fileSize = [fileArrts objectForKey:NSFileSize];
+            NSLog(@"file name \"%@\" size is : %@",fileName,fileSize);
+            total += [fileSize floatValue];
+        }
+    }
+    if (total > 1024*1024*1024) {
+        //单位Gb
+        total = total/(1024*1024*1024);
+        fileTotalSize = [NSString stringWithFormat:@"%.2f Gb",total];
+    }
+    else if (total > 1024*1024) {
+        //单位mb
+        total = total/(1024*1024);
+        fileTotalSize = [NSString stringWithFormat:@"%.2f Mb",total];
+    }
+    else if (total > 1024) {
+        //单位kb
+        total = total/(1024);
+        fileTotalSize = [NSString stringWithFormat:@"%.2f Kb",total];
+    }
+    else {
+        fileTotalSize = [NSString stringWithFormat:@"%f b",total];
+    }
+    NSLog(@"total file size is %@",fileTotalSize);
+    return fileTotalSize;
+    
 }
 @end
 
