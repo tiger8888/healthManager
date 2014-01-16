@@ -68,6 +68,7 @@ typedef enum {
 #import "BloodRecord.h"
 #import "HttpRequestManager.h"
 #import "MBProgressHUD.h"
+#import "NSDictionary+NullOBJForKey.h"
 #endif
 
 

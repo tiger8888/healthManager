@@ -11,7 +11,8 @@
 @implementation Knowledge
 @synthesize id, title, content, url;
 
-- (void)readFromJSONDictionary:(NSDictionary *)data {
+- (void)readFromJSONDictionary:(NSDictionary *)data
+{
     self.title = [data objectForKey:@"title"];
     if ( [data objectForKey:@"id"] )
         self.id = (int)[data objectForKey:@"id"];
