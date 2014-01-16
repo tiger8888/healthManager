@@ -8,6 +8,11 @@
 
 #import "HttpRequestManager.h"
 
+@interface HttpRequestManager ()
+{
+    NSMutableData *_tmpData;
+}
+@end
 
 static HttpRequestManager *_sharedManager;
 
@@ -42,7 +47,7 @@ static HttpRequestManager *_sharedManager;
 {
     self = [super init];
     if (self) {
-
+        _tmpData = [[NSMutableData alloc] init];
     }
     return self;
 }
@@ -81,12 +86,37 @@ static HttpRequestManager *_sharedManager;
                 
                 [MBProgressHUD hideHUDForView:superView animated:YES];
                 failedBlock();
-                
+
             }];
         }
             break;
         default:
             break;
     }
+}
+
+- (void)requestLoginWithData:(NSData *)data
+{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[BASEURL stringByAppendingPathComponent:@"/login.json"]]];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:data];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection start];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [_tmpData resetBytesInRange:NSMakeRange(0, _tmpData.length)];
+    [_tmpData setLength:0];
+}
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [_tmpData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *str = [[NSString alloc] initWithData:_tmpData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",str);
 }
 @end

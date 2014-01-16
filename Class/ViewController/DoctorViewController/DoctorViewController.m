@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSString *patientId = [[NSUserDefaults standardUserDefaults] objectForKey:@"patientId"];
+//    NSString *patientId = [[NSUserDefaults standardUserDefaults] objectForKey:@"patientId"];
     
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:[NSString stringWithFormat:@"patient/doctor/list/1.json"] completionHandle:^(id returnObject) {
         NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
@@ -68,7 +68,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"详细%ld",indexPath.row);
     [tableView cellForRowAtIndexPath:indexPath].selected = NO;
     LSBackGrayView *backView = [[LSBackGrayView alloc] initWithFrame:FULLSCREEN];
     [self.view addSubview:backView];

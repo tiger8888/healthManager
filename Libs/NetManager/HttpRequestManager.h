@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
-@interface HttpRequestManager : NSObject
+@interface HttpRequestManager : NSObject <NSURLConnectionDelegate>
 
 typedef enum
 {
@@ -22,4 +22,5 @@ typedef void (^LSJSONBlock)(id returnObject);
 + (HttpRequestManager *)sharedManager;
 
 - (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView method:(requestMethod)method;
+- (void)requestLoginWithData:(NSData *)data;
 @end

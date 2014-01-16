@@ -85,6 +85,7 @@
 		9C0BFFD21886D944002845D9 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BFFAD1886D944002845D9 /* SettingViewController.xib */; };
 		9C0BFFD61886DA30002845D9 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFFD51886DA30002845D9 /* SessionViewController.m */; };
 		9C911B0918810299004CD648 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C911B0618810299004CD648 /* MBProgressHUD.m */; };
+		9CFE4E09188826750048C4ED /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CFE4E08188826750048C4ED /* Base64.m */; };
 		B8232282185F48EA005F2409 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823225C185F48EA005F2409 /* arrow@2x.png */; };
 		B8232283185F48EA005F2409 /* bbi_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823225D185F48EA005F2409 /* bbi_left@2x.png */; };
 		B8232284185F48EA005F2409 /* blood_segment_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823225E185F48EA005F2409 /* blood_segment_1@2x.png */; };
@@ -278,6 +279,8 @@
 		9C0BFFD51886DA30002845D9 /* SessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
 		9C911B0518810299004CD648 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		9C911B0618810299004CD648 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		9CFE4E07188826750048C4ED /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		9CFE4E08188826750048C4ED /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		B823225C185F48EA005F2409 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		B823225D185F48EA005F2409 /* bbi_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bbi_left@2x.png"; sourceTree = "<group>"; };
 		B823225E185F48EA005F2409 /* blood_segment_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blood_segment_1@2x.png"; sourceTree = "<group>"; };
@@ -504,6 +507,7 @@
 			children = (
 				8B9BEEBC18877F6E00A669C1 /* NSDictionary+NullOBJForKey.h */,
 				8B9BEEBD18877F6E00A669C1 /* NSDictionary+NullOBJForKey.m */,
+				9CFE4E06188826750048C4ED /* Base64 */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -792,6 +796,15 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		9CFE4E06188826750048C4ED /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				9CFE4E07188826750048C4ED /* Base64.h */,
+				9CFE4E08188826750048C4ED /* Base64.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
 		B823225B185F48EA005F2409 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1031,6 +1044,7 @@
 				9C0BFFB71886D944002845D9 /* SuperListViewController.m in Sources */,
 				9C0BFFBC1886D944002845D9 /* BloodViewController.m in Sources */,
 				8BFE177F187FEC5700D1F48A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				9CFE4E09188826750048C4ED /* Base64.m in Sources */,
 				8BFE1785187FEC5700D1F48A /* LSBackGrayView.m in Sources */,
 				9C0BFFC51886D944002845D9 /* KnowledgeViewController.m in Sources */,
 				8B94AB111848663300CA5869 /* main.m in Sources */,
@@ -1165,11 +1179,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HealthManager/HealthManager-Prefix.pch";
 				INFOPLIST_FILE = "HealthManager/HealthManager-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Libs/ZBarSDK",
-					/Users/cindy/Desktop/301/healthManager/Libs/ZBarSDK,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1187,11 +1200,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HealthManager/HealthManager-Prefix.pch";
 				INFOPLIST_FILE = "HealthManager/HealthManager-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Libs/ZBarSDK",
-					/Users/cindy/Desktop/301/healthManager/Libs/ZBarSDK,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

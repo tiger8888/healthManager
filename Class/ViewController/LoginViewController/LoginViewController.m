@@ -57,34 +57,24 @@
         case 1:
         {
             NSLog(@"登陆");
-            NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
-            [parameter setObject:@"13911011342" forKey:@"m"];
-            [parameter setObject:@"666666" forKey:@"p"];
-            
-
-//            [parameter setObject:_phoneNumber.text forKey:@"m"];
-//            [parameter setObject:_password.text forKey:@"p"];
-                /**
-                 *  请求方法：
-                 *  首先找出单例
-                 *  @param  字典就是要传的json格式的参数
-                 *  @param  字符串就是你要请求的接口
-                 *  @param  block是你回调的方法
-                 *  @param  block是请求失败（无网络）你回调的方法
-                 *  @param  提示框的父视图，一般为self.view如果不添加提示就nil
-                 *  @return 不需要返回值
-                 */
-            [[HttpRequestManager sharedManager] requestWithParameters:parameter interface:@"login.json" completionHandle:^(id jsonObject) {
-                
-                NSString *str = [[NSString alloc] initWithData:jsonObject encoding:NSUTF8StringEncoding];
-                NSLog(@"%@",str);
-                
-            } failed:^{
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络错误" message:@"网络连接失败，请检查网络稍后重试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            int pnLength = _phoneNumber.text.length;
+            int pwLength = _password.text.length;
+            if (pnLength != 11 || pwLength < 6 ) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"输入格式有误" message:@"您输入的手机号或密码长度不正确请检查后重试" delegate:nil cancelButtonTitle:@"返回" otherButtonTitles: nil];
                 [alert show];
-                
-            } hitSuperView:self.view method:kPost];
+                return;
+            }
+            NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
+            [parameter setObject:_phoneNumber.text forKey:@"m"];
+            [parameter setObject:_password.text forKey:@"p"];
+            
+            NSData *tmpDate = [NSJSONSerialization dataWithJSONObject:parameter options:NSJSONWritingPrettyPrinted error:nil];
+            
+            NSString *base64Str = [tmpDate base64EncodedString];
+            NSLog(@"%@",base64Str);
+            NSData *base64Data = [base64Str dataUsingEncoding:NSUTF8StringEncoding];
+            
+            [[HttpRequestManager sharedManager] requestLoginWithData:base64Data];
         }
             break;
         case 2:

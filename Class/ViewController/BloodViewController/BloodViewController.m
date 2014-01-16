@@ -171,7 +171,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"详细%ld",indexPath.row);
     //找出数据源对应的日期模型
     id dateModel = _dataSource[indexPath.row];
     
