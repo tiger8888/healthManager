@@ -133,7 +133,7 @@
         else
         {
             NSLog(@"提前提醒时间");
-            SettingRemindTimeViewController *settingRemindTimeViewCtl = [SettingRemindTimeViewController new];
+            SettingRemindTimeViewController *settingRemindTimeViewCtl = [[SettingRemindTimeViewController alloc] initWithCategory:10];
             settingRemindTimeViewCtl.selectedValue = _settingRemindTime;
             settingRemindTimeViewCtl.dismissBlock = ^(NSString *time){
                 _settingRemindTime = time;

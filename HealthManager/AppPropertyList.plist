@@ -62,5 +62,11 @@
 		<key>titleName</key>
 		<string>医患交流</string>
 	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>设置提前提醒时间</string>
+		<key>class</key>
+		<string>SettingRemindTimeViewController</string>
+	</dict>
 </array>
 </plist>
