@@ -258,18 +258,18 @@
             if (total > 1024) {
                 //单位Gb
                 total = total/(1024);
-                fileTotalSize = [NSString stringWithFormat:@"%.2f Gb",total];
+                fileTotalSize = [NSString stringWithFormat:@"%.2f GB",total];
             }
             else {
-                fileTotalSize = [NSString stringWithFormat:@"%.2f Mb",total];
+                fileTotalSize = [NSString stringWithFormat:@"%.2f MB",total];
             }
         }
         else {
-            fileTotalSize = [NSString stringWithFormat:@"%.2f Kb",total];
+            fileTotalSize = [NSString stringWithFormat:@"%.2f KB",total];
         }
     }
     else {
-        fileTotalSize = [NSString stringWithFormat:@"%.0f b",total];
+        fileTotalSize = [NSString stringWithFormat:@"%.0f B",total];
     }
     _cacheTotal = total;
 //    NSLog(@"total file size is %@",fileTotalSize);
