@@ -52,7 +52,7 @@
 - (IBAction)onClick:(id)sender
 {
     UIButton *button = (UIButton *)sender;
-//    UINavigationController *mainNavCtl;
+    UINavigationController *mainNavCtl;
     switch (button.tag) {
         case 1:
         {
@@ -86,8 +86,8 @@
             break;
     }
     
-//    mainNavCtl = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
-//    [self presentViewController:mainNavCtl animated:YES completion:NULL];
+    mainNavCtl = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
+    [self presentViewController:mainNavCtl animated:YES completion:NULL];
     
 }
 @end

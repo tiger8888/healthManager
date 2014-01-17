@@ -7,6 +7,7 @@
 //
 
 #import "MoreViewController.h"
+#import "AnnouncementViewController.h"
 
 @interface MoreViewController ()
 
@@ -132,6 +133,9 @@
         if (indexPath.row == 0)
         {
             NSLog(@"公告");
+            AnnouncementViewController *announcementViewCtl = [[AnnouncementViewController alloc] initWithCategory:11];
+            [self.navigationController pushViewController:announcementViewCtl animated:YES];
+            
         }
         else if (indexPath.row == 1)
 //        {

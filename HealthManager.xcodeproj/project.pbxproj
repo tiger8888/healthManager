@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E56B187E31B500F075B0 /* AppPropertyList.plist */; };
+		37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8544D1888EB4500543874 /* AnnouncementViewController.m */; };
+		37A854501888EB4500543874 /* AnnouncementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8544E1888EB4500543874 /* AnnouncementViewController.xib */; };
+		37A854581889002C00543874 /* Announcement.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A854571889002C00543874 /* Announcement.m */; };
+		37A8545C1889012500543874 /* AnnouncementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8545A1889012500543874 /* AnnouncementDetailViewController.m */; };
+		37A8545D1889012500543874 /* AnnouncementDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */; };
 		37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A8D5F51876A23C0015432A /* QuartzCore.framework */; };
 		37A9237818877B8600A07635 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A9237218877B8600A07635 /* libzbar.a */; };
 		37A9237918877B8600A07635 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A9237418877B8600A07635 /* zbar-back.png */; };
@@ -137,6 +142,14 @@
 
 /* Begin PBXFileReference section */
 		37A3E56B187E31B500F075B0 /* AppPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppPropertyList.plist; path = HealthManager/AppPropertyList.plist; sourceTree = SOURCE_ROOT; };
+		37A8544C1888EB4500543874 /* AnnouncementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
+		37A8544D1888EB4500543874 /* AnnouncementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
+		37A8544E1888EB4500543874 /* AnnouncementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementViewController.xib; sourceTree = "<group>"; };
+		37A854561889002C00543874 /* Announcement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Announcement.h; sourceTree = "<group>"; };
+		37A854571889002C00543874 /* Announcement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Announcement.m; sourceTree = "<group>"; };
+		37A854591889012500543874 /* AnnouncementDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementDetailViewController.h; sourceTree = "<group>"; };
+		37A8545A1889012500543874 /* AnnouncementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementDetailViewController.m; sourceTree = "<group>"; };
+		37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementDetailViewController.xib; sourceTree = "<group>"; };
 		37A8D5F51876A23C0015432A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		37A9235E18877B8600A07635 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		37A9235F18877B8600A07635 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
@@ -590,6 +603,8 @@
 				9C0BFF611886D944002845D9 /* CoreData */,
 				9C0BFF6A1886D944002845D9 /* Knowledge.h */,
 				9C0BFF6B1886D944002845D9 /* Knowledge.m */,
+				37A854561889002C00543874 /* Announcement.h */,
+				37A854571889002C00543874 /* Announcement.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -758,9 +773,15 @@
 		9C0BFFA31886D944002845D9 /* MoreViewController */ = {
 			isa = PBXGroup;
 			children = (
+				37A8544C1888EB4500543874 /* AnnouncementViewController.h */,
+				37A8544D1888EB4500543874 /* AnnouncementViewController.m */,
+				37A8544E1888EB4500543874 /* AnnouncementViewController.xib */,
 				9C0BFFA41886D944002845D9 /* MoreViewController.h */,
 				9C0BFFA51886D944002845D9 /* MoreViewController.m */,
 				9C0BFFA61886D944002845D9 /* MoreViewController.xib */,
+				37A854591889012500543874 /* AnnouncementDetailViewController.h */,
+				37A8545A1889012500543874 /* AnnouncementDetailViewController.m */,
+				37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */,
 			);
 			path = MoreViewController;
 			sourceTree = "<group>";
@@ -939,6 +960,7 @@
 				9C0BFFBD1886D944002845D9 /* BloodViewController.xib in Resources */,
 				37A9237918877B8600A07635 /* zbar-back.png in Resources */,
 				B8232283185F48EA005F2409 /* bbi_left@2x.png in Resources */,
+				37A854501888EB4500543874 /* AnnouncementViewController.xib in Resources */,
 				B823229E185F48EA005F2409 /* main_btn_2@2x.png in Resources */,
 				B823228D185F48EA005F2409 /* bt_cancel@2x.png in Resources */,
 				B8232282185F48EA005F2409 /* arrow@2x.png in Resources */,
@@ -993,6 +1015,7 @@
 				37A9237A18877B8600A07635 /* zbar-help.html in Resources */,
 				B8232295185F48EA005F2409 /* Default-568h@2x.png in Resources */,
 				B8232286185F48EA005F2409 /* blood_segment_3@2x.png in Resources */,
+				37A8545D1889012500543874 /* AnnouncementDetailViewController.xib in Resources */,
 				9C0BFFBB1886D944002845D9 /* BloodRecord.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1028,6 +1051,7 @@
 				8BFE177B187FEC5700D1F48A /* AFHTTPClient.m in Sources */,
 				9C0BFFB51886D944002845D9 /* NavigationBarViewController.m in Sources */,
 				8BFE1781187FEC5700D1F48A /* AFURLConnectionOperation.m in Sources */,
+				37A8545C1889012500543874 /* AnnouncementDetailViewController.m in Sources */,
 				8BFE1780187FEC5700D1F48A /* AFPropertyListRequestOperation.m in Sources */,
 				8BFE177E187FEC5700D1F48A /* AFJSONRequestOperation.m in Sources */,
 				9C0BFFC31886D944002845D9 /* KnowledgeDetailViewController.m in Sources */,
@@ -1035,6 +1059,7 @@
 				8BFE1787187FEC5700D1F48A /* LSTextField.m in Sources */,
 				9C0BFFCB1886D944002845D9 /* ManagerViewController.m in Sources */,
 				9C0BFFAE1886D944002845D9 /* BloodRecordDateData.m in Sources */,
+				37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */,
 				8BFE1788187FEC5700D1F48A /* HttpRequestManager.m in Sources */,
 				9C0BFFD61886DA30002845D9 /* SessionViewController.m in Sources */,
 				9C0BFFBF1886D944002845D9 /* DoctorCell.m in Sources */,
@@ -1052,6 +1077,7 @@
 				9C0BFFB11886D944002845D9 /* Knowledge.m in Sources */,
 				9C0BFFB81886D944002845D9 /* AlertViewController.m in Sources */,
 				9C0BFFB41886D944002845D9 /* RootSuperCell.m in Sources */,
+				37A854581889002C00543874 /* Announcement.m in Sources */,
 				9C0BFFC71886D944002845D9 /* LoginViewController.m in Sources */,
 				9C0BFFB21886D944002845D9 /* KnowledgeStore.m in Sources */,
 				9C0BFFB61886D944002845D9 /* RootSuperViewController.m in Sources */,

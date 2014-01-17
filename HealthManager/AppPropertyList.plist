@@ -68,5 +68,17 @@
 		<key>class</key>
 		<string>SettingRemindTimeViewController</string>
 	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>公告</string>
+		<key>class</key>
+		<string>AnnouncementViewController</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>公告详情</string>
+		<key>class</key>
+		<string>AnnouncementDetailViewController</string>
+	</dict>
 </array>
 </plist>
