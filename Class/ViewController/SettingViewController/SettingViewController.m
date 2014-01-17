@@ -228,20 +228,26 @@
             total += [fileSize floatValue];
         }
     }
-    if (total > 1024*1024*1024) {
-        //单位Gb
-        total = total/(1024*1024*1024);
-        fileTotalSize = [NSString stringWithFormat:@"%.2f Gb",total];
-    }
-    else if (total > 1024*1024) {
-        //单位mb
-        total = total/(1024*1024);
-        fileTotalSize = [NSString stringWithFormat:@"%.2f Mb",total];
-    }
-    else if (total > 1024) {
-        //单位kb
+    if (total > 1024) {
+        //单位Kb
         total = total/(1024);
-        fileTotalSize = [NSString stringWithFormat:@"%.2f Kb",total];
+        
+        if (total > 1024) {
+            //单位Mb
+            total = total/(1024);
+            
+            if (total > 1024) {
+                //单位Gb
+                total = total/(1024);
+                fileTotalSize = [NSString stringWithFormat:@"%.2f Gb",total];
+            }
+            else {
+                fileTotalSize = [NSString stringWithFormat:@"%.2f Mb",total];
+            }
+        }
+        else {
+            fileTotalSize = [NSString stringWithFormat:@"%.2f Kb",total];
+        }
     }
     else {
         fileTotalSize = [NSString stringWithFormat:@"%f b",total];
