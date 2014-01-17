@@ -11,6 +11,10 @@
 @interface HttpRequestManager ()
 {
     NSMutableData *_tmpData;
+    //登陆界面专用成员变量
+    LSDataBlock _loginCompleteBlock;
+    LSVoidBlock _loginFailedBlock;
+    UIView *_loginSuperView;
 }
 @end
 
@@ -95,11 +99,17 @@ static HttpRequestManager *_sharedManager;
     }
 }
 
-- (void)requestLoginWithData:(NSData *)data
+- (void)requestLoginWithData:(NSData *)data completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[BASEURL stringByAppendingPathComponent:@"/login.json"]]];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:data];
+    
+    _loginCompleteBlock = block;
+    _loginFailedBlock = failedBlock;
+    _loginSuperView = superView;
+    
+    [MBProgressHUD showHUDAddedTo:superView animated:YES];
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [connection start];
 }
@@ -114,9 +124,19 @@ static HttpRequestManager *_sharedManager;
     [_tmpData appendData:data];
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"%@",error);
+    [MBProgressHUD hideHUDForView:_loginSuperView animated:YES];
+    if (_loginFailedBlock) {
+        _loginFailedBlock();
+    }
+}
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSString *str = [[NSString alloc] initWithData:_tmpData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",str);
+    [MBProgressHUD hideHUDForView:_loginSuperView animated:YES];
+    if (_loginCompleteBlock) {
+        _loginCompleteBlock(_tmpData);
+    }
 }
 @end

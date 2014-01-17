@@ -8,7 +8,7 @@
 
 #import "RootSuperViewController.h"
 
-@interface MoreViewController : SuperListViewController
+@interface MoreViewController : SettingAndMoreSuperViewController
 
 
 @end

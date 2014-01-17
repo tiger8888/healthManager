@@ -27,10 +27,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    NSString *patientId = [[NSUserDefaults standardUserDefaults] objectForKey:@"patientId"];
+    NSNumber *patientID = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
     
-    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:[NSString stringWithFormat:@"patient/doctor/list/1.json"] completionHandle:^(id returnObject) {
-        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:[NSString stringWithFormat:@"patient/doctor/list/%@.json",patientID] completionHandle:^(id returnObject) {
+//        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
         
         NSDictionary * returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         _dataSource = [[returnDict objectForKey:@"resultInfo"] objectForKey:@"list"];
@@ -122,7 +122,7 @@
     UIButton *button = (UIButton *)sender;
     NSDictionary *dict = _dataSource[button.tag];
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-    [userDef setObject:[dict objectForKey:@"doctorId"] forKey:@"myDoctorID"];
+    [userDef setObject:[dict objectForKey:@"doctorId"] forKey:DOCTORID_KEY];
     [userDef synchronize];
     
     NSString *classStr = [[[(AppDelegate *)([UIApplication sharedApplication].delegate) propertyList] objectAtIndex:9] objectForKey:@"class"];

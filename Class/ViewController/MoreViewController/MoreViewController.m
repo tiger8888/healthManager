@@ -38,14 +38,6 @@
 }
 
 #pragma mark - Layout Method
-- (void)createTableView
-{
-    _tableView = [[UITableView alloc] initWithFrame:FULLSCREEN style:UITableViewStyleGrouped];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    [self.view addSubview:_tableView];
-}
-
 - (void)layoutView
 {
     [super layoutView];
@@ -53,6 +45,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(20, 380, 269, 44);
     [button setImage:[UIImage imageNamed:@"bt_logoff"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(logOff) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 }
 
@@ -154,5 +147,36 @@
     {
         NSLog(@"修改密码");
     }
+}
+
+#pragma mark - AlertDelegate Method
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (alertView.tag) {
+        case 3:
+        {
+            if (buttonIndex == 0) {
+                return;
+            }
+            else if (buttonIndex == 1)
+            {
+                NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+                [userDef removeObjectForKey:PATIENTID_KEY];
+                [userDef synchronize];
+                
+                LoginViewController *loginViewController = [[LoginViewController alloc] init];
+                ((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController = loginViewController;
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+#pragma mark - Event method
+- (void)logOff
+{
+    ALERTOPRATE(@"警告", @"即将注销，注销后返回登陆界面", 3);
 }
 @end

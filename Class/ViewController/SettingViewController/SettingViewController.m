@@ -40,14 +40,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Layout Method
-- (void)createTableView
-{
-    _tableView = [[UITableView alloc] initWithFrame:FULLSCREEN style:UITableViewStyleGrouped];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    [self.view addSubview:_tableView];
-}
+//#pragma mark - Layout Method
+//- (void)createTableView
+//{
+//    _tableView = [[UITableView alloc] initWithFrame:FULLSCREEN style:UITableViewStyleGrouped];
+//    _tableView.dataSource = self;
+//    _tableView.delegate = self;
+//    [self.view addSubview:_tableView];
+//}
 #pragma mark - TableView Delegate Method
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -172,22 +172,18 @@
         /**
          * 目前缺少的操作：提醒用户：将清除用户与医生的关系，让用户进行确认
          */
-        NSNumber *doctorID = [[NSUserDefaults standardUserDefaults] objectForKey:@"myDoctorID"];
+        NSNumber *doctorID = [[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY];
         if (doctorID == nil || [doctorID intValue] == 0)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您尚未选取任何医生，请先进入我的医生界面选择您的私人医生" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-            alert.tag = 3;
-            [alert show];
+            ALERTOPRATE(@"警告", @"您尚未选取任何医生，请先进入我的医生界面选择您的私人医生", 3);
         }
         else
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您将重新选择医生" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-            alert.tag = 3;
-            [alert show];
+            ALERTOPRATE(@"警告", @"您将重新选择医生", 3);
         }
     }
 }
-
+#pragma Mark - AlertDelegate Method
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (alertView.tag) {
@@ -211,8 +207,9 @@
             }
             else if (buttonIndex == 1)
             {
-                NSLog(@"中心薛泽");
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"myDoctorID"];
+                NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+                [userDef removeObjectForKey:DOCTORID_KEY];
+                [userDef synchronize];
                 DoctorViewController *myDoctorViewCtl = [[DoctorViewController alloc] initWithCategory:2];
                 [self.navigationController pushViewController:myDoctorViewCtl animated:YES];
             }

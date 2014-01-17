@@ -29,6 +29,14 @@ typedef enum {
 #define IS_IOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0
 #define UICOLORFROMRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define FONT_DETAIL [UIFont systemFontOfSize:14]
+
+#define ALERT(t,m,c) UIAlertView *alert = [[UIAlertView alloc] initWithTitle:t message:m delegate:nil cancelButtonTitle:c otherButtonTitles: nil];[alert show]
+#define ALERTOPRATE(ti,m,ta) UIAlertView *alert = [[UIAlertView alloc] initWithTitle:ti message:m delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];alert.tag=ta;[alert show]
+/**
+ *  KEY
+ */
+#define PATIENTID_KEY @"patientID"
+#define DOCTORID_KEY @"myDoctorID"
 #define SETTING_REMIND_TIME_KEY @"settingRemindTime"
 #define SETTING_REMIND_SOUND_KEY @"settingRemindSound"
 /**
@@ -39,7 +47,7 @@ typedef enum {
 #import "NavigationBarViewController.h"
 #import "BackButtonViewController.h"
 #import "SuperListViewController.h"
-
+#import "SettingAndMoreSuperViewController.h"
 #import "RootSuperCell.h"
 
 /**

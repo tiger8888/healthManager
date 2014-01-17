@@ -10,6 +10,10 @@
 
 @interface MainViewController ()
 
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+
+- (IBAction)buttonClick:(id)sender;
+
 @end
 
 @implementation MainViewController
@@ -27,7 +31,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
+    _nameLabel.text = [_nameLabel.text stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,7 +45,7 @@
 {
     UIButton *button = (UIButton *)sender;
     if (button.tag == 2) {
-        NSNumber *myDoctorID = [[NSUserDefaults standardUserDefaults] objectForKey:@"myDoctorID"];
+        NSNumber *myDoctorID = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
         if (!myDoctorID || [myDoctorID intValue] == 0)
         {
             [self goToFunctionPart:2];

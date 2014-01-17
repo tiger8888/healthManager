@@ -18,9 +18,10 @@ typedef enum
 
 typedef void (^LSDataBlock)(NSData *data);
 typedef void (^LSJSONBlock)(id returnObject);
+typedef void (^LSVoidBlock)();
 
 + (HttpRequestManager *)sharedManager;
 
 - (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView method:(requestMethod)method;
-- (void)requestLoginWithData:(NSData *)data;
+- (void)requestLoginWithData:(NSData *)data completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView;
 @end

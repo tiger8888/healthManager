@@ -11,7 +11,4 @@
 
 @interface MainViewController : NavigationBarViewController
 
-
-- (IBAction)buttonClick:(id)sender;
-
 @end

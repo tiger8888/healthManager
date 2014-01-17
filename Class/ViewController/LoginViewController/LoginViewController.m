@@ -52,29 +52,31 @@
 - (IBAction)onClick:(id)sender
 {
     UIButton *button = (UIButton *)sender;
-    UINavigationController *mainNavCtl;
     switch (button.tag) {
         case 1:
         {
             NSLog(@"登陆");
-            int pnLength = _phoneNumber.text.length;
-            int pwLength = _password.text.length;
-            if (pnLength != 11 || pwLength < 6 ) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"输入格式有误" message:@"您输入的手机号或密码长度不正确请检查后重试" delegate:nil cancelButtonTitle:@"返回" otherButtonTitles: nil];
-                [alert show];
-                return;
+            
+            if ([self checkLength] == NO)
+            {
+                ALERT(@"输入格式有误", @"您输入的手机号或密码长度不正确请检查后重试", @"返回");
             }
-            NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
-            [parameter setObject:_phoneNumber.text forKey:@"m"];
-            [parameter setObject:_password.text forKey:@"p"];
+            else
+            {
+                [[HttpRequestManager sharedManager] requestLoginWithData:[self setUpParameters] completionHandle:^(id returnObject) {
+                    NSString *str = [[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding];
+                    NSLog(@"%@",str);
+                    NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+                    NSDictionary *resultInfo = [returnDict categoryObjectForKey:@"resultInfo"];
+                    if ([self checkReturnInfor:resultInfo]) {
+                        [self goToMainViewController];
+                    }
+                    
+                } failed:^{
+                    ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
+                } hitSuperView:self.view];
+            }
             
-            NSData *tmpDate = [NSJSONSerialization dataWithJSONObject:parameter options:NSJSONWritingPrettyPrinted error:nil];
-            
-            NSString *base64Str = [tmpDate base64EncodedString];
-            NSLog(@"%@",base64Str);
-            NSData *base64Data = [base64Str dataUsingEncoding:NSUTF8StringEncoding];
-            
-            [[HttpRequestManager sharedManager] requestLoginWithData:base64Data];
         }
             break;
         case 2:
@@ -85,9 +87,74 @@
         default:
             break;
     }
+}
+
+- (NSData *)setUpParameters
+{
+    NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
+    [parameter setObject:_phoneNumber.text forKey:@"m"];
+    [parameter setObject:_password.text forKey:@"p"];
     
-    mainNavCtl = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
+    NSData *tmpDate = [NSJSONSerialization dataWithJSONObject:parameter options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSString *base64Str = [tmpDate base64EncodedString];
+
+    NSData *base64Data = [base64Str dataUsingEncoding:NSUTF8StringEncoding];
+    return base64Data;
+}
+
+- (BOOL)checkLength
+{
+    NSUInteger pnLength = _phoneNumber.text.length;
+    NSUInteger pwLength = _password.text.length;
+    if (pnLength != 11 || pwLength < 6 ) {
+        
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)checkReturnInfor:(NSDictionary *)dict
+{
+    int r = [[dict categoryObjectForKey:@"retCode"] intValue];
+    switch (r) {
+        case 1:
+        {
+            NSDictionary *patient = [dict categoryObjectForKey:@"patient"];
+            NSString *name = [patient categoryObjectForKey:@"name"];
+            NSNumber *patientID = [patient categoryObjectForKey:@"patientId"];
+            NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+            [userDef setObject:name forKey:@"name"];
+            [userDef setObject:patientID forKey:PATIENTID_KEY];
+            [userDef synchronize];
+            return YES;
+        }
+            break;
+        case 2:
+        {
+            ALERT(@"", @"", @"");
+        }
+            break;
+        case 3:
+        {
+            ALERT(@"", @"", @"");
+        }
+            break;
+        default:
+            break;
+    }
+    return NO;
+}
+
+- (void)goToMainViewController
+{
+    UINavigationController *mainNavCtl = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
     [self presentViewController:mainNavCtl animated:YES completion:NULL];
-    
+}
+
+- (void)pushToForgetViewController
+{
+    UINavigationController *mainNavCtl = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
+    [self presentViewController:mainNavCtl animated:YES completion:NULL];
 }
 @end

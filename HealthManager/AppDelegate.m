@@ -22,8 +22,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-    NSNumber *login = [userDef objectForKey:@"login"];
-    if (!login || [login intValue] == 0)
+    NSNumber *patientID = [userDef objectForKey:PATIENTID_KEY];
+    if (!patientID || [patientID intValue] == 0)
     {
         self.window.rootViewController = [[LoginViewController alloc] init];
     }

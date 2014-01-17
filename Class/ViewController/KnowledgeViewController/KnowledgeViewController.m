@@ -60,9 +60,7 @@
         else
         {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示信息" message:@"暂无信息" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
+            ALERT(@"提示信息", @"暂无信息", @"OK");
         }
         
 //        _activityIndicatorLoading.hidden = YES;

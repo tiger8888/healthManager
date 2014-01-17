@@ -1,18 +1,18 @@
 //
-//  SessionViewController.m
+//  SettingAndMoreSuperViewController.m
 //  HealthManager
 //
-//  Created by 李硕 on 2014/01/15.
+//  Created by LiShuo on 14-1-17.
 //  Copyright (c) 2014年 LiShuo. All rights reserved.
 //
 
-#import "SessionViewController.h"
+#import "SettingAndMoreSuperViewController.h"
 
-@interface SessionViewController ()
+@interface SettingAndMoreSuperViewController ()
 
 @end
 
-@implementation SessionViewController
+@implementation SettingAndMoreSuperViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,13 +33,14 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY]);
 }
-
-#pragma mark - Event Method
-- (void)backButtonClick
+#pragma mark - Layout Method
+- (void)createTableView
 {
-    NSLog(@"back");
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    _tableView = [[UITableView alloc] initWithFrame:FULLSCREEN style:UITableViewStyleGrouped];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.scrollEnabled = NO;
+    [self.view addSubview:_tableView];
 }
 @end
