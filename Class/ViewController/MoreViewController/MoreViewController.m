@@ -162,6 +162,7 @@
             {
                 NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
                 [userDef removeObjectForKey:PATIENTID_KEY];
+                [userDef removeObjectForKey:DOCTORID_KEY];
                 [userDef synchronize];
                 
                 LoginViewController *loginViewController = [[LoginViewController alloc] init];
@@ -177,6 +178,6 @@
 #pragma mark - Event method
 - (void)logOff
 {
-    ALERTOPRATE(@"警告", @"即将注销，注销后返回登陆界面", 3);
+    ALERTOPRATE(@"警告", @"即将注销，注销后取消关联医生，返回登陆界面", 3);
 }
 @end

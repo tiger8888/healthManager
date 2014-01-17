@@ -45,7 +45,7 @@
 {
     UIButton *button = (UIButton *)sender;
     if (button.tag == 2) {
-        NSNumber *myDoctorID = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+        NSNumber *myDoctorID = [[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY];
         if (!myDoctorID || [myDoctorID intValue] == 0)
         {
             [self goToFunctionPart:2];

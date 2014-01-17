@@ -37,7 +37,7 @@
         [_tableView reloadData];
     } failed:^{
         
-    } hitSuperView:self.view method:kGet];
+    } hitSuperView:_tableView method:kGet];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,14 +46,15 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_dataSource count];
-}
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 1;
+//}
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return [_dataSource count];
+//}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentity = @"announcementCell";

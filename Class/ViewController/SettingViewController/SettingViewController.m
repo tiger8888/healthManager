@@ -160,10 +160,12 @@
     else if (indexPath.section == 1)
     {
         NSLog(@"清除缓存");
-        if (_cacheTotal>0) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您将清除所有缓存内容" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-            alert.tag = 2;
-            [alert show];
+        if (_cacheTotal>0)
+        {
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: message: delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//            alert.tag = ;
+//            [alert show];
+            ALERTOPRATE(@"警告", @"您将清除所有缓存内容", 2);
         }
     }
     else
@@ -183,7 +185,8 @@
         }
     }
 }
-#pragma Mark - AlertDelegate Method
+
+#pragma mark - AlertDelegate Method
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (alertView.tag) {
