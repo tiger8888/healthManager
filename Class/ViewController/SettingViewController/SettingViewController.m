@@ -12,6 +12,7 @@
 @interface SettingViewController ()
 {
     NSString *_settingRemindTime;
+    float _cacheTotal;
 }
 @end
 
@@ -159,6 +160,11 @@
     else if (indexPath.section == 1)
     {
         NSLog(@"清除缓存");
+        if (_cacheTotal>0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您将清除所有缓存内容" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            alert.tag = 2;
+            [alert show];
+        }
     }
     else
     {
@@ -185,6 +191,19 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (alertView.tag) {
+        case 2:
+        {
+            if (buttonIndex == 0) {
+                return;
+            }
+            else if (buttonIndex == 1)
+            {
+                NSLog(@"开始删除缓存");
+                [self cleanCache];
+                [_tableView reloadData];
+            }
+        }
+            break;
         case 3:
         {
             if (buttonIndex == 0) {
@@ -224,7 +243,7 @@
 
         if (fileArrts) {
             NSNumber *fileSize = [fileArrts objectForKey:NSFileSize];
-            NSLog(@"file name \"%@\" size is : %@",fileName,fileSize);
+//            NSLog(@"file name \"%@\" size is : %@",fileName,fileSize);
             total += [fileSize floatValue];
         }
     }
@@ -250,11 +269,31 @@
         }
     }
     else {
-        fileTotalSize = [NSString stringWithFormat:@"%f b",total];
+        fileTotalSize = [NSString stringWithFormat:@"%.0f b",total];
     }
-    NSLog(@"total file size is %@",fileTotalSize);
+    _cacheTotal = total;
+//    NSLog(@"total file size is %@",fileTotalSize);
     return fileTotalSize;
+}
+
+/**
+ *还可以增加效果：时时的反馈给用户清除缓存的进度
+ */
+- (void)cleanCache {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cachePath = [paths objectAtIndex:0];
     
+    NSDirectoryEnumerator *fileEnumerator = [[NSFileManager defaultManager] enumeratorAtPath:cachePath];
+    
+    for (NSString *fileName in fileEnumerator) {
+        NSString *filePath = [[cachePath stringByAppendingString:@"/" ] stringByAppendingString: fileName];
+        if ([[NSFileManager defaultManager]removeItemAtPath:filePath error:nil]) {
+            NSLog(@"success");
+        }
+        else {
+            NSLog(@"failed delete %@", filePath);
+        }
+    }
 }
 @end
 
