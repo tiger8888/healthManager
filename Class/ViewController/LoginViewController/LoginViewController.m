@@ -83,10 +83,7 @@
         case 2:
         {
             NSLog(@"忘记密码");
-            
-            ForgetPasswordViewController *forgetPasswordViewCtl = [[ForgetPasswordViewController alloc] initWithCategory:13];
-            [self presentModalViewController:forgetPasswordViewCtl animated:YES];
-            
+            [self pushToForgetViewController];
         }
             break;
         default:
@@ -159,7 +156,8 @@
 
 - (void)pushToForgetViewController
 {
-    UINavigationController *mainNavCtl = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
+    ForgetPasswordViewController *forgetPasswordViewCtl = [[ForgetPasswordViewController alloc] initWithCategory:13];
+    UINavigationController *mainNavCtl = [[UINavigationController alloc] initWithRootViewController:forgetPasswordViewCtl];
     [self presentViewController:mainNavCtl animated:YES completion:NULL];
 }
 @end

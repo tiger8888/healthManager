@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ForgetPasswordSetPWDViewController : NavigationBarViewController
-- (IBAction)updateAndLogin:(id)sender;
-@property (weak, nonatomic) IBOutlet UILabel *mobile;
+@interface ForgetPasswordSetPWDViewController : BackButtonViewController
+
+
+@property (weak, nonatomic) IBOutlet UILabel *mobileLabel;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPassword;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *validationCode;
 
+@property (nonatomic, strong) NSString *mobileCode;
+
+- (IBAction)updateAndLogin:(id)sender;
 @end

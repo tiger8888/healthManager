@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ForgetPasswordViewController : NavigationBarViewController
+@interface ForgetPasswordViewController : BackButtonViewController
 - (IBAction)next:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *mobile;
 
