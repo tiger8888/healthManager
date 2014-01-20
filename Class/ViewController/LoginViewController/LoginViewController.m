@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "ForgetPasswordViewController.h"
 
 @interface LoginViewController ()
 
@@ -82,6 +83,10 @@
         case 2:
         {
             NSLog(@"忘记密码");
+            
+            ForgetPasswordViewController *forgetPasswordViewCtl = [[ForgetPasswordViewController alloc] initWithCategory:13];
+            [self presentModalViewController:forgetPasswordViewCtl animated:YES];
+            
         }
             break;
         default:

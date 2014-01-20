@@ -80,5 +80,17 @@
 		<key>class</key>
 		<string>AnnouncementDetailViewController</string>
 	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>忘记密码</string>
+		<key>class</key>
+		<string>ForgetPasswordViewController</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>填写验证码</string>
+		<key>class</key>
+		<string>ForgetPasswordSetPWDViewController</string>
+	</dict>
 </array>
 </plist>

@@ -19,6 +19,10 @@
 		37A9237A18877B8600A07635 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 37A9237518877B8600A07635 /* zbar-help.html */; };
 		37A9237B18877B8600A07635 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A9237618877B8600A07635 /* zbar-helpicons.png */; };
 		37A9237C18877B8600A07635 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A9237718877B8600A07635 /* zbar-samples.png */; };
+		37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */; };
+		37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */; };
+		37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */; };
+		37C64EA6188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64EA4188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib */; };
 		8B94AB031848663200CA5869 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB021848663200CA5869 /* Foundation.framework */; };
 		8B94AB051848663200CA5869 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB041848663200CA5869 /* CoreGraphics.framework */; };
 		8B94AB071848663200CA5869 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB061848663200CA5869 /* UIKit.framework */; };
@@ -176,6 +180,12 @@
 		37A9237518877B8600A07635 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		37A9237618877B8600A07635 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		37A9237718877B8600A07635 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		37C64E9D188CEF970041BAA7 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
+		37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
+		37C64EA2188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordSetPWDViewController.h; sourceTree = "<group>"; };
+		37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordSetPWDViewController.m; sourceTree = "<group>"; };
+		37C64EA4188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordSetPWDViewController.xib; sourceTree = "<group>"; };
 		8B94AAFF1848663200CA5869 /* HealthManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B94AB021848663200CA5869 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B94AB041848663200CA5869 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -738,6 +748,12 @@
 				9C0BFF981886D944002845D9 /* LoginViewController.h */,
 				9C0BFF991886D944002845D9 /* LoginViewController.m */,
 				9C0BFF9A1886D944002845D9 /* LoginViewController.xib */,
+				37C64E9D188CEF970041BAA7 /* ForgetPasswordViewController.h */,
+				37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */,
+				37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */,
+				37C64EA2188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.h */,
+				37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */,
+				37C64EA4188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib */,
 			);
 			path = LoginViewController;
 			sourceTree = "<group>";
@@ -976,8 +992,10 @@
 				B8232296185F48EA005F2409 /* Default@2x.png in Resources */,
 				B8232290185F48EA005F2409 /* bt_logoff@2x.png in Resources */,
 				B823229D185F48EA005F2409 /* main_btn_1@2x.png in Resources */,
+				37C64EA6188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib in Resources */,
 				B823228C185F48EA005F2409 /* blood_texfield_selected@2x.png in Resources */,
 				B82322A1185F48EA005F2409 /* main_btn_5@2x.png in Resources */,
+				37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */,
 				B823229B185F48EA005F2409 /* Icon.png in Resources */,
 				8B94AB1A1848663300CA5869 /* Images.xcassets in Resources */,
 				B82322A0185F48EA005F2409 /* main_btn_4@2x.png in Resources */,
@@ -1029,6 +1047,7 @@
 			files = (
 				8BFE177C187FEC5700D1F48A /* AFHTTPRequestOperation.m in Sources */,
 				9C0BFFC91886D944002845D9 /* MainViewController.m in Sources */,
+				37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */,
 				8B94AB151848663300CA5869 /* AppDelegate.m in Sources */,
 				9C0BFFAF1886D944002845D9 /* BloodRecordModel.m in Sources */,
 				8BFE1786187FEC5700D1F48A /* LSSegment.m in Sources */,
@@ -1061,6 +1080,7 @@
 				9C0BFFB71886D944002845D9 /* SuperListViewController.m in Sources */,
 				9C0BFFBC1886D944002845D9 /* BloodViewController.m in Sources */,
 				8BFE177F187FEC5700D1F48A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */,
 				9CFE4E09188826750048C4ED /* Base64.m in Sources */,
 				8BFE1785187FEC5700D1F48A /* LSBackGrayView.m in Sources */,
 				9C0BFFC51886D944002845D9 /* KnowledgeViewController.m in Sources */,
