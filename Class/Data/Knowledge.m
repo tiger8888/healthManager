@@ -9,16 +9,31 @@
 #import "Knowledge.h"
 
 @implementation Knowledge
-@synthesize id, title, content, url;
+@synthesize id, title, content;
 
-- (void)readFromJSONDictionary:(NSDictionary *)data
+- (id)init
 {
-    self.title = [data objectForKey:@"title"];
-    if ( [data objectForKey:@"id"] )
-        self.id = (int)[data objectForKey:@"id"];
-    if ( [data objectForKey:@"content"] )
-        self.content = [data objectForKey:@"content"];
-    if ( [data objectForKey:@"url"] )
-        self.url = [data objectForKey:@"url"];
+    return [self initWithId:0 withTitle:@"" withContent:@""];
+}
+
+- (id)initWithId:(int)knowledgeId withTitle:(NSString *)knowledgeTitle withContent:(NSString *)knowledgeContent {
+    self = [super init];
+    if (self) {
+        self.id = knowledgeId;
+        self.title = knowledgeTitle;
+        self.content = knowledgeContent;
+    }
+    
+    return self;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    Knowledge *new = [[Knowledge allocWithZone:zone] init];
+    new.id = self.id;
+    new.title = self.title;
+    new.content = self.content;
+    
+    return new;
 }
 @end

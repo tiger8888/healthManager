@@ -7,7 +7,6 @@
 //
 
 #import "KnowledgeViewController.h"
-#import "KnowledgeStore.h"
 #import "KnowledgeDetailViewController.h"
 
 @interface KnowledgeViewController ()
@@ -38,34 +37,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-//    _activityIndicatorLoading = [UIActivityIndicatorView new];
-//    _activityIndicatorLoading.frame = CGRectMake(_backButtonItem.frame.size.width, (_navigationBar.frame.size.height-32)/2, 32, 32);
-//    _activityIndicatorLoading.hidden = false;
-//    [_activityIndicatorLoading startAnimating];
-//    [_navigationBar addSubview:_activityIndicatorLoading];
-    
-//    [[KnowledgeStore sharedStore] fetchTopInfo:10 withCompletion:^(NSMutableArray *obj, NSError *err) {
-    [MBProgressHUD showHUDAddedTo:_tableView animated:YES];
-
-    [[KnowledgeStore sharedStore] fetchTopwithCompletion:^(NSMutableArray *obj, NSError *err) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-        _dataSource = obj;
-        if (_dataSource)
-        {
-            [_tableView reloadData];
-        }
-        else
-        {
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            ALERT(@"提示信息", @"暂无信息", @"OK");
-        }
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:@"health.json" completionHandle:^(id returnObject) {
+        NSDictionary *announcementDataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+        _dataSource = [[announcementDataDictionary objectForKey:@"resultInfo"] objectForKey:@"list"];
+        NSLog(@"%@",_dataSource);
+        [_tableView reloadData];
+    } failed:^{
         
-//        _activityIndicatorLoading.hidden = YES;
-//        [_activityIndicatorLoading stopAnimating];
-    }];
+    } hitSuperView:_tableView method:kGet];
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,33 +58,47 @@
 #pragma mark - TableView Delegate Method
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentity = @"cell";
+//    static NSString *cellIdentity = @"cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentity];
+//        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//        
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
+//        imageView.frame = CGRectMake(280, 4, 35, 35);
+//        [cell addSubview:imageView];
+//        cell.textLabel.font = [UIFont systemFontOfSize:20];
+//    }
+//    
+//    Knowledge *knowledgeItem = [_dataSource objectAtIndex:[indexPath row]];
+//    cell.textLabel.text = knowledgeItem.title;
+//    
+//    return cell;
+
+    static NSString *cellIdentity = @"knowledgeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
-    if (!cell) {
+    if (!cell)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentity];
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
-        
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
-        imageView.frame = CGRectMake(280, 4, 35, 35);
-        [cell addSubview:imageView];
-        cell.textLabel.font = [UIFont systemFontOfSize:20];
     }
-    
-    Knowledge *knowledgeItem = [_dataSource objectAtIndex:[indexPath row]];
-    cell.textLabel.text = knowledgeItem.title;
-    
+    cell.textLabel.text = [[_dataSource objectAtIndex:[indexPath row]] objectForKey:@"title"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KnowledgeDetailViewController *detailViewCtl = [[KnowledgeDetailViewController alloc] initWithCategory:8];
+    NSDictionary *item = [_dataSource objectAtIndex:[indexPath row]];
+    Knowledge *knowledgeData = [[Knowledge alloc] initWithId:[[item objectForKey:@"id"] intValue] withTitle:[item categoryObjectForKey:@"title"] withContent:[item categoryObjectForKey:@"content"]];
+    detailViewCtl.knowledgeModel = knowledgeData;
+    knowledgeData = Nil;
 //    Knowledge *knowledge = [_dataSource objectAtIndex:[indexPath row]];
 //    detailViewCtl.url = knowledge.url;
     /**
      *  这里我感觉考虑到今后的拓展性传模型比较好，不管评论收藏还是分享都需要模型的其他属性
      */
-    detailViewCtl.knowledgeModel = [_dataSource objectAtIndex:[indexPath row]];
+//    detailViewCtl.knowledgeModel = [_dataSource objectAtIndex:[indexPath row]];
     [self.navigationController pushViewController:detailViewCtl animated:YES];
 }
 @end

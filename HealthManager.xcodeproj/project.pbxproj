@@ -56,7 +56,6 @@
 		9C0BFFAF1886D944002845D9 /* BloodRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF661886D944002845D9 /* BloodRecordModel.m */; };
 		9C0BFFB01886D944002845D9 /* BloodRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF691886D944002845D9 /* BloodRecordManager.m */; };
 		9C0BFFB11886D944002845D9 /* Knowledge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF6B1886D944002845D9 /* Knowledge.m */; };
-		9C0BFFB21886D944002845D9 /* KnowledgeStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF6E1886D944002845D9 /* KnowledgeStore.m */; };
 		9C0BFFB31886D944002845D9 /* BackButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF711886D944002845D9 /* BackButtonViewController.m */; };
 		9C0BFFB41886D944002845D9 /* RootSuperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF741886D944002845D9 /* RootSuperCell.m */; };
 		9C0BFFB51886D944002845D9 /* NavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BFF761886D944002845D9 /* NavigationBarViewController.m */; };
@@ -238,8 +237,6 @@
 		9C0BFF691886D944002845D9 /* BloodRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodRecordManager.m; sourceTree = "<group>"; };
 		9C0BFF6A1886D944002845D9 /* Knowledge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Knowledge.h; sourceTree = "<group>"; };
 		9C0BFF6B1886D944002845D9 /* Knowledge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Knowledge.m; sourceTree = "<group>"; };
-		9C0BFF6D1886D944002845D9 /* KnowledgeStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeStore.h; sourceTree = "<group>"; };
-		9C0BFF6E1886D944002845D9 /* KnowledgeStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeStore.m; sourceTree = "<group>"; };
 		9C0BFF701886D944002845D9 /* BackButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackButtonViewController.h; sourceTree = "<group>"; };
 		9C0BFF711886D944002845D9 /* BackButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackButtonViewController.m; sourceTree = "<group>"; };
 		9C0BFF731886D944002845D9 /* RootSuperCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootSuperCell.h; sourceTree = "<group>"; };
@@ -593,7 +590,6 @@
 			isa = PBXGroup;
 			children = (
 				9C0BFF601886D944002845D9 /* Data */,
-				9C0BFF6C1886D944002845D9 /* Store */,
 				9C0BFF6F1886D944002845D9 /* SuperClass */,
 				9C0BFF7B1886D944002845D9 /* ViewController */,
 			);
@@ -639,15 +635,6 @@
 				9C0BFF691886D944002845D9 /* BloodRecordManager.m */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		9C0BFF6C1886D944002845D9 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				9C0BFF6D1886D944002845D9 /* KnowledgeStore.h */,
-				9C0BFF6E1886D944002845D9 /* KnowledgeStore.m */,
-			);
-			path = Store;
 			sourceTree = "<group>";
 		};
 		9C0BFF6F1886D944002845D9 /* SuperClass */ = {
@@ -1085,7 +1072,6 @@
 				37A854581889002C00543874 /* Announcement.m in Sources */,
 				9C0BFFC71886D944002845D9 /* LoginViewController.m in Sources */,
 				8B9C96071888D6E000F87E00 /* SettingAndMoreSuperViewController.m in Sources */,
-				9C0BFFB21886D944002845D9 /* KnowledgeStore.m in Sources */,
 				9C0BFFB61886D944002845D9 /* RootSuperViewController.m in Sources */,
 				8BFE1783187FEC5700D1F48A /* UIImageView+AFNetworking.m in Sources */,
 			);
