@@ -126,8 +126,10 @@
             NSString *name = [patient categoryObjectForKey:@"name"];
             NSNumber *patientID = [patient categoryObjectForKey:@"patientId"];
             NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+            NSString *doctorID = [patient categoryObjectForKey:@"doctorId"];
             [userDef setObject:name forKey:@"name"];
             [userDef setObject:patientID forKey:PATIENTID_KEY];
+            [userDef setObject:doctorID forKey:DOCTORID_KEY];
             [userDef synchronize];
             return YES;
         }

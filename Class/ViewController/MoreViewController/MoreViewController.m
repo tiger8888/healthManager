@@ -155,7 +155,8 @@
     switch (alertView.tag) {
         case 3:
         {
-            if (buttonIndex == 0) {
+            if (buttonIndex == 0)
+            {
                 return;
             }
             else if (buttonIndex == 1)

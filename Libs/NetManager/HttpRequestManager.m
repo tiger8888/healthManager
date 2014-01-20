@@ -58,8 +58,10 @@ static HttpRequestManager *_sharedManager;
 
 - (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView method:(requestMethod)method
 {
-    [MBProgressHUD showHUDAddedTo:superView animated:YES];
-
+    if (superView) {
+        [MBProgressHUD showHUDAddedTo:superView animated:YES];
+    }
+    
     AFHTTPClient *requestOperation = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASEURL]];
     [requestOperation setParameterEncoding:AFJSONParameterEncoding];
     
@@ -109,7 +111,10 @@ static HttpRequestManager *_sharedManager;
     _loginFailedBlock = failedBlock;
     _loginSuperView = superView;
     
-    [MBProgressHUD showHUDAddedTo:superView animated:YES];
+    if (superView) {
+        [MBProgressHUD showHUDAddedTo:superView animated:YES];
+    }
+    
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [connection start];
 }

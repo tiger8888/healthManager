@@ -210,9 +210,7 @@
             }
             else if (buttonIndex == 1)
             {
-                NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-                [userDef removeObjectForKey:DOCTORID_KEY];
-                [userDef synchronize];
+                [self irrelate];
                 DoctorViewController *myDoctorViewCtl = [[DoctorViewController alloc] initWithCategory:2];
                 [self.navigationController pushViewController:myDoctorViewCtl animated:YES];
             }
@@ -294,6 +292,25 @@
             NSLog(@"failed delete %@", filePath);
         }
     }
+}
+//取消绑定医生
+- (void)irrelate
+{
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    
+    NSString *url = [NSString stringWithFormat:@"patient/doctor/delete/%@/%@.json",[userDef objectForKey:PATIENTID_KEY],[userDef objectForKey:DOCTORID_KEY]];
+    NSLog(@"%@",url);
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url  completionHandle:^(id returnObject) {
+        
+        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+            
+        } failed:^{
+            
+        } hitSuperView:nil method:kPost];
+    
+    [userDef removeObjectForKey:DOCTORID_KEY];
+    [userDef synchronize];
+
 }
 @end
 

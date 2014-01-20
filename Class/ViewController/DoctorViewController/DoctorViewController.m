@@ -121,9 +121,10 @@
 {
     UIButton *button = (UIButton *)sender;
     NSDictionary *dict = _dataSource[button.tag];
-    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-    [userDef setObject:[dict objectForKey:@"doctorId"] forKey:DOCTORID_KEY];
-    [userDef synchronize];
+//    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    
+    
+    [self relateDoctorID:[dict objectForKey:@"doctorId"]];
     
     NSString *classStr = [[[(AppDelegate *)([UIApplication sharedApplication].delegate) propertyList] objectAtIndex:9] objectForKey:@"class"];
     Class class = NSClassFromString(classStr);
@@ -132,4 +133,19 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+- (void)relateDoctorID:(id)obj
+{
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    [userDef setObject:obj forKey:DOCTORID_KEY];
+    [userDef synchronize];
+    
+    NSString *url = [NSString stringWithFormat:@"patient/doctor/add/%@/%@.json",[userDef objectForKey:PATIENTID_KEY],obj];
+    NSLog(@"%@",url);
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url completionHandle:^(id returnObject) {
+        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+        
+    } failed:^{
+        
+    } hitSuperView:nil method:kPost];
+}
 @end
