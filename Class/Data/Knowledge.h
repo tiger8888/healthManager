@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Knowledge : NSObject
+@interface Knowledge : NSObject<NSCopying>
 @property (nonatomic) int id;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *content;
-@property (nonatomic, strong) NSString *url;
+
+- (id)initWithId:(int)knowledgeId withTitle:(NSString *)knowledgeTitle withContent:(NSString *)knowledgeContent;
 @end

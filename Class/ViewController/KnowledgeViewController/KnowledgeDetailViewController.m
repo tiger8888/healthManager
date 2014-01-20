@@ -14,6 +14,8 @@
 @end
 
 @implementation KnowledgeDetailViewController
+@synthesize knowledgeModel;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -29,23 +31,24 @@
 #pragma mark - Layout Method
 - (void)showContentOnWebView
 {
-    if (self.knowledgeModel.url)
-    {
-//        _activityIndicatorLoading = [UIActivityIndicatorView new];
-//        _activityIndicatorLoading.frame = CGRectMake(_backButtonItem.frame.size.width, (_navigationBar.frame.size.height-32)/2, 32, 32);
-//        _activityIndicatorLoading.hidden = YES;
-//        [_navigationBar addSubview:_activityIndicatorLoading];
-        
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.knowledgeModel.url]];
-        UIWebView *webView = [[UIWebView alloc] initWithFrame:FULLSCREEN];
-        webView.delegate = self;
-        [webView loadRequest:request];
-        [self.view addSubview:webView];
+    UILabel *titleLabel = [UILabel new];
+    titleLabel.frame = CGRectMake(DEVICE_WIDTH/2, 44, DEVICE_WIDTH, 100);
+    titleLabel.text = self.knowledgeModel.title;
+    
+    UILabel *contentLabel = [UILabel new];
+    contentLabel.text = self.knowledgeModel.content;
+    contentLabel.font = [UIFont systemFontOfSize:17];
+    
+    CGFloat contentLabelHeight;
+    if ([self.knowledgeModel.content length]>0) {
+        contentLabelHeight = [self.knowledgeModel.content sizeWithFont:[UIFont systemFontOfSize:17]].height;
     }
     else {
-        //因url参数传递问题，提示有好信息
-        ALERT(@"提示信息", @"暂无信息", @"OK");
+        contentLabelHeight = 40;
     }
+    contentLabel.frame = CGRectMake(8, titleLabel.frame.size.height+10, DEVICE_WIDTH, contentLabelHeight);
+    [self.view addSubview:titleLabel];
+    [self.view addSubview:contentLabel];
 }
 
 #pragma mark - WebView Delegate Method
