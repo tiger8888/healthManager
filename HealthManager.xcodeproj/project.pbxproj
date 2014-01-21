@@ -21,6 +21,7 @@
 		37A9237C18877B8600A07635 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A9237718877B8600A07635 /* zbar-samples.png */; };
 		37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */; };
 		37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */; };
+		37B6E075188E6B6500A273AB /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E074188E6B6500A273AB /* Message.m */; };
 		37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */; };
 		37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */; };
 		37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */; };
@@ -185,6 +186,8 @@
 		37B6E06D188E35FF00A273AB /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
 		37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
 		37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyPasswordViewController.xib; sourceTree = "<group>"; };
+		37B6E073188E6B6500A273AB /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		37B6E074188E6B6500A273AB /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		37C64E9D188CEF970041BAA7 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
 		37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
@@ -442,6 +445,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		37B6E072188E6B2400A273AB /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				37B6E073188E6B6500A273AB /* Message.h */,
+				37B6E074188E6B6500A273AB /* Message.m */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
 		8B94AAF61848663200CA5869 = {
 			isa = PBXGroup;
 			children = (
@@ -604,6 +616,7 @@
 		9C0BFF5F1886D944002845D9 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				37B6E072188E6B2400A273AB /* Business */,
 				9C0BFF601886D944002845D9 /* Data */,
 				9C0BFF6F1886D944002845D9 /* SuperClass */,
 				9C0BFF7B1886D944002845D9 /* ViewController */,
@@ -1067,6 +1080,7 @@
 				9C0BFFCD1886D944002845D9 /* MoreViewController.m in Sources */,
 				9C0BFFB01886D944002845D9 /* BloodRecordManager.m in Sources */,
 				9C911B0918810299004CD648 /* MBProgressHUD.m in Sources */,
+				37B6E075188E6B6500A273AB /* Message.m in Sources */,
 				8BFE177D187FEC5700D1F48A /* AFImageRequestOperation.m in Sources */,
 				8BFE177B187FEC5700D1F48A /* AFHTTPClient.m in Sources */,
 				9C0BFFB51886D944002845D9 /* NavigationBarViewController.m in Sources */,

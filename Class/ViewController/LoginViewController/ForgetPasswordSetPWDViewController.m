@@ -57,7 +57,7 @@
         NSLog(@"%@",str);
         NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         NSDictionary *resultInfo = [returnDict categoryObjectForKey:@"resultInfo"];
-        if ([self checkReturnInfor:resultInfo]) {
+        if ( [[Message sharedManager] checkReturnInfor:resultInfo] ) {
 //            [self goToMainViewController];
             LoginViewController *loginViewController = [[LoginViewController alloc] init];
             ((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController = loginViewController;
@@ -81,40 +81,6 @@
     
     NSData *base64Data = [base64Str dataUsingEncoding:NSUTF8StringEncoding];
     return base64Data;
-}
-
-- (BOOL)checkReturnInfor:(NSDictionary *)dict
-{
-    int r = [[dict categoryObjectForKey:@"retCode"] intValue];
-    switch (r) {
-        case 1:
-        {
-//            NSDictionary *patient = [dict categoryObjectForKey:@"patient"];
-//            NSString *name = [patient categoryObjectForKey:@"name"];
-//            NSNumber *patientID = [patient categoryObjectForKey:@"patientId"];
-//            NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-//            NSString *doctorID = [patient categoryObjectForKey:@"doctorId"];
-//            [userDef setObject:name forKey:@"name"];
-//            [userDef setObject:patientID forKey:PATIENTID_KEY];
-//            [userDef setObject:doctorID forKey:DOCTORID_KEY];
-//            [userDef synchronize];
-            return YES;
-        }
-            break;
-        case 2:
-        {
-            ALERT(@"", @"", @"");
-        }
-            break;
-        case 3:
-        {
-            ALERT(@"", @"", @"");
-        }
-            break;
-        default:
-            break;
-    }
-    return NO;
 }
 
 - (void)goToMainViewController

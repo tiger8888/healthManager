@@ -68,6 +68,11 @@ typedef enum {
 #import "Knowledge.h"
 
 /**
+ *业务逻辑类
+ */
+#import "Message.h"
+
+/**
  *  控件，工具，库等
  */
 #import <SystemConfiguration/SystemConfiguration.h>
