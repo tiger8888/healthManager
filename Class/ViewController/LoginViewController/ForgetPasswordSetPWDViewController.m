@@ -46,15 +46,22 @@
 
 - (IBAction)updateAndLogin:(id)sender {
     //验证输入框
-    [[HttpRequestManager sharedManager] requestForgetPasswordWithData:[self setUpParameters] completionHandle:^(id returnObject) {
+//    [[HttpRequestManager sharedManager] requestForgetPasswordWithData: completionHandle:^(id returnObject) {
+//       
+//        
+//    } failed:^{
+//        
+//    } hitSuperView:];
+    [[HttpRequestManager sharedManager] requestSecretData:[self setUpParameters] interface:@"forgetPassword.json" completionHandle:^(id returnObject) {
         NSString *str = [[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding];
         NSLog(@"%@",str);
         NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         NSDictionary *resultInfo = [returnDict categoryObjectForKey:@"resultInfo"];
         if ([self checkReturnInfor:resultInfo]) {
-            [self goToMainViewController];
+//            [self goToMainViewController];
+            LoginViewController *loginViewController = [[LoginViewController alloc] init];
+            ((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController = loginViewController;
         }
-        
     } failed:^{
         ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
     } hitSuperView:self.view];
@@ -82,15 +89,15 @@
     switch (r) {
         case 1:
         {
-            NSDictionary *patient = [dict categoryObjectForKey:@"patient"];
-            NSString *name = [patient categoryObjectForKey:@"name"];
-            NSNumber *patientID = [patient categoryObjectForKey:@"patientId"];
-            NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-            NSString *doctorID = [patient categoryObjectForKey:@"doctorId"];
-            [userDef setObject:name forKey:@"name"];
-            [userDef setObject:patientID forKey:PATIENTID_KEY];
-            [userDef setObject:doctorID forKey:DOCTORID_KEY];
-            [userDef synchronize];
+//            NSDictionary *patient = [dict categoryObjectForKey:@"patient"];
+//            NSString *name = [patient categoryObjectForKey:@"name"];
+//            NSNumber *patientID = [patient categoryObjectForKey:@"patientId"];
+//            NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+//            NSString *doctorID = [patient categoryObjectForKey:@"doctorId"];
+//            [userDef setObject:name forKey:@"name"];
+//            [userDef setObject:patientID forKey:PATIENTID_KEY];
+//            [userDef setObject:doctorID forKey:DOCTORID_KEY];
+//            [userDef synchronize];
             return YES;
         }
             break;

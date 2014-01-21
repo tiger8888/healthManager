@@ -55,8 +55,11 @@
 - (void)backButtonClick
 {
     NSLog(@"back");
-    LoginViewController *loginViewCtl = [LoginViewController new];
-    [self presentModalViewController:loginViewCtl animated:YES];
+//    LoginViewController *loginViewCtl = [LoginViewController new];
+//    [self presentModalViewController:loginViewCtl animated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 - (IBAction)next:(id)sender {
     //验证手机号码格式
