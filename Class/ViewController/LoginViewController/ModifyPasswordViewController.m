@@ -13,6 +13,7 @@
 @end
 
 @implementation ModifyPasswordViewController
+//@synthesize oldPassword, newPassword, confirmPassword, validationCode;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +39,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.oldPassword resignFirstResponder];
-    [self.newPassword resignFirstResponder];
+    [self.nePassword resignFirstResponder];
     [self.confirmPassword resignFirstResponder];
     [self.validationCode resignFirstResponder];
 }
@@ -66,13 +67,74 @@
 }
 
 - (IBAction)submitOnClick:(id)sender {
-    
+    NSString *patientId = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+    NSString *resetPasswordUrl = [NSString stringWithFormat:@"resetPassword/%@.json", patientId];
+    NSLog(@"aaaaaa%@",resetPasswordUrl);
+//    [[HttpRequestManager sharedManager] requestSecretData:[self setUpParameters] interface:resetPasswordUrl completionHandle:^(id returnObject) {
+//        NSString *str = [[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding];
+//        NSLog(@"%@",str);
+//        NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+//        NSDictionary *resultInfo = [returnDict categoryObjectForKey:@"resultInfo"];
+//        if ([self checkReturnInfor:resultInfo]) {
+//            ALERT(@"修改密码", @"密码修改成功，请记住您的新密码", @"确定");
+//        }
+//    } failed:^{
+//        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
+//    } hitSuperView:self.view];
 }
 
 - (IBAction)resetOnClick:(id)sender {
     self.oldPassword.text = @"";
-    self.newPassword.text = @"";
+    self.nePassword.text = @"";
     self.confirmPassword.text = @"";
     self.validationCode.text = @"";
 }
+
+- (NSData *)setUpParameters
+{
+    NSString *mobile = [[NSUserDefaults standardUserDefaults] objectForKey:@"mobile"];
+    NSString *patientId = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+    
+    NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
+    [parameter setObject:mobile forKey:@"m"];
+    [parameter setObject:patientId forKey:@"patientId"];
+    [parameter setObject:self.oldPassword.text forKey:@"oldPassword"];
+    [parameter setObject:self.validationCode.text forKey:@"verifyCode"];
+    [parameter setObject:self.nePassword.text forKey:@"newPassword"];
+    [parameter setObject:self.confirmPassword.text forKey:@"rePassword"];
+    
+    NSData *tmpDate = [NSJSONSerialization dataWithJSONObject:parameter options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSString *base64Str = [tmpDate base64EncodedString];
+    
+    NSData *base64Data = [base64Str dataUsingEncoding:NSUTF8StringEncoding];
+    return base64Data;
+}
+
+- (BOOL)checkReturnInfor:(NSDictionary *)dict
+{
+    int r = [[dict categoryObjectForKey:@"retCode"] intValue];
+    switch (r) {
+        case 1:
+        {
+            return YES;
+        }
+            break;
+        case 2:
+        {
+            ALERT(@"", @"", @"");
+        }
+            break;
+        case 3:
+        {
+            ALERT(@"", @"", @"");
+        }
+            break;
+        default:
+            break;
+    }
+    return NO;
+}
+
+
 @end

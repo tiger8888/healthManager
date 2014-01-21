@@ -10,10 +10,9 @@
 
 @interface ModifyPasswordViewController : BackButtonViewController
 
-
+@property (weak, nonatomic) IBOutlet UITextField *nePassword;
 @property (weak, nonatomic) IBOutlet UITextField *validationCode;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPassword;
-@property (weak, nonatomic) IBOutlet UITextField *newPassword;
 @property (weak, nonatomic) IBOutlet UITextField *oldPassword;
 
 - (IBAction)getValidationCode:(id)sender;
