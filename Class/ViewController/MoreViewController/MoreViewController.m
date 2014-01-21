@@ -8,6 +8,7 @@
 
 #import "MoreViewController.h"
 #import "AnnouncementViewController.h"
+#import "ModifyPasswordViewController.h"
 
 @interface MoreViewController ()
 
@@ -146,6 +147,8 @@
     else if (indexPath.section == 1)
     {
         NSLog(@"修改密码");
+        ModifyPasswordViewController *modifyPasswordViewCtl = [[ModifyPasswordViewController alloc] initWithCategory:15];
+        [self.navigationController pushViewController:modifyPasswordViewCtl animated:YES];
     }
 }
 

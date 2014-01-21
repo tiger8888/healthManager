@@ -92,5 +92,11 @@
 		<key>class</key>
 		<string>ForgetPasswordSetPWDViewController</string>
 	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>修改密码</string>
+		<key>class</key>
+		<string>ModifyPasswordViewController</string>
+	</dict>
 </array>
 </plist>

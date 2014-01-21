@@ -19,6 +19,8 @@
 		37A9237A18877B8600A07635 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 37A9237518877B8600A07635 /* zbar-help.html */; };
 		37A9237B18877B8600A07635 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A9237618877B8600A07635 /* zbar-helpicons.png */; };
 		37A9237C18877B8600A07635 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A9237718877B8600A07635 /* zbar-samples.png */; };
+		37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */; };
+		37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */; };
 		37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */; };
 		37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */; };
 		37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */; };
@@ -180,6 +182,9 @@
 		37A9237518877B8600A07635 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		37A9237618877B8600A07635 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		37A9237718877B8600A07635 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		37B6E06D188E35FF00A273AB /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
+		37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
+		37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyPasswordViewController.xib; sourceTree = "<group>"; };
 		37C64E9D188CEF970041BAA7 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
 		37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
@@ -754,6 +759,9 @@
 				37C64EA2188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.h */,
 				37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */,
 				37C64EA4188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib */,
+				37B6E06D188E35FF00A273AB /* ModifyPasswordViewController.h */,
+				37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */,
+				37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */,
 			);
 			path = LoginViewController;
 			sourceTree = "<group>";
@@ -981,6 +989,7 @@
 				8B94AB0F1848663300CA5869 /* InfoPlist.strings in Resources */,
 				9C0BFFC61886D944002845D9 /* KnowledgeViewController.xib in Resources */,
 				B8232298185F48EA005F2409 /* Icon-114.png in Resources */,
+				37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */,
 				B82322A6185F48EA005F2409 /* textfield@2x.png in Resources */,
 				9C0BFFCA1886D944002845D9 /* MainViewController.xib in Resources */,
 				37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */,
@@ -1086,6 +1095,7 @@
 				9C0BFFC51886D944002845D9 /* KnowledgeViewController.m in Sources */,
 				8B94AB111848663300CA5869 /* main.m in Sources */,
 				8B94AB181848663300CA5869 /* HealthManager.xcdatamodeld in Sources */,
+				37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */,
 				9C0BFFB11886D944002845D9 /* Knowledge.m in Sources */,
 				9C0BFFB81886D944002845D9 /* AlertViewController.m in Sources */,
 				9C0BFFB41886D944002845D9 /* RootSuperCell.m in Sources */,

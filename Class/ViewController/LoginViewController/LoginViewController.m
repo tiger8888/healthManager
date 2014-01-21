@@ -130,6 +130,7 @@
             [userDef setObject:name forKey:@"name"];
             [userDef setObject:patientID forKey:PATIENTID_KEY];
             [userDef setObject:doctorID forKey:DOCTORID_KEY];
+            [userDef setObject:self.phoneNumber.text forKey:@"mobile"];
             [userDef synchronize];
             return YES;
         }
