@@ -64,7 +64,7 @@
             }
             else
             {
-                [[HttpRequestManager sharedManager] requestLoginWithData:[self setUpParameters] completionHandle:^(id returnObject) {
+                [[HttpRequestManager sharedManager] requestSecretData:[self setUpParameters] interface:@"login.json" completionHandle:^(id returnObject) {
                     NSString *str = [[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding];
                     NSLog(@"%@",str);
                     NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];

@@ -23,6 +23,6 @@ typedef void (^LSVoidBlock)();
 + (HttpRequestManager *)sharedManager;
 
 - (void)requestWithParameters:(NSDictionary *)parameters interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView method:(requestMethod)method;
-- (void)requestLoginWithData:(NSData *)data completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView;
-- (void)requestForgetPasswordWithData:(NSData *)data completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView;
+- (void)requestSecretData:(NSData *)data interface:(NSString *)interface completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView;
+//- (void)requestForgetPasswordWithData:(NSData *)data completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView;
 @end
