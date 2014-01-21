@@ -119,6 +119,24 @@ static HttpRequestManager *_sharedManager;
     [connection start];
 }
 
+- (void)requestForgetPasswordWithData:(NSData *)data completionHandle:(LSJSONBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView
+{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[BASEURL stringByAppendingPathComponent:@"/forgetPassword.json"]]];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:data];
+    
+    _loginCompleteBlock = block;
+    _loginFailedBlock = failedBlock;
+    _loginSuperView = superView;
+    
+    if (superView) {
+        [MBProgressHUD showHUDAddedTo:superView animated:YES];
+    }
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection start];
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     [_tmpData resetBytesInRange:NSMakeRange(0, _tmpData.length)];
