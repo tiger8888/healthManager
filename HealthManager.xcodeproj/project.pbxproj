@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		375ED8FC188F5F0500423CF8 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 375ED8FA188F5F0500423CF8 /* FeedbackViewController.m */; };
+		375ED8FD188F5F0500423CF8 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375ED8FB188F5F0500423CF8 /* FeedbackViewController.xib */; };
 		37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E56B187E31B500F075B0 /* AppPropertyList.plist */; };
 		37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8544D1888EB4500543874 /* AnnouncementViewController.m */; };
 		37A854501888EB4500543874 /* AnnouncementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8544E1888EB4500543874 /* AnnouncementViewController.xib */; };
@@ -148,6 +150,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		375ED8F9188F5F0500423CF8 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		375ED8FA188F5F0500423CF8 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		375ED8FB188F5F0500423CF8 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
 		37A3E56B187E31B500F075B0 /* AppPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppPropertyList.plist; path = HealthManager/AppPropertyList.plist; sourceTree = SOURCE_ROOT; };
 		37A8544C1888EB4500543874 /* AnnouncementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
 		37A8544D1888EB4500543874 /* AnnouncementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
@@ -811,6 +816,9 @@
 				37A854591889012500543874 /* AnnouncementDetailViewController.h */,
 				37A8545A1889012500543874 /* AnnouncementDetailViewController.m */,
 				37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */,
+				375ED8F9188F5F0500423CF8 /* FeedbackViewController.h */,
+				375ED8FA188F5F0500423CF8 /* FeedbackViewController.m */,
+				375ED8FB188F5F0500423CF8 /* FeedbackViewController.xib */,
 			);
 			path = MoreViewController;
 			sourceTree = "<group>";
@@ -1001,6 +1009,7 @@
 				B8232293185F48EA005F2409 /* bt_pop_ok@2x.png in Resources */,
 				8B94AB0F1848663300CA5869 /* InfoPlist.strings in Resources */,
 				9C0BFFC61886D944002845D9 /* KnowledgeViewController.xib in Resources */,
+				375ED8FD188F5F0500423CF8 /* FeedbackViewController.xib in Resources */,
 				B8232298185F48EA005F2409 /* Icon-114.png in Resources */,
 				37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */,
 				B82322A6185F48EA005F2409 /* textfield@2x.png in Resources */,
@@ -1078,6 +1087,7 @@
 				9C0BFFBA1886D944002845D9 /* BloodRecord.m in Sources */,
 				8BFE1782187FEC5700D1F48A /* AFXMLRequestOperation.m in Sources */,
 				9C0BFFCD1886D944002845D9 /* MoreViewController.m in Sources */,
+				375ED8FC188F5F0500423CF8 /* FeedbackViewController.m in Sources */,
 				9C0BFFB01886D944002845D9 /* BloodRecordManager.m in Sources */,
 				9C911B0918810299004CD648 /* MBProgressHUD.m in Sources */,
 				37B6E075188E6B6500A273AB /* Message.m in Sources */,

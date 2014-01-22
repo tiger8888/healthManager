@@ -9,6 +9,7 @@
 #import "MoreViewController.h"
 #import "AnnouncementViewController.h"
 #import "ModifyPasswordViewController.h"
+#import "FeedbackViewController.h"
 
 @interface MoreViewController ()
 
@@ -142,6 +143,8 @@
 //        else if (indexPath.row == 3)
         {
             NSLog(@"意见反馈");
+            FeedbackViewController *feedbackViewCtl = [[FeedbackViewController alloc] initWithCategory:16];
+            [self.navigationController pushViewController:feedbackViewCtl animated:YES];
         }
     }
     else if (indexPath.section == 1)

@@ -80,6 +80,11 @@ static Message *_sharedManager;
             message = @"旧密码错误";
         }
             break;
+        case 99:
+        {
+            message = @"数据格式错误";//json字符串格式错误
+        }
+            break;
         default:
             break;
     }
