@@ -110,4 +110,5 @@
     NSData *base64Data = [base64Str dataUsingEncoding:NSUTF8StringEncoding];
     return base64Data;
 }
+
 @end

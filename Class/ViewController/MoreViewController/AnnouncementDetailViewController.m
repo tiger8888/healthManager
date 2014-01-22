@@ -31,23 +31,27 @@
     // Do any additional setup after loading the view from its nib.
     
     UILabel *titleLabel = [UILabel new];
-    titleLabel.frame = CGRectMake(DEVICE_WIDTH/2, 44, DEVICE_WIDTH, 100);
+    titleLabel.frame = CGRectMake(20, 10, DEVICE_WIDTH - 40, 80);
+    titleLabel.textAlignment = UITextAlignmentCenter;
     titleLabel.text = self.announcement.title;
     
-    UILabel *contentLabel = [UILabel new];
-    contentLabel.text = self.announcement.content;
-    contentLabel.font = [UIFont systemFontOfSize:17];
+    UIFont *font = [UIFont systemFontOfSize:15.0];
+    CGSize maximumLabelSizeOne = CGSizeMake(300,MAXFLOAT);
+    CGSize expectedLabelSizeOne = [self.announcement.content sizeWithFont:font constrainedToSize:maximumLabelSizeOne lineBreakMode:NSLineBreakByCharWrapping];
+    CGRect pointValueRect = CGRectMake(5, titleLabel.frame.size.height+10 ,DEVICE_WIDTH - 20, expectedLabelSizeOne.height);
     
-    CGFloat contentLabelHeight;
-    if ([self.announcement.content length]>0) {
-        contentLabelHeight = [self.announcement.content sizeWithFont:[UIFont systemFontOfSize:17]].height;
-    }
-    else {
-        contentLabelHeight = 40;
-    }
-    contentLabel.frame = CGRectMake(8, titleLabel.frame.size.height+10, DEVICE_WIDTH, contentLabelHeight);
-    [self.view addSubview:titleLabel];
-    [self.view addSubview:contentLabel];
+    UILabel *contentLabel = [[UILabel alloc] initWithFrame:pointValueRect];
+    contentLabel.numberOfLines = 0;
+    contentLabel.lineBreakMode = UILineBreakModeWordWrap;
+    contentLabel.text = self.announcement.content;
+
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:FULLSCREEN];
+    scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, expectedLabelSizeOne.height);
+    
+    [scrollView addSubview:titleLabel];
+    [scrollView addSubview:contentLabel];
+    [self.view addSubview:scrollView];
+    
 }
 
 - (void)didReceiveMemoryWarning

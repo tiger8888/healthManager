@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ModifyPasswordViewController : BackButtonViewController
+@interface ModifyPasswordViewController : BackButtonViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nePassword;
 @property (weak, nonatomic) IBOutlet UITextField *validationCode;
