@@ -52,6 +52,16 @@
 //    } failed:^{
 //        
 //    } hitSuperView:];
+    if ( ![[Message sharedManager] checkValidationCode:self.validationCode.text] ) {
+        return;
+    }
+    if ( ![[Message sharedManager] checkPassword:self.password.text] ) {
+        return;
+    }
+    if ( ![[Message sharedManager] checkPassword:self.confirmPassword.text] ) {
+        return;
+    }
+
     [[HttpRequestManager sharedManager] requestSecretData:[self setUpParameters] interface:@"forgetPassword.json" completionHandle:^(id returnObject) {
         NSString *str = [[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding];
         NSLog(@"%@",str);

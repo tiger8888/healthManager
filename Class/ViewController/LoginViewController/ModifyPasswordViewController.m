@@ -67,6 +67,20 @@
 }
 
 - (IBAction)submitOnClick:(id)sender {
+    if ( ![[Message sharedManager] checkPassword:self.oldPassword.text] ) {
+//        [self.oldPassword becomeFirstResponder];
+        return;
+    }
+    if ( ![[Message sharedManager] checkPassword:self.nePassword.text] ) {
+        return;
+    }
+    if ( ![[Message sharedManager] checkPassword:self.confirmPassword.text] ) {
+        return;
+    }
+    if ( ![[Message sharedManager] checkValidationCode:self.validationCode.text] ) {
+        return;
+    }
+    
     NSString *patientId = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
     NSString *resetPasswordUrl = [NSString stringWithFormat:@"resetPassword/%@.json", patientId];
 
@@ -109,6 +123,12 @@
     
     NSData *base64Data = [base64Str dataUsingEncoding:NSUTF8StringEncoding];
     return base64Data;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

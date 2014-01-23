@@ -62,7 +62,9 @@
     }];
 }
 - (IBAction)next:(id)sender {
-    //验证手机号码格式
+    if ( ![[Message sharedManager] checkMobile:self.mobile.text] ) {
+        return;
+    }
     NSString *message = [NSString stringWithFormat:@"我们将发送验证码短信到这个号码：%@", self.mobile.text];
     ALERTOPRATE(@"确认手机号", message, 1);
 }
