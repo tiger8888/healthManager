@@ -2,7 +2,7 @@
 //  ModifyPasswordViewController.h
 //  HealthManager
 //
-//  Created by user on 14-1-21.
+//  Created by PanPeng on 14-1-21.
 //  Copyright (c) 2014年 LiShuo. All rights reserved.
 //
 

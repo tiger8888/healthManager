@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		375ED8FC188F5F0500423CF8 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 375ED8FA188F5F0500423CF8 /* FeedbackViewController.m */; };
 		375ED8FD188F5F0500423CF8 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375ED8FB188F5F0500423CF8 /* FeedbackViewController.xib */; };
-		375ED900188FBF9D00423CF8 /* LSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 375ED8FF188FBF9D00423CF8 /* LSLabel.m */; };
 		37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E56B187E31B500F075B0 /* AppPropertyList.plist */; };
 		37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8544D1888EB4500543874 /* AnnouncementViewController.m */; };
 		37A854501888EB4500543874 /* AnnouncementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8544E1888EB4500543874 /* AnnouncementViewController.xib */; };
@@ -20,6 +19,7 @@
 		37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */; };
 		37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */; };
 		37B6E075188E6B6500A273AB /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E074188E6B6500A273AB /* Message.m */; };
+		37B8A05A1890AA9A00FE7D44 /* ViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B8A0591890AA9A00FE7D44 /* ViewBuilder.m */; };
 		37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */; };
 		37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */; };
 		37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */; };
@@ -149,8 +149,6 @@
 		375ED8F9188F5F0500423CF8 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		375ED8FA188F5F0500423CF8 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		375ED8FB188F5F0500423CF8 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
-		375ED8FE188FBF9D00423CF8 /* LSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLabel.h; sourceTree = "<group>"; };
-		375ED8FF188FBF9D00423CF8 /* LSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLabel.m; sourceTree = "<group>"; };
 		37A3E56B187E31B500F075B0 /* AppPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppPropertyList.plist; path = HealthManager/AppPropertyList.plist; sourceTree = SOURCE_ROOT; };
 		37A8544C1888EB4500543874 /* AnnouncementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
 		37A8544D1888EB4500543874 /* AnnouncementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
@@ -166,6 +164,8 @@
 		37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyPasswordViewController.xib; sourceTree = "<group>"; };
 		37B6E073188E6B6500A273AB /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		37B6E074188E6B6500A273AB /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		37B8A0581890AA9A00FE7D44 /* ViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewBuilder.h; sourceTree = "<group>"; };
+		37B8A0591890AA9A00FE7D44 /* ViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewBuilder.m; sourceTree = "<group>"; };
 		37C64E9D188CEF970041BAA7 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
 		37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
@@ -461,6 +461,8 @@
 				8B9BEEBC18877F6E00A669C1 /* NSDictionary+NullOBJForKey.h */,
 				8B9BEEBD18877F6E00A669C1 /* NSDictionary+NullOBJForKey.m */,
 				9CFE4E06188826750048C4ED /* Base64 */,
+				37B8A0581890AA9A00FE7D44 /* ViewBuilder.h */,
+				37B8A0591890AA9A00FE7D44 /* ViewBuilder.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -512,8 +514,6 @@
 				8BFE1757187FEC5600D1F48A /* LSSegment.m */,
 				8BFE1758187FEC5600D1F48A /* LSTextField.h */,
 				8BFE1759187FEC5600D1F48A /* LSTextField.m */,
-				375ED8FE188FBF9D00423CF8 /* LSLabel.h */,
-				375ED8FF188FBF9D00423CF8 /* LSLabel.m */,
 			);
 			path = LSCustomPutIn;
 			sourceTree = "<group>";
@@ -992,6 +992,7 @@
 				9C0BFFBA1886D944002845D9 /* BloodRecord.m in Sources */,
 				8BFE1782187FEC5700D1F48A /* AFXMLRequestOperation.m in Sources */,
 				9C0BFFCD1886D944002845D9 /* MoreViewController.m in Sources */,
+				37B8A05A1890AA9A00FE7D44 /* ViewBuilder.m in Sources */,
 				375ED8FC188F5F0500423CF8 /* FeedbackViewController.m in Sources */,
 				9C0BFFB01886D944002845D9 /* BloodRecordManager.m in Sources */,
 				9C911B0918810299004CD648 /* MBProgressHUD.m in Sources */,
@@ -1002,7 +1003,6 @@
 				8BFE1781187FEC5700D1F48A /* AFURLConnectionOperation.m in Sources */,
 				37A8545C1889012500543874 /* AnnouncementDetailViewController.m in Sources */,
 				8BFE1780187FEC5700D1F48A /* AFPropertyListRequestOperation.m in Sources */,
-				375ED900188FBF9D00423CF8 /* LSLabel.m in Sources */,
 				8BFE177E187FEC5700D1F48A /* AFJSONRequestOperation.m in Sources */,
 				9C0BFFC31886D944002845D9 /* KnowledgeDetailViewController.m in Sources */,
 				9C0BFFB31886D944002845D9 /* BackButtonViewController.m in Sources */,

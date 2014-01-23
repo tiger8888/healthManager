@@ -2,8 +2,8 @@
 //  AnnouncementViewController.m
 //  DrugHousekeeper
 //
-//  Created by user on 14-1-17.
-//  Copyright (c) 2014年 user. All rights reserved.
+//  Created by PanPeng on 14-1-17.
+//  Copyright (c) 2014年 PanPeng. All rights reserved.
 //
 
 #import "AnnouncementViewController.h"
@@ -33,7 +33,6 @@
 //        NSLog(@"announcement data is : %@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
         NSDictionary *announcementDataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         _dataSource = [[announcementDataDictionary objectForKey:@"resultInfo"] objectForKey:@"list"];
-        NSLog(@"%@",_dataSource);
         [_tableView reloadData];
     } failed:^{
         

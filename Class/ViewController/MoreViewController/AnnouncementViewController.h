@@ -2,8 +2,8 @@
 //  AnnouncementViewController.h
 //  DrugHousekeeper
 //
-//  Created by user on 14-1-17.
-//  Copyright (c) 2014年 user. All rights reserved.
+//  Created by PanPeng on 14-1-17.
+//  Copyright (c) 2014年 PanPeng. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

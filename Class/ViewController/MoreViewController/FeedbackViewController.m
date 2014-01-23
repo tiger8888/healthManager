@@ -2,7 +2,7 @@
 //  FeedbackViewController.m
 //  HealthManager
 //
-//  Created by user on 14-1-22.
+//  Created by PanPeng on 14-1-22.
 //  Copyright (c) 2014年 LiShuo. All rights reserved.
 //
 

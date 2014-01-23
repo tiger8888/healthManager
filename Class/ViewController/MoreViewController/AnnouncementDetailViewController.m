@@ -2,7 +2,7 @@
 //  AnnouncementDetailViewController.m
 //  HealthManager
 //
-//  Created by user on 14-1-17.
+//  Created by PanPeng on 14-1-17.
 //  Copyright (c) 2014年 LiShuo. All rights reserved.
 //
 
@@ -35,18 +35,25 @@
     titleLabel.textAlignment = UITextAlignmentCenter;
     titleLabel.text = self.announcement.title;
     
-    UIFont *font = [UIFont systemFontOfSize:15.0];
-    CGSize maximumLabelSizeOne = CGSizeMake(300,MAXFLOAT);
-    CGSize expectedLabelSizeOne = [self.announcement.content sizeWithFont:font constrainedToSize:maximumLabelSizeOne lineBreakMode:NSLineBreakByCharWrapping];
-    CGRect pointValueRect = CGRectMake(5, titleLabel.frame.size.height+10 ,DEVICE_WIDTH - 20, expectedLabelSizeOne.height);
+    UIFont *contentFont = [UIFont systemFontOfSize:15.0];
+    int contentSizeWidth = DEVICE_WIDTH-20;
     
-    UILabel *contentLabel = [[UILabel alloc] initWithFrame:pointValueRect];
-    contentLabel.numberOfLines = 0;
-    contentLabel.lineBreakMode = UILineBreakModeWordWrap;
-    contentLabel.text = self.announcement.content;
+//    CGSize contentSize = CGSizeMake(contentSizeWidth, CGFLOAT_MAX);
+//    
+//    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.announcement.content attributes:@{NSFontAttributeName:contentFont}];
+//    CGRect contentRect = [attributedText boundingRectWithSize:contentSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+//    
+//    CGRect contentFrame = CGRectMake(10, titleLabel.frame.size.height+10 ,contentSizeWidth , ceilf(contentRect.size.height*1.3));
+    
+//    UILabel *contentLabel = [[UILabel alloc] initWithFrame:contentFrame];
+//    contentLabel.numberOfLines = 0;
+//    contentLabel.lineBreakMode = UILineBreakModeWordWrap;
+//    contentLabel.text = self.announcement.content;
+    
+    UILabel *contentLabel = [[ViewBuilder sharedManager] LabelWithMultiLinesFitHeight:self.announcement.content withLeft:10 withTop:titleLabel.frame.size.height+10 withWidth:contentSizeWidth withFont:contentFont];
 
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:FULLSCREEN];
-    scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, expectedLabelSizeOne.height);
+    scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, titleLabel.frame.size.height+contentLabel.frame.size.height);
     
     [scrollView addSubview:titleLabel];
     [scrollView addSubview:contentLabel];

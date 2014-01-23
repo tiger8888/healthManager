@@ -83,6 +83,8 @@ typedef enum {
 #import "MBProgressHUD.h"
 #import "Base64.h"
 #import "NSDictionary+NullOBJForKey.h"
+
+#import "ViewBuilder.h"
 #endif
 
 
