@@ -20,6 +20,7 @@
 		37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */; };
 		37B6E075188E6B6500A273AB /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E074188E6B6500A273AB /* Message.m */; };
 		37B8A05A1890AA9A00FE7D44 /* ViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B8A0591890AA9A00FE7D44 /* ViewBuilder.m */; };
+		37B8A05D1890B0FC00FE7D44 /* UILabel+FitHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B8A05C1890B0FC00FE7D44 /* UILabel+FitHeight.m */; };
 		37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */; };
 		37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */; };
 		37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */; };
@@ -166,6 +167,8 @@
 		37B6E074188E6B6500A273AB /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		37B8A0581890AA9A00FE7D44 /* ViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewBuilder.h; sourceTree = "<group>"; };
 		37B8A0591890AA9A00FE7D44 /* ViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewBuilder.m; sourceTree = "<group>"; };
+		37B8A05B1890B0FC00FE7D44 /* UILabel+FitHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+FitHeight.h"; sourceTree = "<group>"; };
+		37B8A05C1890B0FC00FE7D44 /* UILabel+FitHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+FitHeight.m"; sourceTree = "<group>"; };
 		37C64E9D188CEF970041BAA7 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
 		37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
@@ -463,6 +466,8 @@
 				9CFE4E06188826750048C4ED /* Base64 */,
 				37B8A0581890AA9A00FE7D44 /* ViewBuilder.h */,
 				37B8A0591890AA9A00FE7D44 /* ViewBuilder.m */,
+				37B8A05B1890B0FC00FE7D44 /* UILabel+FitHeight.h */,
+				37B8A05C1890B0FC00FE7D44 /* UILabel+FitHeight.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1028,6 +1033,7 @@
 				37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */,
 				9C0BFFB11886D944002845D9 /* Knowledge.m in Sources */,
 				9C0BFFB81886D944002845D9 /* AlertViewController.m in Sources */,
+				37B8A05D1890B0FC00FE7D44 /* UILabel+FitHeight.m in Sources */,
 				9C0BFFB41886D944002845D9 /* RootSuperCell.m in Sources */,
 				37A854581889002C00543874 /* Announcement.m in Sources */,
 				9C0BFFC71886D944002845D9 /* LoginViewController.m in Sources */,

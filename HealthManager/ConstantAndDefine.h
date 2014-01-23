@@ -84,6 +84,7 @@ typedef enum {
 #import "Base64.h"
 #import "NSDictionary+NullOBJForKey.h"
 
+#import "UILabel+FitHeight.h"
 #import "ViewBuilder.h"
 #endif
 

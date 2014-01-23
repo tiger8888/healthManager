@@ -9,6 +9,7 @@
 #import "AnnouncementDetailViewController.h"
 #import "Announcement.h"
 
+
 @interface AnnouncementDetailViewController ()
 
 @end
@@ -37,23 +38,25 @@
     
     UIFont *contentFont = [UIFont systemFontOfSize:15.0];
     int contentSizeWidth = DEVICE_WIDTH-20;
+    CGRect contentFrame = CGRectMake(10, titleLabel.frame.size.height+10 ,contentSizeWidth , 0);
     
-//    CGSize contentSize = CGSizeMake(contentSizeWidth, CGFLOAT_MAX);
-//    
-//    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.announcement.content attributes:@{NSFontAttributeName:contentFont}];
-//    CGRect contentRect = [attributedText boundingRectWithSize:contentSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-//    
-//    CGRect contentFrame = CGRectMake(10, titleLabel.frame.size.height+10 ,contentSizeWidth , ceilf(contentRect.size.height*1.3));
+    /**
+     *第一种创建自适应高度label的方法，个人认为上种方法更灵活一些，但性能方面不知道哪个更好一些
+     */
+    UILabel *contentLabel = [[UILabel alloc] initWithFrame:contentFrame];
+    contentLabel.font = contentFont;
+    contentLabel.numberOfLines = 0;
+    contentLabel.lineBreakMode = UILineBreakModeWordWrap;
+    contentLabel.text = self.announcement.content;
+    [contentLabel fitHeight];
     
-//    UILabel *contentLabel = [[UILabel alloc] initWithFrame:contentFrame];
-//    contentLabel.numberOfLines = 0;
-//    contentLabel.lineBreakMode = UILineBreakModeWordWrap;
-//    contentLabel.text = self.announcement.content;
-    
-    UILabel *contentLabel = [[ViewBuilder sharedManager] LabelWithMultiLinesFitHeight:self.announcement.content withLeft:10 withTop:titleLabel.frame.size.height+10 withWidth:contentSizeWidth withFont:contentFont];
+    /**
+     *第二种创建自适应高度label的方法
+     */
+//    UILabel *contentLabel = [[ViewBuilder sharedManager] LabelWithMultiLinesFitHeight:self.announcement.content withLeft:10 withTop:titleLabel.frame.size.height+10 withWidth:contentSizeWidth withFont:contentFont];
 
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:FULLSCREEN];
-    scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, titleLabel.frame.size.height+contentLabel.frame.size.height);
+    scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, titleLabel.frame.size.height+contentLabel.frame.size.height+20);
     
     [scrollView addSubview:titleLabel];
     [scrollView addSubview:contentLabel];

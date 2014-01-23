@@ -32,23 +32,27 @@
 - (void)showContentOnWebView
 {
     UILabel *titleLabel = [UILabel new];
-    titleLabel.frame = CGRectMake(DEVICE_WIDTH/2, 44, DEVICE_WIDTH, 100);
+    titleLabel.frame = CGRectMake(20, 10, DEVICE_WIDTH - 40, 80);
+    titleLabel.textAlignment = UITextAlignmentCenter;
     titleLabel.text = self.knowledgeModel.title;
     
-    UILabel *contentLabel = [UILabel new];
+    UIFont *contentFont = [UIFont systemFontOfSize:15.0];
+    int contentSizeWidth = DEVICE_WIDTH-20;
+    CGRect contentFrame = CGRectMake(10, titleLabel.frame.size.height+10 ,contentSizeWidth , 0);
+
+    UILabel *contentLabel = [[UILabel alloc] initWithFrame:contentFrame];
+    contentLabel.font = contentFont;
+    contentLabel.numberOfLines = 0;
+    contentLabel.lineBreakMode = UILineBreakModeWordWrap;
     contentLabel.text = self.knowledgeModel.content;
-    contentLabel.font = [UIFont systemFontOfSize:17];
+    [contentLabel fitHeight];
     
-    CGFloat contentLabelHeight;
-    if ([self.knowledgeModel.content length]>0) {
-        contentLabelHeight = [self.knowledgeModel.content sizeWithFont:[UIFont systemFontOfSize:17]].height;
-    }
-    else {
-        contentLabelHeight = 40;
-    }
-    contentLabel.frame = CGRectMake(8, titleLabel.frame.size.height+10, DEVICE_WIDTH, contentLabelHeight);
-    [self.view addSubview:titleLabel];
-    [self.view addSubview:contentLabel];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:FULLSCREEN];
+    scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, titleLabel.frame.size.height+contentLabel.frame.size.height+20);
+    
+    [scrollView addSubview:titleLabel];
+    [scrollView addSubview:contentLabel];
+    [self.view addSubview:scrollView];
 }
 
 #pragma mark - WebView Delegate Method
