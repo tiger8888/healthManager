@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
 
-
-@interface MainViewController : NavigationBarViewController
+@interface MainViewController : NavigationBarViewController <LoginDelegate>
 
 @end

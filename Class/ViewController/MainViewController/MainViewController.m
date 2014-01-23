@@ -30,8 +30,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"name"]) {
+        _nameLabel.text = [_nameLabel.text stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
+    }
     // Do any additional setup after loading the view from its nib.
-    _nameLabel.text = [_nameLabel.text stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSNumber *patientID = [userDef objectForKey:PATIENTID_KEY];
+    if (!patientID || [patientID intValue] == 0)
+    {
+        LoginViewController *loginVC =[[LoginViewController alloc] init];
+        loginVC.delegate = self;
+        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:loginVC] animated:YES completion:^{
+            
+        }];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,5 +79,11 @@
     UIViewController * viewController = [[class alloc] initWithCategory:category];
     
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+#pragma mark - Delegate Method
+- (void)loginComplate
+{
+    _nameLabel.text = [_nameLabel.text stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
 }
 @end

@@ -21,17 +21,8 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-    NSNumber *patientID = [userDef objectForKey:PATIENTID_KEY];
-    if (!patientID || [patientID intValue] == 0)
-    {
-        self.window.rootViewController = [[LoginViewController alloc] init];
-    }
-    else
-    {
-        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
-    }
-
+    
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

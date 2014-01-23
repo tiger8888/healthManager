@@ -172,8 +172,8 @@
                 [userDef removeObjectForKey:DOCTORID_KEY];
                 [userDef synchronize];
                 
-                LoginViewController *loginViewController = [[LoginViewController alloc] init];
-                ((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController = loginViewController;
+
+                ((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
             }
         }
             break;

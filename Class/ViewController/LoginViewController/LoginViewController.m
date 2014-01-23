@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationController.navigationBarHidden = YES;
     [self layoutView];
 }
 
@@ -133,14 +134,13 @@
 
 - (void)goToMainViewController
 {
-    UINavigationController *mainNavCtl = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
-    [self presentViewController:mainNavCtl animated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [_delegate loginComplate];
+    }];
 }
 
 - (void)pushToForgetViewController
 {
-    ForgetPasswordViewController *forgetPasswordViewCtl = [[ForgetPasswordViewController alloc] initWithCategory:13];
-    UINavigationController *mainNavCtl = [[UINavigationController alloc] initWithRootViewController:forgetPasswordViewCtl];
-    [self presentViewController:mainNavCtl animated:YES completion:NULL];
+    [self.navigationController pushViewController:[[ForgetPasswordViewController alloc] initWithCategory:13] animated:YES];
 }
 @end

@@ -68,9 +68,10 @@
         NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         NSDictionary *resultInfo = [returnDict categoryObjectForKey:@"resultInfo"];
         if ( [[Message sharedManager] checkReturnInfor:resultInfo] ) {
-//            [self goToMainViewController];
-            LoginViewController *loginViewController = [[LoginViewController alloc] init];
-            ((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController = loginViewController;
+            [self saveUserInfoWithLocation:resultInfo];
+            [self goToMainViewController];
+//            LoginViewController *loginViewController = [[LoginViewController alloc] init];
+//            ((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController = loginViewController;
         }
     } failed:^{
         ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
@@ -93,10 +94,24 @@
     return base64Data;
 }
 
+- (void)saveUserInfoWithLocation:(NSDictionary *)dict
+{
+    NSDictionary *patient = [dict categoryObjectForKey:@"patient"];
+    NSString *name = [patient categoryObjectForKey:@"name"];
+    NSNumber *patientID = [patient categoryObjectForKey:@"patientId"];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *doctorID = [patient categoryObjectForKey:@"doctorId"];
+    [userDef setObject:name forKey:@"name"];
+    [userDef setObject:patientID forKey:PATIENTID_KEY];
+    [userDef setObject:doctorID forKey:DOCTORID_KEY];
+//    [userDef setObject:self.phoneNumber.text forKey:@"mobile"];
+    [userDef synchronize];
+}
+
 - (void)goToMainViewController
 {
-    UINavigationController *mainNavCtl = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
-    [self presentViewController:mainNavCtl animated:YES completion:NULL];
+//    UINavigationController *mainNavCtl = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
+    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithCategory:0]];
 }
 
 @end

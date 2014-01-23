@@ -64,7 +64,6 @@
     //*********Page2
     [self createAnalysis];
     
-    [self updataRecord];
 }
 
 #pragma mark 创建段落
@@ -94,11 +93,18 @@
             NSLog(@"非合法");
             return ;
         }
-        [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:[NSDate dateWithTimeIntervalSinceNow:0]];
-        _dataSource = [[BloodRecordManager sharedBloodRecordManager] fetchAllDate];
-        [_tableView reloadData];
-        [self setLineChartDataSource:_bloodLineChar];
-        [_bloodLineChar setNeedsDisplay];
+        //直接上传
+        NSMutableDictionary *para = [[NSMutableDictionary alloc] init];
+        [para setObject:[NSNumber numberWithInt:[highPressure intValue]] forKey:@"systolicPressure"];
+        [para setObject:[NSNumber numberWithInt:[lowPressure intValue]] forKey:@"diastolicPressure"];
+        [para setObject:[NSNumber numberWithInt:[pulse intValue]] forKey:@"pulseRate"];
+        [self updataRecord:para];
+        //暂时不需要保存本地。
+//        [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:[NSDate dateWithTimeIntervalSinceNow:0]];
+//        _dataSource = [[BloodRecordManager sharedBloodRecordManager] fetchAllDate];
+//        [_tableView reloadData];
+//        [self setLineChartDataSource:_bloodLineChar];
+//        [_bloodLineChar setNeedsDisplay];
 
     }];
     return bloodRecord;
@@ -291,15 +297,24 @@ BOOL stringIsValidNumber(NSString *checkString)
 
 
 #pragma mark - Updata
-- (void)updataRecord
+- (void)updataRecord:(NSDictionary *)para
 {
-    NSArray *result = [[BloodRecordManager sharedBloodRecordManager] fetchRecordForUpData];
-    if (result.count != 0) {
-        //上传
-        for (id model in result)
-        {
-            
-        }
-    }
+//    NSArray *result = [[BloodRecordManager sharedBloodRecordManager] fetchRecordForUpData];
+//    if (result.count != 0) {
+//        //上传
+//        for (id model in result)
+//        {
+//            上传单条数据
+//        }
+//    }
+    //上传单条数据
+    NSNumber *patientID = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+    NSString *url = [NSString stringWithFormat:@"bloodPressure/add/%@.json",patientID];
+    [[HttpRequestManager sharedManager] requestWithParameters:para interface:url completionHandle:^(id returnObject) {
+        
+        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+    } failed:^{
+        ALERT(@"网络错误", @"网络错误上传失败，您的数据降无法同步到服务器", @"确定");
+    } hitSuperView:nil method:kPost];
 }
 @end

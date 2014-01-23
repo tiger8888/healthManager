@@ -39,28 +39,21 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//- (void)createBackButton
-//{
-//    _backButtonItem = [UIButton buttonWithType:UIButtonTypeCustom];
-//    _backButtonItem.frame = CGRectMake(10, 0, 44, 44);
-//    [_backButtonItem setImage:[UIImage imageNamed:@"bbi_left"] forState:UIControlStateNormal];
-//    [_backButtonItem addTarget:self action:@selector(backButtonClick) forControlEvents:UIControlEventTouchUpInside];
-//    [_navigationBar addSubview:_backButtonItem];
-//}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.mobile resignFirstResponder];
 }
 
-- (void)backButtonClick
-{
-    NSLog(@"back");
-//    LoginViewController *loginViewCtl = [LoginViewController new];
-//    [self presentModalViewController:loginViewCtl animated:YES];
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
-}
+//- (void)backButtonClick
+//{
+//    NSLog(@"back");
+////    LoginViewController *loginViewCtl = [LoginViewController new];
+////    [self presentModalViewController:loginViewCtl animated:YES];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        
+//    }];
+//}
 - (IBAction)next:(id)sender {
     if ( ![[Message sharedManager] checkMobile:self.mobile.text] ) {
         return;
