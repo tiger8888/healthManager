@@ -17,4 +17,5 @@
 - (NSArray *)fetchRecordBy:(NSManagedObject *)model;
 //取出当下储存的所有日期，应用于历史记录的列表获取数据源
 - (NSArray *)fetchAllDate;
+- (NSArray *)fetchRecordForUpData;
 @end

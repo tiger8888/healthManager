@@ -55,6 +55,23 @@
     return objs;
 
 }
+
+- (NSArray *)fetchRecordForUpData
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BloodRecordModel" inManagedObjectContext:[self getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"submit = NO"];
+    NSError *error = nil;
+    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (error)
+    {
+        [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
+    }
+    return objs;
+
+}
 #pragma mark - DateData
 - (NSString *)disposeDate:(NSDate *)date
 {

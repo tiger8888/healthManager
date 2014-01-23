@@ -97,6 +97,8 @@
 //    detailViewCtl.url = knowledge.url;
     /**
      *  这里我感觉考虑到今后的拓展性传模型比较好，不管评论收藏还是分享都需要模型的其他属性
+     
+     **之前我也这么想的，但是因为完全后台维护，不保存本地，也没有其他功能个人感觉多此一举
      */
 //    detailViewCtl.knowledgeModel = [_dataSource objectAtIndex:[indexPath row]];
     [self.navigationController pushViewController:detailViewCtl animated:YES];
