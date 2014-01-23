@@ -73,5 +73,8 @@
 //    return [[_dataSource[indexPath.row] objectForKey:@"height"] floatValue];
 //}
 
-
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.01f;
+}
 @end
