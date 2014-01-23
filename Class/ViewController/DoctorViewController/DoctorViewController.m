@@ -7,6 +7,7 @@
 //
 
 #import "DoctorViewController.h"
+#import "SessionViewController.h"
 
 @interface DoctorViewController ()
 
@@ -126,9 +127,9 @@
     
     [self relateDoctorID:[dict objectForKey:@"doctorId"]];
     
-    NSString *classStr = [[[(AppDelegate *)([UIApplication sharedApplication].delegate) propertyList] objectAtIndex:9] objectForKey:@"class"];
-    Class class = NSClassFromString(classStr);
-    UIViewController * viewController = [[class alloc] initWithCategory:9];
+//    NSString *classStr = [[[(AppDelegate *)([UIApplication sharedApplication].delegate) propertyList] objectAtIndex:9] objectForKey:@"class"];
+//    Class class = NSClassFromString(classStr);
+    UIViewController * viewController = [[SessionViewController alloc] initWithCategory:9];
     
     [self.navigationController pushViewController:viewController animated:YES];
 }

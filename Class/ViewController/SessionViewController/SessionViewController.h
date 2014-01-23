@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SessionViewController : BackButtonViewController
+@interface SessionViewController : BackButtonViewController<UITextFieldDelegate>
+
+
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+- (IBAction)submitOkClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 @end

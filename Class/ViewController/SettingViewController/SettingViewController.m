@@ -66,6 +66,8 @@
             UISwitch *soundSwitch = [UISwitch new];
             soundSwitch.frame = CGRectMake(cell.bounds.size.width - 100, (cell.bounds.size.height - soundSwitch.frame.size.height) /2, 0.0,  0.0);
             [soundSwitch addTarget:self action:@selector(switchSoundChanged:) forControlEvents:UIControlEventValueChanged];
+//            if ( [[NSUserDefaults standardUserDefaults] objectForKey:SETTING_REMIND_SOUND_KEY] ) {
+                soundSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SETTING_REMIND_SOUND_KEY] boolValue];
             [cell addSubview:soundSwitch];
             cell.selected = NO;
         }
@@ -225,6 +227,7 @@
 - (void)switchSoundChanged:(id)sender {
     UISwitch *switchCtl = (UISwitch *)sender;
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:switchCtl.on] forKey:SETTING_REMIND_SOUND_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSString *)getCacheSize {
