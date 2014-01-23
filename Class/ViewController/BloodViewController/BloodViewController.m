@@ -64,6 +64,7 @@
     //*********Page2
     [self createAnalysis];
     
+    [self updataRecord];
 }
 
 #pragma mark 创建段落
@@ -285,6 +286,20 @@ BOOL stringIsValidNumber(NSString *checkString)
     else
     {
         return NO;
+    }
+}
+
+
+#pragma mark - Updata
+- (void)updataRecord
+{
+    NSArray *result = [[BloodRecordManager sharedBloodRecordManager] fetchRecordForUpData];
+    if (result.count != 0) {
+        //上传
+        for (id model in result)
+        {
+            
+        }
     }
 }
 @end
