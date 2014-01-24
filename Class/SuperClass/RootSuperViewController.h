@@ -10,4 +10,7 @@
 
 @interface RootSuperViewController : UIViewController
 
+- (NSString *)getCurrentPatientID;
+- (NSString *)getCurrentDoctorID;
+
 @end

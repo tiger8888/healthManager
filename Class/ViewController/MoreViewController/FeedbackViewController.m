@@ -60,7 +60,7 @@
 - (IBAction)submitOnClick:(id)sender {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
 
-    NSString *patientId = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+    NSString *patientId = [self getCurrentPatientID];
     NSString *feedbackUrl = [NSString stringWithFormat:@"suggest/%@.json", patientId];
     
     [parameters setObject:patientId forKey:@"patientId"];
