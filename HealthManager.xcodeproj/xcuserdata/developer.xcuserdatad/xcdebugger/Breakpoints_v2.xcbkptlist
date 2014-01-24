@@ -24,12 +24,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Class/ViewController/BloodViewController/BloodViewController.m"
-            timestampString = "412237301.751135"
+            timestampString = "412249174.31357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
-            landmarkName = "-getDataSource"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "-parseData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

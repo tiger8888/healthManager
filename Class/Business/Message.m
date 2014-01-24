@@ -120,6 +120,30 @@ static Message *_sharedManager;
 
 }
 
+- (BOOL)checkBloodList:(NSDictionary *)dict {
+    int r = [[[dict categoryObjectForKey:@"resultInfo"]categoryObjectForKey:@"retCode"] intValue];
+    
+    NSString *message;
+    switch (r) {
+        case 1:
+        {
+            return YES;
+        }
+            break;
+        case 2:
+        {
+            message = @"无血压记录，请录入";
+        }
+            break;
+        
+        default:
+            break;
+    }
+    ALERT(@"提示信息", message, @"确定");
+    return NO;
+    
+}
+
 - (BOOL)checkPassword:(NSString *)str {
     if (str.length>0) {
     return YES;

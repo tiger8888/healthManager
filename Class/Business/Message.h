@@ -13,6 +13,7 @@
 
 - (BOOL)checkReturnInfor:(NSDictionary *)dict;
 - (BOOL)checkLoginReturnInfor:(NSDictionary *)dict;
+- (BOOL)checkBloodList:(NSDictionary *)dict;
 - (BOOL)checkPassword:(NSString *)str;
 - (BOOL)checkValidationCode:(NSString *)str;
 - (BOOL)checkMobile:(NSString *)mobileNum;

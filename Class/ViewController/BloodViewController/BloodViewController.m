@@ -14,6 +14,7 @@
     UIScrollView *_baseScrollView;
     BloodRecord *_bloodRecord;
     LineChartView *_bloodLineChar;
+    NSMutableArray *_lineDataSource;
 }
 @end
 
@@ -147,7 +148,7 @@
     [lineChartView setHDesc:hArr];
     [lineChartView setVDesc:vArr];
     
-    [self setLineChartDataSource:lineChartView];
+//    [self setLineChartDataSource:lineChartView];
     return lineChartView;
 }
 
@@ -214,7 +215,7 @@
     //从数据库取出的数据源，现在不用。直接映射网络资源
     //cell.textLabel.text = [_dataSource[indexPath.row] valueForKey:@"dateStr"];
     //直接引用json字段
-    cell.textLabel.text = [_dataSource[indexPath.row] categoryObjectForKey:@"createTime"];
+    cell.textLabel.text = _dataSource[indexPath.row];
     return cell;
 }
 
@@ -235,8 +236,7 @@
 //    NSString *p = [NSString stringWithFormat:@"脉搏:  %@/min",[recordModel valueForKey:@"pulse"]];
 //    [self popUpBoxHighPressure:hp lowPressure:lp pulse:p date:date];
     //直接映射网络数据
-    
-    
+    [self popUpBoxHighPressure:[_lineDataSource[indexPath.row] objectForKey:@"highPressure"] lowPressure:[_lineDataSource[indexPath.row] objectForKey:@"lowPressure"] pulse:[_lineDataSource[indexPath.row] objectForKey:@"pulse"] date:_dataSource[indexPath.row]];
 }
 
 #pragma mark - ScrollView Delegate Method
@@ -282,20 +282,22 @@
 #pragma mark - Other Method
 - (void)setLineChartDataSource:(LineChartView *)lineChartView
 {
-    
-    NSMutableArray *bloodItem = [NSMutableArray new];
-    for (id dateModel in _dataSource)
-    {
-        NSMutableDictionary *item = [NSMutableDictionary new];
-
-        NSManagedObject *recordModel = [[[BloodRecordManager sharedBloodRecordManager] fetchRecordBy:dateModel] lastObject];
-        [item setObject:[recordModel valueForKey:@"highPressure"] forKey:@"highPressure"];
-        [item setObject:[recordModel valueForKey:@"lowPressure"] forKey:@"lowPressure"];
-        [item setObject:[recordModel valueForKey:@"pulse"] forKey:@"pulse"];
-        [bloodItem addObject:item];
-        
-    }
-    [lineChartView setBloodArray:bloodItem];
+    //取出数据库数据制作数组
+//    NSMutableArray *bloodItem = [NSMutableArray new];
+//    for (id dateModel in _dataSource)
+//    {
+//        NSMutableDictionary *item = [NSMutableDictionary new];
+//
+//        NSManagedObject *recordModel = [[[BloodRecordManager sharedBloodRecordManager] fetchRecordBy:dateModel] lastObject];
+//        [item setObject:[recordModel valueForKey:@"highPressure"] forKey:@"highPressure"];
+//        [item setObject:[recordModel valueForKey:@"lowPressure"] forKey:@"lowPressure"];
+//        [item setObject:[recordModel valueForKey:@"pulse"] forKey:@"pulse"];
+//        [bloodItem addObject:item];
+//        
+//    }
+//    [lineChartView setBloodArray:bloodItem];
+    //绘画服务器数据
+    [lineChartView setBloodArray:_lineDataSource];
 }
 
 BOOL stringIsValidNumber(NSString *checkString)
@@ -339,11 +341,45 @@ BOOL stringIsValidNumber(NSString *checkString)
 - (void)getDataSource;
 {
     NSString *url = [NSString stringWithFormat:@"bloodPressure/list/%@.json",[self getCurrentPatientID]];
-    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url completionHandle:^(id returnObject) {
+    [[HttpRequestManager sharedManager] requestWithParameters:[NSMutableDictionary new] interface:url completionHandle:^(id returnObject) {
         
         NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+        if ([[Message sharedManager] checkBloodList:dict]) {
+            [self parseData:dict];
+        }
+        
     } failed:^{
-        ALERT(@"网络错误", @"网络错误上传失败，您的数据降无法同步到服务器", @"确定");
+        ALERT(@"网络错误", @"网络错误上传失败，您的数据无法同步到服务器,请重试", @"确定");
     } hitSuperView:nil method:kPost];
+}
+
+- (void)parseData:(NSDictionary *)dict
+{
+    _dataSource = [NSMutableArray new];
+    _lineDataSource = [NSMutableArray new];
+    for (id x in [[dict categoryObjectForKey:@"resultInfo"] categoryObjectForKey:@"list"])
+    {
+        NSString *dateStr = [[[x categoryObjectForKey:@"createTime"] componentsSeparatedByString:@" "] firstObject];
+        
+        long index = [_dataSource indexOfObject:dateStr];
+        NSMutableDictionary *item = [NSMutableDictionary dictionaryWithObjectsAndKeys:[x categoryObjectForKey:@"systolicPressure"],@"highPressure",[x categoryObjectForKey:@"diastolicPressure"],@"lowPressure",[x categoryObjectForKey:@"pulseRate"],@"pulse", nil];
+        if (30 < index)
+        {
+//            if (index < 35) {
+//                [(NSMutableArray *)_dataSource removeObjectAtIndex:0];
+//                [_lineDataSource removeObjectAtIndex:0];
+//            }
+            [(NSMutableArray *)_dataSource addObject:dateStr];
+            [_lineDataSource addObject:item];
+        }
+        else
+        {
+            [_lineDataSource replaceObjectAtIndex:index withObject:item];
+        }
+    }
+    [_tableView reloadData];
+    [self setLineChartDataSource:_bloodLineChar];
+    [_bloodLineChar setNeedsDisplay];
 }
 @end
