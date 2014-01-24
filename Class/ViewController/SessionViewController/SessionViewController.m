@@ -28,7 +28,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT);
+    if (IS_IOS7) {
+        self.webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-44-20-20-20-20);
+        [self.toolBar setFrame:CGRectMake(0, DEVICE_HEIGHT - 44-20-20, DEVICE_WIDTH, 44)];
+    }
+    else {
+        self.webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-20);
+    }
+    
+    [self addRefreshButtonOnNavigation];
+    
     [[SessionMessageStyleManager sharedInstance] loadTemplate];
     _styleArray = [[SessionMessageStyleManager sharedInstance] availableVariants];
     [self.webView loadHTMLString:[SessionMessageStyleManager sharedInstance].baseHTML baseURL:[SessionMessageStyleManager sharedInstance].baseURL];
@@ -65,7 +74,7 @@
     }
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     _sessionMessage.id = 0;
-    _sessionMessage.senderId = [[userDefault objectForKey:@"patientId"] intValue];
+    _sessionMessage.senderId = [[userDefault objectForKey:PATIENTID_KEY] intValue];
     _sessionMessage.senderName = [userDefault objectForKey:@"name"];
     _sessionMessage.sendType = SessionMessageSendTypeMe;
     _sessionMessage.content = self.textField.text ? self.textField.text : @" ";
@@ -77,7 +86,6 @@
         return;
     }
     NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
-    NSLog(@"doctor id is :%@", [userDefault objectForKey:DOCTORID_KEY]);
     [parameter setObject:[userDefault objectForKey:DOCTORID_KEY] forKey:@"doctorId"];
     [parameter setObject:self.textField.text forKey:@"msg"];
     
@@ -105,8 +113,60 @@
 }
 
 - (void)getDoctorInfo {
+    NSString *interfaceUrl = [NSString stringWithFormat:@"patient/doctor/%@.json", [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
     
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
+        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+        NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
+        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
+            NSDictionary *doctorInfo = [result objectForKey:@"doctor"];
+            NSString *doctorImage = [doctorInfo objectForKey:@"picUrl"];
+            [[NSUserDefaults standardUserDefaults] setObject:doctorImage forKey:@"doctorImage"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [self getDoctorSessionInfo];
+        }
+        
+    } failed:^{
+        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
+    } hitSuperView:self.view method:kGet];
 }
+
+- (void)getDoctorSessionInfo {
+    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/list/%@.json", [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
+    
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
+        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+        NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
+        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
+            NSArray *sessionMessageInfoArray = [result objectForKey:@"list"];
+//            NSLog(@"session message is :%@", sessionMessageInfoArray);
+            SessionMessage *sessionMsg = [SessionMessage new];
+            for (NSDictionary *msgItem in sessionMessageInfoArray ) {
+//                NSLog(@"msg item is :%@", msgItem);
+                sessionMsg.id = 0;
+                sessionMsg.senderId = [[msgItem objectForKey:@"doctorId"] intValue];
+                sessionMsg.senderName = [msgItem objectForKey:@"doctorName"];
+                sessionMsg.sendType = SessionMessageSendTypeOther;
+                sessionMsg.content = [msgItem objectForKey:@"msg"];
+                sessionMsg.timeStamp = [msgItem objectForKey:@"createTime"];
+                [self appendMessage:sessionMsg];
+            }
+        }
+        
+    } failed:^{
+        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
+    } hitSuperView:self.view method:kGet];
+}
+
+- (void)addRefreshButtonOnNavigation {
+    UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    refreshBtn.frame = CGRectMake(DEVICE_WIDTH - 54, 0, 44, 44);
+    [refreshBtn setTitle:@"刷新" forState:UIControlStateNormal];
+    [refreshBtn addTarget:self action:@selector(getDoctorSessionInfo) forControlEvents:UIControlEventTouchUpInside];
+    [_navigationBar addSubview:refreshBtn];
+}
+
 
 #pragma mark - keyboard
 -(void)willShowKeyboard:(NSNotification *)notification{

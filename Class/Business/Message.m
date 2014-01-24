@@ -197,4 +197,31 @@ static Message *_sharedManager;
         return NO;
     }
 }
+
+- (BOOL)checkReturnInformationWithInterface:(NSDictionary *)dict {
+    int r = [[dict categoryObjectForKey:@"retCode"] intValue];
+    
+    NSString *message;
+    switch (r) {
+        case 1:
+        {
+            return YES;
+        }
+            break;
+        case 2:
+        {
+            message = @"当前患者没有在系统中注册";
+        }
+            break;
+        case 3:
+        {
+            message = @"暂无信息";
+        }
+            break;
+        default:
+            break;
+    }
+    ALERT(@"提示信息", message, @"确定");
+    return NO;
+}
 @end
