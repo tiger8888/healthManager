@@ -18,4 +18,5 @@
 - (BOOL)checkValidationCode:(NSString *)str;
 - (BOOL)checkMobile:(NSString *)mobileNum;
 - (BOOL)checkSessionMessage:(NSString *)str;
+- (BOOL)checkReturnInformationWithInterface:(NSDictionary *)dict;
 @end

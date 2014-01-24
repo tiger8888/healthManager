@@ -31,6 +31,7 @@ static SessionMessageStyleManager* _sharedInstance = nil;
     contentOutHTML =  [NSString stringWithContentsOfFile:contentOutHTMLpath encoding:NSUTF8StringEncoding error:nil];
     NSString * contentInHTMLpath =  [[NSBundle mainBundle] pathForResource:@"Content" ofType:@"html" inDirectory:@"Renkoo/Incoming"];
     contentInHTML =  [NSString stringWithContentsOfFile:contentInHTMLpath encoding:NSUTF8StringEncoding error:nil];
+//    NSLog(@"content in html data is :%@", contentInHTML);
 }
 
 - (NSArray *)availableVariants
@@ -56,10 +57,16 @@ static SessionMessageStyleManager* _sharedInstance = nil;
     }else{
         newHTML = [contentOutHTML copy];
         newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%messageClasses%" withString:@"outgoing message"];
-        newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%userIconPath%" withString:@"Renkoo/outgoing_icon.png"];
+        if ( [[NSUserDefaults standardUserDefaults] objectForKey:@"doctorImage"]) {
+            newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%userIconPath%" withString:[[NSUserDefaults standardUserDefaults] objectForKey:@"doctorImage"]];
+        }
+        else {
+            newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%userIconPath%" withString:@"Renkoo/outgoing_icon.png"];
+        }
+        
     }
     newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%sender%" withString:msg.senderName];
-    newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%time%" withString:msg.timeStamp];
+//    newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%time%" withString:msg.timeStamp];
     
 //    for (NSString *emo in [self emotionKeysFrom:msg.content]){
 //        
