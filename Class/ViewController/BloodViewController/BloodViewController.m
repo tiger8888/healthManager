@@ -33,8 +33,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
 
+    [self getDataSource];
 
     [self layoutView];
 }
@@ -95,9 +95,9 @@
         }
         //直接上传
         NSMutableDictionary *para = [[NSMutableDictionary alloc] init];
-        [para setObject:[NSNumber numberWithInt:[highPressure intValue]] forKey:@"systolicPressure"];
-        [para setObject:[NSNumber numberWithInt:[lowPressure intValue]] forKey:@"diastolicPressure"];
-        [para setObject:[NSNumber numberWithInt:[pulse intValue]] forKey:@"pulseRate"];
+        [para setObject:highPressure forKey:@"systolicPressure"];
+        [para setObject:lowPressure forKey:@"diastolicPressure"];
+        [para setObject:pulse forKey:@"pulseRate"];
         [self updataRecord:para];
         //暂时不需要保存本地。
 //        [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:[NSDate dateWithTimeIntervalSinceNow:0]];
@@ -158,6 +158,46 @@
     _tableView.frame = CGRectMake(DEVICE_WIDTH *2, 0, DEVICE_WIDTH, DEVICE_HEIGHT -88 -20);
     [_baseScrollView addSubview:_tableView];
 }
+#pragma mark 弹出框
+- (void)popUpBoxHighPressure:(NSString *)hp lowPressure:(NSString *)lp pulse:(NSString *)p date:(NSString *)date
+{
+    LSBackGrayView *backView = [[LSBackGrayView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.view addSubview:backView];
+
+    UIView *tmpView = [[UIView alloc] initWithFrame:CGRectMake(30, 150, 260, 200)];
+    tmpView.backgroundColor = [UIColor whiteColor];
+    tmpView.layer.borderColor = [UIColor cyanColor].CGColor;
+    tmpView.layer.borderWidth = 2.0f;
+    tmpView.layer.cornerRadius = 8.0f;
+    [backView addSubview:tmpView];
+
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bt_cancel"]];
+    imageView.frame = CGRectMake(260 +10, 150 -16, 33, 33);
+    [backView addSubview:imageView];
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 40, 240, 1)];
+    view.backgroundColor = [UIColor lightGrayColor];
+    [tmpView addSubview:view];
+
+    UILabel *label0 = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 230, 40)];
+    label0.font = [UIFont systemFontOfSize:20];
+    label0.text = date;
+    [tmpView addSubview:label0];
+    
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, 200, 40)];
+    label1.font = [UIFont systemFontOfSize:20];
+    label1.text = [NSString stringWithFormat:@"高压:  %@ mm/hg",hp];
+    [tmpView addSubview:label1];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(50, 90, 200, 40)];
+    label2.font = [UIFont systemFontOfSize:20];
+    label2.text = [NSString stringWithFormat:@"低压:  %@ mm/hg",lp];
+    [tmpView addSubview:label2];
+    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(50, 130, 200, 40)];
+    label3.font = [UIFont systemFontOfSize:20];
+    label3.text = [NSString stringWithFormat:@"脉搏:  %@/min",p];
+    [tmpView addSubview:label3];
+
+}
 
 #pragma mark - TableView Delegate Method
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -171,55 +211,32 @@
         [cell addSubview:imageView];
     }
     
-    
-    cell.textLabel.text = [_dataSource[indexPath.row] valueForKey:@"dateStr"];
+    //从数据库取出的数据源，现在不用。直接映射网络资源
+    //cell.textLabel.text = [_dataSource[indexPath.row] valueForKey:@"dateStr"];
+    //直接引用json字段
+    cell.textLabel.text = [_dataSource[indexPath.row] categoryObjectForKey:@"createTime"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //找出数据源对应的日期模型
-    id dateModel = _dataSource[indexPath.row];
+    //使用日期模型查找对应录入记录。现在以服务器为主
+//    //找出数据源对应的日期模型
+//    id dateModel = _dataSource[indexPath.row];
+//    
+//    [tableView cellForRowAtIndexPath:indexPath].selected = NO;
+//        //传入日期模型获取录入数据（现在时取最后一次所以用lastObject）
+//    NSManagedObject *recordModel = [[[BloodRecordManager sharedBloodRecordManager] fetchRecordBy:dateModel] lastObject];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy.MM.dd  HH:mm"];
+//    NSString *date = [formatter stringFromDate:[recordModel valueForKey:@"date"]];
+//    NSString *hp = [NSString stringWithFormat:@"高压:  %@ mm/hg",[recordModel valueForKey:@"highPressure"]];
+//    NSString *lp = [NSString stringWithFormat:@"低压:  %@ mm/hg",[recordModel valueForKey:@"lowPressure"]];
+//    NSString *p = [NSString stringWithFormat:@"脉搏:  %@/min",[recordModel valueForKey:@"pulse"]];
+//    [self popUpBoxHighPressure:hp lowPressure:lp pulse:p date:date];
+    //直接映射网络数据
     
-    [tableView cellForRowAtIndexPath:indexPath].selected = NO;
-    LSBackGrayView *backView = [[LSBackGrayView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    [self.view addSubview:backView];
     
-    UIView *tmpView = [[UIView alloc] initWithFrame:CGRectMake(30, 150, 260, 200)];
-    tmpView.backgroundColor = [UIColor whiteColor];
-    tmpView.layer.borderColor = [UIColor cyanColor].CGColor;
-    tmpView.layer.borderWidth = 2.0f;
-    tmpView.layer.cornerRadius = 8.0f;
-    [backView addSubview:tmpView];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bt_cancel"]];
-    imageView.frame = CGRectMake(260 +10, 150 -16, 33, 33);
-    [backView addSubview:imageView];
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 40, 240, 1)];
-    view.backgroundColor = [UIColor lightGrayColor];
-    [tmpView addSubview:view];
-    //传入日期模型获取录入数据（现在时取最后一次所以用lastObject）
-    NSManagedObject *recordModel = [[[BloodRecordManager sharedBloodRecordManager] fetchRecordBy:dateModel] lastObject];
-    UILabel *label0 = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 230, 40)];
-    label0.font = [UIFont systemFontOfSize:20];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy.MM.dd  HH:mm"];
-    label0.text = [formatter stringFromDate:[recordModel valueForKey:@"date"]];
-    [tmpView addSubview:label0];
-    
-    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, 200, 40)];
-    label1.font = [UIFont systemFontOfSize:20];
-    label1.text = [NSString stringWithFormat:@"高压:  %@ mm/hg",[recordModel valueForKey:@"highPressure"]];
-    [tmpView addSubview:label1];
-    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(50, 90, 200, 40)];
-    label2.font = [UIFont systemFontOfSize:20];
-    label2.text = [NSString stringWithFormat:@"低压:  %@ mm/hg",[recordModel valueForKey:@"lowPressure"]];
-    [tmpView addSubview:label2];
-    UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(50, 130, 200, 40)];
-    label3.font = [UIFont systemFontOfSize:20];
-    label3.text = [NSString stringWithFormat:@"脉搏:  %@/min",[recordModel valueForKey:@"pulse"]];
-    [tmpView addSubview:label3];
 }
 
 #pragma mark - ScrollView Delegate Method
@@ -296,7 +313,7 @@ BOOL stringIsValidNumber(NSString *checkString)
 }
 
 
-#pragma mark - Updata
+#pragma mark - Updata &DownLoad
 - (void)updataRecord:(NSDictionary *)para
 {
 //    NSArray *result = [[BloodRecordManager sharedBloodRecordManager] fetchRecordForUpData];
@@ -308,9 +325,21 @@ BOOL stringIsValidNumber(NSString *checkString)
 //        }
 //    }
     //上传单条数据
-    NSNumber *patientID = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
-    NSString *url = [NSString stringWithFormat:@"bloodPressure/add/%@.json",patientID];
+    
+    NSString *url = [NSString stringWithFormat:@"bloodPressure/add/%@.json",[self getCurrentPatientID]];
     [[HttpRequestManager sharedManager] requestWithParameters:para interface:url completionHandle:^(id returnObject) {
+        
+        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+    } failed:^{
+        ALERT(@"网络错误", @"网络错误上传失败，您的数据降无法同步到服务器", @"确定");
+    } hitSuperView:nil method:kPost];
+}
+
+
+- (void)getDataSource;
+{
+    NSString *url = [NSString stringWithFormat:@"bloodPressure/list/%@.json",[self getCurrentPatientID]];
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url completionHandle:^(id returnObject) {
         
         NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
     } failed:^{

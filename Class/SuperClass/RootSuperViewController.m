@@ -46,4 +46,13 @@
     }
 }
 
+- (NSString *)getCurrentPatientID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+}
+
+- (NSString *)getCurrentDoctorID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY];
+}
 @end

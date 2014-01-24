@@ -176,7 +176,7 @@
         /**
          * 目前缺少的操作：提醒用户：将清除用户与医生的关系，让用户进行确认
          */
-        NSNumber *doctorID = [[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY];
+        NSString *doctorID = [self getCurrentDoctorID];
         if (doctorID == nil || [doctorID intValue] == 0)
         {
             ALERTOPRATE(@"警告", @"您尚未选取任何医生，请先进入我的医生界面选择您的私人医生", 3);
@@ -301,7 +301,7 @@
 {
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
     
-    NSString *url = [NSString stringWithFormat:@"patient/doctor/delete/%@/%@.json",[userDef objectForKey:PATIENTID_KEY],[userDef objectForKey:DOCTORID_KEY]];
+    NSString *url = [NSString stringWithFormat:@"patient/doctor/delete/%@/%@.json",[self getCurrentPatientID],[self getCurrentDoctorID]];
     NSLog(@"%@",url);
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url  completionHandle:^(id returnObject) {
         

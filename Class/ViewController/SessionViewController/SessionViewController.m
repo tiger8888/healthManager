@@ -52,7 +52,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY]);
 }
 
 #pragma mark - Event Method

@@ -35,7 +35,7 @@
     }
     // Do any additional setup after loading the view from its nib.
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-    NSNumber *patientID = [userDef objectForKey:PATIENTID_KEY];
+    NSString *patientID = [userDef objectForKey:PATIENTID_KEY];
     if (!patientID || [patientID intValue] == 0)
     {
         LoginViewController *loginVC =[[LoginViewController alloc] init];
@@ -58,7 +58,7 @@
 {
     UIButton *button = (UIButton *)sender;
     if (button.tag == 2) {
-        NSNumber *myDoctorID = [[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY];
+        NSString *myDoctorID = [self getCurrentDoctorID];
         if (!myDoctorID || [myDoctorID intValue] == 0)
         {
             [self goToFunctionPart:2];
