@@ -187,4 +187,14 @@ static Message *_sharedManager;
         return NO;
     }
 }
+
+- (BOOL)checkSessionMessage:(NSString *)str {
+    if (str.length>0) {
+        return YES;
+    }
+    else {
+        ALERT(@"提示信息", @"请输入信息", @"确定");
+        return NO;
+    }
+}
 @end

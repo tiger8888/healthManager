@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SessionMessage.h"
 
 @interface SessionViewController : BackButtonViewController<UITextFieldDelegate>
-
+{
+    NSArray *_styleArray;
+    SessionMessage *_sessionMessage;
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 - (IBAction)submitOkClick:(id)sender;

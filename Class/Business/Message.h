@@ -16,4 +16,5 @@
 - (BOOL)checkPassword:(NSString *)str;
 - (BOOL)checkValidationCode:(NSString *)str;
 - (BOOL)checkMobile:(NSString *)mobileNum;
+- (BOOL)checkSessionMessage:(NSString *)str;
 @end
