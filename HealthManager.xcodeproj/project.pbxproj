@@ -22,6 +22,10 @@
 		37B8A05A1890AA9A00FE7D44 /* ViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B8A0591890AA9A00FE7D44 /* ViewBuilder.m */; };
 		37B8A05D1890B0FC00FE7D44 /* UILabel+FitHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B8A05C1890B0FC00FE7D44 /* UILabel+FitHeight.m */; };
 		37B8A0641890FAC000FE7D44 /* SessionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B8A0631890FAC000FE7D44 /* SessionViewController.xib */; };
+		37BF92FC1891EAC900B50627 /* SessionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BF92FB1891EAC900B50627 /* SessionMessage.m */; };
+		37BF92FF1891ED3900B50627 /* SessionMessageStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BF92FE1891ED3900B50627 /* SessionMessageStyleManager.m */; };
+		37BF94371891EE8300B50627 /* Template.html in Resources */ = {isa = PBXBuildFile; fileRef = 37BF939E1891EE8300B50627 /* Template.html */; };
+		37BF956F18920BAF00B50627 /* Renkoo in Resources */ = {isa = PBXBuildFile; fileRef = 37BF956E18920BAF00B50627 /* Renkoo */; };
 		37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */; };
 		37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */; };
 		37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */; };
@@ -171,6 +175,12 @@
 		37B8A05B1890B0FC00FE7D44 /* UILabel+FitHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+FitHeight.h"; sourceTree = "<group>"; };
 		37B8A05C1890B0FC00FE7D44 /* UILabel+FitHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+FitHeight.m"; sourceTree = "<group>"; };
 		37B8A0631890FAC000FE7D44 /* SessionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SessionViewController.xib; sourceTree = "<group>"; };
+		37BF92FA1891EAC900B50627 /* SessionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMessage.h; sourceTree = "<group>"; };
+		37BF92FB1891EAC900B50627 /* SessionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMessage.m; sourceTree = "<group>"; };
+		37BF92FD1891ED3900B50627 /* SessionMessageStyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMessageStyleManager.h; sourceTree = "<group>"; };
+		37BF92FE1891ED3900B50627 /* SessionMessageStyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMessageStyleManager.m; sourceTree = "<group>"; };
+		37BF939E1891EE8300B50627 /* Template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Template.html; sourceTree = "<group>"; };
+		37BF956E18920BAF00B50627 /* Renkoo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Renkoo; sourceTree = "<group>"; };
 		37C64E9D188CEF970041BAA7 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
 		37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
@@ -368,6 +378,8 @@
 			children = (
 				37B6E073188E6B6500A273AB /* Message.h */,
 				37B6E074188E6B6500A273AB /* Message.m */,
+				37BF92FD1891ED3900B50627 /* SessionMessageStyleManager.h */,
+				37BF92FE1891ED3900B50627 /* SessionMessageStyleManager.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -454,6 +466,8 @@
 		8B94AB401848669F00CA5869 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				37BF956E18920BAF00B50627 /* Renkoo */,
+				37BF939E1891EE8300B50627 /* Template.html */,
 				B823225B185F48EA005F2409 /* images */,
 				B8232281185F48EA005F2409 /* plist */,
 			);
@@ -553,6 +567,8 @@
 				9C0BFF6B1886D944002845D9 /* Knowledge.m */,
 				37A854561889002C00543874 /* Announcement.h */,
 				37A854571889002C00543874 /* Announcement.m */,
+				37BF92FA1891EAC900B50627 /* SessionMessage.h */,
+				37BF92FB1891EAC900B50627 /* SessionMessage.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -949,6 +965,7 @@
 				B8232297185F48EA005F2409 /* doctorButton@2x.png in Resources */,
 				B82322A2185F48EA005F2409 /* main_btn_6@2x.png in Resources */,
 				9C0BFFD01886D944002845D9 /* SettingRemindTimeViewController.xib in Resources */,
+				37BF956F18920BAF00B50627 /* Renkoo in Resources */,
 				B823228A185F48EA005F2409 /* blood_table_hit@2x.png in Resources */,
 				9C0BFFD21886D944002845D9 /* SettingViewController.xib in Resources */,
 				9C0BFFB91886D944002845D9 /* AlertViewController.xib in Resources */,
@@ -961,6 +978,7 @@
 				9C0BFFC21886D944002845D9 /* DoctorViewController.xib in Resources */,
 				B8232289185F48EA005F2409 /* blood_segment_selected_3@2x.png in Resources */,
 				B8232285185F48EA005F2409 /* blood_segment_2@2x.png in Resources */,
+				37BF94371891EE8300B50627 /* Template.html in Resources */,
 				9C0BFFCE1886D944002845D9 /* MoreViewController.xib in Resources */,
 				9C0BFFC41886D944002845D9 /* KnowledgeDetailViewController.xib in Resources */,
 				B8232288185F48EA005F2409 /* blood_segment_selected_2@2x.png in Resources */,
@@ -1010,6 +1028,7 @@
 				8BFE177B187FEC5700D1F48A /* AFHTTPClient.m in Sources */,
 				9C0BFFB51886D944002845D9 /* NavigationBarViewController.m in Sources */,
 				8BFE1781187FEC5700D1F48A /* AFURLConnectionOperation.m in Sources */,
+				37BF92FF1891ED3900B50627 /* SessionMessageStyleManager.m in Sources */,
 				37A8545C1889012500543874 /* AnnouncementDetailViewController.m in Sources */,
 				8BFE1780187FEC5700D1F48A /* AFPropertyListRequestOperation.m in Sources */,
 				8BFE177E187FEC5700D1F48A /* AFJSONRequestOperation.m in Sources */,
@@ -1042,6 +1061,7 @@
 				37A854581889002C00543874 /* Announcement.m in Sources */,
 				9C0BFFC71886D944002845D9 /* LoginViewController.m in Sources */,
 				8B9C96071888D6E000F87E00 /* SettingAndMoreSuperViewController.m in Sources */,
+				37BF92FC1891EAC900B50627 /* SessionMessage.m in Sources */,
 				9C0BFFB61886D944002845D9 /* RootSuperViewController.m in Sources */,
 				8BFE1783187FEC5700D1F48A /* UIImageView+AFNetworking.m in Sources */,
 			);
