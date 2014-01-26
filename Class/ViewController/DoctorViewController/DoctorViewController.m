@@ -72,9 +72,24 @@
     LSBackGrayView *backView = [[LSBackGrayView alloc] initWithFrame:FULLSCREEN];
     [self.view addSubview:backView];
     
-    UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 300, 300)];
-    lable.text = [NSString stringWithFormat:@"医生介绍:%@",[_dataSource[indexPath.row] objectForKey:@"profesIntro"]];
-    [backView addSubview:lable];
+    
+    //
+    UIView *tmpView = [[UIView alloc] initWithFrame:CGRectMake(30, 30, 260, DEVICE_HEIGHT -64 -60)];
+    tmpView.backgroundColor = [UIColor whiteColor];
+    tmpView.layer.borderColor = [UIColor cyanColor].CGColor;
+    tmpView.layer.borderWidth = 2.0f;
+    tmpView.layer.cornerRadius = 8.0f;
+    [backView addSubview:tmpView];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bt_cancel"]];
+    imageView.frame = CGRectMake(275, 15, 33, 33);
+    [backView addSubview:imageView];
+    //
+    UITextView *label = [[UITextView alloc] initWithFrame:CGRectMake(10, 30, 240, DEVICE_HEIGHT -64 -90)];
+    label.text = [NSString stringWithFormat:@"医生介绍:%@",[_dataSource[indexPath.row] objectForKey:@"profesIntro"]];
+    label.editable = NO;
+    label.font = [UIFont systemFontOfSize:16];
+    [tmpView addSubview:label];
 }
 
 #pragma mark - CellDelegate Method
