@@ -240,6 +240,7 @@ static Message *_sharedManager;
         case 3:
         {
             message = @"暂无信息";
+            return NO;//此种情况不弹出提示信息。
         }
             break;
         default:

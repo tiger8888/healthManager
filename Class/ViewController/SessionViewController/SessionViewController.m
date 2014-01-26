@@ -8,10 +8,14 @@
 
 #import "SessionViewController.h"
 #import "SessionMessageStyleManager.h"
+#import "SessionMessageSqlite.h"
+
 
 @interface SessionViewController ()
 
 @end
+
+static BOOL isLoadAllSession = FALSE;
 
 @implementation SessionViewController
 
@@ -28,6 +32,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    isLoadAllSession = FALSE;
     if (IS_IOS7) {
         self.webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-44-20-20-20-20);
         [self.toolBar setFrame:CGRectMake(0, DEVICE_HEIGHT - 44-20-20, DEVICE_WIDTH, 44)];
@@ -46,12 +51,29 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard) name:UIKeyboardWillHideNotification object:nil];
     
     [self getDoctorInfo];
+    _titleLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"doctorName"] stringByAppendingString: @"医生"];
+    NSLog(@"view did load");
+//    void (^aaaa)(void) = ^{
+//        [self getAllSessionInfo];
+//    };
+//    aaaa();
+    
+    NSTimer *timer;
+    timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getDoctorSessionInfo) userInfo:nil repeats:YES];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+        NSLog(@"view will appear");
+//    self.textField.text = @"auto write session message";
+//    [self submitOkClick:Nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [[SessionMessageSqlite sharedManager] closeDB];
 }
 
 #pragma mark - Event Method
@@ -63,7 +85,7 @@
 
 - (void)appendMessage:(SessionMessage *)msg {
     NSString *appendScript = [[SessionMessageStyleManager sharedInstance] appendScriptForMessage:msg];
-
+//    NSLog(@"webView content is :%@",appendScript);
     [self.webView stringByEvaluatingJavaScriptFromString:appendScript];
 }
 
@@ -95,6 +117,7 @@
         NSString *result = [[dataDictionary objectForKey:@"resultInfo"] objectForKey:@"retCode"];
         NSLog(@"code=%@", result);
         
+        [[SessionMessageSqlite sharedManager] insertOne:_sessionMessage];
         [self appendMessage:_sessionMessage];
         
         [self.textField resignFirstResponder];
@@ -120,10 +143,13 @@
         if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
             NSDictionary *doctorInfo = [result objectForKey:@"doctor"];
             NSString *doctorImage = [doctorInfo objectForKey:@"picUrl"];
+            [[NSUserDefaults standardUserDefaults] setObject: [doctorInfo objectForKey:@"name"] forKey:@"doctorName"];
             [[NSUserDefaults standardUserDefaults] setObject:doctorImage forKey:@"doctorImage"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
+//            [self getAllSessionInfo];
             [self getDoctorSessionInfo];
+            
         }
         
     } failed:^{
@@ -132,6 +158,9 @@
 }
 
 - (void)getDoctorSessionInfo {
+    if (isLoadAllSession  == FALSE) {
+        [self getAllSessionInfo];
+    }
     NSString *interfaceUrl = [NSString stringWithFormat:@"chat/list/%@.json", [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
     
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
@@ -149,6 +178,8 @@
                 sessionMsg.sendType = SessionMessageSendTypeOther;
                 sessionMsg.content = [msgItem objectForKey:@"msg"];
                 sessionMsg.timeStamp = [msgItem objectForKey:@"createTime"];
+                
+                [[SessionMessageSqlite sharedManager] insertOne:sessionMsg];
                 [self appendMessage:sessionMsg];
             }
         }
@@ -158,11 +189,23 @@
     } hitSuperView:self.view method:kGet];
 }
 
+- (void)getAllSessionInfo {
+    NSLog(@"get all session information");
+    NSArray *sessionMsgArr = [[SessionMessageSqlite sharedManager] queryAll];
+    for (SessionMessage *msgItem in sessionMsgArr) {
+        NSLog(@"msg item id[%d]= content :%@",msgItem.senderId , msgItem.content);
+        [self appendMessage:msgItem];
+    }
+    isLoadAllSession = TRUE;
+}
+
 - (void)addRefreshButtonOnNavigation {
     UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     refreshBtn.frame = CGRectMake(DEVICE_WIDTH - 54, 0, 44, 44);
     [refreshBtn setTitle:@"刷新" forState:UIControlStateNormal];
     [refreshBtn addTarget:self action:@selector(getDoctorSessionInfo) forControlEvents:UIControlEventTouchUpInside];
+    
+//    [refreshBtn addTarget:self action:@selector(getAllSessionInfo) forControlEvents:UIControlEventTouchUpInside];
     [_navigationBar addSubview:refreshBtn];
 }
 

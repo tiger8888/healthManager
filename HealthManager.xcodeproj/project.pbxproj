@@ -16,6 +16,8 @@
 		37A8545C1889012500543874 /* AnnouncementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8545A1889012500543874 /* AnnouncementDetailViewController.m */; };
 		37A8545D1889012500543874 /* AnnouncementDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */; };
 		37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A8D5F51876A23C0015432A /* QuartzCore.framework */; };
+		37B51C441894983700954432 /* SessionMessageSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B51C431894983700954432 /* SessionMessageSqlite.m */; };
+		37B51C461894984A00954432 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B51C451894984A00954432 /* libsqlite3.dylib */; };
 		37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */; };
 		37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */; };
 		37B6E075188E6B6500A273AB /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E074188E6B6500A273AB /* Message.m */; };
@@ -165,6 +167,9 @@
 		37A8545A1889012500543874 /* AnnouncementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementDetailViewController.m; sourceTree = "<group>"; };
 		37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementDetailViewController.xib; sourceTree = "<group>"; };
 		37A8D5F51876A23C0015432A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		37B51C421894983700954432 /* SessionMessageSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMessageSqlite.h; sourceTree = "<group>"; };
+		37B51C431894983700954432 /* SessionMessageSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMessageSqlite.m; sourceTree = "<group>"; };
+		37B51C451894984A00954432 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		37B6E06D188E35FF00A273AB /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
 		37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
 		37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyPasswordViewController.xib; sourceTree = "<group>"; };
@@ -349,6 +354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B51C461894984A00954432 /* libsqlite3.dylib in Frameworks */,
 				8BFE1791187FECE300D1F48A /* MobileCoreServices.framework in Frameworks */,
 				8BFE178F187FECDC00D1F48A /* SystemConfiguration.framework in Frameworks */,
 				37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */,
@@ -373,6 +379,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37B51C411894980800954432 /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				37B51C421894983700954432 /* SessionMessageSqlite.h */,
+				37B51C431894983700954432 /* SessionMessageSqlite.m */,
+			);
+			path = sqlite;
+			sourceTree = "<group>";
+		};
 		37B6E072188E6B2400A273AB /* Business */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +424,7 @@
 		8B94AB011848663200CA5869 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37B51C451894984A00954432 /* libsqlite3.dylib */,
 				8BFE1790187FECE300D1F48A /* MobileCoreServices.framework */,
 				8BFE178E187FECDC00D1F48A /* SystemConfiguration.framework */,
 				37A8D5F51876A23C0015432A /* QuartzCore.framework */,
@@ -562,6 +578,7 @@
 		9C0BFF601886D944002845D9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				37B51C411894980800954432 /* sqlite */,
 				9C0BFF611886D944002845D9 /* CoreData */,
 				9C0BFF6A1886D944002845D9 /* Knowledge.h */,
 				9C0BFF6B1886D944002845D9 /* Knowledge.m */,
@@ -1056,6 +1073,7 @@
 				37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */,
 				9C0BFFB11886D944002845D9 /* Knowledge.m in Sources */,
 				9C0BFFB81886D944002845D9 /* AlertViewController.m in Sources */,
+				37B51C441894983700954432 /* SessionMessageSqlite.m in Sources */,
 				37B8A05D1890B0FC00FE7D44 /* UILabel+FitHeight.m in Sources */,
 				9C0BFFB41886D944002845D9 /* RootSuperCell.m in Sources */,
 				37A854581889002C00543874 /* Announcement.m in Sources */,

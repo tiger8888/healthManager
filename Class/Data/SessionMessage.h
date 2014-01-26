@@ -12,7 +12,7 @@ typedef enum  {
     SessionMessageSendTypeOther
 } SessionMessageSendType;
 
-@interface SessionMessage : NSObject
+@interface SessionMessage : NSObject<NSCopying>
 @property (nonatomic) int id;
 @property (nonatomic) int senderId;
 @property (nonatomic, strong) NSString	*senderName;

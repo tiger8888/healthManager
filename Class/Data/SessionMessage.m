@@ -12,4 +12,15 @@
 @synthesize id;
 @synthesize senderId, senderName, sendType;
 @synthesize content, timeStamp;
+- (id)copyWithZone:(NSZone *)zone
+{
+    SessionMessage *new = [[SessionMessage allocWithZone:zone] init];
+    new.id = self.id;
+    new.senderId = self.senderId;
+    new.senderName = self.senderName;
+    new.sendType = self.sendType;
+    new.content = self.content;
+    new.timeStamp = self.timeStamp;
+    return new;
+}
 @end
