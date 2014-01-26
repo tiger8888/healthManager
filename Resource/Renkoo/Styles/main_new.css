@@ -84,12 +84,11 @@ body
 .x-myBubble .x-indicator
 {
 	position: absolute;
-	margin-top: 11px;
-	left: 0;
-	width: 0;
-	height: 0;
+	margin-top: 10px;
+	left: 1px;
+	width: 10px;
+	height: 18px;
 }
-.x-myBubble .x-indicator div{position: absolute; top:-9px; width:0; height:0; }
 
 .x-myBubble
 {

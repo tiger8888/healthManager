@@ -18,6 +18,7 @@
 		37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A8D5F51876A23C0015432A /* QuartzCore.framework */; };
 		37B51C441894983700954432 /* SessionMessageSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B51C431894983700954432 /* SessionMessageSqlite.m */; };
 		37B51C461894984A00954432 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B51C451894984A00954432 /* libsqlite3.dylib */; };
+		37B51C4C1894EB4600954432 /* Renkoo in Resources */ = {isa = PBXBuildFile; fileRef = 37B51C4B1894EB4600954432 /* Renkoo */; };
 		37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */; };
 		37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */; };
 		37B6E075188E6B6500A273AB /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E074188E6B6500A273AB /* Message.m */; };
@@ -27,7 +28,6 @@
 		37BF92FC1891EAC900B50627 /* SessionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BF92FB1891EAC900B50627 /* SessionMessage.m */; };
 		37BF92FF1891ED3900B50627 /* SessionMessageStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BF92FE1891ED3900B50627 /* SessionMessageStyleManager.m */; };
 		37BF94371891EE8300B50627 /* Template.html in Resources */ = {isa = PBXBuildFile; fileRef = 37BF939E1891EE8300B50627 /* Template.html */; };
-		37BF956F18920BAF00B50627 /* Renkoo in Resources */ = {isa = PBXBuildFile; fileRef = 37BF956E18920BAF00B50627 /* Renkoo */; };
 		37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */; };
 		37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */; };
 		37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */; };
@@ -170,6 +170,7 @@
 		37B51C421894983700954432 /* SessionMessageSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMessageSqlite.h; sourceTree = "<group>"; };
 		37B51C431894983700954432 /* SessionMessageSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMessageSqlite.m; sourceTree = "<group>"; };
 		37B51C451894984A00954432 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		37B51C4B1894EB4600954432 /* Renkoo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Renkoo; sourceTree = "<group>"; };
 		37B6E06D188E35FF00A273AB /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
 		37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
 		37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyPasswordViewController.xib; sourceTree = "<group>"; };
@@ -185,7 +186,6 @@
 		37BF92FD1891ED3900B50627 /* SessionMessageStyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMessageStyleManager.h; sourceTree = "<group>"; };
 		37BF92FE1891ED3900B50627 /* SessionMessageStyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMessageStyleManager.m; sourceTree = "<group>"; };
 		37BF939E1891EE8300B50627 /* Template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Template.html; sourceTree = "<group>"; };
-		37BF956E18920BAF00B50627 /* Renkoo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Renkoo; sourceTree = "<group>"; };
 		37C64E9D188CEF970041BAA7 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
 		37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
@@ -482,7 +482,7 @@
 		8B94AB401848669F00CA5869 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				37BF956E18920BAF00B50627 /* Renkoo */,
+				37B51C4B1894EB4600954432 /* Renkoo */,
 				37BF939E1891EE8300B50627 /* Template.html */,
 				B823225B185F48EA005F2409 /* images */,
 				B8232281185F48EA005F2409 /* plist */,
@@ -982,7 +982,7 @@
 				B8232297185F48EA005F2409 /* doctorButton@2x.png in Resources */,
 				B82322A2185F48EA005F2409 /* main_btn_6@2x.png in Resources */,
 				9C0BFFD01886D944002845D9 /* SettingRemindTimeViewController.xib in Resources */,
-				37BF956F18920BAF00B50627 /* Renkoo in Resources */,
+				37B51C4C1894EB4600954432 /* Renkoo in Resources */,
 				B823228A185F48EA005F2409 /* blood_table_hit@2x.png in Resources */,
 				9C0BFFD21886D944002845D9 /* SettingViewController.xib in Resources */,
 				9C0BFFB91886D944002845D9 /* AlertViewController.xib in Resources */,

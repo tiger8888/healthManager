@@ -27,7 +27,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
+    NSString *interfaceUrl = [NSString stringWithFormat:@"warn/list/%d.json", [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue]];
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
+        //        NSLog(@"announcement data is : %@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+        NSDictionary *announcementDataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+        _dataSource = [[announcementDataDictionary objectForKey:@"resultInfo"] objectForKey:@"list"];
+        [_tableView reloadData];
+    } failed:^{
+        
+    } hitSuperView:_tableView method:kGet];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,14 +50,33 @@
     static NSString *cellIdentity = @"alertCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentity];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentity];
     }
-    cell.textLabel.text = @"123";
+    
+    NSDictionary *item = [_dataSource objectAtIndex:[indexPath row]];
+    cell.textLabel.text = [item objectForKey:@"msg"];
+//    UILabel * detailTextLabel = [[UILabel alloc] init];
+    NSMutableString *text = [NSMutableString new];
+    [text appendString:[item objectForKey:@"createTime"]];
+    
+    [text appendString:@" 高压"];
+    [text appendString:[item objectForKey:@"systolicPressure"]];
+    [text appendString:@" 低压"];
+    [text appendString:[item objectForKey:@"diastolicPressure"]];
+    [text appendString:@" 脉搏"];
+    [text appendString:[item objectForKey:@"pressId"]];
+    cell.detailTextLabel.text = text;
+    
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return [_dataSource count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
 }
 @end

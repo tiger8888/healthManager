@@ -23,15 +23,15 @@ static SessionMessageStyleManager* _sharedInstance = nil;
     baseURL = [NSURL fileURLWithPath:path];
     baseHTML = [NSString stringWithFormat:htm,						//Template
                 [[NSBundle mainBundle] bundlePath],					//Base path
-                @"@import url( \"Renkoo/Styles/main.css\" );",		//Import main.css for new enough styles
-                @"Renkoo/Variants/Green on Red Alternating.css",	//Variant path
+                @"@import url( \"Renkoo/Styles/main_new.css\" );",		//Import main.css for new enough styles
+                @"Renkoo/Variants/White on Blue Alternating.css",	//Variant path
                 @"",
                 (@"")];
-    NSString * contentOutHTMLpath =  [[NSBundle mainBundle] pathForResource:@"Content" ofType:@"html" inDirectory:@"Renkoo/Outgoing"];
+    NSString * contentOutHTMLpath =  [[NSBundle mainBundle] pathForResource:@"Content_new" ofType:@"html" inDirectory:@"Renkoo/Outgoing"];
     contentOutHTML =  [NSString stringWithContentsOfFile:contentOutHTMLpath encoding:NSUTF8StringEncoding error:nil];
-    NSString * contentInHTMLpath =  [[NSBundle mainBundle] pathForResource:@"Content" ofType:@"html" inDirectory:@"Renkoo/Incoming"];
+    NSString * contentInHTMLpath =  [[NSBundle mainBundle] pathForResource:@"Content_new" ofType:@"html" inDirectory:@"Renkoo/Incoming"];
     contentInHTML =  [NSString stringWithContentsOfFile:contentInHTMLpath encoding:NSUTF8StringEncoding error:nil];
-//    NSLog(@"content in html data is :%@", contentInHTML);
+    NSLog(@"content in html data is :%@", contentInHTML);
 }
 
 - (NSArray *)availableVariants

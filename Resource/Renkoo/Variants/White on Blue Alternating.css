@@ -1,2 +1,6 @@
 @import url("./White on Blue.css");
 @import url("../Styles/alternating.css");
+.x-outgoingItem .x-myBubble .x-indicator
+{
+	background: url("../images/blueIndicator2_new.png") no-repeat top left;
+}

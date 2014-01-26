@@ -5,7 +5,8 @@
 
 .x-outgoingItem .x-indicator
 {
-	right: -11px;
+	/*right: -11px;*/
+    right: -9px;
 	left: auto;
 }
 
