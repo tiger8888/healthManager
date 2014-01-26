@@ -51,8 +51,8 @@ static BOOL isLoadAllSession = FALSE;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard) name:UIKeyboardWillHideNotification object:nil];
     
     [self getDoctorInfo];
-    _titleLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"doctorName"] stringByAppendingString: @"医生"];
-    NSLog(@"view did load");
+//    _titleLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"doctorName"] stringByAppendingString: @"医生"];
+//    NSLog(@"view did load");
 //    void (^aaaa)(void) = ^{
 //        [self getAllSessionInfo];
 //    };
@@ -62,12 +62,12 @@ static BOOL isLoadAllSession = FALSE;
     timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getDoctorSessionInfo) userInfo:nil repeats:YES];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-        NSLog(@"view will appear");
-//    self.textField.text = @"auto write session message";
-//    [self submitOkClick:Nil];
-}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+////        NSLog(@"view will appear");
+////    self.textField.text = @"auto write session message";
+////    [self submitOkClick:Nil];
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -115,7 +115,7 @@ static BOOL isLoadAllSession = FALSE;
     [[HttpRequestManager sharedManager] requestWithParameters:parameter interface:interfaceUrl completionHandle:^(id returnObject) {
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [[dataDictionary objectForKey:@"resultInfo"] objectForKey:@"retCode"];
-        NSLog(@"code=%@", result);
+//        NSLog(@"code=%@", result);
         
         [[SessionMessageSqlite sharedManager] insertOne:_sessionMessage];
         [self appendMessage:_sessionMessage];
@@ -147,6 +147,7 @@ static BOOL isLoadAllSession = FALSE;
             [[NSUserDefaults standardUserDefaults] setObject:doctorImage forKey:@"doctorImage"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
+            _titleLabel.text = [[doctorInfo objectForKey:@"name"] stringByAppendingString: @"医生"];
 //            [self getAllSessionInfo];
             [self getDoctorSessionInfo];
             
@@ -190,10 +191,10 @@ static BOOL isLoadAllSession = FALSE;
 }
 
 - (void)getAllSessionInfo {
-    NSLog(@"get all session information");
+//    NSLog(@"get all session information");
     NSArray *sessionMsgArr = [[SessionMessageSqlite sharedManager] queryAll];
     for (SessionMessage *msgItem in sessionMsgArr) {
-        NSLog(@"msg item id[%d]= content :%@",msgItem.senderId , msgItem.content);
+//        NSLog(@"msg item id[%d]= content :%@",msgItem.senderId , msgItem.content);
         [self appendMessage:msgItem];
     }
     isLoadAllSession = TRUE;
@@ -212,7 +213,7 @@ static BOOL isLoadAllSession = FALSE;
 
 #pragma mark - keyboard
 -(void)willShowKeyboard:(NSNotification *)notification{
-    NSLog(@"will show keyboard");
+//    NSLog(@"will show keyboard");
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:0.3];
@@ -222,7 +223,7 @@ static BOOL isLoadAllSession = FALSE;
     [UIView commitAnimations];
 }
 -(void)willHideKeyboard{
-    NSLog(@"will hide keyboard");
+//    NSLog(@"will hide keyboard");
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:0.3];

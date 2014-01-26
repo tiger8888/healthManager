@@ -31,7 +31,7 @@ static SessionMessageStyleManager* _sharedInstance = nil;
     contentOutHTML =  [NSString stringWithContentsOfFile:contentOutHTMLpath encoding:NSUTF8StringEncoding error:nil];
     NSString * contentInHTMLpath =  [[NSBundle mainBundle] pathForResource:@"Content_new" ofType:@"html" inDirectory:@"Renkoo/Incoming"];
     contentInHTML =  [NSString stringWithContentsOfFile:contentInHTMLpath encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"content in html data is :%@", contentInHTML);
+//    NSLog(@"content in html data is :%@", contentInHTML);
 }
 
 - (NSArray *)availableVariants

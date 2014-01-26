@@ -57,7 +57,7 @@ static SessionMessageSqlite *_sharedManager;
     NSLog(@"insert one recorder. sql:%s", sql_insert);
     sqlite3_stmt *stmt;
     if (sqlite3_prepare_v2(_db, sql_insert, -1, &stmt, nil) == SQLITE_OK) {
-        NSLog(@"insert content=%s",[msg.content UTF8String]);
+//        NSLog(@"insert content=%s",[msg.content UTF8String]);
         if (sqlite3_bind_int(stmt, 1, msg.senderId) != SQLITE_OK) {
             NSLog(@"sqlite bind senderId error.");
         }
@@ -91,7 +91,7 @@ static SessionMessageSqlite *_sharedManager;
     NSString *sql_queryAll = @"select id, senderId, senderName, content, sendType, timeStamp from sessionmessage where content!='' order by timeStamp";
     sqlite3_stmt *stmt;
     if (sqlite3_prepare_v2(_db, [sql_queryAll UTF8String], -1, &stmt, nil) == SQLITE_OK) {
-        NSLog(@"sqlite prepare v2");
+//        NSLog(@"sqlite prepare v2");
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             NSLog(@"table field value is %d", sqlite3_column_int(stmt, 0));
             sessionMsg.id = sqlite3_column_int(stmt, 0);
@@ -109,7 +109,7 @@ static SessionMessageSqlite *_sharedManager;
         sqlite3_finalize(stmt);
     }
     sessionMsg = NULL;
-    NSLog(@"QUERY ALL OVER");
+//    NSLog(@"QUERY ALL OVER");
     return result;
 }
 
