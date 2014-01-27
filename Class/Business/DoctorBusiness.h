@@ -19,8 +19,10 @@
 }
 + (DoctorBusiness *)sharedManager;
 
+- (void)getAllDoctor:(void(^)(NSArray *arr))block superView:(UIView *)superView;
 - (void)setMyDoctorInfo;
 - (void)setMyDoctorInfoSync;
+- (void)addMyDoctor:(id)obj;
 - (void)deleteMyDoctor;
 
 - (void)getMyDoctorSessionInfo:(void(^)(SessionMessage* msg))block withSuperView:(UIView *)superView;

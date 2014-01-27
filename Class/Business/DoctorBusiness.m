@@ -47,6 +47,23 @@ static DoctorBusiness *_sharedManager;
     return self;
 }
 
+- (NSString *)getCurrentPatientID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+}
+
+- (void)getAllDoctor:(void(^)(NSArray *arr))block superView:(UIView *)superView
+{
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:[NSString stringWithFormat:@"patient/doctor/list/%@.json",[self getCurrentPatientID]] completionHandle:^(id returnObject) {
+        //        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+        
+        NSDictionary * returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+        block([[returnDict objectForKey:@"resultInfo"] objectForKey:@"list"]);        
+    } failed:^{
+        
+    } hitSuperView:superView method:kGet];
+}
+
 - (void)setMyDoctorInfo {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -101,6 +118,23 @@ static DoctorBusiness *_sharedManager;
         NSLog(@"error in method name: %s", __FUNCTION__);
     } hitSuperView:nil requestMethod:kGet];
     
+}
+
+- (void)addMyDoctor:(id)obj
+{
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    [userDef setObject:obj forKey:DOCTORID_KEY];
+    [userDef synchronize];
+    
+    NSString *url = [NSString stringWithFormat:@"patient/doctor/add/%@/%@.json",[userDef objectForKey:PATIENTID_KEY],obj];
+    NSLog(@"%@",url);
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url completionHandle:^(id returnObject) {
+        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+        
+    } failed:^{
+        
+    } hitSuperView:nil method:kPost];
+
 }
 
 - (void)deleteMyDoctor

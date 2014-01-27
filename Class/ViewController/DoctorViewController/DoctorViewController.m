@@ -29,17 +29,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:[NSString stringWithFormat:@"patient/doctor/list/%@.json",[self getCurrentPatientID]] completionHandle:^(id returnObject) {
-//        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
-        
-        NSDictionary * returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
-        _dataSource = [[returnDict objectForKey:@"resultInfo"] objectForKey:@"list"];
+    [[DoctorBusiness sharedManager] getAllDoctor:^(NSArray *arr) {
+        _dataSource = arr;
         [_tableView reloadData];
-        
-    } failed:^{
-        
-    } hitSuperView:self.view method:kGet];
+    } superView:self.view];
+//    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:[NSString stringWithFormat:@"patient/doctor/list/%@.json",[self getCurrentPatientID]] completionHandle:^(id returnObject) {
+////        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+//        
+//        NSDictionary * returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+//        _dataSource = [[returnDict objectForKey:@"resultInfo"] objectForKey:@"list"];
+//        [_tableView reloadData];
+//        
+//    } failed:^{
+//        
+//    } hitSuperView:self.view method:kGet];
 }
 
 - (void)didReceiveMemoryWarning
@@ -139,8 +142,8 @@
     NSDictionary *dict = _dataSource[button.tag];
 //    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
     
-    
-    [self relateDoctorID:[dict objectForKey:@"doctorId"]];
+    [[DoctorBusiness sharedManager] addMyDoctor:[dict objectForKey:@"doctorId"]];
+//    [self relateDoctorID:[dict objectForKey:@"doctorId"]];
     
 //    NSString *classStr = [[[(AppDelegate *)([UIApplication sharedApplication].delegate) propertyList] objectAtIndex:9] objectForKey:@"class"];
 //    Class class = NSClassFromString(classStr);
@@ -152,19 +155,19 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
-- (void)relateDoctorID:(id)obj
-{
-    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-    [userDef setObject:obj forKey:DOCTORID_KEY];
-    [userDef synchronize];
-    
-    NSString *url = [NSString stringWithFormat:@"patient/doctor/add/%@/%@.json",[userDef objectForKey:PATIENTID_KEY],obj];
-    NSLog(@"%@",url);
-    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url completionHandle:^(id returnObject) {
-        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
-        
-    } failed:^{
-        
-    } hitSuperView:nil method:kPost];
-}
+//- (void)relateDoctorID:(id)obj
+//{
+//    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+//    [userDef setObject:obj forKey:DOCTORID_KEY];
+//    [userDef synchronize];
+//    
+//    NSString *url = [NSString stringWithFormat:@"patient/doctor/add/%@/%@.json",[userDef objectForKey:PATIENTID_KEY],obj];
+//    NSLog(@"%@",url);
+//    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url completionHandle:^(id returnObject) {
+//        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+//        
+//    } failed:^{
+//        
+//    } hitSuperView:nil method:kPost];
+//}
 @end
