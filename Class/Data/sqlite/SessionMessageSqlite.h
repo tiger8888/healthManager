@@ -17,6 +17,6 @@
 
 + (SessionMessageSqlite *)sharedManager;
 - (void)insertOne:(SessionMessage *)msg;
-- (NSArray *)queryAll;
+- (NSArray *)queryAll:(int)doctorId withPatientId:(int)patientId;
 - (void)closeDB;
 @end

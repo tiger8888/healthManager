@@ -14,6 +14,7 @@
     NSArray *_styleArray;
     SessionMessage *_sessionMessage;
     NSTimer *autoRefreshTimer;
+    NSDateFormatter *dateFormater;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;

@@ -10,13 +10,16 @@
 
 @implementation SessionMessage
 @synthesize id;
-@synthesize senderId, senderName, sendType;
+@synthesize senderId, doctorId, patientId;
+@synthesize senderName, sendType;
 @synthesize content, timeStamp;
 - (id)copyWithZone:(NSZone *)zone
 {
     SessionMessage *new = [[SessionMessage allocWithZone:zone] init];
     new.id = self.id;
     new.senderId = self.senderId;
+    new.doctorId = self.doctorId;
+    new.patientId = self.patientId;
     new.senderName = self.senderName;
     new.sendType = self.sendType;
     new.content = self.content;

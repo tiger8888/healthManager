@@ -25,6 +25,8 @@ static BOOL isLoadAllSession = FALSE;
     if (self) {
         // Custom initialization
         autoRefreshTimer =  [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getDoctorSessionInfo:) userInfo:nil repeats:YES];
+        dateFormater = [[NSDateFormatter alloc] init];
+        dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     }
     return self;
 }
@@ -102,13 +104,14 @@ static BOOL isLoadAllSession = FALSE;
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     _sessionMessage.id = 0;
     _sessionMessage.senderId = [[userDefault objectForKey:PATIENTID_KEY] intValue];
+    _sessionMessage.patientId = [[userDefault objectForKey:PATIENTID_KEY] intValue];
+    _sessionMessage.doctorId = [[userDefault objectForKey:DOCTORID_KEY] intValue];
     _sessionMessage.senderName = [userDefault objectForKey:@"name"];
     _sessionMessage.sendType = SessionMessageSendTypeMe;
     _sessionMessage.content = self.textField.text ? self.textField.text : @" ";
-    _sessionMessage.timeStamp = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                               dateStyle:NSDateFormatterShortStyle
-                                               timeStyle:NSDateFormatterShortStyle];
+    _sessionMessage.timeStamp = [dateFormater stringFromDate:[NSDate date]];
     
+    NSLog(@"time is :%@", _sessionMessage.timeStamp);
     if ( ![[Message sharedManager] checkSessionMessage:self.textField.text] ) {
         return;
     }
@@ -142,7 +145,7 @@ static BOOL isLoadAllSession = FALSE;
 
 - (void)getDoctorInfo {
     NSString *interfaceUrl = [NSString stringWithFormat:@"patient/doctor/%@.json", [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
-    NSLog(@"get doctorinfo interface url is :%@", interfaceUrl);
+//    NSLog(@"get doctorinfo interface url is :%@", interfaceUrl);
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
@@ -186,9 +189,12 @@ static BOOL isLoadAllSession = FALSE;
         if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
             NSArray *sessionMessageInfoArray = [result objectForKey:@"list"];
             SessionMessage *sessionMsg = [SessionMessage new];
+            sessionMsg.patientId = [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue];
+            
             for (NSDictionary *msgItem in sessionMessageInfoArray ) {
                 sessionMsg.id = 0;
                 sessionMsg.senderId = [[msgItem objectForKey:@"doctorId"] intValue];
+                sessionMsg.doctorId = [[msgItem objectForKey:@"doctorId"] intValue];
                 sessionMsg.senderName = [msgItem objectForKey:@"doctorName"];
                 sessionMsg.sendType = SessionMessageSendTypeOther;
                 sessionMsg.content = [msgItem objectForKey:@"msg"];
@@ -205,7 +211,10 @@ static BOOL isLoadAllSession = FALSE;
 }
 
 - (void)getAllSessionInfo {
-    NSArray *sessionMsgArr = [[SessionMessageSqlite sharedManager] queryAll];
+    int doctorId = [[[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY] intValue];
+    int patiendId = [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue];
+    
+    NSArray *sessionMsgArr = [[SessionMessageSqlite sharedManager] queryAll:doctorId withPatientId:patiendId];
     for (SessionMessage *msgItem in sessionMsgArr) {
         [self appendMessage:msgItem];
     }

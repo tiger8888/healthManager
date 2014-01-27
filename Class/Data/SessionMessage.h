@@ -15,6 +15,8 @@ typedef enum  {
 @interface SessionMessage : NSObject<NSCopying>
 @property (nonatomic) int id;
 @property (nonatomic) int senderId;
+@property (nonatomic) int doctorId;
+@property (nonatomic) int patientId;
 @property (nonatomic, strong) NSString	*senderName;
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, assign) SessionMessageSendType sendType;
