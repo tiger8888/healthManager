@@ -47,18 +47,12 @@ static DoctorBusiness *_sharedManager;
     return self;
 }
 
-- (NSString *)getCurrentPatientID
-{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
-}
 
 - (void)getAllDoctor:(void(^)(NSArray *arr))block superView:(UIView *)superView
 {
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:[NSString stringWithFormat:@"patient/doctor/list/%@.json",[self getCurrentPatientID]] completionHandle:^(id returnObject) {
-        //        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
-        
-        NSDictionary * returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
-        block([[returnDict objectForKey:@"resultInfo"] objectForKey:@"list"]);        
+            NSDictionary * returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+            block([[returnDict objectForKey:@"resultInfo"] objectForKey:@"list"]);
     } failed:^{
         
     } hitSuperView:superView method:kGet];
@@ -66,10 +60,9 @@ static DoctorBusiness *_sharedManager;
 
 - (void)setMyDoctorInfo {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *patientId = [self getCurrentPatientID];
     
-    NSString *patientId = [userDefaults objectForKey:PATIENTID_KEY];
-    
-    NSString *interfaceUrl = [NSString stringWithFormat:@"patient/doctor/%@.json",patientId];
+    NSString *interfaceUrl = [NSString stringWithFormat:@"patient/doctor/%@.json", patientId];
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
@@ -90,13 +83,11 @@ static DoctorBusiness *_sharedManager;
 - (void)setMyDoctorInfoSync {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *patientId = [userDefaults objectForKey:PATIENTID_KEY];
+    NSString *patientId = [self getCurrentPatientID];
     
     NSString *interfaceUrl = [NSString stringWithFormat:@"patient/doctor/%@.json",patientId];
     NSLog(@"get doctorinfo interface url is :%@", interfaceUrl);
     [self request:[NSData new] interface:interfaceUrl completionHandle:^(id returnObject) {
-//        NSString *str = [[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding];
-//        NSLog(@"SUCCESS INFO:%@",str);
         NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         NSDictionary *result = [returnDict categoryObjectForKey:@"resultInfo"];
         if ( [[Message sharedManager] checkReturnInfor:result] ) {
@@ -106,11 +97,6 @@ static DoctorBusiness *_sharedManager;
             [userDefaults setObject: [doctorInfo objectForKey:@"name"] forKey:DOCTOR_NAME_KEY];
             [userDefaults setObject:doctorImage forKey:DOCTOR_IMAGE_KEY];
             [userDefaults synchronize];
-            
-            //            _titleLabel.text = [[doctorInfo objectForKey:@"name"] stringByAppendingString: @"医生"];
-            //            [self getAllSessionInfo];
-            //            [self getDoctorSessionInfo:nil];
-            NSLog(@"set my doctor information");
         }
 
     } failed:^{
@@ -127,9 +113,9 @@ static DoctorBusiness *_sharedManager;
     [userDef synchronize];
     
     NSString *url = [NSString stringWithFormat:@"patient/doctor/add/%@/%@.json",[userDef objectForKey:PATIENTID_KEY],obj];
-    NSLog(@"%@",url);
+//    NSLog(@"%@",url);
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url completionHandle:^(id returnObject) {
-        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+//        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
         
     } failed:^{
         
@@ -141,12 +127,12 @@ static DoctorBusiness *_sharedManager;
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *patientId = [userDefaults objectForKey:PATIENTID_KEY];
-    NSString *doctorId = [userDefaults objectForKey:DOCTORID_KEY];
+    NSString *patientId = [self getCurrentPatientID];
+    NSString *doctorId = [self getCurrentDoctorID];
     
     if (doctorId>0 && patientId>0) {
         NSString *url = [NSString stringWithFormat:@"patient/doctor/delete/%@/%@.json", patientId, doctorId];
-        NSLog(@"%@",url);
+//        NSLog(@"%@",url);
         [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url  completionHandle:^(id returnObject) {
             
             NSLog(@"delete my doctor:%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
@@ -165,7 +151,7 @@ static DoctorBusiness *_sharedManager;
 }
 
 - (void)getMyDoctorSessionInfo:(void(^)(SessionMessage* msg))block withSuperView:(UIView *)superView
-{    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/list/%@.json", [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
+{    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/list/%@.json", [self getCurrentPatientID]];
     
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
@@ -173,7 +159,7 @@ static DoctorBusiness *_sharedManager;
         if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
             NSArray *sessionMessageInfoArray = [result objectForKey:@"list"];
             SessionMessage *sessionMsg = [SessionMessage new];
-            sessionMsg.patientId = [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue];
+            sessionMsg.patientId = [[self getCurrentPatientID] intValue];
             
             for (NSDictionary *msgItem in sessionMessageInfoArray ) {
                 sessionMsg.id = 0;
@@ -195,8 +181,8 @@ static DoctorBusiness *_sharedManager;
 }
 
 - (NSArray *)getMyDoctorAllSessionInfo {
-    int doctorId = [[[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY] intValue];
-    int patiendId = [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue];
+    int doctorId = [[self getCurrentDoctorID] intValue];
+    int patiendId = [[self getCurrentPatientID] intValue];
     
     NSArray *sessionMsgArr = [[SessionMessageSqlite sharedManager] queryAll:doctorId withPatientId:patiendId];
     return sessionMsgArr;
@@ -204,9 +190,8 @@ static DoctorBusiness *_sharedManager;
 
 - (void)sendSessionMessageToMydoctor:(SessionMessage *)msg withBlock:(void(^)(void))block superView:(UIView *)superView
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
-    [parameter setObject:[userDefaults objectForKey:DOCTORID_KEY] forKey:@"doctorId"];
+    [parameter setObject:[self getCurrentDoctorID] forKey:@"doctorId"];
     [parameter setObject:msg.content forKey:@"msg"];
     
     NSString *interfaceUrl = [NSString stringWithFormat:@"chat/patient/add/%d.json", msg.senderId];
@@ -218,6 +203,17 @@ static DoctorBusiness *_sharedManager;
         ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
     } hitSuperView:superView method:kPost];
 }
+
+#pragma mark - private method
+- (NSString *)getCurrentPatientID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+}
+- (NSString *)getCurrentDoctorID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY];
+}
+
 
 
 #pragma mark - network request method
