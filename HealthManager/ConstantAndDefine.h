@@ -37,6 +37,8 @@ typedef enum {
  */
 #define PATIENTID_KEY @"patientID"
 #define DOCTORID_KEY @"myDoctorID"
+#define DOCTOR_NAME_KEY @"myDoctorName"
+#define DOCTOR_IMAGE_KEY @"myDoctorImage"
 #define SETTING_REMIND_TIME_KEY @"settingRemindTime"
 #define SETTING_REMIND_SOUND_KEY @"settingRemindSound"
 /**

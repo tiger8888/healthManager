@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "SettingRemindTimeViewController.h"
+#import "DoctorBusiness.h"
 
 @interface SettingViewController ()
 {
@@ -299,21 +300,21 @@
 //取消绑定医生
 - (void)irrelate
 {
-    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-    
-    NSString *url = [NSString stringWithFormat:@"patient/doctor/delete/%@/%@.json",[self getCurrentPatientID],[self getCurrentDoctorID]];
-    NSLog(@"%@",url);
-    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url  completionHandle:^(id returnObject) {
-        
-        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
-            
-        } failed:^{
-            
-        } hitSuperView:nil method:kPost];
-    
-    [userDef removeObjectForKey:DOCTORID_KEY];
-    [userDef synchronize];
-
+    [[DoctorBusiness sharedManager] deleteMyDoctor];
+//    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+//    
+//    NSString *url = [NSString stringWithFormat:@"patient/doctor/delete/%@/%@.json",[self getCurrentPatientID],[self getCurrentDoctorID]];
+//    NSLog(@"%@",url);
+//    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url  completionHandle:^(id returnObject) {
+//        
+//        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+//            
+//        } failed:^{
+//            
+//        } hitSuperView:nil method:kPost];
+//    
+//    [userDef removeObjectForKey:DOCTORID_KEY];
+//    [userDef synchronize];
 }
 @end
 

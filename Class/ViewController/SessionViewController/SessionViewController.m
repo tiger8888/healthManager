@@ -9,6 +9,7 @@
 #import "SessionViewController.h"
 #import "SessionMessageStyleManager.h"
 #import "SessionMessageSqlite.h"
+#import "DoctorBusiness.h"
 
 
 @interface SessionViewController ()
@@ -53,25 +54,10 @@ static BOOL isLoadAllSession = FALSE;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard) name:UIKeyboardWillHideNotification object:nil];
     
-    [self getDoctorInfo];
-//    _titleLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:@"doctorName"] stringByAppendingString: @"医生"];
-//    NSLog(@"view did load");
-//    void (^aaaa)(void) = ^{
-//        [self getAllSessionInfo];
-//    };
-//    aaaa();
-    
-//    NSTimer *timer;
-//    timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getDoctorSessionInfo) userInfo:nil repeats:YES];
+    [[DoctorBusiness sharedManager] setMyDoctorInfoSync];
+    _titleLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:DOCTOR_NAME_KEY] stringByAppendingString: @"医生"];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-//    [autoRefreshTimer setFireDate:[NSDate distantPast]];
-//        NSLog(@"view will appear");
-//    self.textField.text = @"auto write session message";
-//    [self submitOkClick:Nil];
-}
 - (void)viewDidDisappear:(BOOL)animated
 {
     [autoRefreshTimer setFireDate:[NSDate distantFuture]];
@@ -93,7 +79,6 @@ static BOOL isLoadAllSession = FALSE;
 
 - (void)appendMessage:(SessionMessage *)msg {
     NSString *appendScript = [[SessionMessageStyleManager sharedInstance] appendScriptForMessage:msg];
-//    NSLog(@"webView content is :%@",appendScript);
     [self.webView stringByEvaluatingJavaScriptFromString:appendScript];
 }
 
@@ -111,29 +96,32 @@ static BOOL isLoadAllSession = FALSE;
     _sessionMessage.content = self.textField.text ? self.textField.text : @" ";
     _sessionMessage.timeStamp = [dateFormater stringFromDate:[NSDate date]];
     
-    NSLog(@"time is :%@", _sessionMessage.timeStamp);
     if ( ![[Message sharedManager] checkSessionMessage:self.textField.text] ) {
         return;
     }
-    NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
-    [parameter setObject:[userDefault objectForKey:DOCTORID_KEY] forKey:@"doctorId"];
-    [parameter setObject:self.textField.text forKey:@"msg"];
-    
-    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/patient/add/%d.json", _sessionMessage.senderId];
-    
-    [[HttpRequestManager sharedManager] requestWithParameters:parameter interface:interfaceUrl completionHandle:^(id returnObject) {
-//        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
-//        NSString *result = [[dataDictionary objectForKey:@"resultInfo"] objectForKey:@"retCode"];
-//        NSLog(@"code=%@", result);
-        
-        [[SessionMessageSqlite sharedManager] insertOne:_sessionMessage];
+    [[DoctorBusiness sharedManager] sendSessionMessageToMydoctor:_sessionMessage withBlock:
+    ^{
         [self appendMessage:_sessionMessage];
         
         [self.textField resignFirstResponder];
         self.textField.text = nil;
-    } failed:^{
-        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
-    } hitSuperView:self.view method:kPost];
+    } superView:self.view];
+//    NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
+//    [parameter setObject:[userDefault objectForKey:DOCTORID_KEY] forKey:@"doctorId"];
+//    [parameter setObject:self.textField.text forKey:@"msg"];
+//    
+//    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/patient/add/%d.json", _sessionMessage.senderId];
+//    
+//    [[HttpRequestManager sharedManager] requestWithParameters:parameter interface:interfaceUrl completionHandle:^(id returnObject) {
+//        
+//        [[SessionMessageSqlite sharedManager] insertOne:_sessionMessage];
+//        [self appendMessage:_sessionMessage];
+//        
+//        [self.textField resignFirstResponder];
+//        self.textField.text = nil;
+//    } failed:^{
+//        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
+//    } hitSuperView:self.view method:kPost];
 }
 
 
@@ -141,31 +129,6 @@ static BOOL isLoadAllSession = FALSE;
 {
     [textField resignFirstResponder];
     return YES;
-}
-
-- (void)getDoctorInfo {
-    NSString *interfaceUrl = [NSString stringWithFormat:@"patient/doctor/%@.json", [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
-//    NSLog(@"get doctorinfo interface url is :%@", interfaceUrl);
-    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
-        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
-        NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
-        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
-            NSDictionary *doctorInfo = [result objectForKey:@"doctor"];
-            NSString *doctorImage = [doctorInfo objectForKey:@"picUrl"];
-            [[NSUserDefaults standardUserDefaults] setObject: [doctorInfo objectForKey:@"name"] forKey:@"doctorName"];
-            [[NSUserDefaults standardUserDefaults] setObject:doctorImage forKey:@"doctorImage"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
-            _titleLabel.text = [[doctorInfo objectForKey:@"name"] stringByAppendingString: @"医生"];
-//            [self getAllSessionInfo];
-            [self getDoctorSessionInfo:nil];
-            
-        }
-        
-    } failed:^{
-        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
-        NSLog(@"error in method name: %s", __FUNCTION__);
-    } hitSuperView:self.view method:kGet];
 }
 
 - (void)getDoctorSessionInfo:(id)sender {
@@ -181,40 +144,41 @@ static BOOL isLoadAllSession = FALSE;
     if (isLoadAllSession  == FALSE) {
         [self getAllSessionInfo];
     }
-    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/list/%@.json", [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
+    [[DoctorBusiness sharedManager] getMyDoctorSessionInfo:^(SessionMessage *msg) {
+        [self appendMessage:msg];
+    } withSuperView:hitSuperView];
     
-    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
-        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
-        NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
-        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
-            NSArray *sessionMessageInfoArray = [result objectForKey:@"list"];
-            SessionMessage *sessionMsg = [SessionMessage new];
-            sessionMsg.patientId = [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue];
-            
-            for (NSDictionary *msgItem in sessionMessageInfoArray ) {
-                sessionMsg.id = 0;
-                sessionMsg.senderId = [[msgItem objectForKey:@"doctorId"] intValue];
-                sessionMsg.doctorId = [[msgItem objectForKey:@"doctorId"] intValue];
-                sessionMsg.senderName = [msgItem objectForKey:@"doctorName"];
-                sessionMsg.sendType = SessionMessageSendTypeOther;
-                sessionMsg.content = [msgItem objectForKey:@"msg"];
-                sessionMsg.timeStamp = [msgItem objectForKey:@"createTime"];
-                
-                [[SessionMessageSqlite sharedManager] insertOne:sessionMsg];
-                [self appendMessage:sessionMsg];
-            }
-        }
-        
-    } failed:^{
-        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
-    } hitSuperView:hitSuperView method:kGet];
+//    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/list/%@.json", [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
+//    
+//    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
+//        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+//        NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
+//        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
+//            NSArray *sessionMessageInfoArray = [result objectForKey:@"list"];
+//            SessionMessage *sessionMsg = [SessionMessage new];
+//            sessionMsg.patientId = [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue];
+//            
+//            for (NSDictionary *msgItem in sessionMessageInfoArray ) {
+//                sessionMsg.id = 0;
+//                sessionMsg.senderId = [[msgItem objectForKey:@"doctorId"] intValue];
+//                sessionMsg.doctorId = [[msgItem objectForKey:@"doctorId"] intValue];
+//                sessionMsg.senderName = [msgItem objectForKey:@"doctorName"];
+//                sessionMsg.sendType = SessionMessageSendTypeOther;
+//                sessionMsg.content = [msgItem objectForKey:@"msg"];
+//                sessionMsg.timeStamp = [msgItem objectForKey:@"createTime"];
+//                
+//                [[SessionMessageSqlite sharedManager] insertOne:sessionMsg];
+//                [self appendMessage:sessionMsg];
+//            }
+//        }
+//        
+//    } failed:^{
+//        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
+//    } hitSuperView:hitSuperView method:kGet];
 }
 
 - (void)getAllSessionInfo {
-    int doctorId = [[[NSUserDefaults standardUserDefaults] objectForKey:DOCTORID_KEY] intValue];
-    int patiendId = [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue];
-    
-    NSArray *sessionMsgArr = [[SessionMessageSqlite sharedManager] queryAll:doctorId withPatientId:patiendId];
+    NSArray *sessionMsgArr = [[DoctorBusiness sharedManager] getMyDoctorAllSessionInfo];
     for (SessionMessage *msgItem in sessionMsgArr) {
         [self appendMessage:msgItem];
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		375ED8FC188F5F0500423CF8 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 375ED8FA188F5F0500423CF8 /* FeedbackViewController.m */; };
 		375ED8FD188F5F0500423CF8 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375ED8FB188F5F0500423CF8 /* FeedbackViewController.xib */; };
+		37A1797618961CF9003AE118 /* DoctorBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A1797518961CF9003AE118 /* DoctorBusiness.m */; };
 		37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E56B187E31B500F075B0 /* AppPropertyList.plist */; };
 		37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8544D1888EB4500543874 /* AnnouncementViewController.m */; };
 		37A854501888EB4500543874 /* AnnouncementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8544E1888EB4500543874 /* AnnouncementViewController.xib */; };
@@ -157,6 +158,8 @@
 		375ED8F9188F5F0500423CF8 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		375ED8FA188F5F0500423CF8 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		375ED8FB188F5F0500423CF8 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
+		37A1797418961CF9003AE118 /* DoctorBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorBusiness.h; sourceTree = "<group>"; };
+		37A1797518961CF9003AE118 /* DoctorBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorBusiness.m; sourceTree = "<group>"; };
 		37A3E56B187E31B500F075B0 /* AppPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppPropertyList.plist; path = HealthManager/AppPropertyList.plist; sourceTree = SOURCE_ROOT; };
 		37A8544C1888EB4500543874 /* AnnouncementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
 		37A8544D1888EB4500543874 /* AnnouncementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
@@ -395,6 +398,8 @@
 				37B6E074188E6B6500A273AB /* Message.m */,
 				37BF92FD1891ED3900B50627 /* SessionMessageStyleManager.h */,
 				37BF92FE1891ED3900B50627 /* SessionMessageStyleManager.m */,
+				37A1797418961CF9003AE118 /* DoctorBusiness.h */,
+				37A1797518961CF9003AE118 /* DoctorBusiness.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -1053,6 +1058,7 @@
 				9C0BFFB31886D944002845D9 /* BackButtonViewController.m in Sources */,
 				8BFE1787187FEC5700D1F48A /* LSTextField.m in Sources */,
 				9C0BFFCB1886D944002845D9 /* ManagerViewController.m in Sources */,
+				37A1797618961CF9003AE118 /* DoctorBusiness.m in Sources */,
 				9C0BFFAE1886D944002845D9 /* BloodRecordDateData.m in Sources */,
 				37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */,
 				8BFE1788187FEC5700D1F48A /* HttpRequestManager.m in Sources */,

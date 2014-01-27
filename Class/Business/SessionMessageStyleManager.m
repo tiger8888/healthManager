@@ -57,8 +57,8 @@ static SessionMessageStyleManager* _sharedInstance = nil;
     }else{
         newHTML = [contentOutHTML copy];
         newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%messageClasses%" withString:@"outgoing message"];
-        if ( [[NSUserDefaults standardUserDefaults] objectForKey:@"doctorImage"]) {
-            newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%userIconPath%" withString:[[NSUserDefaults standardUserDefaults] objectForKey:@"doctorImage"]];
+        if ( [[NSUserDefaults standardUserDefaults] objectForKey:DOCTOR_IMAGE_KEY]) {
+            newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%userIconPath%" withString:[[NSUserDefaults standardUserDefaults] objectForKey:DOCTOR_IMAGE_KEY]];
         }
         else {
             newHTML = [newHTML stringByReplacingOccurrencesOfString:@"%userIconPath%" withString:@"Renkoo/outgoing_icon.png"];
