@@ -13,6 +13,7 @@
 {
     NSArray *_styleArray;
     SessionMessage *_sessionMessage;
+    NSTimer *autoRefreshTimer;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;

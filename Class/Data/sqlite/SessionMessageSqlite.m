@@ -34,7 +34,7 @@ static SessionMessageSqlite *_sharedManager;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *cacheDirectory = [paths objectAtIndex:0];
     NSString *dbFilePath = [cacheDirectory stringByAppendingString:@"/health"];
-    NSLog(@"dfFilePath is :%@", dbFilePath);
+//    NSLog(@"dfFilePath is :%@", dbFilePath);
     
     if (sqlite3_open([dbFilePath UTF8String], &_db) != SQLITE_OK) {
         sqlite3_close(_db);
@@ -93,12 +93,12 @@ static SessionMessageSqlite *_sharedManager;
     if (sqlite3_prepare_v2(_db, [sql_queryAll UTF8String], -1, &stmt, nil) == SQLITE_OK) {
 //        NSLog(@"sqlite prepare v2");
         while (sqlite3_step(stmt) == SQLITE_ROW) {
-            NSLog(@"table field value is %d", sqlite3_column_int(stmt, 0));
+//            NSLog(@"table field value is %d", sqlite3_column_int(stmt, 0));
             sessionMsg.id = sqlite3_column_int(stmt, 0);
             sessionMsg.senderId = sqlite3_column_int(stmt, 1);
             sessionMsg.senderName =  [[NSString alloc] initWithUTF8String: (char *)sqlite3_column_text(stmt, 2)];
             char *content = (char *)sqlite3_column_text(stmt, 3);
-            NSLog(@"content = %s",content);
+//            NSLog(@"content = %s",content);
             sessionMsg.content =  [[NSString alloc] initWithUTF8String: content?content:""];
             sessionMsg.sendType = sqlite3_column_int(stmt, 4);
             sessionMsg.timeStamp =  [[NSString alloc] initWithUTF8String: (char *)sqlite3_column_text(stmt, 5)];

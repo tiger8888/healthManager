@@ -24,6 +24,7 @@ static BOOL isLoadAllSession = FALSE;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        autoRefreshTimer =  [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getDoctorSessionInfo:) userInfo:nil repeats:YES];
     }
     return self;
 }
@@ -58,16 +59,21 @@ static BOOL isLoadAllSession = FALSE;
 //    };
 //    aaaa();
     
-    NSTimer *timer;
-    timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getDoctorSessionInfo) userInfo:nil repeats:YES];
+//    NSTimer *timer;
+//    timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getDoctorSessionInfo) userInfo:nil repeats:YES];
 }
 
-//-(void)viewWillAppear:(BOOL)animated
-//{
-////        NSLog(@"view will appear");
-////    self.textField.text = @"auto write session message";
-////    [self submitOkClick:Nil];
-//}
+- (void)viewWillAppear:(BOOL)animated
+{
+//    [autoRefreshTimer setFireDate:[NSDate distantPast]];
+//        NSLog(@"view will appear");
+//    self.textField.text = @"auto write session message";
+//    [self submitOkClick:Nil];
+}
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [autoRefreshTimer setFireDate:[NSDate distantFuture]];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -113,8 +119,8 @@ static BOOL isLoadAllSession = FALSE;
     NSString *interfaceUrl = [NSString stringWithFormat:@"chat/patient/add/%d.json", _sessionMessage.senderId];
     
     [[HttpRequestManager sharedManager] requestWithParameters:parameter interface:interfaceUrl completionHandle:^(id returnObject) {
-        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
-        NSString *result = [[dataDictionary objectForKey:@"resultInfo"] objectForKey:@"retCode"];
+//        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+//        NSString *result = [[dataDictionary objectForKey:@"resultInfo"] objectForKey:@"retCode"];
 //        NSLog(@"code=%@", result);
         
         [[SessionMessageSqlite sharedManager] insertOne:_sessionMessage];
@@ -136,7 +142,7 @@ static BOOL isLoadAllSession = FALSE;
 
 - (void)getDoctorInfo {
     NSString *interfaceUrl = [NSString stringWithFormat:@"patient/doctor/%@.json", [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
-    
+    NSLog(@"get doctorinfo interface url is :%@", interfaceUrl);
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
@@ -149,16 +155,26 @@ static BOOL isLoadAllSession = FALSE;
             
             _titleLabel.text = [[doctorInfo objectForKey:@"name"] stringByAppendingString: @"医生"];
 //            [self getAllSessionInfo];
-            [self getDoctorSessionInfo];
+            [self getDoctorSessionInfo:nil];
             
         }
         
     } failed:^{
         ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
+        NSLog(@"error in method name: %s", __FUNCTION__);
     } hitSuperView:self.view method:kGet];
 }
 
-- (void)getDoctorSessionInfo {
+- (void)getDoctorSessionInfo:(id)sender {
+    UIView * hitSuperView;
+    if ( [sender isKindOfClass:[UIButton class]] ) {
+        hitSuperView = self.view;
+//        NSLog(@"exist refresh view");
+    }
+    else {
+        hitSuperView = nil;
+//        NSLog(@"no refresh view");
+    }
     if (isLoadAllSession  == FALSE) {
         [self getAllSessionInfo];
     }
@@ -169,10 +185,8 @@ static BOOL isLoadAllSession = FALSE;
         NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
         if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
             NSArray *sessionMessageInfoArray = [result objectForKey:@"list"];
-//            NSLog(@"session message is :%@", sessionMessageInfoArray);
             SessionMessage *sessionMsg = [SessionMessage new];
             for (NSDictionary *msgItem in sessionMessageInfoArray ) {
-//                NSLog(@"msg item is :%@", msgItem);
                 sessionMsg.id = 0;
                 sessionMsg.senderId = [[msgItem objectForKey:@"doctorId"] intValue];
                 sessionMsg.senderName = [msgItem objectForKey:@"doctorName"];
@@ -187,14 +201,12 @@ static BOOL isLoadAllSession = FALSE;
         
     } failed:^{
         ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
-    } hitSuperView:self.view method:kGet];
+    } hitSuperView:hitSuperView method:kGet];
 }
 
 - (void)getAllSessionInfo {
-//    NSLog(@"get all session information");
     NSArray *sessionMsgArr = [[SessionMessageSqlite sharedManager] queryAll];
     for (SessionMessage *msgItem in sessionMsgArr) {
-//        NSLog(@"msg item id[%d]= content :%@",msgItem.senderId , msgItem.content);
         [self appendMessage:msgItem];
     }
     isLoadAllSession = TRUE;
@@ -204,7 +216,7 @@ static BOOL isLoadAllSession = FALSE;
     UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     refreshBtn.frame = CGRectMake(DEVICE_WIDTH - 54, 0, 44, 44);
     [refreshBtn setTitle:@"刷新" forState:UIControlStateNormal];
-    [refreshBtn addTarget:self action:@selector(getDoctorSessionInfo) forControlEvents:UIControlEventTouchUpInside];
+    [refreshBtn addTarget:self action:@selector(getDoctorSessionInfo:) forControlEvents:UIControlEventTouchUpInside];
     
 //    [refreshBtn addTarget:self action:@selector(getAllSessionInfo) forControlEvents:UIControlEventTouchUpInside];
     [_navigationBar addSubview:refreshBtn];
