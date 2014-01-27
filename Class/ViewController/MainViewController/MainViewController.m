@@ -30,8 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _nameLabel.text = nil;
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"name"]) {
-        _nameLabel.text = [_nameLabel.text stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
+        _nameLabel.text = [@"你好，" stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
     }
     // Do any additional setup after loading the view from its nib.
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
@@ -84,6 +85,9 @@
 #pragma mark - Delegate Method
 - (void)loginComplate
 {
-    _nameLabel.text = [_nameLabel.text stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
+    _nameLabel.text = nil;
+
+    _nameLabel.text = [@"你好，" stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
+    
 }
 @end
