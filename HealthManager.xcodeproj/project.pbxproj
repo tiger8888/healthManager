@@ -17,6 +17,8 @@
 		37A8545C1889012500543874 /* AnnouncementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8545A1889012500543874 /* AnnouncementDetailViewController.m */; };
 		37A8545D1889012500543874 /* AnnouncementDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */; };
 		37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A8D5F51876A23C0015432A /* QuartzCore.framework */; };
+		37AACA69189749AC00438762 /* AlertCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AACA68189749AC00438762 /* AlertCustomCell.m */; };
+		37AACA6C1897693200438762 /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AACA6B1897693200438762 /* Algorithm.m */; };
 		37B51C441894983700954432 /* SessionMessageSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B51C431894983700954432 /* SessionMessageSqlite.m */; };
 		37B51C461894984A00954432 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B51C451894984A00954432 /* libsqlite3.dylib */; };
 		37B51C4C1894EB4600954432 /* Renkoo in Resources */ = {isa = PBXBuildFile; fileRef = 37B51C4B1894EB4600954432 /* Renkoo */; };
@@ -170,6 +172,10 @@
 		37A8545A1889012500543874 /* AnnouncementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementDetailViewController.m; sourceTree = "<group>"; };
 		37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementDetailViewController.xib; sourceTree = "<group>"; };
 		37A8D5F51876A23C0015432A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		37AACA67189749AC00438762 /* AlertCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertCustomCell.h; sourceTree = "<group>"; };
+		37AACA68189749AC00438762 /* AlertCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertCustomCell.m; sourceTree = "<group>"; };
+		37AACA6A1897693200438762 /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
+		37AACA6B1897693200438762 /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Algorithm.m; sourceTree = "<group>"; };
 		37B51C421894983700954432 /* SessionMessageSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMessageSqlite.h; sourceTree = "<group>"; };
 		37B51C431894983700954432 /* SessionMessageSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMessageSqlite.m; sourceTree = "<group>"; };
 		37B51C451894984A00954432 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -400,6 +406,8 @@
 				37BF92FE1891ED3900B50627 /* SessionMessageStyleManager.m */,
 				37A1797418961CF9003AE118 /* DoctorBusiness.h */,
 				37A1797518961CF9003AE118 /* DoctorBusiness.m */,
+				37AACA6A1897693200438762 /* Algorithm.h */,
+				37AACA6B1897693200438762 /* Algorithm.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -674,6 +682,8 @@
 				9C0BFF7D1886D944002845D9 /* AlertViewController.h */,
 				9C0BFF7E1886D944002845D9 /* AlertViewController.m */,
 				9C0BFF7F1886D944002845D9 /* AlertViewController.xib */,
+				37AACA67189749AC00438762 /* AlertCustomCell.h */,
+				37AACA68189749AC00438762 /* AlertCustomCell.m */,
 			);
 			path = AlertViewController;
 			sourceTree = "<group>";
@@ -1055,6 +1065,7 @@
 				8BFE1780187FEC5700D1F48A /* AFPropertyListRequestOperation.m in Sources */,
 				8BFE177E187FEC5700D1F48A /* AFJSONRequestOperation.m in Sources */,
 				9C0BFFC31886D944002845D9 /* KnowledgeDetailViewController.m in Sources */,
+				37AACA6C1897693200438762 /* Algorithm.m in Sources */,
 				9C0BFFB31886D944002845D9 /* BackButtonViewController.m in Sources */,
 				8BFE1787187FEC5700D1F48A /* LSTextField.m in Sources */,
 				9C0BFFCB1886D944002845D9 /* ManagerViewController.m in Sources */,
@@ -1084,6 +1095,7 @@
 				9C0BFFB41886D944002845D9 /* RootSuperCell.m in Sources */,
 				37A854581889002C00543874 /* Announcement.m in Sources */,
 				9C0BFFC71886D944002845D9 /* LoginViewController.m in Sources */,
+				37AACA69189749AC00438762 /* AlertCustomCell.m in Sources */,
 				8B9C96071888D6E000F87E00 /* SettingAndMoreSuperViewController.m in Sources */,
 				37BF92FC1891EAC900B50627 /* SessionMessage.m in Sources */,
 				9C0BFFB61886D944002845D9 /* RootSuperViewController.m in Sources */,
