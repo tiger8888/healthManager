@@ -928,9 +928,6 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = LiShuo;
 				TargetAttributes = {
-					8B94AAFE1848663200CA5869 = {
-						DevelopmentTeam = 78T6PRHM6V;
-					};
 					8B94AB1E1848663300CA5869 = {
 						TestTargetID = 8B94AAFE1848663200CA5869;
 					};
