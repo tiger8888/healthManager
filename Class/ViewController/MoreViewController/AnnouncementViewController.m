@@ -57,13 +57,32 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentity = @"announcementCell";
+    static NSDateFormatter *dateFormater;
+    static NSDateFormatter *dateFormaterFromString;
+    if (!dateFormater) {
+        dateFormater = [[NSDateFormatter alloc] init];
+        dateFormater.dateFormat = @"yyyy.MM.dd HH:mm";
+        
+        dateFormaterFromString = [[NSDateFormatter alloc] init];
+        dateFormaterFromString.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
     if (!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentity];
     }
     cell.textLabel.text = [[_dataSource objectAtIndex:[indexPath row]] objectForKey:@"title"];
-//    cell.detailTextLabel.text = @"a";
+    UIColor *detailTextColor = [UIColor colorWithRed:98.0f/255.0f green:98.0f/255.0f blue:98.0f/255.0f alpha:1.0f];
+    cell.detailTextLabel.textColor = detailTextColor;
+    
+    NSString *createTimeStr;
+    createTimeStr = [[_dataSource objectAtIndex:[indexPath row]] objectForKey:@"createTime"];
+//    NSLog(@"time string : %@",createTimeStr);
+    NSDate *createTime = [dateFormaterFromString dateFromString:createTimeStr];
+//    NSLog(@"time : %@",createTime);
+    
+    cell.detailTextLabel.text = [dateFormater stringFromDate:createTime];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

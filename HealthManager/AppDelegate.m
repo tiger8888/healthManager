@@ -157,9 +157,25 @@
 {
     NSLog(@"My token is :%@", deviceToken);
 }
+
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"Failed to get token, error: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"push object is :%@",userInfo);
+    //以警告框的方式来显示推送消息
+    if ([[userInfo objectForKey:@"aps"] objectForKey:@"alert"]!=NULL) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"经过推送发送过来的消息"
+                                                        message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]
+                                                       delegate:self
+                                              cancelButtonTitle:@"关闭"
+                                              otherButtonTitles:@"处理",nil];
+        [alert show];
+//        [alert release];
+    }
 }
 
 @end

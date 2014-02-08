@@ -204,6 +204,7 @@ static BOOL isLoadAllSession = FALSE;
     [UIView setAnimationDuration:0.3];
     
     int keyboardHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    NSLog(@"keyboard height is :%d",keyboardHeight);
     [self.toolBar setFrame:CGRectMake(0,DEVICE_HEIGHT-keyboardHeight-44-20, DEVICE_WIDTH, 44)];
     [UIView commitAnimations];
 }
