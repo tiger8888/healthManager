@@ -45,8 +45,8 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"AlertRecordModel" inManagedObjectContext:[self getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"userID = %@",[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateStr" ascending:YES];
-    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
+//    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateStr" ascending:YES];
+//    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
     NSError *error = nil;
     NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
     if (error)
@@ -63,8 +63,8 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"AlertRecordModel" inManagedObjectContext:[self getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"isRead == NO AND userID = %@",[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateStr" ascending:YES];
-    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
+//    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateStr" ascending:YES];
+//    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
     NSError *error = nil;
     NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
     if (error)

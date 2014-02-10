@@ -99,6 +99,14 @@
 #pragma mark - Other Method
 - (void)refreshBadgeView
 {
+    NSArray *alerts = [[AlertRecordManager sharedManager] fetchUnread];
+    if (alerts.count != 0) {
+        UIView *superView = [self.view viewWithTag:3];
+        
+        JSBadgeView *badgeView = [[JSBadgeView alloc] initWithParentView:superView alignment:JSBadgeViewAlignmentTopCenter];
+        badgeView.badgeText = [NSString stringWithFormat:@"%d",alerts.count];
+        //    badgeView.transform = CGAffineTransformMakeScale(1,1);
+    }
     
 }
 
@@ -118,11 +126,14 @@
         }
         
         [self refreshBadgeView];
+        
     } failed:^{
         
     } hitSuperView:nil method:kGet];
     
     [self refreshBadgeView];
 
+    
+    
 }
 @end

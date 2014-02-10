@@ -38,6 +38,7 @@
 		37CBF47518A8586B001DE66A /* AlertRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CBF47418A8586B001DE66A /* AlertRecordModel.m */; };
 		37CBF47818A859EC001DE66A /* AlertRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CBF47718A859EC001DE66A /* AlertRecordManager.m */; };
 		37CBF47B18A85B93001DE66A /* BaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CBF47A18A85B93001DE66A /* BaseManager.m */; };
+		7F37E18018A8A2A600E7EFAB /* JSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F37E17F18A8A2A600E7EFAB /* JSBadgeView.m */; };
 		8B94AB031848663200CA5869 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB021848663200CA5869 /* Foundation.framework */; };
 		8B94AB051848663200CA5869 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB041848663200CA5869 /* CoreGraphics.framework */; };
 		8B94AB071848663200CA5869 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB061848663200CA5869 /* UIKit.framework */; };
@@ -210,6 +211,8 @@
 		37CBF47718A859EC001DE66A /* AlertRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertRecordManager.m; sourceTree = "<group>"; };
 		37CBF47918A85B93001DE66A /* BaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseManager.h; sourceTree = "<group>"; };
 		37CBF47A18A85B93001DE66A /* BaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseManager.m; sourceTree = "<group>"; };
+		7F37E17E18A8A2A600E7EFAB /* JSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
+		7F37E17F18A8A2A600E7EFAB /* JSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBadgeView.m; sourceTree = "<group>"; };
 		8B94AAFF1848663200CA5869 /* HealthManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B94AB021848663200CA5869 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B94AB041848663200CA5869 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -421,6 +424,15 @@
 			path = Business;
 			sourceTree = "<group>";
 		};
+		7F37E17D18A8A2A600E7EFAB /* JSBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				7F37E17E18A8A2A600E7EFAB /* JSBadgeView.h */,
+				7F37E17F18A8A2A600E7EFAB /* JSBadgeView.m */,
+			);
+			path = JSBadgeView;
+			sourceTree = "<group>";
+		};
 		8B94AAF61848663200CA5869 = {
 			isa = PBXGroup;
 			children = (
@@ -529,6 +541,7 @@
 		8BFE173C187FEC5600D1F48A /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7F37E17D18A8A2A600E7EFAB /* JSBadgeView */,
 				8B9BEEBB18877F6E00A669C1 /* Tool */,
 				9C911B0218810299004CD648 /* MBProgressHUD */,
 				8BFE173D187FEC5600D1F48A /* AFNetworking */,
@@ -1103,6 +1116,7 @@
 				8B94AB111848663300CA5869 /* main.m in Sources */,
 				8B94AB181848663300CA5869 /* HealthManager.xcdatamodeld in Sources */,
 				37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */,
+				7F37E18018A8A2A600E7EFAB /* JSBadgeView.m in Sources */,
 				9C0BFFB11886D944002845D9 /* Knowledge.m in Sources */,
 				9C0BFFB81886D944002845D9 /* AlertViewController.m in Sources */,
 				37B51C441894983700954432 /* SessionMessageSqlite.m in Sources */,
