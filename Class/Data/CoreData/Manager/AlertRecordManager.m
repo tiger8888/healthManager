@@ -16,13 +16,53 @@
 
     for (NSString *propertyItem in [self propertyList]) {
         [object setValue:[model valueForKey:propertyItem] forKey:propertyItem];
+        NSLog(@"addOne name %@ value is %@", propertyItem, [model valueForKey:propertyItem]);
     }
     [self save];
 }
 
--(NSArray *) propertyList
+- (NSArray *)fetchAll
 {
-    return @[@"bloodDate", @"bloodDateStr", @"content", @"highPressure", @"isRead", @"lowPressure", @"pulse", @"receiveDate", @"receiveDateStr"];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:[self getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"userID = %@",[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"receiveDate" ascending:NO];
+    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
+    NSError *error = nil;
+    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (error)
+    {
+        [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
+    }
+    
+    NSMutableArray *result = [NSMutableArray new];
+
+    for (NSManagedObject *item in objs) {
+        NSMutableDictionary *resultItem = [NSMutableDictionary new];
+        for (NSString *propertyItem in [self propertyList]) {
+            id value = [item valueForKey:propertyItem];
+//            NSLog(@"property %@ is : %@", propertyItem, value);
+            if (!value) {
+//                NSLog(@"==========");
+                if ([propertyItem isEqualToString:@"bloodDate"] || [propertyItem isEqualToString:@"receiveDate"]) {
+                    value =[NSNull null];
+                }
+                else {
+                    value = @" ";
+                }
+            }
+            [resultItem setObject:[value copy] forKey:propertyItem];
+        }
+//        NSLog(@"--------------");
+        [result addObject:resultItem];
+    }
+    NSLog(@"db record count is %d", [result count]);
+    return result;
+}
+
+-(NSArray *) propertyList {
+    return @[@"bloodDate", @"bloodDateStr", @"content", @"highPressure", @"isRead", @"lowPressure", @"pulse", @"receiveDate", @"receiveDateStr", @"userID"];
 }
 
 + (id)sharedManager
@@ -74,5 +114,4 @@
     return objs;
     
 }
-
 @end

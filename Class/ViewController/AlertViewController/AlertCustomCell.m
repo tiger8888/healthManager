@@ -81,7 +81,7 @@
         [self.contentView addSubview:self.receiveTimeLabel];
         
         left += self.receiveTimeLabel.frame.size.width;//98
-        self.receiveTimeText = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineThree, 120, _heightSingleLineTextLabel)];
+        self.receiveTimeText = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineThree, 140, _heightSingleLineTextLabel)];
         self.receiveTimeText.backgroundColor = clearColor;
         self.receiveTimeText.font = [UIFont systemFontOfSize:14.0];
         [self.contentView addSubview:self.receiveTimeText];

@@ -8,17 +8,21 @@
 
 #import "AlertRecordModel.h"
 
+static NSDateFormatter *_dateFormater;
+
 @implementation AlertRecordModel
 
 //@synthesize bloodDate, bloodDateStr;
 //@synthesize receiveDate, receiveDateStr;
 //@synthesize highPressure, lowPressure, pulse;
 //@synthesize content, isRead;
+
 - (id)initWithDict:(NSDictionary *)dict;
 {
     self = [super init];
     if (self) {
-        self.receiveDateStr = [dict categoryObjectForKey:@"creteTime"];
+        self.receiveDateStr = [dict categoryObjectForKey:@"createTime"];
+        self.bloodDateStr = [dict categoryObjectForKey:@"createTime"];
         self.content = [dict categoryObjectForKey:@"msg"];
         self.highPressure = [dict categoryObjectForKey:@"systolicPressure"];
         self.lowPressure = [dict categoryObjectForKey:@"diastolicPressure"];
@@ -29,11 +33,9 @@
     return self;
 }
 
-
 - (void)setReceiveDateStr:(NSString *)receiveDateStr {
     _receiveDateStr = receiveDateStr;
-
-    
+        
     static NSDateFormatter *dateFormater;
     if (!dateFormater) {
         dateFormater = [[NSDateFormatter alloc] init];
@@ -44,15 +46,14 @@
 }
 
 - (void)setBloodDateStr:(NSString *)bloodDateStr {
-
     _bloodDateStr = bloodDateStr;
-    
-    static NSDateFormatter *dateFormater;
-    if (!dateFormater) {
-        dateFormater = [[NSDateFormatter alloc] init];
-        dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        
+    static NSDateFormatter *dateFormater1;
+    if (!dateFormater1) {
+        dateFormater1 = [[NSDateFormatter alloc] init];
+        dateFormater1.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     }
     
-    self.bloodDate = [dateFormater dateFromString:bloodDateStr];
+    self.bloodDate = [dateFormater1 dateFromString:bloodDateStr];
 }
 @end

@@ -33,7 +33,7 @@
 {
     UILabel *titleLabel = [UILabel new];
     titleLabel.frame = CGRectMake(20, 10, DEVICE_WIDTH - 40, 80);
-    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.textAlignment = NSTextAlignmentCenter;//UITextAlignmentCenter;
     titleLabel.text = self.knowledgeModel.title;
     
     UIFont *contentFont = [UIFont systemFontOfSize:15.0];
@@ -43,7 +43,7 @@
     UILabel *contentLabel = [[UILabel alloc] initWithFrame:contentFrame];
     contentLabel.font = contentFont;
     contentLabel.numberOfLines = 0;
-    contentLabel.lineBreakMode = UILineBreakModeWordWrap;
+    contentLabel.lineBreakMode = NSLineBreakByWordWrapping;//UILineBreakModeWordWrap;
     contentLabel.text = self.knowledgeModel.content;
     [contentLabel fitHeight];
     

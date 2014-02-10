@@ -7,8 +7,8 @@
 //
 
 #import "MainViewController.h"
-#import "AlertRecordManager.h"
 #import "AlertRecordModel.h"
+#import "AlertRecordManager.h"
 
 @interface MainViewController ()
 
@@ -32,7 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     _nameLabel.text = nil;
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"name"]) {
         _nameLabel.text = [@"你好，" stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
@@ -48,16 +47,36 @@
             
         }];
     }
-    else
-    {
-        [self checkAlertMessage];
-    }
+    
+    [self checkAlertMessage];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    NSString *interfaceUrl = [NSString stringWithFormat:@"warn/list/%d.json", [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue]];
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
+        NSLog(@"announcement data is : %@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+        NSDictionary *returnDict = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+        if ([[returnDict objectForKey:@"retCode"] intValue] == 3) {
+            return ;
+        }
+        NSArray *list = [[returnDict objectForKey:@"retMessage"] objectForKey:@"list"];
+        for (id x in list) {
+            AlertRecordModel *model = [[AlertRecordModel alloc] initWithDict:x];
+            [[AlertRecordManager sharedManager] addOne:model];
+        }
+        
+        [self refreshBadgeView];
+    } failed:^{
+        
+    } hitSuperView:nil method:kGet];
+    
+    [self refreshBadgeView];
+    [self checkAlertMessage];
 }
 
 
@@ -94,8 +113,10 @@
     _nameLabel.text = nil;
 
     _nameLabel.text = [@"你好，" stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
+    
     [self checkAlertMessage];
 }
+
 #pragma mark - Other Method
 - (void)refreshBadgeView
 {
@@ -132,8 +153,11 @@
     } hitSuperView:nil method:kGet];
     
     [self refreshBadgeView];
+<<<<<<< HEAD
 
     
+=======
+>>>>>>> 21e984c1892719b0641a6bbd3c4fd76bb9a61a25
     
 }
 @end
