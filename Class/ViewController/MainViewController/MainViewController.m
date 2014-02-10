@@ -7,8 +7,6 @@
 //
 
 #import "MainViewController.h"
-#import "AlertRecordManager.h"
-#import "AlertRecordModel.h"
 
 @interface MainViewController ()
 
@@ -32,7 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     _nameLabel.text = nil;
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"name"]) {
         _nameLabel.text = [@"你好，" stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
@@ -48,10 +45,7 @@
             
         }];
     }
-    else
-    {
-        [self checkAlertMessage];
-    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,35 +88,6 @@
     _nameLabel.text = nil;
 
     _nameLabel.text = [@"你好，" stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
-    [self checkAlertMessage];
-}
-#pragma mark - Other Method
-- (void)refreshBadgeView
-{
     
-}
-
-- (void)checkAlertMessage
-{
-    NSString *interfaceUrl = [NSString stringWithFormat:@"warn/list/%d.json", [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue]];
-    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
-        NSLog(@"announcement data is : %@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
-        NSDictionary *returnDict = [[NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil] categoryObjectForKey:@"resultInfo"];
-        if ([[returnDict objectForKey:@"retCode"] intValue] == 3) {
-            return ;
-        }
-        NSArray *list = [returnDict categoryObjectForKey:@"list"];
-        for (id x in list) {
-            AlertRecordModel *model = [[AlertRecordModel alloc] initWithDict:x];
-            [[AlertRecordManager sharedManager] addOne:model];
-        }
-        
-        [self refreshBadgeView];
-    } failed:^{
-        
-    } hitSuperView:nil method:kGet];
-    
-    [self refreshBadgeView];
-
 }
 @end

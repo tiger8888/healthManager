@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0C90A5EF-B788-4745-844F-5F05179AF9E2</string>
+	<string>F89BFB0E-DD4A-472B-A076-EE4BC3BB2AD9</string>
 	<key>IDESourceControlProjectName</key>
 	<string>HealthManager</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>66F7F212-007A-4DA5-AB83-2D2A800F56E5</key>
+		<key>1AEC58F6-F064-4EA8-BA7C-76A851901192</key>
 		<string>https://github.com/q188079726/healthManager.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>HealthManager.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>66F7F212-007A-4DA5-AB83-2D2A800F56E5</key>
+		<key>1AEC58F6-F064-4EA8-BA7C-76A851901192</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,16 +25,16 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>66F7F212-007A-4DA5-AB83-2D2A800F56E5</string>
+	<string>1AEC58F6-F064-4EA8-BA7C-76A851901192</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>66F7F212-007A-4DA5-AB83-2D2A800F56E5</string>
+			<string>1AEC58F6-F064-4EA8-BA7C-76A851901192</string>
 			<key>IDESourceControlWCCName</key>
-			<string>untitled folder</string>
+			<string>git</string>
 		</dict>
 	</array>
 </dict>

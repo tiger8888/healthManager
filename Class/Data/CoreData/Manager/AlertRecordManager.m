@@ -20,8 +20,44 @@
     [self save];
 }
 
--(NSArray *) propertyList
+- (NSArray *)fetchAll
 {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:[self getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"receiveDate" ascending:NO];
+    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
+    NSError *error = nil;
+    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (error)
+    {
+        [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
+    }
+    
+    NSMutableArray *result = [NSMutableArray new];
+    NSMutableDictionary *resultItem = [NSMutableDictionary new];
+    for (NSManagedObject *item in objs) {
+        for (NSString *propertyItem in [self propertyList]) {
+            id value = [item valueForKey:propertyItem];
+//            NSLog(@"property content is : %@", value);
+            if (!value) {
+//                NSLog(@"==========");
+                if ([propertyItem isEqualToString:@"bloodDate"] || [propertyItem isEqualToString:@"receiveDate"]) {
+                    value =[NSNull null];
+                }
+                else {
+                    value = @" ";
+                }
+            }
+            [resultItem setObject:value forKey:propertyItem];
+        }
+//        NSLog(@"--------------");
+        [result addObject:resultItem];
+    }
+    return result;
+}
+
+-(NSArray *) propertyList {
     return @[@"bloodDate", @"bloodDateStr", @"content", @"highPressure", @"isRead", @"lowPressure", @"pulse", @"receiveDate", @"receiveDateStr"];
 }
 
@@ -38,40 +74,4 @@
     }
     return sharedManager;
 }
-
-- (NSArray *)fetchAllDate
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"AlertRecordModel" inManagedObjectContext:[self getManagedObjectContext]];
-    [fetchRequest setEntity:entity];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateStr" ascending:YES];
-    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
-    NSError *error = nil;
-    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    if (error)
-    {
-        [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
-    }
-    return objs;
-
-}
-
-- (NSArray *)fetchUnread
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"AlertRecordModel" inManagedObjectContext:[self getManagedObjectContext]];
-    [fetchRequest setEntity:entity];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"isRead == NO"];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateStr" ascending:YES];
-    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
-    NSError *error = nil;
-    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    if (error)
-    {
-        [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
-    }
-    return objs;
-    
-}
-
 @end

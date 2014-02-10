@@ -31,7 +31,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+//    NSString *interfaceUrl = [NSString stringWithFormat:@"warn/list/%d.json", [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue]];
+//    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
+//        //        NSLog(@"announcement data is : %@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+//        NSDictionary *announcementDataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+//        _dataSource = [[announcementDataDictionary objectForKey:@"resultInfo"] objectForKey:@"list"];
+//        [_tableView reloadData];
+//    } failed:^{
+//        
+//    } hitSuperView:_tableView method:kGet];
     
 //    NSMutableArray *testDataSource = [NSMutableArray new];
 //    NSMutableDictionary *item = [NSMutableDictionary new];
@@ -40,21 +48,29 @@
 //        [item setObject:@"175" forKey:@"systolicPressure"];
 //        [item setObject:@"120" forKey:@"diastolicPressure"];
 //        [item setObject:@"85" forKey:@"pressId"];
-//        [item setObject:@"2014-11-12 14:23" forKey:@"createTime"];
+//        [item setObject:@"2014-11-12 14:23:00" forKey:@"createTime"];
 //        [testDataSource addObject:item];
 //        
 //        AlertRecordModel *alertRecordModel = [AlertRecordModel new];
 //        alertRecordModel.highPressure = [item objectForKey:@"systolicPressure"];
 //        alertRecordModel.lowPressure = [item objectForKey:@"diastolicPressure"];
 //        alertRecordModel.pulse = [item objectForKey:@"pressId"];
-//        alertRecordModel.receiveDateStr = [item objectForKey:@"createTime"];
 //        alertRecordModel.bloodDateStr = [item objectForKey:@"createTime"];
+//        alertRecordModel.receiveDateStr = [item objectForKey:@"createTime"];
+//        
 //        alertRecordModel.content = [item objectForKey:@"msg"];
 //        alertRecordModel.isRead = FALSE;
 //        [[AlertRecordManager sharedManager] addOne:alertRecordModel];
 //    }
+    NSArray *alertRecordList = [[AlertRecordManager sharedManager] fetchAll];
+//    NSLog(@"alert record count is : %d", [alertRecordList count]);
+//    for (NSDictionary *item in alertRecordList) {
+//        NSLog(@"item is : %@",[item valueForKey:@"content"]);
+        
+//    }
+    _dataSource = alertRecordList;
 //    _dataSource = testDataSource;
-//    [_tableView reloadData];
+    [_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,7 +116,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat height = [_algorithm calculation:indexPath data:_dataSource];
-    NSLog(@"heightfor=%f", height);
+//    NSLog(@"heightfor=%f", height);
     return height;
 }
 
