@@ -31,7 +31,7 @@
 
 
 - (void)setReceiveDateStr:(NSString *)receiveDateStr {
-    self.receiveDateStr = receiveDateStr;
+    _receiveDateStr = receiveDateStr;
 
     
     static NSDateFormatter *dateFormater;
@@ -45,7 +45,7 @@
 
 - (void)setBloodDateStr:(NSString *)bloodDateStr {
 
-    self.bloodDateStr = bloodDateStr;
+    _bloodDateStr = bloodDateStr;
     
     static NSDateFormatter *dateFormater;
     if (!dateFormater) {
