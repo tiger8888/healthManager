@@ -17,6 +17,21 @@ static NSDateFormatter *_dateFormater;
 //@synthesize highPressure, lowPressure, pulse;
 //@synthesize content, isRead;
 
+- (id)initWithDict:(NSDictionary *)dict;
+{
+    self = [super init];
+    if (self) {
+        self.receiveDateStr = [dict categoryObjectForKey:@"creteTime"];
+        self.content = [dict categoryObjectForKey:@"msg"];
+        self.highPressure = [dict categoryObjectForKey:@"systolicPressure"];
+        self.lowPressure = [dict categoryObjectForKey:@"diastolicPressure"];
+        self.pulse = [dict categoryObjectForKey:@"pulseRate"];
+
+        self.userID = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+    }
+    return self;
+}
+
 - (void)setReceiveDateStr:(NSString *)receiveDateStr {
     if (self.receiveDateStr != receiveDateStr) {
         _receiveDateStr = receiveDateStr;

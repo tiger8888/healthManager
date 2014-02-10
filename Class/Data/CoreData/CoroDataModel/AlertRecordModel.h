@@ -18,4 +18,7 @@
 @property (nonatomic, copy) NSString *pulse;
 @property (nonatomic, strong) NSDate *receiveDate;
 @property (nonatomic, copy, setter = setReceiveDateStr:) NSString *receiveDateStr;
+
+@property (nonatomic, copy) NSString *userID;
+- (id)initWithDict:(NSDictionary *)dict;
 @end
