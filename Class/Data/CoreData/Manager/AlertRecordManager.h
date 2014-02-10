@@ -19,5 +19,6 @@
 
 //- (NSArray *)fetchBy:(NSManagedObject *)model;
 - (NSArray *)fetchAll;
+- (NSArray *)fetchUnread;
 //- (NSArray *)fetchRecordForUpData;
 @end

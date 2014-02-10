@@ -153,11 +153,6 @@
     } hitSuperView:nil method:kGet];
     
     [self refreshBadgeView];
-<<<<<<< HEAD
-
-    
-=======
->>>>>>> 21e984c1892719b0641a6bbd3c4fd76bb9a61a25
     
 }
 @end
