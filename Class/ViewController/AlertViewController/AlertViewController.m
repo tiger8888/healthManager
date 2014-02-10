@@ -8,6 +8,8 @@
 
 #import "AlertViewController.h"
 #import "AlertCustomCell.h"
+#import "AlertRecordManager.h"
+#import "AlertRecordModel.h"
 
 @interface AlertViewController ()
 
@@ -42,12 +44,22 @@
     NSMutableArray *testDataSource = [NSMutableArray new];
     NSMutableDictionary *item = [NSMutableDictionary new];
     for (int i=0; i<5; i++) {
-        [item setObject:@"这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么." forKey:@"msg"];
+        [item setObject:@"这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什." forKey:@"msg"];
         [item setObject:@"175" forKey:@"systolicPressure"];
         [item setObject:@"120" forKey:@"diastolicPressure"];
         [item setObject:@"85" forKey:@"pressId"];
         [item setObject:@"2014-11-12 14:23" forKey:@"createTime"];
         [testDataSource addObject:item];
+        
+        AlertRecordModel *alertRecordModel = [AlertRecordModel new];
+        alertRecordModel.highPressure = [item objectForKey:@"systolicPressure"];
+        alertRecordModel.lowPressure = [item objectForKey:@"diastolicPressure"];
+        alertRecordModel.pulse = [item objectForKey:@"pressId"];
+        alertRecordModel.receiveDateStr = [item objectForKey:@"createTime"];
+        alertRecordModel.bloodDateStr = [item objectForKey:@"createTime"];
+        alertRecordModel.content = [item objectForKey:@"msg"];
+        alertRecordModel.isRead = FALSE;
+        [[AlertRecordManager sharedManager] addOne:alertRecordModel];
     }
     _dataSource = testDataSource;
     [_tableView reloadData];

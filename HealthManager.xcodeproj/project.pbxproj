@@ -35,6 +35,9 @@
 		37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */; };
 		37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */; };
 		37C64EA6188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64EA4188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib */; };
+		37CBF47518A8586B001DE66A /* AlertRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CBF47418A8586B001DE66A /* AlertRecordModel.m */; };
+		37CBF47818A859EC001DE66A /* AlertRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CBF47718A859EC001DE66A /* AlertRecordManager.m */; };
+		37CBF47B18A85B93001DE66A /* BaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CBF47A18A85B93001DE66A /* BaseManager.m */; };
 		8B94AB031848663200CA5869 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB021848663200CA5869 /* Foundation.framework */; };
 		8B94AB051848663200CA5869 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB041848663200CA5869 /* CoreGraphics.framework */; };
 		8B94AB071848663200CA5869 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB061848663200CA5869 /* UIKit.framework */; };
@@ -201,6 +204,12 @@
 		37C64EA2188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordSetPWDViewController.h; sourceTree = "<group>"; };
 		37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordSetPWDViewController.m; sourceTree = "<group>"; };
 		37C64EA4188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordSetPWDViewController.xib; sourceTree = "<group>"; };
+		37CBF47318A8586B001DE66A /* AlertRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertRecordModel.h; sourceTree = "<group>"; };
+		37CBF47418A8586B001DE66A /* AlertRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertRecordModel.m; sourceTree = "<group>"; };
+		37CBF47618A859EC001DE66A /* AlertRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertRecordManager.h; sourceTree = "<group>"; };
+		37CBF47718A859EC001DE66A /* AlertRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertRecordManager.m; sourceTree = "<group>"; };
+		37CBF47918A85B93001DE66A /* BaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseManager.h; sourceTree = "<group>"; };
+		37CBF47A18A85B93001DE66A /* BaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseManager.m; sourceTree = "<group>"; };
 		8B94AAFF1848663200CA5869 /* HealthManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B94AB021848663200CA5869 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B94AB041848663200CA5869 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -619,6 +628,8 @@
 				9C0BFF641886D944002845D9 /* BloodRecordDateData.m */,
 				9C0BFF651886D944002845D9 /* BloodRecordModel.h */,
 				9C0BFF661886D944002845D9 /* BloodRecordModel.m */,
+				37CBF47318A8586B001DE66A /* AlertRecordModel.h */,
+				37CBF47418A8586B001DE66A /* AlertRecordModel.m */,
 			);
 			path = CoroDataModel;
 			sourceTree = "<group>";
@@ -628,6 +639,10 @@
 			children = (
 				9C0BFF681886D944002845D9 /* BloodRecordManager.h */,
 				9C0BFF691886D944002845D9 /* BloodRecordManager.m */,
+				37CBF47618A859EC001DE66A /* AlertRecordManager.h */,
+				37CBF47718A859EC001DE66A /* AlertRecordManager.m */,
+				37CBF47918A85B93001DE66A /* BaseManager.h */,
+				37CBF47A18A85B93001DE66A /* BaseManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1040,8 +1055,10 @@
 				8BFE177C187FEC5700D1F48A /* AFHTTPRequestOperation.m in Sources */,
 				9C0BFFC91886D944002845D9 /* MainViewController.m in Sources */,
 				37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */,
+				37CBF47B18A85B93001DE66A /* BaseManager.m in Sources */,
 				8B94AB151848663300CA5869 /* AppDelegate.m in Sources */,
 				9C0BFFAF1886D944002845D9 /* BloodRecordModel.m in Sources */,
+				37CBF47818A859EC001DE66A /* AlertRecordManager.m in Sources */,
 				8BFE1786187FEC5700D1F48A /* LSSegment.m in Sources */,
 				8B9BEEBE18877F6E00A669C1 /* NSDictionary+NullOBJForKey.m in Sources */,
 				9C0BFFCF1886D944002845D9 /* SettingRemindTimeViewController.m in Sources */,
@@ -1067,6 +1084,7 @@
 				8BFE1787187FEC5700D1F48A /* LSTextField.m in Sources */,
 				9C0BFFCB1886D944002845D9 /* ManagerViewController.m in Sources */,
 				37A1797618961CF9003AE118 /* DoctorBusiness.m in Sources */,
+				37CBF47518A8586B001DE66A /* AlertRecordModel.m in Sources */,
 				9C0BFFAE1886D944002845D9 /* BloodRecordDateData.m in Sources */,
 				37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */,
 				8BFE1788187FEC5700D1F48A /* HttpRequestManager.m in Sources */,
