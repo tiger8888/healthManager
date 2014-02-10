@@ -15,27 +15,27 @@
 //@synthesize highPressure, lowPressure, pulse;
 //@synthesize content, isRead;
 
-//- (void)setReceiveDateStr:(NSString *)receiveDateStr {
-//    self.receiveDateStr = receiveDateStr;
-//    
-//    static NSDateFormatter *dateFormater;
-//    if (!dateFormater) {
-//        dateFormater = [[NSDateFormatter alloc] init];
-//        dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-//    }
-//    
-//    self.receiveDate = [dateFormater dateFromString:receiveDateStr];
-//}
-//
-//- (void)setBloodDateStr:(NSString *)bloodDateStr {
-//    self.bloodDateStr = bloodDateStr;
-//    
-//    static NSDateFormatter *dateFormater;
-//    if (!dateFormater) {
-//        dateFormater = [[NSDateFormatter alloc] init];
-//        dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-//    }
-//    
-//    self.bloodDate = [dateFormater dateFromString:bloodDateStr];
-//}
+- (void)setReceiveDateStr:(NSString *)receiveDateStr {
+    self.receiveDateStr = receiveDateStr;
+    
+    static NSDateFormatter *dateFormater;
+    if (!dateFormater) {
+        dateFormater = [[NSDateFormatter alloc] init];
+        dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    }
+    
+    self.receiveDate = [dateFormater dateFromString:receiveDateStr];
+}
+
+- (void)setBloodDateStr:(NSString *)bloodDateStr {
+    self.bloodDateStr = bloodDateStr;
+    
+    static NSDateFormatter *dateFormater;
+    if (!dateFormater) {
+        dateFormater = [[NSDateFormatter alloc] init];
+        dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    }
+    
+    self.bloodDate = [dateFormater dateFromString:bloodDateStr];
+}
 @end
