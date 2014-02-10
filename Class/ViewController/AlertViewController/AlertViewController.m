@@ -41,35 +41,14 @@
 //        
 //    } hitSuperView:_tableView method:kGet];
     
-//    NSMutableArray *testDataSource = [NSMutableArray new];
-//    NSMutableDictionary *item = [NSMutableDictionary new];
-//    for (int i=0; i<5; i++) {
-//        [item setObject:@"这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什." forKey:@"msg"];
-//        [item setObject:@"175" forKey:@"systolicPressure"];
-//        [item setObject:@"120" forKey:@"diastolicPressure"];
-//        [item setObject:@"85" forKey:@"pressId"];
-//        [item setObject:@"2014-11-12 14:23:00" forKey:@"createTime"];
-//        [testDataSource addObject:item];
-//        
-//        AlertRecordModel *alertRecordModel = [AlertRecordModel new];
-//        alertRecordModel.highPressure = [item objectForKey:@"systolicPressure"];
-//        alertRecordModel.lowPressure = [item objectForKey:@"diastolicPressure"];
-//        alertRecordModel.pulse = [item objectForKey:@"pressId"];
-//        alertRecordModel.bloodDateStr = [item objectForKey:@"createTime"];
-//        alertRecordModel.receiveDateStr = [item objectForKey:@"createTime"];
-//        
-//        alertRecordModel.content = [item objectForKey:@"msg"];
-//        alertRecordModel.isRead = FALSE;
-//        [[AlertRecordManager sharedManager] addOne:alertRecordModel];
-//    }
+
     NSArray *alertRecordList = [[AlertRecordManager sharedManager] fetchAll];
-    NSLog(@"alert record count is : %d", [alertRecordList count]);
+//    NSLog(@"alert record count is : %d", [alertRecordList count]);
     for (NSDictionary *item in alertRecordList) {
-        NSLog(@"item is : %@",[item valueForKey:@"content"]);
+//        NSLog(@"item is : %@",[item valueForKey:@"content"]);
         
     }
     _dataSource = alertRecordList;
-//    _dataSource = testDataSource;
     [_tableView reloadData];
 }
 
@@ -82,25 +61,7 @@
 #pragma mark - TableView Delegate Method
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    static NSString *cellIdentity = @"alertCell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
-//    if (!cell) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentity];
-//    }
-//    
     NSDictionary *item = [_dataSource objectAtIndex:[indexPath row]];
-//    cell.textLabel.text = [item objectForKey:@"msg"];
-////    UILabel * detailTextLabel = [[UILabel alloc] init];
-//    NSMutableString *text = [NSMutableString new];
-//    [text appendString:[item objectForKey:@"createTime"]];
-//    
-//    [text appendString:@" 高压"];
-//    [text appendString:[item objectForKey:@"systolicPressure"]];
-//    [text appendString:@" 低压"];
-//    [text appendString:[item objectForKey:@"diastolicPressure"]];
-//    [text appendString:@" 脉搏"];
-//    [text appendString:[item objectForKey:@"pressId"]];
-//    cell.detailTextLabel.text = text;
 
     AlertCustomCell *cell = [self customCellByCode:tableView withIndexPath:indexPath];
     CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];

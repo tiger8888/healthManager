@@ -55,7 +55,7 @@ static ViewBuilder *_sharedManager;
     
     UILabel *label = [[UILabel alloc] initWithFrame:contentFrame];
     label.numberOfLines = 0;
-    label.lineBreakMode = UILineBreakModeWordWrap;
+    label.lineBreakMode = NSLineBreakByWordWrapping;//UILineBreakModeWordWrap;
     label.text = str;
     
     return label;
