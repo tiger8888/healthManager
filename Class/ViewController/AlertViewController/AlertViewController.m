@@ -31,38 +31,30 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    NSString *interfaceUrl = [NSString stringWithFormat:@"warn/list/%d.json", [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue]];
-//    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
-//        //        NSLog(@"announcement data is : %@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
-//        NSDictionary *announcementDataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
-//        _dataSource = [[announcementDataDictionary objectForKey:@"resultInfo"] objectForKey:@"list"];
-//        [_tableView reloadData];
-//    } failed:^{
-//        
-//    } hitSuperView:_tableView method:kGet];
     
-    NSMutableArray *testDataSource = [NSMutableArray new];
-    NSMutableDictionary *item = [NSMutableDictionary new];
-    for (int i=0; i<5; i++) {
-        [item setObject:@"这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什." forKey:@"msg"];
-        [item setObject:@"175" forKey:@"systolicPressure"];
-        [item setObject:@"120" forKey:@"diastolicPressure"];
-        [item setObject:@"85" forKey:@"pressId"];
-        [item setObject:@"2014-11-12 14:23" forKey:@"createTime"];
-        [testDataSource addObject:item];
-        
-        AlertRecordModel *alertRecordModel = [AlertRecordModel new];
-        alertRecordModel.highPressure = [item objectForKey:@"systolicPressure"];
-        alertRecordModel.lowPressure = [item objectForKey:@"diastolicPressure"];
-        alertRecordModel.pulse = [item objectForKey:@"pressId"];
-        alertRecordModel.receiveDateStr = [item objectForKey:@"createTime"];
-        alertRecordModel.bloodDateStr = [item objectForKey:@"createTime"];
-        alertRecordModel.content = [item objectForKey:@"msg"];
-        alertRecordModel.isRead = FALSE;
-        [[AlertRecordManager sharedManager] addOne:alertRecordModel];
-    }
-    _dataSource = testDataSource;
-    [_tableView reloadData];
+    
+//    NSMutableArray *testDataSource = [NSMutableArray new];
+//    NSMutableDictionary *item = [NSMutableDictionary new];
+//    for (int i=0; i<5; i++) {
+//        [item setObject:@"这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什么这是什." forKey:@"msg"];
+//        [item setObject:@"175" forKey:@"systolicPressure"];
+//        [item setObject:@"120" forKey:@"diastolicPressure"];
+//        [item setObject:@"85" forKey:@"pressId"];
+//        [item setObject:@"2014-11-12 14:23" forKey:@"createTime"];
+//        [testDataSource addObject:item];
+//        
+//        AlertRecordModel *alertRecordModel = [AlertRecordModel new];
+//        alertRecordModel.highPressure = [item objectForKey:@"systolicPressure"];
+//        alertRecordModel.lowPressure = [item objectForKey:@"diastolicPressure"];
+//        alertRecordModel.pulse = [item objectForKey:@"pressId"];
+//        alertRecordModel.receiveDateStr = [item objectForKey:@"createTime"];
+//        alertRecordModel.bloodDateStr = [item objectForKey:@"createTime"];
+//        alertRecordModel.content = [item objectForKey:@"msg"];
+//        alertRecordModel.isRead = FALSE;
+//        [[AlertRecordManager sharedManager] addOne:alertRecordModel];
+//    }
+//    _dataSource = testDataSource;
+//    [_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

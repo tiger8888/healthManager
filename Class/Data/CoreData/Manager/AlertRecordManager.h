@@ -18,6 +18,7 @@
 - (void)addOne:(AlertRecordModel *)model;
 
 //- (NSArray *)fetchBy:(NSManagedObject *)model;
-//- (NSArray *)fetchAllDate;
+- (NSArray *)fetchAllDate;
+- (NSArray *)fetchUnread;
 //- (NSArray *)fetchRecordForUpData;
 @end
