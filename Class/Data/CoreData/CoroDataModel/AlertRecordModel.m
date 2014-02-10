@@ -24,7 +24,7 @@
         self.lowPressure = [dict categoryObjectForKey:@"diastolicPressure"];
         self.pulse = [dict categoryObjectForKey:@"pulseRate"];
 
-
+        self.userID = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
     }
     return self;
 }
