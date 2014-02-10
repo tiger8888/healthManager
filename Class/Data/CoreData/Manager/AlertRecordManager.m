@@ -16,6 +16,7 @@
 
     for (NSString *propertyItem in [self propertyList]) {
         [object setValue:[model valueForKey:propertyItem] forKey:propertyItem];
+        NSLog(@"addOne name %@ value is %@", propertyItem, [model valueForKey:propertyItem]);
     }
     [self save];
 }
@@ -25,6 +26,7 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:[self getManagedObjectContext]];
     [fetchRequest setEntity:entity];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"userID = %@",[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"receiveDate" ascending:NO];
     fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
     NSError *error = nil;
@@ -35,11 +37,12 @@
     }
     
     NSMutableArray *result = [NSMutableArray new];
-    NSMutableDictionary *resultItem = [NSMutableDictionary new];
+
     for (NSManagedObject *item in objs) {
+        NSMutableDictionary *resultItem = [NSMutableDictionary new];
         for (NSString *propertyItem in [self propertyList]) {
             id value = [item valueForKey:propertyItem];
-//            NSLog(@"property content is : %@", value);
+//            NSLog(@"property %@ is : %@", propertyItem, value);
             if (!value) {
 //                NSLog(@"==========");
                 if ([propertyItem isEqualToString:@"bloodDate"] || [propertyItem isEqualToString:@"receiveDate"]) {
@@ -49,16 +52,17 @@
                     value = @" ";
                 }
             }
-            [resultItem setObject:value forKey:propertyItem];
+            [resultItem setObject:[value copy] forKey:propertyItem];
         }
 //        NSLog(@"--------------");
         [result addObject:resultItem];
     }
+    NSLog(@"db record count is %d", [result count]);
     return result;
 }
 
 -(NSArray *) propertyList {
-    return @[@"bloodDate", @"bloodDateStr", @"content", @"highPressure", @"isRead", @"lowPressure", @"pulse", @"receiveDate", @"receiveDateStr"];
+    return @[@"bloodDate", @"bloodDateStr", @"content", @"highPressure", @"isRead", @"lowPressure", @"pulse", @"receiveDate", @"receiveDateStr", @"userID"];
 }
 
 + (id)sharedManager

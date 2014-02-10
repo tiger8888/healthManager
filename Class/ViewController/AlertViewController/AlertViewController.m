@@ -63,11 +63,11 @@
 //        [[AlertRecordManager sharedManager] addOne:alertRecordModel];
 //    }
     NSArray *alertRecordList = [[AlertRecordManager sharedManager] fetchAll];
-//    NSLog(@"alert record count is : %d", [alertRecordList count]);
-//    for (NSDictionary *item in alertRecordList) {
-//        NSLog(@"item is : %@",[item valueForKey:@"content"]);
+    NSLog(@"alert record count is : %d", [alertRecordList count]);
+    for (NSDictionary *item in alertRecordList) {
+        NSLog(@"item is : %@",[item valueForKey:@"content"]);
         
-//    }
+    }
     _dataSource = alertRecordList;
 //    _dataSource = testDataSource;
     [_tableView reloadData];
