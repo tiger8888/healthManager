@@ -10,14 +10,12 @@
 
 @interface AlertRecordModel : NSObject
 @property (nonatomic, strong) NSDate *bloodDate;
-@property (nonatomic, copy) NSString *bloodDateStr;
+@property (nonatomic, copy, setter = setBloodDateStr:) NSString *bloodDateStr;
 @property (nonatomic, copy) NSString *content;
 @property (nonatomic, copy) NSString *highPressure;
 @property (nonatomic, assign) BOOL isRead;
 @property (nonatomic, copy) NSString *lowPressure;
 @property (nonatomic, copy) NSString *pulse;
 @property (nonatomic, strong) NSDate *receiveDate;
-@property (nonatomic, copy) NSString *receiveDateStr;
-
-- (id)initWithDict:(NSDictionary *)dict;
+@property (nonatomic, copy, setter = setReceiveDateStr:) NSString *receiveDateStr;
 @end

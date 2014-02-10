@@ -8,51 +8,40 @@
 
 #import "AlertRecordModel.h"
 
+static NSDateFormatter *_dateFormater;
+
 @implementation AlertRecordModel
 
 //@synthesize bloodDate, bloodDateStr;
 //@synthesize receiveDate, receiveDateStr;
 //@synthesize highPressure, lowPressure, pulse;
 //@synthesize content, isRead;
-- (id)initWithDict:(NSDictionary *)dict;
-{
-    self = [super init];
-    if (self) {
-        self.receiveDateStr = [dict categoryObjectForKey:@"creteTime"];
-        self.content = [dict categoryObjectForKey:@"msg"];
-        self.highPressure = [dict categoryObjectForKey:@"systolicPressure"];
-        self.lowPressure = [dict categoryObjectForKey:@"diastolicPressure"];
-        self.pulse = [dict categoryObjectForKey:@"pulseRate"];
-
-
-    }
-    return self;
-}
-
 
 - (void)setReceiveDateStr:(NSString *)receiveDateStr {
-    _receiveDateStr = receiveDateStr;
-
-    
-    static NSDateFormatter *dateFormater;
-    if (!dateFormater) {
-        dateFormater = [[NSDateFormatter alloc] init];
-        dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    if (self.receiveDateStr != receiveDateStr) {
+        _receiveDateStr = receiveDateStr;
+        
+        static NSDateFormatter *dateFormater;
+        if (!dateFormater) {
+            dateFormater = [[NSDateFormatter alloc] init];
+            dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        }
+        
+        self.receiveDate = [dateFormater dateFromString:receiveDateStr];
     }
-    
-    self.receiveDate = [dateFormater dateFromString:receiveDateStr];
 }
 
 - (void)setBloodDateStr:(NSString *)bloodDateStr {
-
-    _bloodDateStr = bloodDateStr;
-    
-    static NSDateFormatter *dateFormater;
-    if (!dateFormater) {
-        dateFormater = [[NSDateFormatter alloc] init];
-        dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    if (self.bloodDateStr != bloodDateStr) {
+        _bloodDateStr = bloodDateStr;
+        
+        static NSDateFormatter *dateFormater1;
+        if (!dateFormater1) {
+            dateFormater1 = [[NSDateFormatter alloc] init];
+            dateFormater1.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        }
+        
+        self.bloodDate = [dateFormater1 dateFromString:bloodDateStr];
     }
-    
-    self.bloodDate = [dateFormater dateFromString:bloodDateStr];
 }
 @end
