@@ -20,7 +20,7 @@
     
     CGFloat height  = 0.0f;
     
-    height = [self cellHeight:[item objectForKey:@"msg"] with:DEVICE_WIDTH];
+    height = [self cellHeight:[item objectForKey:@"content"] with:DEVICE_WIDTH];
     
     return height;
 }

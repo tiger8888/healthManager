@@ -23,7 +23,7 @@
         CGFloat topLineThree = 92;
         
         
-        NSLog(@"self.frame.size.height=%f", self.superview.frame.size.height);
+//        NSLog(@"self.frame.size.height=%f", self.superview.frame.size.height);
         self.content = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, self.superview.frame.size.height)];
         self.content.backgroundColor = clearColor;
         self.content.font = [UIFont systemFontOfSize:14.0];
@@ -100,16 +100,16 @@
 
 #pragma mark - Custom Method
 -(void)setupCell:(NSDictionary *)data  withHeight:(CGFloat)height{
-    self.content.text = [data objectForKey:@"msg"];
-    self.timeLabel.text = [data objectForKey:@"createTime"];
+    self.content.text = [data objectForKey:@"content"]?[data objectForKey:@"content"]:@"";
+    self.timeLabel.text = [data objectForKey:@"receiveDateStr"]?[data objectForKey:@"receiveDateStr"]:@"";
     self.highLabel.text = @"高压";
     self.lowLabel.text = @"低压";
     self.pulseLabel.text = @"脉搏";
-    self.highText.text = [data objectForKey:@"systolicPressure"];
-    self.lowText.text = [data objectForKey:@"diastolicPressure"];
-    self.pulseText.text = [data objectForKey:@"pressId"];
+    self.highText.text = [data objectForKey:@"highPressure"]?[data objectForKey:@"highPressure"]:@"";
+    self.lowText.text = [data objectForKey:@"lowPressure"]?[data objectForKey:@"lowPressure"]:@"";
+    self.pulseText.text = [data objectForKey:@"pulse"]?[data objectForKey:@"pulse"]:@"";
     self.receiveTimeLabel.text = @"消息接收时间";
-    self.receiveTimeText.text = [data objectForKey:@"createTime"];
+    self.receiveTimeText.text = [data objectForKey:@"receiveDateStr"]?[data objectForKey:@"receiveDateStr"]:@"";
     
     [self controlPosition:height];
 }
