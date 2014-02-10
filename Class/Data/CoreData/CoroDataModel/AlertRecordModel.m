@@ -24,13 +24,15 @@
         self.lowPressure = [dict categoryObjectForKey:@"diastolicPressure"];
         self.pulse = [dict categoryObjectForKey:@"pulseRate"];
 
+
     }
     return self;
 }
 
-- (void)setReceiveDateStr:(NSString *)receiveDateStr
-{
-    _receiveDateStr = receiveDateStr;
+
+- (void)setReceiveDateStr:(NSString *)receiveDateStr {
+    self.receiveDateStr = receiveDateStr;
+
     
     static NSDateFormatter *dateFormater;
     if (!dateFormater) {
@@ -42,7 +44,8 @@
 }
 
 - (void)setBloodDateStr:(NSString *)bloodDateStr {
-    _bloodDateStr = bloodDateStr;
+
+    self.bloodDateStr = bloodDateStr;
     
     static NSDateFormatter *dateFormater;
     if (!dateFormater) {
