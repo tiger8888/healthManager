@@ -332,6 +332,11 @@ BOOL stringIsValidNumber(NSString *checkString)
     [[HttpRequestManager sharedManager] requestWithParameters:para interface:url completionHandle:^(id returnObject) {
         
         NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+        [[Message sharedManager] bloodDataUpdateToServer:[result objectForKey:@"resultInfo"]];
+//        if ([[[result objectForKey:@"resultInfo"] objectForKey:@"retCode"] intValue] == 1) {
+//            ALERT(@"信息更新", @"数据已经上传", @"确定");
+//        }
     } failed:^{
         ALERT(@"网络错误", @"网络错误上传失败，您的数据降无法同步到服务器", @"确定");
     } hitSuperView:nil method:kPost];

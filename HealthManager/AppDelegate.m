@@ -179,7 +179,7 @@ NSDictionary *_pushInfo;
     //以警告框的方式来显示推送消息
     if ([[userInfo objectForKey:@"aps"] objectForKey:@"alert"]!=NULL) {
         _pushInfo = userInfo;
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"经过推送发送过来的消息"
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"消息"
                                                         message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]
                                                        delegate:self
                                               cancelButtonTitle:@"关闭"
@@ -200,15 +200,15 @@ NSDictionary *_pushInfo;
             }
             else if (buttonIndex == 1)
             {
-                int pushType = [[_pushInfo objectForKey:@"f"] intValue];
-                if (pushType == 1) {
-                    [[UIApplication sharedApplication].keyWindow.rootViewController.navigationController pushViewController:[[AlertViewController alloc] initWithCategory:3] animated:YES];
-                    NSLog(@"aaaaa");
-                    NSLog(@"view controller is :%d", [[[UIApplication sharedApplication].keyWindow.rootViewController.navigationController viewControllers] count]);
-                }
-                else {
-                    //不做任何处理
-                }
+//                int pushType = [[_pushInfo objectForKey:@"f"] intValue];
+//                if (pushType == 1) {
+//                    [[UIApplication sharedApplication].keyWindow.rootViewController.navigationController pushViewController:[[AlertViewController alloc] initWithCategory:3] animated:YES];
+//                    NSLog(@"aaaaa");
+//                    NSLog(@"view controller is :%d", [[[UIApplication sharedApplication].keyWindow.rootViewController.navigationController viewControllers] count]);
+//                }
+//                else {
+//                    //不做任何处理
+//                }
             }
         }
             break;

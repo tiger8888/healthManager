@@ -249,4 +249,29 @@ static Message *_sharedManager;
     ALERT(@"提示信息", message, @"确定");
     return NO;
 }
+
+- (void)bloodDataUpdateToServer:(NSDictionary *)dict {
+    NSString *message;
+    int r = [[dict categoryObjectForKey:@"retCode"] intValue];
+    switch (r) {
+        case 1:
+        {
+            message = @"数据已经上传";
+        }
+            break;
+        case 2:
+        {
+            message = @"数据格式错误";//json字符串格式错误
+        }
+            break;
+        case 3:
+        {
+            message = @"当前患者没有在系统中注册";
+        }
+            break;
+        default:
+            break;
+    }
+    ALERT(@"提示信息", message, @"确定");
+}
 @end
