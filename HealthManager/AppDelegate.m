@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+NSDictionary *_pushInfo;
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -26,6 +28,13 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+//    NSDictionary *remotedic = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//    if (remotedic) {
+//        [self.window.rootViewController.navigationController pushViewController:[[AlertViewController alloc] initWithCategory:3] animated:YES];
+//        NSLog(@"bbbb");
+//    }
+//    NSLog(@"ccc");
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     return YES;
 }
@@ -40,6 +49,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [application setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -165,16 +175,45 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    NSLog(@"push object is :%@",userInfo);
+//    NSLog(@"push object is :%@",userInfo);
     //以警告框的方式来显示推送消息
     if ([[userInfo objectForKey:@"aps"] objectForKey:@"alert"]!=NULL) {
+        _pushInfo = userInfo;
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"经过推送发送过来的消息"
                                                         message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]
                                                        delegate:self
                                               cancelButtonTitle:@"关闭"
                                               otherButtonTitles:@"处理",nil];
+        alert.tag = 1;
         [alert show];
-//        [alert release];
+        NSLog(@"push other infor:%@", [userInfo objectForKey:@"f"]);
+    }
+}
+#pragma mark - AlertDelegate Method
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (alertView.tag) {
+        case 1:
+        {
+            if (buttonIndex == 0) {
+                return;
+            }
+            else if (buttonIndex == 1)
+            {
+                int pushType = [[_pushInfo objectForKey:@"f"] intValue];
+                if (pushType == 1) {
+                    [[UIApplication sharedApplication].keyWindow.rootViewController.navigationController pushViewController:[[AlertViewController alloc] initWithCategory:3] animated:YES];
+                    NSLog(@"aaaaa");
+                    NSLog(@"view controller is :%d", [[[UIApplication sharedApplication].keyWindow.rootViewController.navigationController viewControllers] count]);
+                }
+                else {
+                    //不做任何处理
+                }
+            }
+        }
+            break;
+        default:
+            break;
     }
 }
 
