@@ -52,6 +52,12 @@
     [_tableView reloadData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"alert view controller view will disappear");
+    [[AlertRecordManager sharedManager] updateAllAlertRecordStatusToRead];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

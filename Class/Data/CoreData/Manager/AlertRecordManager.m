@@ -16,11 +16,28 @@
 
     for (NSString *propertyItem in [self propertyList]) {
         [object setValue:[model valueForKey:propertyItem] forKey:propertyItem];
-        NSLog(@"addOne name %@ value is %@", propertyItem, [model valueForKey:propertyItem]);
+//        NSLog(@"addOne name %@ value is %@", propertyItem, [model valueForKey:propertyItem]);
     }
     [self save];
 }
 
+- (void)updateAllAlertRecordStatusToRead {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:[self getManagedObjectContext]];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"isRead == NO AND userID = %@",[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
+    NSError *error = nil;
+    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (!error) {
+        for (NSManagedObject *objItem in objs) {
+            [objItem setValue:[NSNumber numberWithBool:YES] forKey:@"isRead"];
+        }
+        [self save];
+    }
+    else {
+        //设置记录状态为已读，不必向用户提示处理结果
+    }
+}
 - (NSArray *)fetchAll
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -57,7 +74,7 @@
 //        NSLog(@"--------------");
         [result addObject:resultItem];
     }
-    NSLog(@"db record count is %d", [result count]);
+//    NSLog(@"db record count is %d", [result count]);
     return result;
 }
 

@@ -47,9 +47,11 @@
             
         }];
     }
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [self checkAlertMessage];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,8 +127,18 @@
         UIView *superView = [self.view viewWithTag:3];
         
         JSBadgeView *badgeView = [[JSBadgeView alloc] initWithParentView:superView alignment:JSBadgeViewAlignmentTopCenter];
+        badgeView.tag = 101;
         badgeView.badgeText = [NSString stringWithFormat:@"%d",alerts.count];
-        //    badgeView.transform = CGAffineTransformMakeScale(1,1);
+//        //    badgeView.transform = CGAffineTransformMakeScale(1,1);
+        NSLog(@"subview is : %@", [superView subviews]);
+    }
+    else {
+        UIView *superView = [self.view viewWithTag:3];
+        for (UIView *subview in [superView subviews]) {
+            if (subview.tag == 101) {
+                [subview removeFromSuperview];
+            }
+        }
     }
     
 }

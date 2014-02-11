@@ -16,6 +16,7 @@
 + (id)sharedManager;
 
 - (void)addOne:(AlertRecordModel *)model;
+- (void)updateAllAlertRecordStatusToRead;
 
 //- (NSArray *)fetchBy:(NSManagedObject *)model;
 - (NSArray *)fetchAll;
