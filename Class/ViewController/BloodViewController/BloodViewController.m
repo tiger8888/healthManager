@@ -15,6 +15,7 @@
     BloodRecord *_bloodRecord;
     LineChartView *_bloodLineChar;
     NSMutableArray *_lineDataSource;
+    BOOL _tableViewSelected;
 }
 @end
 
@@ -25,7 +26,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
+        _tableViewSelected = NO;
     }
     return self;
 }
@@ -237,6 +238,10 @@
 //    [self popUpBoxHighPressure:hp lowPressure:lp pulse:p date:date];
     //直接映射网络数据
     [self popUpBoxHighPressure:[_lineDataSource[indexPath.row] objectForKey:@"highPressure"] lowPressure:[_lineDataSource[indexPath.row] objectForKey:@"lowPressure"] pulse:[_lineDataSource[indexPath.row] objectForKey:@"pulse"] date:_dataSource[indexPath.row]];
+    if (!_tableViewSelected) {
+        _tableViewSelected = YES;
+    }
+    
 }
 
 #pragma mark - ScrollView Delegate Method
@@ -258,11 +263,13 @@
         case 0:
         {
             NSLog(@"000");
+            [self cancelTableViewSelectedRowStatus];
         }
             break;
         case 1:
         {
             NSLog(@"1");
+            [self cancelTableViewSelectedRowStatus];
         }
             break;
         case 2:
@@ -311,6 +318,13 @@ BOOL stringIsValidNumber(NSString *checkString)
     else
     {
         return NO;
+    }
+}
+
+- (void)cancelTableViewSelectedRowStatus {
+    if (_tableViewSelected) {
+        [_tableView selectRowAtIndexPath:0 animated:NO scrollPosition:0];
+        _tableViewSelected = NO;
     }
 }
 
