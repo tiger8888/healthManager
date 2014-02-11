@@ -59,7 +59,7 @@
     _titleLabel.center = _navigationBar.center;
     _titleLabel.backgroundColor = [UIColor clearColor];
     _titleLabel.textColor = [UIColor whiteColor];
-    _titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    _titleLabel.font = [UIFont boldSystemFontOfSize:22];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.text = _propertyDict[@"titleName"];
     [_navigationBar addSubview:_titleLabel];
