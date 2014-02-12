@@ -18,72 +18,77 @@
         _heightSingleLineTextLabel = 20.0;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         UIColor *clearColor = [UIColor clearColor];
+        UIFont *conntFont = [UIFont systemFontOfSize:18.0];
+        UIFont *font = [UIFont systemFontOfSize:14.0];
         CGFloat left = 0;
-        CGFloat topLineTwo = 70;
-        CGFloat topLineThree = 92;
+        CGFloat topLineOne = 8;
+        CGFloat topLineTwo = topLineOne + 22;
+        CGFloat topLineThree = topLineTwo + 22;
         
         
 //        NSLog(@"self.frame.size.height=%f", self.superview.frame.size.height);
-        self.content = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, self.superview.frame.size.height)];
+//        self.content = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, self.superview.frame.size.height)];//uitextview需要加的代码
+        left = 8;
+        self.content = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineOne, DEVICE_WIDTH-20,_heightSingleLineTextLabel)];
         self.content.backgroundColor = clearColor;
-        self.content.font = [UIFont systemFontOfSize:14.0];
-        self.content.editable = NO;
-        self.content.dataDetectorTypes = UIDataDetectorTypeLink;
-        self.content.scrollEnabled = NO;
+        self.content.font = conntFont;
+//        self.content.editable = NO;//uitextview需要加的代码
+//        self.content.dataDetectorTypes = UIDataDetectorTypeLink;//uitextview需要加的代码
+//        self.content.scrollEnabled = NO;//uitextview需要加的代码
         [self.contentView addSubview:self.content];
         
         left = 8;
         self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 120, _heightSingleLineTextLabel)];
         self.timeLabel.backgroundColor = clearColor;
-        self.timeLabel.font = [UIFont systemFontOfSize:14.0];
+        self.timeLabel.font = font;
         [self.contentView addSubview:self.timeLabel];
         
         left += self.timeLabel.frame.size.width;//124
         self.highLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 34, _heightSingleLineTextLabel)];
         self.highLabel.backgroundColor = clearColor;
-        self.highLabel.font = [UIFont systemFontOfSize:14.0];
+        self.highLabel.font = font;
         [self.contentView addSubview:self.highLabel];
         
         left += self.highLabel.frame.size.width - 4;//154
         self.highText = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 24, _heightSingleLineTextLabel)];
         self.highText.backgroundColor = clearColor;
-        self.highText.font = [UIFont systemFontOfSize:14.0];
+        self.highText.font = font;
         [self.contentView addSubview:self.highText];
         
         left += self.highText.frame.size.width + 10;//188
         self.lowLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 34, _heightSingleLineTextLabel)];
         self.lowLabel.backgroundColor = clearColor;
-        self.lowLabel.font = [UIFont systemFontOfSize:14.0];
+        self.lowLabel.font = font;
         [self.contentView addSubview:self.lowLabel];
         
         left += self.lowLabel.frame.size.width - 4;//218
         self.lowText = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 24, _heightSingleLineTextLabel)];
         self.lowText.backgroundColor = clearColor;
-        self.lowText.font = [UIFont systemFontOfSize:14.0];
+        self.lowText.font = font;
         [self.contentView addSubview:self.lowText];
         
         left += self.lowText.frame.size.width + 10;//252
         self.pulseLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 34, _heightSingleLineTextLabel)];
         self.pulseLabel.backgroundColor = clearColor;
-        self.pulseLabel.font = [UIFont systemFontOfSize:14.0];
+        self.pulseLabel.font = font;
         [self.contentView addSubview:self.pulseLabel];
         
         left += self.pulseLabel.frame.size.width - 4;//282
         self.pulseText = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 24, _heightSingleLineTextLabel)];
         self.pulseText.backgroundColor = clearColor;
-        self.pulseText.font = [UIFont systemFontOfSize:14.0];
+        self.pulseText.font = font;
         [self.contentView addSubview:self.pulseText];
         
         left = 8;
         self.receiveTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineThree, 98, _heightSingleLineTextLabel)];
         self.receiveTimeLabel.backgroundColor = clearColor;
-        self.receiveTimeLabel.font = [UIFont systemFontOfSize:14.0];
+        self.receiveTimeLabel.font = font;
         [self.contentView addSubview:self.receiveTimeLabel];
         
         left += self.receiveTimeLabel.frame.size.width;//98
         self.receiveTimeText = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineThree, 140, _heightSingleLineTextLabel)];
         self.receiveTimeText.backgroundColor = clearColor;
-        self.receiveTimeText.font = [UIFont systemFontOfSize:14.0];
+        self.receiveTimeText.font = font;
         [self.contentView addSubview:self.receiveTimeText];
         
     }
@@ -100,6 +105,9 @@
 
 #pragma mark - Custom Method
 -(void)setupCell:(NSDictionary *)data  withHeight:(CGFloat)height{
+    if (![[data objectForKey:@"isRead"] boolValue]) {
+        self.content.font = [UIFont boldSystemFontOfSize:18];
+    }
     self.content.text = [data objectForKey:@"content"]?[data objectForKey:@"content"]:@"";
     self.timeLabel.text = [data objectForKey:@"receiveDateStr"]?[data objectForKey:@"receiveDateStr"]:@"";
     self.highLabel.text = @"高压";
@@ -111,7 +119,7 @@
     self.receiveTimeLabel.text = @"消息接收时间";
     self.receiveTimeText.text = [data objectForKey:@"receiveDateStr"]?[data objectForKey:@"receiveDateStr"]:@"";
     
-    [self controlPosition:height];
+//    [self controlPosition:height];//uitextview需要加的代码
 }
 
 -(void)controlPosition:(CGFloat)height{

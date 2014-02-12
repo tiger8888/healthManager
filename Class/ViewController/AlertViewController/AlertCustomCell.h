@@ -12,7 +12,8 @@
 {
     CGFloat _heightSingleLineTextLabel;
 }
-@property (nonatomic, retain) UITextView *content;
+//@property (nonatomic, retain) UITextView *content;
+@property (nonatomic, retain) UILabel *content;
 @property (nonatomic, retain) UILabel *timeLabel;
 
 @property (nonatomic, retain) UILabel *highLabel;

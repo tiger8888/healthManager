@@ -69,6 +69,9 @@
                     value = @" ";
                 }
             }
+            else if ([propertyItem isEqualToString:@"bloodDateStr"] || [propertyItem isEqualToString:@"receiveDateStr"]) {
+                value = [value substringToIndex:[value length]-3];
+            }
             [resultItem setObject:[value copy] forKey:propertyItem];
         }
 //        NSLog(@"--------------");

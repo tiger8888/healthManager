@@ -82,9 +82,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat height = [_algorithm calculation:indexPath data:_dataSource];
+//    CGFloat height = [_algorithm calculation:indexPath data:_dataSource];
 //    NSLog(@"heightfor=%f", height);
-    return height;
+//    return height;
+    return 78;
 }
 
 - (AlertCustomCell *)customCellByCode:(UITableView *)tableView withIndexPath:(NSIndexPath *)indexPath {
