@@ -65,7 +65,14 @@
         {
             cell.textLabel.text = @"服药声音提醒";
             UISwitch *soundSwitch = [UISwitch new];
-            soundSwitch.frame = CGRectMake(cell.bounds.size.width - 100, (cell.bounds.size.height - soundSwitch.frame.size.height) /2, 0.0,  0.0);
+            int switchRightGap;
+            if (IS_IOS7) {
+                switchRightGap = 60;
+            }
+            else {
+                switchRightGap = 100;
+            }
+            soundSwitch.frame = CGRectMake(cell.bounds.size.width - switchRightGap, (cell.bounds.size.height - soundSwitch.frame.size.height) /2, 0.0,  0.0);
             [soundSwitch addTarget:self action:@selector(switchSoundChanged:) forControlEvents:UIControlEventValueChanged];
 //            if ( [[NSUserDefaults standardUserDefaults] objectForKey:SETTING_REMIND_SOUND_KEY] ) {
                 soundSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SETTING_REMIND_SOUND_KEY] boolValue];
