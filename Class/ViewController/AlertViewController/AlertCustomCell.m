@@ -103,6 +103,12 @@
     // Configure the view for the selected state
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.selectionStyle = UITableViewCellSelectionStyleGray;
+}
+
 #pragma mark - Custom Method
 -(void)setupCell:(NSDictionary *)data  withHeight:(CGFloat)height{
     if (![[data objectForKey:@"isRead"] boolValue]) {
@@ -113,6 +119,15 @@
     self.highLabel.text = @"高压";
     self.lowLabel.text = @"低压";
     self.pulseLabel.text = @"脉搏";
+    if ([[data objectForKey:@"highPressureStatus"] boolValue]) {
+        self.highText.textColor = UICOLORFROMRGB(0xe60012);
+    }
+    if ([[data objectForKey:@"lowPressureStatus"] boolValue]) {
+        self.lowText.textColor = UICOLORFROMRGB(0xe60012);
+    }
+    if ([[data objectForKey:@"pulseStatus"] boolValue]) {
+        self.pulseText.textColor = UICOLORFROMRGB(0xe60012);
+    }
     self.highText.text = [data objectForKey:@"highPressure"]?[data objectForKey:@"highPressure"]:@"";
     self.lowText.text = [data objectForKey:@"lowPressure"]?[data objectForKey:@"lowPressure"]:@"";
     self.pulseText.text = [data objectForKey:@"pulse"]?[data objectForKey:@"pulse"]:@"";

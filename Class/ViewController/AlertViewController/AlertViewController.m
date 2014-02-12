@@ -75,6 +75,31 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].selectionStyle = NO;
+    LSBackGrayView *backView = [[LSBackGrayView alloc] initWithFrame:FULLSCREEN];
+    [self.view addSubview:backView];
+
+    UIView *tmpView = [[UIView alloc] initWithFrame:CGRectMake(30, 30, 260, DEVICE_HEIGHT -64 -60)];
+    tmpView.backgroundColor = [UIColor whiteColor];
+    tmpView.layer.borderColor = [UIColor cyanColor].CGColor;
+    tmpView.layer.borderWidth = 2.0f;
+    tmpView.layer.cornerRadius = 8.0f;
+    [backView addSubview:tmpView];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bt_cancel"]];
+    imageView.frame = CGRectMake(275, 15, 33, 33);
+    [backView addSubview:imageView];
+
+    
+    UITextView *label = [[UITextView alloc] initWithFrame:CGRectMake(10, 30, 240, DEVICE_HEIGHT -64 -90)];
+    label.text = [NSString stringWithFormat:@"预警详细信息:%@",[_dataSource[indexPath.row] objectForKey:@"content"]];
+    label.editable = NO;
+    label.font = [UIFont systemFontOfSize:16];
+    [tmpView addSubview:label];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_dataSource count];

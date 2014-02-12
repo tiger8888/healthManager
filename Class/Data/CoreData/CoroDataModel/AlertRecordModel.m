@@ -21,13 +21,18 @@ static NSDateFormatter *_dateFormater;
 {
     self = [super init];
     if (self) {
-        self.receiveDateStr = [dict categoryObjectForKey:@"createTime"];
+        self.receiveDateStr = [dict categoryObjectForKey:@"receiveTime"];
         self.bloodDateStr = [dict categoryObjectForKey:@"createTime"];
         self.content = [dict categoryObjectForKey:@"msg"];
         self.highPressure = [dict categoryObjectForKey:@"systolicPressure"];
         self.lowPressure = [dict categoryObjectForKey:@"diastolicPressure"];
         self.pulse = [dict categoryObjectForKey:@"pulseRate"];
-
+        
+        NSString *flag = [dict categoryObjectForKey:@"wainflag"];
+        self.highPressureStatus = [[flag substringToIndex:1] boolValue];
+        self.lowPressureStatus = [[flag substringWithRange:NSMakeRange(1, 1)] boolValue];
+        self.pulseStatus = [[flag substringFromIndex:2] boolValue];
+        
         self.userID = [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
     }
     return self;

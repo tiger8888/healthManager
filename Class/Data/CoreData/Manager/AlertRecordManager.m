@@ -82,7 +82,7 @@
 }
 
 -(NSArray *) propertyList {
-    return @[@"bloodDate", @"bloodDateStr", @"content", @"highPressure", @"isRead", @"lowPressure", @"pulse", @"receiveDate", @"receiveDateStr", @"userID"];
+    return @[@"bloodDate", @"bloodDateStr", @"content", @"highPressure", @"isRead", @"lowPressure", @"pulse", @"receiveDate", @"receiveDateStr", @"highPressureStatus", @"lowPressureStatus", @"pulseStatus",@"userID"];
 }
 
 + (id)sharedManager
