@@ -13,15 +13,27 @@
 
 - (id)init
 {
-    return [self initWithId:0 withTitle:@"" withContent:@""];
+    return [self initWithId:0 withTitle:@"" withTime:@"" withContent:@""];
 }
 
-- (id)initWithId:(int)knowledgeId withTitle:(NSString *)knowledgeTitle withContent:(NSString *)knowledgeContent {
+- (id)initWithId:(int)knowledgeId withTitle:(NSString *)knowledgeTitle withTime:(NSString *)knowledgeTime withContent:(NSString *) knowledgeContent {
     self = [super init];
     if (self) {
         self.id = knowledgeId;
         self.title = knowledgeTitle;
         self.content = knowledgeContent;
+        
+        static NSDateFormatter *dateFormater;
+        static NSDateFormatter *dateFormaterFromString;
+        if (!dateFormater) {
+            dateFormater = [[NSDateFormatter alloc] init];
+            dateFormater.dateFormat = @"yyyy.MM.dd HH:mm";
+            
+            dateFormaterFromString = [[NSDateFormatter alloc] init];
+            dateFormaterFromString.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        }
+        NSDate *createTime = [dateFormaterFromString dateFromString:knowledgeTime];
+        self.time  = [dateFormater stringFromDate:createTime];
     }
     
     return self;
@@ -32,6 +44,7 @@
     Knowledge *new = [[Knowledge allocWithZone:zone] init];
     new.id = self.id;
     new.title = self.title;
+    new.time = self.time;
     new.content = self.content;
     
     return new;

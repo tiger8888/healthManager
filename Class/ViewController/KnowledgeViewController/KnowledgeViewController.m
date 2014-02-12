@@ -79,9 +79,24 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentity];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentity];
     }
+    
+    static NSDateFormatter *dateFormater;
+    static NSDateFormatter *dateFormaterFromString;
+    if (!dateFormater) {
+        dateFormater = [[NSDateFormatter alloc] init];
+        dateFormater.dateFormat = @"yyyy.MM.dd HH:mm";
+        
+        dateFormaterFromString = [[NSDateFormatter alloc] init];
+        dateFormaterFromString.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    }
+    NSString *createTimeStr;
+    createTimeStr = [[_dataSource objectAtIndex:[indexPath row]] objectForKey:@"createTime"];
+    NSDate *createTime = [dateFormaterFromString dateFromString:createTimeStr];
+
     cell.textLabel.text = [[_dataSource objectAtIndex:[indexPath row]] objectForKey:@"title"];
+    cell.detailTextLabel.text = [dateFormater stringFromDate:createTime];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -90,17 +105,10 @@
 {
     KnowledgeDetailViewController *detailViewCtl = [[KnowledgeDetailViewController alloc] initWithCategory:8];
     NSDictionary *item = [_dataSource objectAtIndex:[indexPath row]];
-    Knowledge *knowledgeData = [[Knowledge alloc] initWithId:[[item objectForKey:@"id"] intValue] withTitle:[item categoryObjectForKey:@"title"] withContent:[item categoryObjectForKey:@"content"]];
+    Knowledge *knowledgeData = [[Knowledge alloc] initWithId:[[item objectForKey:@"id"] intValue] withTitle:[item categoryObjectForKey:@"title"] withTime:[item categoryObjectForKey:@"createTime"]  withContent:[item categoryObjectForKey:@"content"]];
     detailViewCtl.knowledgeModel = knowledgeData;
     knowledgeData = Nil;
-//    Knowledge *knowledge = [_dataSource objectAtIndex:[indexPath row]];
-//    detailViewCtl.url = knowledge.url;
-    /**
-     *  这里我感觉考虑到今后的拓展性传模型比较好，不管评论收藏还是分享都需要模型的其他属性
-     
-     **之前我也这么想的，但是因为完全后台维护，不保存本地，也没有其他功能个人感觉多此一举
-     */
-//    detailViewCtl.knowledgeModel = [_dataSource objectAtIndex:[indexPath row]];
+    
     [self.navigationController pushViewController:detailViewCtl animated:YES];
 }
 @end

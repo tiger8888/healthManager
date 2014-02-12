@@ -91,7 +91,7 @@
     AnnouncementDetailViewController *detailCtl = [[AnnouncementDetailViewController alloc] initWithCategory:12];
     
     NSDictionary *item = [_dataSource objectAtIndex:[indexPath row]];
-    Announcement *announcementData = [[Announcement alloc] initWithId:[[item objectForKey:@"id"] intValue] withTitle:[item categoryObjectForKey:@"title"] withContent:[item categoryObjectForKey:@"content"]];
+    Announcement *announcementData = [[Announcement alloc] initWithId:[[item objectForKey:@"id"] intValue] withTitle:[item categoryObjectForKey:@"title"] withTime:[item categoryObjectForKey:@"createTime"]  withContent:[item categoryObjectForKey:@"content"]];
     detailCtl.announcement = announcementData;
     announcementData = Nil;
     [self.navigationController pushViewController:detailCtl animated:YES];

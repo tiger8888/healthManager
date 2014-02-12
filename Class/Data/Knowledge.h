@@ -11,7 +11,8 @@
 @interface Knowledge : NSObject<NSCopying>
 @property (nonatomic) int id;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, copy) NSString *time;
 @property (nonatomic, strong) NSString *content;
 
-- (id)initWithId:(int)knowledgeId withTitle:(NSString *)knowledgeTitle withContent:(NSString *)knowledgeContent;
+- (id)initWithId:(int)knowledgeId withTitle:(NSString *)knowledgeTitle withTime:(NSString *)time withContent:(NSString *)knowledgeContent;
 @end
