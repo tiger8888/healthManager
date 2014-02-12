@@ -126,11 +126,11 @@
     if (alerts.count != 0) {
         UIView *superView = [self.view viewWithTag:3];
         
-        JSBadgeView *badgeView = [[JSBadgeView alloc] initWithParentView:superView alignment:JSBadgeViewAlignmentTopCenter];
+        JSBadgeView *badgeView = [[JSBadgeView alloc] initWithParentView:superView alignment:JSBadgeViewAlignmentTopRightInside];
         badgeView.tag = 101;
+        badgeView.badgeTextFont = [UIFont boldSystemFontOfSize:18];
         badgeView.badgeText = [NSString stringWithFormat:@"%d",alerts.count];
 //        //    badgeView.transform = CGAffineTransformMakeScale(1,1);
-        NSLog(@"subview is : %@", [superView subviews]);
     }
     else {
         UIView *superView = [self.view viewWithTag:3];

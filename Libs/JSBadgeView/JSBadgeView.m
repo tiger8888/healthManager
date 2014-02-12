@@ -36,7 +36,7 @@
 #define kShadowColor [UIColor colorWithWhite:0.0f alpha:kShadowOpacity]
 #define kShadowRadius 1.0f
 
-#define kBadgeHeight 16.0f
+#define kBadgeHeight 18.0f
 #define kBadgeTextSideMargin 8.0f
 
 #define kBadgeCornerRadius 10.0f
@@ -147,7 +147,8 @@
             break;
         case JSBadgeViewAlignmentBottomLeft:
             newFrame.origin.x = -textWidth / 2.0f;
-            newFrame.origin.y = superviewHeight - (viewHeight / 2.0f);            break;
+            newFrame.origin.y = superviewHeight - (viewHeight / 2.0f);
+            break;
         case JSBadgeViewAlignmentBottomRight:
             newFrame.origin.x = superviewWidth - (viewWidth / 2.0f);
             newFrame.origin.y = superviewHeight - (viewHeight / 2.0f);
@@ -159,6 +160,10 @@
         case JSBadgeViewAlignmentCenter:
             newFrame.origin.x = (superviewWidth - viewWidth) / 2.0f;
             newFrame.origin.y = (superviewHeight - viewHeight) / 2.0f;
+            break;
+        case JSBadgeViewAlignmentTopRightInside:
+            newFrame.origin.x = superviewWidth - viewWidth;
+            newFrame.origin.y = 0;
             break;
         default:
             NSAssert(NO, @"Unimplemented JSBadgeAligment type %d", self.badgeAlignment);
@@ -215,6 +220,9 @@
                 break;
             case JSBadgeViewAlignmentCenter:
                 self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+                break;
+            case JSBadgeViewAlignmentTopRightInside:
+                self.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
                 break;
             default:
                 NSAssert(NO, @"Unimplemented JSBadgeAligment type %d", self.badgeAlignment);

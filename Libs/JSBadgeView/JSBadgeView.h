@@ -25,7 +25,8 @@ typedef enum {
     JSBadgeViewAlignmentBottomLeft,
     JSBadgeViewAlignmentBottomRight,
     JSBadgeViewAlignmentBottomCenter,
-    JSBadgeViewAlignmentCenter
+    JSBadgeViewAlignmentCenter,
+    JSBadgeViewAlignmentTopRightInside
 } JSBadgeViewAlignment;
 
 @interface JSBadgeView : UIView
