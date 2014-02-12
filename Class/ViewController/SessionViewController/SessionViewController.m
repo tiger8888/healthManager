@@ -106,22 +106,6 @@ static BOOL isLoadAllSession = FALSE;
         [self.textField resignFirstResponder];
         self.textField.text = nil;
     } superView:self.view];
-//    NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
-//    [parameter setObject:[userDefault objectForKey:DOCTORID_KEY] forKey:@"doctorId"];
-//    [parameter setObject:self.textField.text forKey:@"msg"];
-//    
-//    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/patient/add/%d.json", _sessionMessage.senderId];
-//    
-//    [[HttpRequestManager sharedManager] requestWithParameters:parameter interface:interfaceUrl completionHandle:^(id returnObject) {
-//        
-//        [[SessionMessageSqlite sharedManager] insertOne:_sessionMessage];
-//        [self appendMessage:_sessionMessage];
-//        
-//        [self.textField resignFirstResponder];
-//        self.textField.text = nil;
-//    } failed:^{
-//        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
-//    } hitSuperView:self.view method:kPost];
 }
 
 
@@ -147,34 +131,6 @@ static BOOL isLoadAllSession = FALSE;
     [[DoctorBusiness sharedManager] getMyDoctorSessionInfo:^(SessionMessage *msg) {
         [self appendMessage:msg];
     } withSuperView:hitSuperView];
-    
-//    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/list/%@.json", [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY]];
-//    
-//    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
-//        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
-//        NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
-//        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
-//            NSArray *sessionMessageInfoArray = [result objectForKey:@"list"];
-//            SessionMessage *sessionMsg = [SessionMessage new];
-//            sessionMsg.patientId = [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue];
-//            
-//            for (NSDictionary *msgItem in sessionMessageInfoArray ) {
-//                sessionMsg.id = 0;
-//                sessionMsg.senderId = [[msgItem objectForKey:@"doctorId"] intValue];
-//                sessionMsg.doctorId = [[msgItem objectForKey:@"doctorId"] intValue];
-//                sessionMsg.senderName = [msgItem objectForKey:@"doctorName"];
-//                sessionMsg.sendType = SessionMessageSendTypeOther;
-//                sessionMsg.content = [msgItem objectForKey:@"msg"];
-//                sessionMsg.timeStamp = [msgItem objectForKey:@"createTime"];
-//                
-//                [[SessionMessageSqlite sharedManager] insertOne:sessionMsg];
-//                [self appendMessage:sessionMsg];
-//            }
-//        }
-//        
-//    } failed:^{
-//        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
-//    } hitSuperView:hitSuperView method:kGet];
 }
 
 - (void)getAllSessionInfo {
