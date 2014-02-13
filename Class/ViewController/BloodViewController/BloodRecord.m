@@ -23,19 +23,19 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    _highPressure = [[LSTextField alloc] initWithFrame:CGRectMake(119, 52, 173, 36) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _highPressure = [[LSTextField alloc] initWithFrame:CGRectMake(100, 22, 174, 36) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
     _highPressure.retract = 40;
     _highPressure.textField.placeholder = @"请输入数值";
     _highPressure.textField.keyboardType = UIKeyboardTypeNumberPad;
     [self addSubview:_highPressure];
     
-    _lowPressure = [[LSTextField alloc] initWithFrame:CGRectMake(119, 118, 173, 36) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _lowPressure = [[LSTextField alloc] initWithFrame:CGRectMake(100, 72, 174, 36) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
     _lowPressure.retract = 40;
     _lowPressure.textField.placeholder = @"请输入数值";
     _lowPressure.textField.keyboardType = UIKeyboardTypeNumberPad;
     [self addSubview:_lowPressure];
     
-    _pulse = [[LSTextField alloc] initWithFrame:CGRectMake(119, 187, 173, 36) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _pulse = [[LSTextField alloc] initWithFrame:CGRectMake(100, 122, 174, 36) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
     _pulse.retract = 40;
     _pulse.textField.placeholder = @"请输入数值";
     _pulse.textField.keyboardType = UIKeyboardTypeNumberPad;

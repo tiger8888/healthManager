@@ -90,9 +90,18 @@
     bloodRecord.frame = CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT -88 -20);
     [_baseScrollView addSubview:bloodRecord];
     [bloodRecord setSaveBlock:^(NSString *highPressure, NSString *lowPressure, NSString *pulse) {
-        if (!stringIsValidNumber(highPressure) || !stringIsValidNumber(lowPressure) || !stringIsValidNumber(pulse))
-        {
-            NSLog(@"非合法");
+        if (!stringIsValidNumber(highPressure) ) {
+            ALERT(@"", @"请录入正确的高压数字", @"确定");
+            return ;
+        }
+        
+        if(!stringIsValidNumber(lowPressure)) {
+            ALERT(@"", @"请录入正确的低压数字", @"确定");
+            return ;
+        }
+           
+        if (!stringIsValidNumber(pulse)) {
+            ALERT(@"", @"请录入正确的脉搏数字", @"确定");
             return ;
         }
         //直接上传
@@ -313,9 +322,12 @@
 
 BOOL stringIsValidNumber(NSString *checkString)
 {
+    if ([checkString isKindOfClass:[NSNull class]]) {
+        return NO;
+    }
     NSString *stricterFilterString = @"^[0-9]*$";
     NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stricterFilterString];
-    if ([test evaluateWithObject:checkString] && [checkString integerValue] <= 300)
+    if ([test evaluateWithObject:checkString] && [checkString intValue] <= 300 && [checkString intValue] > 10)
     {
         return YES;
     }

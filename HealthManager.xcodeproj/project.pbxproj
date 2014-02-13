@@ -16,7 +16,7 @@
 		37A854581889002C00543874 /* Announcement.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A854571889002C00543874 /* Announcement.m */; };
 		37A8545C1889012500543874 /* AnnouncementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8545A1889012500543874 /* AnnouncementDetailViewController.m */; };
 		37A8545D1889012500543874 /* AnnouncementDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */; };
-		37A8BA9218AC4FE100321C31 /* btn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A8BA9118AC4FE100321C31 /* btn_bg.png */; };
+		37A8BA9218AC4FE100321C31 /* btn_bg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A8BA9118AC4FE100321C31 /* btn_bg_1@2x.png */; };
 		37A8BA9618AC9B2C00321C31 /* TakeMedicineRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8BA9418AC9B2C00321C31 /* TakeMedicineRemindViewController.m */; };
 		37A8BA9718AC9B2C00321C31 /* TakeMedicineRemindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8BA9518AC9B2C00321C31 /* TakeMedicineRemindViewController.xib */; };
 		37A8BA9B18AC9B7B00321C31 /* ScanCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8BA9918AC9B7B00321C31 /* ScanCodeViewController.m */; };
@@ -182,7 +182,7 @@
 		37A854591889012500543874 /* AnnouncementDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementDetailViewController.h; sourceTree = "<group>"; };
 		37A8545A1889012500543874 /* AnnouncementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementDetailViewController.m; sourceTree = "<group>"; };
 		37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementDetailViewController.xib; sourceTree = "<group>"; };
-		37A8BA9118AC4FE100321C31 /* btn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_bg.png; sourceTree = "<group>"; };
+		37A8BA9118AC4FE100321C31 /* btn_bg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_bg_1@2x.png"; sourceTree = "<group>"; };
 		37A8BA9318AC9B2C00321C31 /* TakeMedicineRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeMedicineRemindViewController.h; sourceTree = "<group>"; };
 		37A8BA9418AC9B2C00321C31 /* TakeMedicineRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeMedicineRemindViewController.m; sourceTree = "<group>"; };
 		37A8BA9518AC9B2C00321C31 /* TakeMedicineRemindViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakeMedicineRemindViewController.xib; sourceTree = "<group>"; };
@@ -883,7 +883,7 @@
 			children = (
 				37A8BA9F18AC9EA200321C31 /* main_btn_17@2x.png */,
 				37A8BAA018AC9EA200321C31 /* main_btn_18@2x.png */,
-				37A8BA9118AC4FE100321C31 /* btn_bg.png */,
+				37A8BA9118AC4FE100321C31 /* btn_bg_1@2x.png */,
 				B823225C185F48EA005F2409 /* arrow@2x.png */,
 				B823225D185F48EA005F2409 /* bbi_left@2x.png */,
 				B823225E185F48EA005F2409 /* blood_segment_1@2x.png */,
@@ -1056,7 +1056,7 @@
 				B823228A185F48EA005F2409 /* blood_table_hit@2x.png in Resources */,
 				37A8BA9C18AC9B7B00321C31 /* ScanCodeViewController.xib in Resources */,
 				9C0BFFD21886D944002845D9 /* SettingViewController.xib in Resources */,
-				37A8BA9218AC4FE100321C31 /* btn_bg.png in Resources */,
+				37A8BA9218AC4FE100321C31 /* btn_bg_1@2x.png in Resources */,
 				9C0BFFB91886D944002845D9 /* AlertViewController.xib in Resources */,
 				B8232284185F48EA005F2409 /* blood_segment_1@2x.png in Resources */,
 				B8232291185F48EA005F2409 /* bt_ok@2x.png in Resources */,
