@@ -143,8 +143,9 @@ static BOOL isLoadAllSession = FALSE;
 
 - (void)addRefreshButtonOnNavigation {
     UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    refreshBtn.frame = CGRectMake(DEVICE_WIDTH - 54, 0, 44, 44);
+    refreshBtn.frame = CGRectMake(DEVICE_WIDTH - 54, 8, 44, 30);
     [refreshBtn setTitle:@"刷新" forState:UIControlStateNormal];
+    [refreshBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
     [refreshBtn addTarget:self action:@selector(getDoctorSessionInfo:) forControlEvents:UIControlEventTouchUpInside];
     
 //    [refreshBtn addTarget:self action:@selector(getAllSessionInfo) forControlEvents:UIControlEventTouchUpInside];

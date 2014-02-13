@@ -100,6 +100,10 @@
         [para setObject:highPressure forKey:@"systolicPressure"];
         [para setObject:lowPressure forKey:@"diastolicPressure"];
         [para setObject:pulse forKey:@"pulseRate"];
+        
+        NSDateFormatter *formatter = [NSDateFormatter new];
+        formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        [para setObject:[formatter stringFromDate:[NSDate date]] forKey:@"measureTime"];
         [self updataRecord:para];
         //暂时不需要保存本地。
 //        [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:[NSDate dateWithTimeIntervalSinceNow:0]];

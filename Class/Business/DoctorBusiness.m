@@ -66,7 +66,7 @@ static DoctorBusiness *_sharedManager;
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
-        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
+        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] == YES ) {
             NSDictionary *doctorInfo = [result objectForKey:@"doctor"];
             NSString *doctorImage = [doctorInfo objectForKey:@"picUrl"];
             
@@ -156,7 +156,7 @@ static DoctorBusiness *_sharedManager;
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
-        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] ) {
+        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] == YES ) {
             NSArray *sessionMessageInfoArray = [result objectForKey:@"list"];
             SessionMessage *sessionMsg = [SessionMessage new];
             sessionMsg.patientId = [[self getCurrentPatientID] intValue];

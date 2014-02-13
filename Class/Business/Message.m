@@ -46,8 +46,9 @@ static Message *_sharedManager;
 }
 
 - (BOOL)checkReturnInfor:(NSDictionary *)dict {
+    BOOL interfaceError = NO;
     int r = [[dict categoryObjectForKey:@"retCode"] intValue];
-
+//    NSLog(@"r=%d", r);
     NSString *message;
     switch (r) {
         case 1:
@@ -86,9 +87,12 @@ static Message *_sharedManager;
         }
             break;
         default:
+            interfaceError = YES;
             break;
     }
-    ALERT(@"提示信息", message, @"确定");
+    if (interfaceError == NO) {
+        ALERT(@"提示信息", message, @"确定");
+    }
     return NO;
 }
 
@@ -224,7 +228,8 @@ static Message *_sharedManager;
 
 - (BOOL)checkReturnInformationWithInterface:(NSDictionary *)dict {
     int r = [[dict categoryObjectForKey:@"retCode"] intValue];
-    
+//    NSLog(@" %s:r=%d",__PRETTY_FUNCTION__ , r);
+
     NSString *message;
     switch (r) {
         case 1:
@@ -253,6 +258,7 @@ static Message *_sharedManager;
 - (void)bloodDataUpdateToServer:(NSDictionary *)dict {
     NSString *message;
     int r = [[dict categoryObjectForKey:@"retCode"] intValue];
+    NSLog(@"r=%d", r);
     switch (r) {
         case 1:
         {
@@ -272,6 +278,6 @@ static Message *_sharedManager;
         default:
             break;
     }
-    ALERT(@"提示信息", message, @"确定");
+    ALERT(@"", message, @"确定");
 }
 @end
