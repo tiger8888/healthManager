@@ -45,6 +45,9 @@ typedef enum {
 
 @property (nonatomic, strong) UIColor *badgeBackgroundColor;
 
+@property (nonatomic, assign) BOOL hasShadow;
+@property (nonatomic, assign) BOOL hasStroke;
+
 /**
  * @discussion color of the overlay circle at the top. Default is semi-transparent white.
  */

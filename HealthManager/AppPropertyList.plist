@@ -104,5 +104,17 @@
 		<key>class</key>
 		<string>FeedbackViewController</string>
 	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>服药提醒</string>
+		<key>class</key>
+		<string>TakeMedicineRemindViewController</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>扫码查询</string>
+		<key>class</key>
+		<string>ScanCodeViewController</string>
+	</dict>
 </array>
 </plist>

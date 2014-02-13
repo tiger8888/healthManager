@@ -49,19 +49,8 @@
                         <action selector="buttonClick:" destination="-1" eventType="touchUpInside" id="8dB-jc-0KV"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ehn-gL-VtL">
-                    <rect key="frame" x="110" y="184" width="100" height="90"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" image="main_btn_4.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="buttonClick:" destination="-1" eventType="touchUpInside" id="5Dy-Py-Vr0"/>
-                    </connections>
-                </button>
                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NSM-z0-Ty4">
-                    <rect key="frame" x="215" y="184" width="100" height="90"/>
+                    <rect key="frame" x="5" y="282" width="100" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" image="main_btn_5.png">
@@ -72,7 +61,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ydS-gU-m3e">
-                    <rect key="frame" x="5" y="284" width="100" height="90"/>
+                    <rect key="frame" x="109" y="282" width="100" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" image="main_btn_6.png">
@@ -83,7 +72,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yxR-TI-rZ0">
-                    <rect key="frame" x="110" y="284" width="100" height="90"/>
+                    <rect key="frame" x="214" y="282" width="100" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" image="main_btn_7.png">
@@ -100,6 +89,28 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qjX-7j-FIl">
+                    <rect key="frame" x="86" y="184" width="147" height="89"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" image="main_btn_17.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClick:" destination="-1" eventType="touchUpInside" id="za5-k6-jTw"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MAz-P0-m4c">
+                    <rect key="frame" x="215" y="184" width="99" height="89"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" image="main_btn_18.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClick:" destination="-1" eventType="touchUpInside" id="h72-9M-gJC"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -108,9 +119,10 @@
     </objects>
     <resources>
         <image name="main_btn_1.png" width="151" height="101"/>
+        <image name="main_btn_17.png" width="99" height="89"/>
+        <image name="main_btn_18.png" width="99" height="89"/>
         <image name="main_btn_2.png" width="151" height="101"/>
         <image name="main_btn_3.png" width="99" height="89"/>
-        <image name="main_btn_4.png" width="99" height="89"/>
         <image name="main_btn_5.png" width="99" height="89"/>
         <image name="main_btn_6.png" width="99" height="89"/>
         <image name="main_btn_7.png" width="99" height="89"/>

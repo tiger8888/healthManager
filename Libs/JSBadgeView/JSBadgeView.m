@@ -94,7 +94,9 @@
 }
 
 - (void)_init
-{    
+{
+    self.hasShadow = YES;
+    self.hasStroke = YES;
     self.backgroundColor = [UIColor clearColor];
     
     self.badgeAlignment = kDefaultBadgeAlignment;
@@ -162,8 +164,8 @@
             newFrame.origin.y = (superviewHeight - viewHeight) / 2.0f;
             break;
         case JSBadgeViewAlignmentTopRightInside:
-            newFrame.origin.x = superviewWidth - viewWidth;
-            newFrame.origin.y = 0;
+            newFrame.origin.x = superviewWidth - viewWidth*2 + 4;
+            newFrame.origin.y = viewHeight/2-4;
             break;
         default:
             NSAssert(NO, @"Unimplemented JSBadgeAligment type %d", self.badgeAlignment);
@@ -316,8 +318,10 @@
             CGContextAddPath(ctx, borderPath.CGPath);
             
             CGContextSetFillColorWithColor(ctx, self.badgeBackgroundColor.CGColor);
-            CGContextSetShadowWithColor(ctx, kShadowOffset, kShadowRadius, kShadowColor.CGColor);
-            
+            if (self.hasShadow) {
+                CGContextSetShadowWithColor(ctx, kShadowOffset, kShadowRadius, kShadowColor.CGColor);
+            }
+                
             CGContextDrawPath(ctx, kCGPathFill);
         }
         CGContextRestoreGState(ctx);
@@ -349,16 +353,18 @@
         }
         
         /* Stroke */
-        CGContextSaveGState(ctx);
-        {
-            CGContextAddPath(ctx, borderPath.CGPath);
-            
-            CGContextSetLineWidth(ctx, kBadgeStrokeWidth);
-            CGContextSetStrokeColorWithColor(ctx, kBadgeStrokeColor.CGColor);
-            
-            CGContextDrawPath(ctx, kCGPathStroke);
+        if (self.hasStroke) {
+            CGContextSaveGState(ctx);
+            {
+                CGContextAddPath(ctx, borderPath.CGPath);
+                
+                CGContextSetLineWidth(ctx, kBadgeStrokeWidth);
+                CGContextSetStrokeColorWithColor(ctx, kBadgeStrokeColor.CGColor);
+                
+                CGContextDrawPath(ctx, kCGPathStroke);
+            }
+            CGContextRestoreGState(ctx);
         }
-        CGContextRestoreGState(ctx);
         
         /* Text */
         CGContextSaveGState(ctx);

@@ -17,6 +17,12 @@
 		37A8545C1889012500543874 /* AnnouncementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8545A1889012500543874 /* AnnouncementDetailViewController.m */; };
 		37A8545D1889012500543874 /* AnnouncementDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */; };
 		37A8BA9218AC4FE100321C31 /* btn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A8BA9118AC4FE100321C31 /* btn_bg.png */; };
+		37A8BA9618AC9B2C00321C31 /* TakeMedicineRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8BA9418AC9B2C00321C31 /* TakeMedicineRemindViewController.m */; };
+		37A8BA9718AC9B2C00321C31 /* TakeMedicineRemindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8BA9518AC9B2C00321C31 /* TakeMedicineRemindViewController.xib */; };
+		37A8BA9B18AC9B7B00321C31 /* ScanCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8BA9918AC9B7B00321C31 /* ScanCodeViewController.m */; };
+		37A8BA9C18AC9B7B00321C31 /* ScanCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8BA9A18AC9B7B00321C31 /* ScanCodeViewController.xib */; };
+		37A8BAA118AC9EA200321C31 /* main_btn_17@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A8BA9F18AC9EA200321C31 /* main_btn_17@2x.png */; };
+		37A8BAA218AC9EA200321C31 /* main_btn_18@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A8BAA018AC9EA200321C31 /* main_btn_18@2x.png */; };
 		37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A8D5F51876A23C0015432A /* QuartzCore.framework */; };
 		37AACA69189749AC00438762 /* AlertCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AACA68189749AC00438762 /* AlertCustomCell.m */; };
 		37AACA6C1897693200438762 /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AACA6B1897693200438762 /* Algorithm.m */; };
@@ -177,6 +183,14 @@
 		37A8545A1889012500543874 /* AnnouncementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementDetailViewController.m; sourceTree = "<group>"; };
 		37A8545B1889012500543874 /* AnnouncementDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementDetailViewController.xib; sourceTree = "<group>"; };
 		37A8BA9118AC4FE100321C31 /* btn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_bg.png; sourceTree = "<group>"; };
+		37A8BA9318AC9B2C00321C31 /* TakeMedicineRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeMedicineRemindViewController.h; sourceTree = "<group>"; };
+		37A8BA9418AC9B2C00321C31 /* TakeMedicineRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeMedicineRemindViewController.m; sourceTree = "<group>"; };
+		37A8BA9518AC9B2C00321C31 /* TakeMedicineRemindViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakeMedicineRemindViewController.xib; sourceTree = "<group>"; };
+		37A8BA9818AC9B7B00321C31 /* ScanCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCodeViewController.h; sourceTree = "<group>"; };
+		37A8BA9918AC9B7B00321C31 /* ScanCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCodeViewController.m; sourceTree = "<group>"; };
+		37A8BA9A18AC9B7B00321C31 /* ScanCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanCodeViewController.xib; sourceTree = "<group>"; };
+		37A8BA9F18AC9EA200321C31 /* main_btn_17@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_btn_17@2x.png"; sourceTree = "<group>"; };
+		37A8BAA018AC9EA200321C31 /* main_btn_18@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_btn_18@2x.png"; sourceTree = "<group>"; };
 		37A8D5F51876A23C0015432A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		37AACA67189749AC00438762 /* AlertCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertCustomCell.h; sourceTree = "<group>"; };
 		37AACA68189749AC00438762 /* AlertCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertCustomCell.m; sourceTree = "<group>"; };
@@ -794,6 +808,12 @@
 				9C0BFFA01886D944002845D9 /* ManagerViewController.h */,
 				9C0BFFA11886D944002845D9 /* ManagerViewController.m */,
 				9C0BFFA21886D944002845D9 /* ManagerViewController.xib */,
+				37A8BA9318AC9B2C00321C31 /* TakeMedicineRemindViewController.h */,
+				37A8BA9418AC9B2C00321C31 /* TakeMedicineRemindViewController.m */,
+				37A8BA9518AC9B2C00321C31 /* TakeMedicineRemindViewController.xib */,
+				37A8BA9818AC9B7B00321C31 /* ScanCodeViewController.h */,
+				37A8BA9918AC9B7B00321C31 /* ScanCodeViewController.m */,
+				37A8BA9A18AC9B7B00321C31 /* ScanCodeViewController.xib */,
 			);
 			path = ManagerViewController;
 			sourceTree = "<group>";
@@ -861,6 +881,8 @@
 		B823225B185F48EA005F2409 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				37A8BA9F18AC9EA200321C31 /* main_btn_17@2x.png */,
+				37A8BAA018AC9EA200321C31 /* main_btn_18@2x.png */,
 				37A8BA9118AC4FE100321C31 /* btn_bg.png */,
 				B823225C185F48EA005F2409 /* arrow@2x.png */,
 				B823225D185F48EA005F2409 /* bbi_left@2x.png */,
@@ -1008,6 +1030,7 @@
 				B8232298185F48EA005F2409 /* Icon-114.png in Resources */,
 				37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */,
 				B82322A6185F48EA005F2409 /* textfield@2x.png in Resources */,
+				37A8BAA118AC9EA200321C31 /* main_btn_17@2x.png in Resources */,
 				9C0BFFCA1886D944002845D9 /* MainViewController.xib in Resources */,
 				37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */,
 				B82322A3185F48EA005F2409 /* main_btn_7@2x.png in Resources */,
@@ -1027,9 +1050,11 @@
 				B8232294185F48EA005F2409 /* bt_save@2x.png in Resources */,
 				B8232297185F48EA005F2409 /* doctorButton@2x.png in Resources */,
 				B82322A2185F48EA005F2409 /* main_btn_6@2x.png in Resources */,
+				37A8BAA218AC9EA200321C31 /* main_btn_18@2x.png in Resources */,
 				9C0BFFD01886D944002845D9 /* SettingRemindTimeViewController.xib in Resources */,
 				37B51C4C1894EB4600954432 /* Renkoo in Resources */,
 				B823228A185F48EA005F2409 /* blood_table_hit@2x.png in Resources */,
+				37A8BA9C18AC9B7B00321C31 /* ScanCodeViewController.xib in Resources */,
 				9C0BFFD21886D944002845D9 /* SettingViewController.xib in Resources */,
 				37A8BA9218AC4FE100321C31 /* btn_bg.png in Resources */,
 				9C0BFFB91886D944002845D9 /* AlertViewController.xib in Resources */,
@@ -1049,6 +1074,7 @@
 				9C0BFFC01886D944002845D9 /* DoctorCell.xib in Resources */,
 				B8232299185F48EA005F2409 /* Icon-72.png in Resources */,
 				B82322A4185F48EA005F2409 /* navigation@2x.png in Resources */,
+				37A8BA9718AC9B2C00321C31 /* TakeMedicineRemindViewController.xib in Resources */,
 				9C0BFFC81886D944002845D9 /* LoginViewController.xib in Resources */,
 				B8232295185F48EA005F2409 /* Default-568h@2x.png in Resources */,
 				B8232286185F48EA005F2409 /* blood_segment_3@2x.png in Resources */,
@@ -1074,6 +1100,7 @@
 			files = (
 				8BFE177C187FEC5700D1F48A /* AFHTTPRequestOperation.m in Sources */,
 				9C0BFFC91886D944002845D9 /* MainViewController.m in Sources */,
+				37A8BA9B18AC9B7B00321C31 /* ScanCodeViewController.m in Sources */,
 				37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */,
 				37CBF47B18A85B93001DE66A /* BaseManager.m in Sources */,
 				8B94AB151848663300CA5869 /* AppDelegate.m in Sources */,
@@ -1107,6 +1134,7 @@
 				37CBF47518A8586B001DE66A /* AlertRecordModel.m in Sources */,
 				9C0BFFAE1886D944002845D9 /* BloodRecordDateData.m in Sources */,
 				37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */,
+				37A8BA9618AC9B2C00321C31 /* TakeMedicineRemindViewController.m in Sources */,
 				8BFE1788187FEC5700D1F48A /* HttpRequestManager.m in Sources */,
 				9C0BFFD61886DA30002845D9 /* SessionViewController.m in Sources */,
 				9C0BFFBF1886D944002845D9 /* DoctorCell.m in Sources */,
