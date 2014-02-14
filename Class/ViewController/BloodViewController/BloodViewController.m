@@ -89,7 +89,7 @@
     BloodRecord *bloodRecord = [[[NSBundle mainBundle] loadNibNamed:@"BloodRecord" owner:self options:nil] firstObject];
     bloodRecord.frame = CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT -88 -20);
     [_baseScrollView addSubview:bloodRecord];
-    [bloodRecord setSaveBlock:^(NSString *highPressure, NSString *lowPressure, NSString *pulse) {
+    [bloodRecord setSaveBlock:^(NSString *highPressure, NSString *lowPressure, NSString *pulse) {        
         if (!stringIsValidNumber(highPressure) ) {
             ALERT(@"", @"请录入正确的高压数字", @"确定");
             return ;
@@ -133,7 +133,7 @@
     scrollView.tag = 2;
     scrollView.maximumZoomScale = 3.0f;
     scrollView.delegate = self;
-    scrollView.contentSize = CGSizeMake(495, scrollView.frame.size.height);
+//    scrollView.contentSize = CGSizeMake(495, scrollView.frame.size.height + 20);
     [_baseScrollView addSubview:scrollView];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blood_table_hit"]];
@@ -142,13 +142,11 @@
     
     _bloodLineChar = [self buildLineChartView];
     [scrollView addSubview:_bloodLineChar];
-
+    scrollView.contentSize = CGSizeMake(495, _bloodLineChar.frame.size.height);
 }
 
 - (LineChartView *)buildLineChartView
 {
-    
-    LineChartView *lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_HEIGHT, DEVICE_HEIGHT -88 -20)];
     //竖轴
     NSMutableArray *vArr = [[NSMutableArray alloc] init];
     for (int i=0; i<16; i++) {
@@ -159,8 +157,12 @@
     for (int i=1; i<31; i++) {
         [hArr addObject: [NSString stringWithFormat:@"%d",i]];
     }
+    
+    LineChartView *lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_HEIGHT, 20*16)];//DEVICE_HEIGHT -88 -20
     [lineChartView setHDesc:hArr];
     [lineChartView setVDesc:vArr];
+//    lineChartView.hGap = 25;
+//    lineChartView.vGap = 80;
     
 //    [self setLineChartDataSource:lineChartView];
     return lineChartView;
@@ -322,7 +324,7 @@
 
 BOOL stringIsValidNumber(NSString *checkString)
 {
-    if ([checkString isKindOfClass:[NSNull class]]) {
+    if ([checkString isEqualToString:@""] || [checkString isKindOfClass:[NSNull class]]) {
         return NO;
     }
     NSString *stricterFilterString = @"^[0-9]*$";

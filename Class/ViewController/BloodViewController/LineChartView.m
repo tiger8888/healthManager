@@ -13,6 +13,9 @@
     //坐标原点
     int _newCoordinateX;
     int _newCoordinateY;
+    
+    //坐标比率
+    float _cordinateRate;
 }
 
 @end
@@ -27,8 +30,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        hGap = 15;
+        hGap = 20;
         vGap = 20;
+        _cordinateRate = 1.0;
         self.backgroundColor = [UIColor whiteColor];
     }
     return self;
@@ -44,8 +48,8 @@
     CGContextSetLineWidth(context, backLineWidth);
     CGContextSetLineCap(context, kCGLineCapRound);
     
-    CGColorRef borderLineColorRef = [UIColor colorWithRed:51.0f/255.0f green:51.0f/255.0f blue:51.0f/255.0f alpha:1.0f].CGColor;
-    CGColorRef lineColorRef = [UIColor colorWithRed:98.0f/255.0f green:98.0f/255.0f blue:98.0f/255.0f alpha:1.0f].CGColor;
+    CGColorRef borderLineColorRef = UICOLORFROMRGB(0x333333).CGColor;
+    CGColorRef lineColorRef = UICOLORFROMRGB(0xd3d3d3).CGColor;
     CGContextSetStrokeColorWithColor(context, lineColorRef);
     
     //纵坐标数值的标签显示宽度
@@ -54,7 +58,7 @@
     int coordinateLabelHeight = 20;
     int coordinateLabelWidth = vOrdinateLabelWidth;
     
-    UIColor *coordinateLabelFontColor = [UIColor colorWithRed:51.0f/255.0f green:51.0f/255.0f blue:51.0f/255.0f alpha:1.0f];
+    UIColor *coordinateLabelFontColor = UICOLORFROMRGB(0x333333);
 
     _newCoordinateX = vOrdinateLabelWidth;//x位置由纵坐标数值的标签宽度决定
     _newCoordinateY = coordinateLabelHeight/2;
@@ -65,7 +69,7 @@
     int vOrdinateLabelCenterX = _newCoordinateX/2;
     
     //画水平线
-    for (int i = (int)vDesc.count -1; i > -1; i--)
+    for (int i = (int)vDesc.count -1; i > 0; i--)
     {
         beginPoint = CGPointMake(_newCoordinateX, y);
         endPoint = CGPointMake(x, y);
@@ -77,25 +81,40 @@
         [label setTextColor:coordinateLabelFontColor];
         [label setText:[vDesc objectAtIndex:i]];
         [self addSubview:label];
-        if (i==0) {
-            [self drawCoordinateBorderLineWith:context withBeginPoint:beginPoint withEndPoint:endPoint withColor:borderLineColorRef];
-        }
-        else {
-            CGContextMoveToPoint(context, beginPoint.x, beginPoint.y);
-            CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
-        }
+        
+        CGContextMoveToPoint(context, beginPoint.x, beginPoint.y);
+        CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
         
         y += vGap;
     }
-    
     CGContextStrokePath(context);
     
+    //画水平底线
+    beginPoint = CGPointMake(_newCoordinateX, y);
+    endPoint = CGPointMake(x, y);
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, vOrdinateLabelWidth, coordinateLabelHeight)];
+    [label setCenter:CGPointMake(vOrdinateLabelCenterX, beginPoint.y)];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextColor:coordinateLabelFontColor];
+    [label setText:[vDesc objectAtIndex:0]];
+    [self addSubview:label];
+    [self drawCoordinateBorderLineWith:context withBeginPoint:beginPoint withEndPoint:endPoint withColor:borderLineColorRef];
+    y +=vGap;
     
-    //画垂直线
+    //画垂直线时的初始数据
     x = _newCoordinateX;
     y -= vGap;
+    //画垂直左边线
+    beginPoint = CGPointMake(x, y);
+    endPoint = CGPointMake(x, _newCoordinateY);
+    [self drawCoordinateBorderLineWith:context withBeginPoint:beginPoint withEndPoint:endPoint withColor:borderLineColorRef];
+    x += hGap;
+    
+    //画垂直线
+    
     int labelCenterXOffset = (int)(10 + floor(hGap/2));//可以在改进，自动适配显示文字的宽度
-    for (int i=0; i<hDesc.count; i++) {
+    for (int i=1; i<hDesc.count; i++) {
         beginPoint = CGPointMake(x, y);
         endPoint = CGPointMake(x, _newCoordinateY);
         if ( i==6 || i==14 || i==21 || i==29 ) {
@@ -107,22 +126,24 @@
             [self addSubview:label];
         }
         
-        if (i==0) {
-            [self drawCoordinateBorderLineWith:context withBeginPoint:beginPoint withEndPoint:endPoint withColor:borderLineColorRef];
-        }
-        else {
+//        if (i==0) {
+//            [self drawCoordinateBorderLineWith:context withBeginPoint:beginPoint withEndPoint:endPoint withColor:borderLineColorRef];
+//        }
+//        else {
             CGContextMoveToPoint(context, beginPoint.x, beginPoint.y);
             CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
-        }
+//        }
         
         x += hGap;
     }
+    CGContextStrokePath(context);
 
     //转换纵坐标为实际高度值
     _newCoordinateY = y;
     
     CGContextStrokePath(context);
     
+    _cordinateRate = ([[self.vDesc objectAtIndex:1] floatValue] - [[self.vDesc objectAtIndex:0] floatValue]) / vGap;
     [self drawBloodCharWith:context];
 }
 - (void)drawBloodCharWith:(CGContextRef)context {
@@ -148,28 +169,6 @@
     
     colorRef = [self getPulsePressureColor];
     [self drawBloodLineCharWith:context withArray:pulse withFillColor:colorRef];
-    
-//    for (int i=0; i<[bloodArray count]; i++) {
-//        CGColorRef colorRef;
-//        switch (i) {
-//            case 0:
-//                //高血压
-//                colorRef = [self getHighPressureColor];
-//                break;
-//            case 1:
-//                //低血压
-//                colorRef =[self getLowPressureColor];
-//                break;
-//            case 2:
-//                //脉搏
-//                colorRef = [self getPulsePressureColor];
-//                break;
-//            default:
-//                colorRef = [self getHighPressureColor];
-//                break;
-//        }
-//        [self drawBloodLineCharWith:context withPoint:[bloodArray objectAtIndex:i] withFillColor:colorRef];
-//    }
 }
 - (void)drawCoordinateBorderLineWith:(CGContextRef)context withBeginPoint:(CGPoint)beginPoint withEndPoint:(CGPoint)endPoint withColor:(CGColorRef)borderLineColorRef {
     CGContextSaveGState(context);
@@ -190,7 +189,7 @@
     CGPoint goPoint;
 	int i = 1;
     p1.x += _newCoordinateX;
-    p1.y = _newCoordinateY-p1.y;
+    p1.y = (_newCoordinateY-p1.y)*_cordinateRate;
 	CGContextMoveToPoint(context, p1.x, p1.y);
     
     NSMutableArray *drawPoint = [NSMutableArray new];
@@ -255,17 +254,17 @@
 }
 
 - (CGColorRef)getHighPressureColor {
-    CGColorRef colorRef = [UIColor colorWithRed:243.0f/255.0f green:152.0f/255.0f blue:0.0f alpha:1.0f].CGColor;
+    CGColorRef colorRef = UICOLORFROMRGB(0xf39800).CGColor;// [UIColor colorWithRed:243.0f/255.0f green:152.0f/255.0f blue:0.0f alpha:1.0f].CGColor;
     return colorRef;
 }
 
 - (CGColorRef)getLowPressureColor {
-    CGColorRef colorRef = [UIColor colorWithRed:143.0f/255.0f green:195.0f/255.0f blue:31.0f/255.0f alpha:1.0f].CGColor;
+    CGColorRef colorRef = UICOLORFROMRGB(0x8fc31f).CGColor;//[UIColor colorWithRed:143.0f/255.0f green:195.0f/255.0f blue:31.0f/255.0f alpha:1.0f].CGColor;
     return colorRef;
 }
 
 - (CGColorRef)getPulsePressureColor {
-    CGColorRef colorRef = [UIColor colorWithRed:57.0f/255.0f green:179.0f/255.0f blue:210.0f/255.0f alpha:1.0f].CGColor;
+    CGColorRef colorRef = UICOLORFROMRGB(0x39b3d2).CGColor;//[UIColor colorWithRed:57.0f/255.0f green:179.0f/255.0f blue:210.0f/255.0f alpha:1.0f].CGColor;
     return colorRef;
 }
 

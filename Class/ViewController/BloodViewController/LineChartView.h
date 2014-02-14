@@ -12,8 +12,8 @@
 @interface LineChartView : UIView
 
 //横竖轴距离间隔
-@property (assign) NSInteger hGap;
-@property (assign) NSInteger vGap;
+@property (nonatomic, assign) NSInteger hGap;
+@property (nonatomic, assign) NSInteger vGap;
 
 //横竖轴显示标签
 @property (nonatomic, strong) NSArray *hDesc;
