@@ -25,6 +25,7 @@
         <attribute name="lowPressure" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pulse" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="submit" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="AlertRecordModel" positionX="0" positionY="0" width="0" height="0"/>

@@ -15,6 +15,7 @@
     BloodRecord *_bloodRecord;
     LineChartView *_bloodLineChar;
     NSMutableArray *_lineDataSource;
+    NSMutableDictionary *_dataSourceDetail;
     BOOL _tableViewSelected;
     LSSegment *_lsSegment;
 }
@@ -38,7 +39,7 @@
     // Do any additional setup after loading the view from its nib.
 
     [self getDataSource];
-
+//
     [self layoutView];
 }
 
@@ -106,22 +107,7 @@
             return ;
         }
         //直接上传
-        NSMutableDictionary *para = [[NSMutableDictionary alloc] init];
-        [para setObject:highPressure forKey:@"systolicPressure"];
-        [para setObject:lowPressure forKey:@"diastolicPressure"];
-        [para setObject:pulse forKey:@"pulseRate"];
-        
-        NSDateFormatter *formatter = [NSDateFormatter new];
-        formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-        [para setObject:[formatter stringFromDate:[NSDate date]] forKey:@"measureTime"];
-        [self updataRecord:para];
-        //暂时不需要保存本地。
-//        [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:[NSDate dateWithTimeIntervalSinceNow:0]];
-//        _dataSource = [[BloodRecordManager sharedBloodRecordManager] fetchAllDate];
-//        [_tableView reloadData];
-//        [self setLineChartDataSource:_bloodLineChar];
-//        [_bloodLineChar setNeedsDisplay];
-
+        [self updataRecord:highPressure withLowPressure:lowPressure withPulse:pulse];
     }];
     return bloodRecord;
 }
@@ -223,16 +209,18 @@
     static NSString *cellIdentity = @"bloodCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentity];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentity];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
         imageView.frame = CGRectMake(280, 4, 35, 35);
         [cell addSubview:imageView];
     }
     
     //从数据库取出的数据源，现在不用。直接映射网络资源
-    //cell.textLabel.text = [_dataSource[indexPath.row] valueForKey:@"dateStr"];
+//    cell.textLabel.text = [_dataSource[indexPath.row] valueForKey:@"dateStr"];
     //直接引用json字段
     cell.textLabel.text = _dataSource[indexPath.row];
+    NSArray *listItem = [_dataSourceDetail objectForKey:[_dataSource[indexPath.row] stringByReplacingOccurrencesOfString:@"." withString:@"-"]];
+    cell.detailTextLabel.text = [[listItem lastObject] objectForKey:@"pulse"];
     return cell;
 }
 
@@ -291,6 +279,7 @@
         case 2:
         {
             NSLog(@"2");
+            [self getDataSource];
             [_tableView reloadData];
         }
             break;
@@ -351,17 +340,39 @@ BOOL stringIsValidNumber(NSString *checkString)
 
 
 #pragma mark - Updata &DownLoad
-- (void)updataRecord:(NSDictionary *)para
+- (void)addLocalRecord:(NSString *)highPressure withLowPressure:(NSString *)lowPressure withPulse:(NSString *)pulse withDate:(NSDate *)date withDateStr:(NSString *)dateStr {
+    [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:date dateStr:dateStr uid:[self getCurrentPatientID]];
+//    _dataSource = [[BloodRecordManager sharedBloodRecordManager] fetchAllDate];
+//    [_tableView reloadData];
+    [self setLineChartDataSource:_bloodLineChar];
+    [_bloodLineChar setNeedsDisplay];
+}
+
+- (void)updataRecord:highPressure withLowPressure:lowPressure withPulse:pulse
 {
-//    NSArray *result = [[BloodRecordManager sharedBloodRecordManager] fetchRecordForUpData];
-//    if (result.count != 0) {
-//        //上传
-//        for (id model in result)
-//        {
+    NSArray *result = [[BloodRecordManager sharedBloodRecordManager] fetchRecordForUpData];
+    if (result.count != 0) {
+        //上传
+        for (id model in result) {
 //            上传单条数据
-//        }
-//    }
+            NSManagedObject *obj = (NSManagedObject *)model;
+            NSLog(@"record for up data:%@",[obj valueForKey:@"pulse"]);
+        }
+    }
+    
     //上传单条数据
+    NSMutableDictionary *para = [[NSMutableDictionary alloc] init];
+    [para setObject:highPressure forKey:@"systolicPressure"];
+    [para setObject:lowPressure forKey:@"diastolicPressure"];
+    [para setObject:pulse forKey:@"pulseRate"];
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSDate *dateNow = [NSDate date];
+    NSString *dateNowStr = [formatter stringFromDate:[NSDate date]];
+    
+    [self addLocalRecord:highPressure withLowPressure:lowPressure withPulse:pulse withDate:dateNow withDateStr:dateNowStr];
+    [para setObject:dateNowStr forKey:@"measureTime"];
     
     NSString *url = [NSString stringWithFormat:@"bloodPressure/add/%@.json",[self getCurrentPatientID]];
     [[HttpRequestManager sharedManager] requestWithParameters:para interface:url completionHandle:^(id returnObject) {
@@ -376,7 +387,7 @@ BOOL stringIsValidNumber(NSString *checkString)
 //            ALERT(@"信息更新", @"数据已经上传", @"确定");
 //        }
     } failed:^{
-        ALERT(@"网络错误", @"网络错误上传失败，您的数据降无法同步到服务器", @"确定");
+        ALERT(@"", @"数据上传云端失败，已转存本地，请查看网络。", @"确定");
     } hitSuperView:nil method:kPost];
 }
 
@@ -393,12 +404,58 @@ BOOL stringIsValidNumber(NSString *checkString)
         }
         
     } failed:^{
-        ALERT(@"网络错误", @"网络错误上传失败，您的数据无法同步到服务器,请重试", @"确定");
+        ALERT(@"", @"网络异常，请确保您的设备已经连入网络。", @"确定");
+        [self getLocalDataSource];
     } hitSuperView:nil method:kPost];
+}
+
+- (void)getLocalDataSource {
+    NSArray *result = [[BloodRecordManager sharedBloodRecordManager] fetchAllMyRecord:[self getCurrentPatientID]];
+    if (result.count != 0) {
+        NSMutableDictionary *listDataSource = [NSMutableDictionary new];
+        NSMutableDictionary *detail = [ NSMutableDictionary new];
+        _lineDataSource = [NSMutableArray new];
+        _dataSourceDetail = [NSMutableDictionary new];
+        
+        for (id model in result) {
+            NSManagedObject *obj = (NSManagedObject *)model;
+//            NSLog(@"record for up data:%@",[obj valueForKey:@"pulse"]);
+            
+            NSMutableDictionary *item = [NSMutableDictionary dictionaryWithObjectsAndKeys:[obj valueForKey:@"highPressure"],@"highPressure",[obj valueForKey:@"lowPressure"],@"lowPressure",[obj valueForKey:@"pulse"],@"pulse", nil];
+            [_lineDataSource addObject:item];
+            NSString *dateKey = [[[obj valueForKey:@"dateStr"] componentsSeparatedByString:@" "] firstObject];
+            [listDataSource setObject:dateKey forKey:dateKey];
+            
+            //根据日期重构血压数据
+            if ( [[detail objectForKey:dateKey] isKindOfClass:[NSMutableArray class]] ) {
+                [[detail objectForKey:dateKey] addObject:item];
+            }
+            else {
+                [detail setObject:[NSMutableArray arrayWithObjects:item, nil] forKey:dateKey];
+            }
+//            NSLog(@"detail:%@", detail);
+        }
+        
+        NSMutableArray *listDataSourceArray = [NSMutableArray new];
+        for (NSString *listItem in listDataSource) {
+            [listDataSourceArray addObject:[listItem stringByReplacingOccurrencesOfString:@"-" withString:@"."]];
+        }
+        _dataSource = [listDataSourceArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSString *firstDate = (NSString *)obj1;
+            NSString *secondDate = (NSString *)obj2;
+            return [firstDate compare:secondDate];
+        }];
+        _dataSourceDetail = detail;
+    }
+    else {
+        NSLog(@"no local data");
+    }
+
 }
 
 - (void)parseData:(NSDictionary *)dict
 {
+    //增加同步到本地数据库的功能
     _dataSource = [NSMutableArray new];
     _lineDataSource = [NSMutableArray new];
     for (id x in [[dict categoryObjectForKey:@"resultInfo"] categoryObjectForKey:@"list"])

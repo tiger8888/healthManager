@@ -15,5 +15,6 @@
 @property (nonatomic, copy) NSString *pulse;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, assign) BOOL submit;
+@property (nonatomic, copy) NSString *uid;
 
 @end

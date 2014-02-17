@@ -24,16 +24,17 @@
     return sharedManager;
 }
 
-- (void)addNewRecord:(NSString *)highPressure lowPressure:(NSString *)lowPressure pulse:(NSString *)pulse date:(NSDate *)date
+- (void)addNewRecord:(NSString *)highPressure lowPressure:(NSString *)lowPressure pulse:(NSString *)pulse  date:(NSDate *)date dateStr:(NSString *)dateStr uid:(NSString *)uid
 {
-    NSString *str = [self disposeDate:date];
+//    NSString *str = [self disposeDate:date];
 
     NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:@"BloodRecordModel"  inManagedObjectContext:[self getManagedObjectContext]];
     [object setValue:highPressure forKey:@"highPressure"];
     [object setValue:lowPressure forKey:@"lowPressure"];
     [object setValue:pulse forKey:@"pulse"];
     [object setValue:date forKey:@"date"];
-    [object setValue:str forKey:@"dateStr"];
+    [object setValue:dateStr forKey:@"dateStr"];
+    [object setValue:uid forKey:@"uid"];
     [self save];
 }
 
@@ -56,13 +57,30 @@
 
 }
 
+- (NSArray *)fetchAllMyRecord:(NSString *)uid {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BloodRecordModel" inManagedObjectContext:[self getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"uid = %@", uid];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateStr" ascending:YES];
+    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
+    NSError *error = nil;
+    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (error)
+    {
+        [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
+    }
+    return objs;
+}
+
 - (NSArray *)fetchRecordForUpData
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"BloodRecordModel" inManagedObjectContext:[self getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"submit = NO"];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"uid = %@ and submit = NO", [self getCurrentPatientID]];
     NSError *error = nil;
     NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
     if (error)
@@ -123,6 +141,7 @@
     }
     return objs;
 }
+
 #pragma mark - CoreData
 - (NSManagedObjectContext *)getManagedObjectContext
 {
@@ -133,4 +152,10 @@
 {
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
 }
+
+- (NSString *)getCurrentPatientID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+}
+
 @end
