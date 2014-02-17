@@ -16,5 +16,6 @@
 
 @interface LSSegment : UIView
 
-- (void)initWithImageArray:(NSArray *)imageNames andHighLightImages:(NSArray *)highLightArray frame:(CGRect)frame superView:(UIView *)superView delegate:(id<LSSegmentDelegate>)delegate;
+- (id)initWithImageArray:(NSArray *)imageNames andHighLightImages:(NSArray *)highLightArray frame:(CGRect)frame superView:(UIView *)superView delegate:(id<LSSegmentDelegate>)delegate;
+- (void)setSelectedImage:(NSUInteger)index;
 @end

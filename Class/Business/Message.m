@@ -255,14 +255,14 @@ static Message *_sharedManager;
     return NO;
 }
 
-- (void)bloodDataUpdateToServer:(NSDictionary *)dict {
+- (BOOL)bloodDataUpdateToServer:(NSDictionary *)dict {
     NSString *message;
     int r = [[dict categoryObjectForKey:@"retCode"] intValue];
     NSLog(@"r=%d", r);
     switch (r) {
         case 1:
         {
-            message = @"数据已经上传";
+            return YES;
         }
             break;
         case 2:
@@ -279,5 +279,6 @@ static Message *_sharedManager;
             break;
     }
     ALERT(@"", message, @"确定");
+    return NO;
 }
 @end

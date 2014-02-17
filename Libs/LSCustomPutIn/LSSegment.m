@@ -35,7 +35,7 @@
 }
 */
 
-- (void)initWithImageArray:(NSArray *)imageNames andHighLightImages:(NSArray *)highLightArray frame:(CGRect)frame superView:(UIView *)superView delegate:(id<LSSegmentDelegate>)delegate
+- (id)initWithImageArray:(NSArray *)imageNames andHighLightImages:(NSArray *)highLightArray frame:(CGRect)frame superView:(UIView *)superView delegate:(id<LSSegmentDelegate>)delegate
 {
     UIView *view = [self initWithFrame:frame];
     view.tag = 917;
@@ -66,6 +66,19 @@
     view = nil;
     _delegate = delegate;
     [self setDefaultImage:0];
+    return self;
+}
+
+- (void)setSelectedImage:(NSUInteger)index {
+    for (int imageIndex=0; imageIndex < _images.count; imageIndex++) {
+        UIButton *button = [self.subviews objectAtIndex:imageIndex];
+        if ( (int)index == imageIndex ) {
+            [button setImage:_selectedImages[imageIndex] forState:UIControlStateNormal];
+        }
+        else {
+            [button setImage:_images[imageIndex] forState:UIControlStateNormal];
+        }
+    }
 }
 
 - (void)setDefaultImage:(NSUInteger)defaultImage

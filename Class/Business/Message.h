@@ -19,5 +19,5 @@
 - (BOOL)checkMobile:(NSString *)mobileNum;
 - (BOOL)checkSessionMessage:(NSString *)str;
 - (BOOL)checkReturnInformationWithInterface:(NSDictionary *)dict;
-- (void)bloodDataUpdateToServer:(NSDictionary *)dict;
+- (BOOL)bloodDataUpdateToServer:(NSDictionary *)dict;
 @end

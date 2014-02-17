@@ -16,6 +16,7 @@
     LineChartView *_bloodLineChar;
     NSMutableArray *_lineDataSource;
     BOOL _tableViewSelected;
+    LSSegment *_lsSegment;
 }
 @end
 
@@ -79,7 +80,7 @@
         [arr1 addObject:str1];
         [arr2 addObject:str2];
     }
-    [[LSSegment alloc] initWithImageArray:arr1 andHighLightImages:arr2 frame:CGRectMake(0, 44, DEVICE_WIDTH, 44) superView:self.view delegate:self];
+    _lsSegment = [[LSSegment alloc] initWithImageArray:arr1 andHighLightImages:arr2 frame:CGRectMake(0, 44, DEVICE_WIDTH, 44) superView:self.view delegate:self];
     
 }
 
@@ -290,6 +291,7 @@
         case 2:
         {
             NSLog(@"2");
+            [_tableView reloadData];
         }
             break;
         default:
@@ -299,6 +301,7 @@
     [_bloodRecord.lowPressure.textField resignFirstResponder];
     [_bloodRecord.pulse.textField resignFirstResponder];
     _baseScrollView.contentOffset = CGPointMake(DEVICE_WIDTH *index, 0);
+    [_lsSegment setSelectedImage:index];
 }
 
 #pragma mark - Other Method
@@ -365,7 +368,10 @@ BOOL stringIsValidNumber(NSString *checkString)
         
         NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
-        [[Message sharedManager] bloodDataUpdateToServer:[result objectForKey:@"resultInfo"]];
+        if ( [[Message sharedManager] bloodDataUpdateToServer:[result objectForKey:@"resultInfo"]] ) {
+            ALERT(@"", @"数据已经上传", @"确定");
+            [self segmentDidSelectedAtIndex:2];
+        }
 //        if ([[[result objectForKey:@"resultInfo"] objectForKey:@"retCode"] intValue] == 1) {
 //            ALERT(@"信息更新", @"数据已经上传", @"确定");
 //        }
