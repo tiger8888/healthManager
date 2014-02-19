@@ -24,18 +24,46 @@
     return sharedManager;
 }
 
-- (void)addNewRecord:(NSString *)highPressure lowPressure:(NSString *)lowPressure pulse:(NSString *)pulse  date:(NSDate *)date dateStr:(NSString *)dateStr uid:(NSString *)uid
+- (NSManagedObject *)addNewRecord:(NSString *)highPressure lowPressure:(NSString *)lowPressure pulse:(NSString *)pulse  date:(NSDate *)date dateStr:(NSString *)dateStr uid:(NSString *)uid submit:(BOOL)submit
 {
 //    NSString *str = [self disposeDate:date];
+    if (![self existRecord:dateStr withUid:uid]) {
+        NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:@"BloodRecordModel"  inManagedObjectContext:[self getManagedObjectContext]];
+        [object setValue:highPressure forKey:@"highPressure"];
+        [object setValue:lowPressure forKey:@"lowPressure"];
+        [object setValue:pulse forKey:@"pulse"];
+        [object setValue:date forKey:@"date"];
+        [object setValue:dateStr forKey:@"dateStr"];
+        [object setValue:uid forKey:@"uid"];
+        [object setValue:[NSNumber numberWithBool:submit] forKey:@"submit"];
 
-    NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:@"BloodRecordModel"  inManagedObjectContext:[self getManagedObjectContext]];
-    [object setValue:highPressure forKey:@"highPressure"];
-    [object setValue:lowPressure forKey:@"lowPressure"];
-    [object setValue:pulse forKey:@"pulse"];
-    [object setValue:date forKey:@"date"];
-    [object setValue:dateStr forKey:@"dateStr"];
-    [object setValue:uid forKey:@"uid"];
+        [self save];
+        return object;
+    }
+    else {
+        return nil;
+    }
+}
+
+- (void)updateSubmit:(BOOL)submit withObject:(NSManagedObject *)object {
+    [object setValue:[NSNumber numberWithBool:submit] forKey:@"submit"];
     [self save];
+}
+
+- (BOOL)existRecord:(NSString *)dateStr withUid:(NSString *)uid {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BloodRecordModel" inManagedObjectContext:[self getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"uid = %@ and dateStr = %@", uid, dateStr];
+    NSError *error = nil;
+    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (error)
+    {
+        [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
+    }
+//    NSLog(@"pan:%d", [objs count]);
+    return [objs count]>0;
 }
 
 - (NSArray *)fetchRecordBy:(NSManagedObject *)model
@@ -80,7 +108,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"BloodRecordModel" inManagedObjectContext:[self getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"uid = %@ and submit = NO", [self getCurrentPatientID]];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"submit = NO"];
     NSError *error = nil;
     NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
     if (error)

@@ -11,7 +11,8 @@
 
 + (id)sharedBloodRecordManager;
 
-- (void)addNewRecord:(NSString *)highPressure lowPressure:(NSString *)lowPressure pulse:(NSString *)pulse date:(NSDate *)date dateStr:(NSString *)dateStr uid:(NSString *)uid;
+- (NSManagedObject *)addNewRecord:(NSString *)highPressure lowPressure:(NSString *)lowPressure pulse:(NSString *)pulse date:(NSDate *)date dateStr:(NSString *)dateStr uid:(NSString *)uid  submit:(BOOL)submit;
+- (void)updateSubmit:(BOOL)submit withObject:(NSManagedObject *)object;
 //传入日期模型取出当天录入的所有数据
 //注意取出是一个数组现在只要求用最后一次，调用lastObject 方法，将来如果改为平均值forin遍历一遍计算平均值
 - (NSArray *)fetchRecordBy:(NSManagedObject *)model;

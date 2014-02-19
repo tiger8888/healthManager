@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		375ED8FC188F5F0500423CF8 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 375ED8FA188F5F0500423CF8 /* FeedbackViewController.m */; };
 		375ED8FD188F5F0500423CF8 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375ED8FB188F5F0500423CF8 /* FeedbackViewController.xib */; };
+		37991D5118B2FF31005C0FDE /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37991D4F18B2FF30005C0FDE /* arrow_down@2x.png */; };
+		37991D5218B2FF31005C0FDE /* arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37991D5018B2FF30005C0FDE /* arrow_up@2x.png */; };
+		37991D5518B32B8A005C0FDE /* BloodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37991D5418B32B8A005C0FDE /* BloodListCell.m */; };
 		37A1797618961CF9003AE118 /* DoctorBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A1797518961CF9003AE118 /* DoctorBusiness.m */; };
 		37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E56B187E31B500F075B0 /* AppPropertyList.plist */; };
 		37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8544D1888EB4500543874 /* AnnouncementViewController.m */; };
@@ -38,6 +41,8 @@
 		37BF92FC1891EAC900B50627 /* SessionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BF92FB1891EAC900B50627 /* SessionMessage.m */; };
 		37BF92FF1891ED3900B50627 /* SessionMessageStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BF92FE1891ED3900B50627 /* SessionMessageStyleManager.m */; };
 		37BF94371891EE8300B50627 /* Template.html in Resources */ = {isa = PBXBuildFile; fileRef = 37BF939E1891EE8300B50627 /* Template.html */; };
+		37C42ACA18B43FED00C201C2 /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 37C42AC818B43FED00C201C2 /* arrow_down.png */; };
+		37C42ACB18B43FED00C201C2 /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 37C42AC918B43FED00C201C2 /* arrow_up.png */; };
 		37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */; };
 		37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */; };
 		37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */; };
@@ -171,6 +176,10 @@
 		375ED8F9188F5F0500423CF8 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		375ED8FA188F5F0500423CF8 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		375ED8FB188F5F0500423CF8 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
+		37991D4F18B2FF30005C0FDE /* arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@2x.png"; sourceTree = "<group>"; };
+		37991D5018B2FF30005C0FDE /* arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_up@2x.png"; sourceTree = "<group>"; };
+		37991D5318B32B8A005C0FDE /* BloodListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodListCell.h; sourceTree = "<group>"; };
+		37991D5418B32B8A005C0FDE /* BloodListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodListCell.m; sourceTree = "<group>"; };
 		37A1797418961CF9003AE118 /* DoctorBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorBusiness.h; sourceTree = "<group>"; };
 		37A1797518961CF9003AE118 /* DoctorBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorBusiness.m; sourceTree = "<group>"; };
 		37A3E56B187E31B500F075B0 /* AppPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppPropertyList.plist; path = HealthManager/AppPropertyList.plist; sourceTree = SOURCE_ROOT; };
@@ -215,6 +224,8 @@
 		37BF92FD1891ED3900B50627 /* SessionMessageStyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMessageStyleManager.h; sourceTree = "<group>"; };
 		37BF92FE1891ED3900B50627 /* SessionMessageStyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMessageStyleManager.m; sourceTree = "<group>"; };
 		37BF939E1891EE8300B50627 /* Template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Template.html; sourceTree = "<group>"; };
+		37C42AC818B43FED00C201C2 /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
+		37C42AC918B43FED00C201C2 /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
 		37C64E9D188CEF970041BAA7 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
 		37C64E9E188CEF970041BAA7 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
@@ -743,6 +754,8 @@
 				9C0BFF861886D944002845D9 /* BloodViewController.xib */,
 				9C0BFF871886D944002845D9 /* LineChartView.h */,
 				9C0BFF881886D944002845D9 /* LineChartView.m */,
+				37991D5318B32B8A005C0FDE /* BloodListCell.h */,
+				37991D5418B32B8A005C0FDE /* BloodListCell.m */,
 			);
 			path = BloodViewController;
 			sourceTree = "<group>";
@@ -881,6 +894,10 @@
 		B823225B185F48EA005F2409 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				37C42AC818B43FED00C201C2 /* arrow_down.png */,
+				37C42AC918B43FED00C201C2 /* arrow_up.png */,
+				37991D4F18B2FF30005C0FDE /* arrow_down@2x.png */,
+				37991D5018B2FF30005C0FDE /* arrow_up@2x.png */,
 				37A8BA9F18AC9EA200321C31 /* main_btn_17@2x.png */,
 				37A8BAA018AC9EA200321C31 /* main_btn_18@2x.png */,
 				37A8BA9118AC4FE100321C31 /* btn_bg_1@2x.png */,
@@ -1039,6 +1056,7 @@
 				B823229A185F48EA005F2409 /* Icon-Small@2x.png in Resources */,
 				B8232296185F48EA005F2409 /* Default@2x.png in Resources */,
 				B8232290185F48EA005F2409 /* bt_logoff@2x.png in Resources */,
+				37991D5218B2FF31005C0FDE /* arrow_up@2x.png in Resources */,
 				B823229D185F48EA005F2409 /* main_btn_1@2x.png in Resources */,
 				37C64EA6188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib in Resources */,
 				B823228C185F48EA005F2409 /* blood_texfield_selected@2x.png in Resources */,
@@ -1049,6 +1067,7 @@
 				B82322A0185F48EA005F2409 /* main_btn_4@2x.png in Resources */,
 				B8232294185F48EA005F2409 /* bt_save@2x.png in Resources */,
 				B8232297185F48EA005F2409 /* doctorButton@2x.png in Resources */,
+				37991D5118B2FF31005C0FDE /* arrow_down@2x.png in Resources */,
 				B82322A2185F48EA005F2409 /* main_btn_6@2x.png in Resources */,
 				37A8BAA218AC9EA200321C31 /* main_btn_18@2x.png in Resources */,
 				9C0BFFD01886D944002845D9 /* SettingRemindTimeViewController.xib in Resources */,
@@ -1056,6 +1075,7 @@
 				B823228A185F48EA005F2409 /* blood_table_hit@2x.png in Resources */,
 				37A8BA9C18AC9B7B00321C31 /* ScanCodeViewController.xib in Resources */,
 				9C0BFFD21886D944002845D9 /* SettingViewController.xib in Resources */,
+				37C42ACB18B43FED00C201C2 /* arrow_up.png in Resources */,
 				37A8BA9218AC4FE100321C31 /* btn_bg_1@2x.png in Resources */,
 				9C0BFFB91886D944002845D9 /* AlertViewController.xib in Resources */,
 				B8232284185F48EA005F2409 /* blood_segment_1@2x.png in Resources */,
@@ -1073,6 +1093,7 @@
 				B8232288185F48EA005F2409 /* blood_segment_selected_2@2x.png in Resources */,
 				9C0BFFC01886D944002845D9 /* DoctorCell.xib in Resources */,
 				B8232299185F48EA005F2409 /* Icon-72.png in Resources */,
+				37C42ACA18B43FED00C201C2 /* arrow_down.png in Resources */,
 				B82322A4185F48EA005F2409 /* navigation@2x.png in Resources */,
 				37A8BA9718AC9B2C00321C31 /* TakeMedicineRemindViewController.xib in Resources */,
 				9C0BFFC81886D944002845D9 /* LoginViewController.xib in Resources */,
@@ -1135,6 +1156,7 @@
 				9C0BFFAE1886D944002845D9 /* BloodRecordDateData.m in Sources */,
 				37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */,
 				37A8BA9618AC9B2C00321C31 /* TakeMedicineRemindViewController.m in Sources */,
+				37991D5518B32B8A005C0FDE /* BloodListCell.m in Sources */,
 				8BFE1788187FEC5700D1F48A /* HttpRequestManager.m in Sources */,
 				9C0BFFD61886DA30002845D9 /* SessionViewController.m in Sources */,
 				9C0BFFBF1886D944002845D9 /* DoctorCell.m in Sources */,
