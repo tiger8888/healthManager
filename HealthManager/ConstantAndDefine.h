@@ -32,6 +32,8 @@ typedef enum {
 
 #define ALERT(t,m,c) UIAlertView *alert = [[UIAlertView alloc] initWithTitle:t message:m delegate:nil cancelButtonTitle:c otherButtonTitles: nil];[alert show]
 #define ALERTOPRATE(ti,m,ta) UIAlertView *alert = [[UIAlertView alloc] initWithTitle:ti message:m delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];alert.tag=ta;[alert show]
+
+#define GET_CURRENT_PATIENT_ID [UserBusiness sharedManager] getCurrentPatientID]
 /**
  *  KEY
  */
