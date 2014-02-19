@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UserBusiness.h"
 
 NSDictionary *_pushInfo;
 

@@ -15,7 +15,7 @@
     CGRect contentRect = [attributedText boundingRectWithSize:contentSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
     
     CGRect contentFrame = self.frame;//CGRectMake(left, top ,width , ceilf(contentRect.size.height*1.3));
-    contentFrame.size.height = contentRect.size.height+60;
+    contentFrame.size.height = contentRect.size.height;
     self.frame = contentFrame;
     
     for (int i=0; i<5; i++) {

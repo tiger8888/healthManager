@@ -255,7 +255,7 @@
     if ([_dataSourceClickStatus[indexPath.row] intValue] == 1) {
         int dataCount = [[_dataSourceDetail objectForKey:[_dataSource[indexPath.row] stringByReplacingOccurrencesOfString:@"." withString:@"-"]] count];
         NSLog(@"data count:%d",dataCount);
-        return (dataCount)*16 + (dataCount-1)*4 + 50;
+        return (dataCount)*16 + (dataCount-1)*4 + 60;
     }
     else {
         return 60;

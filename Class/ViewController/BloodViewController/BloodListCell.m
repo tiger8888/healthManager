@@ -7,6 +7,7 @@
 //
 
 #import "BloodListCell.h"
+#import "UILabel+FitHeight.h"
 
 @interface BloodListCell()
 {
@@ -20,6 +21,7 @@
     UIFont *_bloodLabelFont;
     UIFont *_dateLabelFont;
     UIColor *_bloodLabelColor;
+    UIColor *_backgroundColor;
 }
 
 @end
@@ -35,6 +37,7 @@
         _bloodLabelFont = [UIFont systemFontOfSize:16];
         _dateLabelFont = [UIFont systemFontOfSize:20];
         _bloodLabelColor = UICOLORFROMRGB(0xd6d6d6);
+        _backgroundColor = UICOLORFROMRGB(0xc9c9c9);
         // Initialization code
         _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(_left, 6, DEVICE_WIDTH - 80, 20)];
         _dateLabel.font = _dateLabelFont;
@@ -62,7 +65,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.selectionStyle = UITableViewCellSelectionStyleGray;
 }
 
 -(void)setupCell:(NSArray *)data  withClickStatus:(NSMutableArray *)clickStatus withIndex:(NSIndexPath *)indexPath{
@@ -76,7 +78,7 @@
     NSLog(@"index path:%d",indexPath.row);
     if ([data count] > 1) {
         UIImage *btnBgImage = [UIImage imageNamed:@"arrow_down"];
-        _detailBtn = [[UIButton alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-50, 6, 22, 22)];
+        _detailBtn = [[UIButton alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-50, 6, 44, 44)];
         _detailBtn.tag = indexPath.row;
         [_detailBtn setBackgroundImage:btnBgImage forState:UIControlStateNormal];
         [_detailBtn addTarget:self action:@selector(showDetail:) forControlEvents:UIControlEventTouchUpInside];
@@ -119,6 +121,43 @@
     int tmpLabelWidth = _bloodLabel.frame.size.width;
     int tmpY = _bloodLabel.frame.origin.y;
     int tmpX = _bloodLabel.frame.origin.x;
+    
+    NSMutableString *str = [[NSMutableString alloc] initWithString:@""];
+    for (NSDictionary *itemObj in _data) {
+        [str appendString:[NSString stringWithFormat:_bloodValueFormat, [[itemObj objectForKey:@"dateStr"] substringWithRange:NSMakeRange(11, 5)], [self formatBloodValue:[itemObj objectForKey:@"highPressure"]], [self formatBloodValue:[itemObj objectForKey:@"lowPressure"]], [self formatBloodValue:[itemObj objectForKey:@"pulse"]] ]];
+        [str appendString:@"\n"];
+    }
+    NSLog(@"str=%@",str);
+    
+    UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectMake(tmpX, tmpY, tmpLabelWidth, tmpLabelHeight)];
+    tmp.lineBreakMode = UILineBreakModeWordWrap;
+    tmp.numberOfLines = 0;
+    tmp.text = str;
+    tmp.font = _bloodLabelFont;
+    tmp.textColor = _bloodLabelColor;
+    tmp.backgroundColor = _backgroundColor;
+    [tmp fitHeight];
+    tmp.tag = 201;
+        [self.contentView addSubview:tmp];
+    
+    _dateLabel.backgroundColor = _backgroundColor;
+    UIView *bgViewForCell = [UIView new];
+    bgViewForCell.backgroundColor = _backgroundColor;
+    self.backgroundView = bgViewForCell;
+}
+
+/*
+ *2014-02-19暂时作废
+ */
+- (void)loadDetailList_bak {
+    UIImage *btnBgImage = [UIImage imageNamed:@"arrow_up"];
+    [_detailBtn setBackgroundImage:btnBgImage forState:UIControlStateNormal];
+    
+    _bloodLabel.hidden = YES;
+    int tmpLabelHeight = _bloodLabel.frame.size.height;
+    int tmpLabelWidth = _bloodLabel.frame.size.width;
+    int tmpY = _bloodLabel.frame.origin.y;
+    int tmpX = _bloodLabel.frame.origin.x;
     int tagIndex = 0;
     for (NSDictionary *itemObj in _data) {
         UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectMake(tmpX, tmpY, tmpLabelWidth, tmpLabelHeight)];
@@ -130,7 +169,9 @@
         tmpY += 20;
         tagIndex++;
     }
-    self.backgroundColor = UICOLORFROMRGB(0xff0000);
+    UIView *bgViewForCell = [UIView new];
+    bgViewForCell.backgroundColor = _backgroundColor;
+    self.backgroundView = bgViewForCell;
 }
 
 - (void)unloadDetailList {
@@ -148,5 +189,22 @@
     _bloodLabel.hidden = NO;
     _clickStatus[_detailBtn.tag] = @2;
     self.backgroundColor = [UIColor clearColor];
+    
+    _dateLabel.backgroundColor = [UIColor clearColor];
+    
+    UIView *bgViewForCell = [UIView new];
+    bgViewForCell.backgroundColor = [UIColor clearColor];
+    self.backgroundView = bgViewForCell;
+}
+
+- (NSString *)formatBloodValue:(NSString *)str {
+    if (str.length == 1) {
+        str = [str stringByAppendingString:@"    "];
+    }
+    else if (str.length ==2) {
+        str = [str stringByAppendingString:@"  "];
+    }
+    
+    return str;
 }
 @end
