@@ -281,4 +281,25 @@ static Message *_sharedManager;
     ALERT(@"", message, @"确定");
     return NO;
 }
+
+- (BOOL)deviceTokenToServer:(NSDictionary *)dict {
+//    NSString *message;
+    int r = [[dict categoryObjectForKey:@"retCode"] intValue];
+    switch (r) {
+        case 1:
+        {
+            return YES;
+        }
+            break;
+        case 2:
+        {
+//            message = @"当前患者没有在系统中注册";
+        }
+            break;
+        default:
+            break;
+    }
+//    ALERT(@"", message, @"确定");
+    return NO;
+}
 @end

@@ -86,7 +86,7 @@
 {
     UIButton *button = (UIButton *)sender;
     if (button.tag == 2) {
-        NSString *myDoctorID = [self getCurrentDoctorID];
+        NSString *myDoctorID = [[UserBusiness sharedManager] getCurrentDoctorID];
         if (!myDoctorID || [myDoctorID intValue] == 0)
         {
             [self goToFunctionPart:2];

@@ -165,7 +165,7 @@ NSDictionary *_pushInfo;
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"My token is :%@", deviceToken);
+    [[UserBusiness sharedManager] sendDeviceTokenToServer:deviceToken];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -217,4 +217,8 @@ NSDictionary *_pushInfo;
     }
 }
 
+- (NSString *)getCurrentPatientID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
+}
 @end

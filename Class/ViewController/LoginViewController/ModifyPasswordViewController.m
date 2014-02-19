@@ -82,7 +82,7 @@
     }
     
     
-    NSString *resetPasswordUrl = [NSString stringWithFormat:@"resetPassword/%@.json", [self getCurrentPatientID]];
+    NSString *resetPasswordUrl = [NSString stringWithFormat:@"resetPassword/%@.json", [[UserBusiness sharedManager] getCurrentPatientID]];
 
     [[HttpRequestManager sharedManager] requestSecretData:[self setUpParameters] interface:resetPasswordUrl completionHandle:^(id returnObject) {
         NSString *str = [[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding];
@@ -110,7 +110,7 @@
     
     NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
     [parameter setObject:mobile forKey:@"m"];
-    [parameter setObject:[self getCurrentPatientID] forKey:@"patientId"];
+    [parameter setObject:[[UserBusiness sharedManager] getCurrentPatientID] forKey:@"patientId"];
     [parameter setObject:self.oldPassword.text forKey:@"oldPassword"];
     [parameter setObject:self.validationCode.text forKey:@"verifyCode"];
     [parameter setObject:self.nePassword.text forKey:@"newPassword"];

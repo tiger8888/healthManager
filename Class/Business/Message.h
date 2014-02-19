@@ -20,4 +20,5 @@
 - (BOOL)checkSessionMessage:(NSString *)str;
 - (BOOL)checkReturnInformationWithInterface:(NSDictionary *)dict;
 - (BOOL)bloodDataUpdateToServer:(NSDictionary *)dict;
+- (BOOL)deviceTokenToServer:(NSDictionary *)dict;
 @end

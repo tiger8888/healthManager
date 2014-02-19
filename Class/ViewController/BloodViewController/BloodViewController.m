@@ -381,7 +381,7 @@ BOOL stringIsValidNumber(NSString *checkString)
 
 #pragma mark - Updata &DownLoad
 - (NSManagedObject *)addLocalRecord:(NSString *)highPressure withLowPressure:(NSString *)lowPressure withPulse:(NSString *)pulse withDate:(NSDate *)date withDateStr:(NSString *)dateStr withSubmit:(BOOL)submit {
-    NSManagedObject *object = [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:date dateStr:dateStr uid:[self getCurrentPatientID] submit:submit];
+    NSManagedObject *object = [[BloodRecordManager sharedBloodRecordManager] addNewRecord:highPressure lowPressure:lowPressure pulse:pulse date:date dateStr:dateStr uid:[[UserBusiness sharedManager] getCurrentPatientID] submit:submit];
 //    _dataSource = [[BloodRecordManager sharedBloodRecordManager] fetchAllDate];
 //    [_tableView reloadData];
     [self setLineChartDataSource:_bloodLineChar];
@@ -404,7 +404,7 @@ BOOL stringIsValidNumber(NSString *checkString)
     NSManagedObject *newObject = [self addLocalRecord:highPressure withLowPressure:lowPressure withPulse:pulse withDate:dateNow withDateStr:dateNowStr withSubmit:NO];
     [para setObject:dateNowStr forKey:@"measureTime"];
     
-    NSString *url = [NSString stringWithFormat:@"bloodPressure/add/%@.json",[self getCurrentPatientID]];
+    NSString *url = [NSString stringWithFormat:@"bloodPressure/add/%@.json",[[UserBusiness sharedManager] getCurrentPatientID]];
     [[HttpRequestManager sharedManager] requestWithParameters:para interface:url completionHandle:^(id returnObject) {
         
 //        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
@@ -437,7 +437,7 @@ BOOL stringIsValidNumber(NSString *checkString)
             [para setObject:[obj valueForKey:@"pulse"] forKey:@"pulseRate"];
             [para setObject:[obj valueForKey:@"dateStr"] forKey:@"measureTime"];
             
-            NSString *url = [NSString stringWithFormat:@"bloodPressure/add/%@.json",[self getCurrentPatientID]];
+            NSString *url = [NSString stringWithFormat:@"bloodPressure/add/%@.json",[[UserBusiness sharedManager] getCurrentPatientID]];
             [[HttpRequestManager sharedManager] requestWithParameters:para interface:url completionHandle:^(id returnObject) {
                 
                 //        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
@@ -475,7 +475,7 @@ BOOL stringIsValidNumber(NSString *checkString)
 }
     
 - (void)requestBloodPressureList {
-    NSString *url = [NSString stringWithFormat:@"bloodPressure/list/%@.json",[self getCurrentPatientID]];
+    NSString *url = [NSString stringWithFormat:@"bloodPressure/list/%@.json",[[UserBusiness sharedManager] getCurrentPatientID]];
     [[HttpRequestManager sharedManager] requestWithParameters:[NSMutableDictionary new] interface:url completionHandle:^(id returnObject) {
         
         //        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
@@ -491,7 +491,7 @@ BOOL stringIsValidNumber(NSString *checkString)
 }
 
 - (void)getLocalDataSource {
-    NSArray *result = [[BloodRecordManager sharedBloodRecordManager] fetchAllMyRecord:[self getCurrentPatientID]];
+    NSArray *result = [[BloodRecordManager sharedBloodRecordManager] fetchAllMyRecord:[[UserBusiness sharedManager] getCurrentPatientID]];
     if (result.count != 0) {
         NSMutableDictionary *listDataSource = [NSMutableDictionary new];
         NSMutableDictionary *detail = [ NSMutableDictionary new];
