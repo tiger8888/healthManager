@@ -1,0 +1,33 @@
+body,ul,h2,h3{ margin:0; padding:0}
+body{ background:#f4f5f6;}
+li{ list-style:none}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix {display:inline-block;}
+#wrap{ width:100%; padding:10px 0; text-align:center;}
+#codewrap{ width:96%; padding:10px 0;margin:0 auto;text-align:left;background:#fff;border: #d6d5d5 solid 1px;border-radius: 5px;-webkit-border-radius: 5px;}
+.drugbox {width: 90%;margin: 0 0 10px 55px;position: relative;float:left;}
+.code_panel {border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;background: #f8f8f8;border: #bbb solid 1px;position: relative;padding: 7px 0;text-decoration: none;text-shadow: 0 -1px 1px #eee;width: 90%; -webkit-box-shadow:1px 1px 2px #ccc; box-shadow:1px 1px 2px #ccc;}
+.code_panel_note {	border-radius: 0 0 5px 5px;	-moz-border-radius: 0 0 5px 5px;-webkit-border-radius: 0 0 5px 5px;background: #e2e2e2;padding: 2px 0 3px;text-decoration: none;text-shadow: 0 -1px 1px #eee;width: 100%;font-size:12px;line-height:17px;padding:5px 0;}
+.code_panel_note li{ display:inline-block;margin:0 0 0 10px;text-indent:20px}
+.code_panel_note .a,.code_panel_note .b{ background:url(../images/arrow.png) no-repeat}
+.code_panel_note .a{ background-position:0 0}
+.code_panel_note .b{ background-position:0 -17px}
+.code_panel_arrow {background:#f8f8f8;border-left:#bbb solid 1px;border-bottom:#bbb solid 1px;width:11px;height:11px;-webkit-transform: rotate(45deg);   -moz-transform: rotate(45deg);transform: rotate(45deg);top: 12px;left: -7px;position: absolute;}
+h2{font: 16px/26px "Microsoft YaHei"; text-indent:1em}
+h3{font: 14px/24px "Microsoft YaHei"; text-indent:1em}
+h3 span{ color:#999}
+.area{ width:100%; padding:30px 0 0 0; position:relative; float:left}
+.dot{ width:10px; height:10px; border-radius:7px;-moz-border-radius: 7px;-webkit-border-radius: 7px;background-color:#8eb54b; position:absolute; left:-30px; top:12px; border:#ededed solid 2px;-moz-box-shadow:2px 2px 3px #999; -webkit-box-shadow:2px 2px 3px #999; box-shadow:2px 2px 3px #999;}
+.area_tit{font-size:14px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-top: #ccc solid 1px;position: relative;padding: 3px 12px;text-decoration: none;text-shadow: 0 -1px 1px #eee;color:#fff;display:inline-block;position:absolute;left:5px;top:0;z-index:10;-moz-box-shadow:2px 2px 3px #999; -webkit-box-shadow:2px 2px 3px #999; box-shadow:2px 2px 3px #999;}
+.color_t1{background: #8eb54b;}
+.color_t2{background: #8cb8e7;}
+.color_t3{background: #c6aaf6;}
+.color_t4{background: #e1c026;}
+.color_t5{background: #e19826;}
+.vertline{width:4px;height:100%;position: relative;display:inline-block;position:absolute;left:30px;top:0;z-index:0;-moz-box-shadow:2px 2px 3px #999; -webkit-box-shadow:2px 2px 3px #999; box-shadow:2px 2px 3px #999;}
+#drugInfo{color:#333;text-align:left}
+#drugInfo h2{font: 22px/20px "Microsoft YaHei"; text-indent:20px}
+#drugInfo p{font: 16px/12px "Microsoft YaHei";}
+#drugInfo span{ display:inline-block; width:100px; text-align:right;}
+/*无监管码页面样式*/
+.exc_mark{ width:200px; font: 14px/38px "Microsoft YaHei"; margin:30px auto; text-indent:36px}

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0, user-scalable=0;" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<title>药品流向</title>
+<link rel="stylesheet" href="css/codeflow.css" />
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="codewrap" class="clearfix">
+        <!--中间是内容区-->
+		</div>
+	</div>
+<script>
+	var drugJson = {"drugName" : "阿司匹林肠溶片","drugEnt" : "北京曙光药业有限责任公司",	"drugPNum" : "20120934343","drugPDate" : "2012-03-26","drugLDate" : "2年"}
+	var codeJson = [
+	{"areaName" : "北京",//地区
+	"colorType" : "color_t1",//地区块及线条颜色样式
+	"drugCode" : "81259123023567239716",//监管码
+	"entName":"四川蜀中制药有限公司"},
+	{"areaName" : "河北",
+	"colorType" : "color_t2",
+	"entName":"安徽省宣城市医药有限公司"},
+	{"areaName" : "黑龙江",
+	"colorType" : "color_t3",
+	"entName":"安徽省宣城市医药有限公司"},
+	{"areaName" : "黑龙江",
+	"colorType" : "color_t4",
+	"entName":"安徽省宣城市医药有限公司"},
+	{"areaName" : "黑龙江",
+	"colorType" : "color_t5",
+	"entName":"安徽省宣城市医药有限公司"}
+	];
+
+	var drugDom = '<div id="drugInfo"><h2>'+drugJson.drugName+'</h2><p><span>生产企业：</span>'+drugJson.drugEnt+'</p><p><span>批准文号：</span>'+drugJson.drugPNum+'</p><p><span>生产日期：</span>'+drugJson.drugPDate+'</p><p><span>保质期：</span>'+drugJson.drugLDate+'</p></div>';
+	$('#wrap').prepend(drugDom);
+	var codeDom = '';
+	//遍历Json数据生成Dom并加载
+	$.each(codeJson,function(k,v){
+		if(v["drugCode"]){
+		codeDom = '<div class="area clearfix"><div class="area_tit '+v["colorType"]+'">'+v["areaName"]+'</div><div class="vertline '+v["colorType"]+'"></div><div class="drugbox"><div class="code_panel"><h2>'+v["entName"]+' </h2><h3><span>监管码</span> '+v["drugCode"]+'</h3><div class="code_panel_arrow"></div></div><div class="dot '+v["colorType"]+'"></div></div>';
+		} else {
+		codeDom = '<div class="area clearfix"><div class="area_tit '+v["colorType"]+'">'+v["areaName"]+'</div><div class="vertline '+v["colorType"]+'"></div><div class="drugbox"><div class="code_panel"><h2>'+v["entName"]+' </h2><div class="code_panel_arrow"></div></div><div class="dot '+v["colorType"]+'"></div></div>';
+		}
+		$('#codewrap').append(codeDom);
+		//$('.area').fadeIn(600);
+	});
+	//最后一个相关单位左侧线条多余部分截取
+	var hCount1 = $('div[class="area clearfix"]:last').height();
+	var hCount2 = $('div[class="drugbox"]:last').height();
+	$(function(){
+		$('div[class^="vertline"]:last').height(hCount1-hCount2+40);
+	})
+</script>
+</body>
+</html>

@@ -116,5 +116,17 @@
 		<key>class</key>
 		<string>ScanCodeViewController</string>
 	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>手动输入</string>
+		<key>class</key>
+		<string>InputCodeViewController</string>
+	</dict>
+	<dict>
+		<key>titleName</key>
+		<string>扫码查询</string>
+		<key>class</key>
+		<string>CodeInformationViewController</string>
+	</dict>
 </array>
 </plist>

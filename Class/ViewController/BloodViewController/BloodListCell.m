@@ -75,7 +75,7 @@
     NSDictionary *itemObj = [_data lastObject];
     _dateLabel.text = [[itemObj objectForKey:@"dateStr"] substringToIndex:10];
     _bloodLabel.text = [NSString stringWithFormat:_bloodValueFormat, [[itemObj objectForKey:@"dateStr"] substringWithRange:NSMakeRange(11, 5)], [itemObj objectForKey:@"highPressure"], [itemObj objectForKey:@"lowPressure"], [itemObj objectForKey:@"pulse"] ];
-    NSLog(@"index path:%d",indexPath.row);
+//    NSLog(@"index path:%d",indexPath.row);
     if ([data count] > 1) {
         UIImage *btnBgImage = [UIImage imageNamed:@"arrow_down"];
         _detailBtn = [[UIButton alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-50, 6, 44, 44)];
@@ -127,10 +127,10 @@
         [str appendString:[NSString stringWithFormat:_bloodValueFormat, [[itemObj objectForKey:@"dateStr"] substringWithRange:NSMakeRange(11, 5)], [self formatBloodValue:[itemObj objectForKey:@"highPressure"]], [self formatBloodValue:[itemObj objectForKey:@"lowPressure"]], [self formatBloodValue:[itemObj objectForKey:@"pulse"]] ]];
         [str appendString:@"\n"];
     }
-    NSLog(@"str=%@",str);
+//    NSLog(@"str=%@",str);
     
     UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectMake(tmpX, tmpY, tmpLabelWidth, tmpLabelHeight)];
-    tmp.lineBreakMode = UILineBreakModeWordWrap;
+    tmp.lineBreakMode = NSLineBreakByWordWrapping;
     tmp.numberOfLines = 0;
     tmp.text = str;
     tmp.font = _bloodLabelFont;

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBarSDK.h"
 
-@interface ScanCodeViewController : BackButtonViewController
-
+@interface ScanCodeViewController : BackButtonViewController<ZBarReaderViewDelegate>
+{
+    ZBarCameraSimulator *cameraSim;
+}
+- (IBAction)inputCodeClick:(id)sender;
+- (IBAction)cancel:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *bottomPlaceView;
+@property (nonatomic, retain) IBOutlet ZBarReaderView *readerView;
 @end
