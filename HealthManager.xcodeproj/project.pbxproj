@@ -85,7 +85,6 @@
 		8B94AB0F1848663300CA5869 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B94AB0D1848663300CA5869 /* InfoPlist.strings */; };
 		8B94AB111848663300CA5869 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B94AB101848663300CA5869 /* main.m */; };
 		8B94AB151848663300CA5869 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B94AB141848663300CA5869 /* AppDelegate.m */; };
-		8B94AB181848663300CA5869 /* HealthManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B94AB161848663300CA5869 /* HealthManager.xcdatamodeld */; };
 		8B94AB1A1848663300CA5869 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B94AB191848663300CA5869 /* Images.xcassets */; };
 		8B94AB211848663300CA5869 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB201848663300CA5869 /* XCTest.framework */; };
 		8B94AB221848663300CA5869 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94AB021848663200CA5869 /* Foundation.framework */; };
@@ -223,7 +222,6 @@
 		37A73D9818B6F666005D4477 /* btn_edit_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_edit_time.png; sourceTree = "<group>"; };
 		37A73D9918B6F666005D4477 /* btn_remind_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_remind_time.png; sourceTree = "<group>"; };
 		37A73D9A18B6F666005D4477 /* btn_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_add@2x.png"; sourceTree = "<group>"; };
-		37A73D9E18B6FE68005D4477 /* HealthManager 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthManager 2.xcdatamodel"; sourceTree = "<group>"; };
 		37A73D9F18B73430005D4477 /* btn_bg_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_bg_checked.png; sourceTree = "<group>"; };
 		37A8544C1888EB4500543874 /* AnnouncementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
 		37A8544D1888EB4500543874 /* AnnouncementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
@@ -334,7 +332,6 @@
 		8B94AB121848663300CA5869 /* HealthManager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthManager-Prefix.pch"; sourceTree = "<group>"; };
 		8B94AB131848663300CA5869 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B94AB141848663300CA5869 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8B94AB171848663300CA5869 /* HealthManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthManager.xcdatamodel; sourceTree = "<group>"; };
 		8B94AB191848663300CA5869 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8B94AB1F1848663300CA5869 /* HealthManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B94AB201848663300CA5869 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -663,7 +660,6 @@
 				8B94AB141848663300CA5869 /* AppDelegate.m */,
 				8B94AB191848663300CA5869 /* Images.xcassets */,
 				8B94AB5B184866AE00CA5869 /* ConstantAndDefine.h */,
-				8B94AB161848663300CA5869 /* HealthManager.xcdatamodeld */,
 				8B94AB0B1848663200CA5869 /* Supporting Files */,
 			);
 			path = HealthManager;
@@ -1374,7 +1370,6 @@
 				9C0BFFC51886D944002845D9 /* KnowledgeViewController.m in Sources */,
 				8B94AB111848663300CA5869 /* main.m in Sources */,
 				37A73D9618B6F4C8005D4477 /* SetUsingMedinceTimeViewController.m in Sources */,
-				8B94AB181848663300CA5869 /* HealthManager.xcdatamodeld in Sources */,
 				37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */,
 				7F37E18018A8A2A600E7EFAB /* JSBadgeView.m in Sources */,
 				9C0BFFB11886D944002845D9 /* Knowledge.m in Sources */,
@@ -1621,20 +1616,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		8B94AB161848663300CA5869 /* HealthManager.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				37A73D9E18B6FE68005D4477 /* HealthManager 2.xcdatamodel */,
-				8B94AB171848663300CA5869 /* HealthManager.xcdatamodel */,
-			);
-			currentVersion = 8B94AB171848663300CA5869 /* HealthManager.xcdatamodel */;
-			path = HealthManager.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 8B94AAF71848663200CA5869 /* Project object */;
 }
