@@ -23,6 +23,7 @@
 		37A73D9B18B6F666005D4477 /* btn_edit_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A73D9818B6F666005D4477 /* btn_edit_time.png */; };
 		37A73D9C18B6F666005D4477 /* btn_remind_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A73D9918B6F666005D4477 /* btn_remind_time.png */; };
 		37A73D9D18B6F666005D4477 /* btn_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A73D9A18B6F666005D4477 /* btn_add@2x.png */; };
+		37A73DA018B73430005D4477 /* btn_bg_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A73D9F18B73430005D4477 /* btn_bg_checked.png */; };
 		37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8544D1888EB4500543874 /* AnnouncementViewController.m */; };
 		37A854501888EB4500543874 /* AnnouncementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8544E1888EB4500543874 /* AnnouncementViewController.xib */; };
 		37A854581889002C00543874 /* Announcement.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A854571889002C00543874 /* Announcement.m */; };
@@ -223,6 +224,7 @@
 		37A73D9918B6F666005D4477 /* btn_remind_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_remind_time.png; sourceTree = "<group>"; };
 		37A73D9A18B6F666005D4477 /* btn_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_add@2x.png"; sourceTree = "<group>"; };
 		37A73D9E18B6FE68005D4477 /* HealthManager 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthManager 2.xcdatamodel"; sourceTree = "<group>"; };
+		37A73D9F18B73430005D4477 /* btn_bg_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_bg_checked.png; sourceTree = "<group>"; };
 		37A8544C1888EB4500543874 /* AnnouncementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
 		37A8544D1888EB4500543874 /* AnnouncementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
 		37A8544E1888EB4500543874 /* AnnouncementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementViewController.xib; sourceTree = "<group>"; };
@@ -1070,6 +1072,7 @@
 		B823225B185F48EA005F2409 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				37A73D9F18B73430005D4477 /* btn_bg_checked.png */,
 				37A73D9818B6F666005D4477 /* btn_edit_time.png */,
 				37A73D9918B6F666005D4477 /* btn_remind_time.png */,
 				37A73D9A18B6F666005D4477 /* btn_add@2x.png */,
@@ -1225,6 +1228,7 @@
 				9C0BFFC61886D944002845D9 /* KnowledgeViewController.xib in Resources */,
 				37A73D9D18B6F666005D4477 /* btn_add@2x.png in Resources */,
 				375ED8FD188F5F0500423CF8 /* FeedbackViewController.xib in Resources */,
+				37A73DA018B73430005D4477 /* btn_bg_checked.png in Resources */,
 				B8232298185F48EA005F2409 /* Icon-114.png in Resources */,
 				37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */,
 				B82322A6185F48EA005F2409 /* textfield@2x.png in Resources */,

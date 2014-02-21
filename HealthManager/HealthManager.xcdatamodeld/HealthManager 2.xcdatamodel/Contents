@@ -27,9 +27,16 @@
         <attribute name="submit" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="MedinceRecord" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="period" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="AlertRecordModel" positionX="0" positionY="0" width="128" height="240"/>
-        <element name="BloodRecordDateData" positionX="0" positionY="0" width="128" height="60"/>
-        <element name="BloodRecordModel" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="AlertRecordModel" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="BloodRecordDateData" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="BloodRecordModel" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MedinceRecord" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

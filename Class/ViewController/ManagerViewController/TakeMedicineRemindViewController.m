@@ -7,6 +7,8 @@
 //
 
 #import "TakeMedicineRemindViewController.h"
+#import "MedinceAddViewController.h"
+#import "SetUsingMedinceTimeViewController.h"
 
 @interface TakeMedicineRemindViewController ()
 
@@ -27,6 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self addAddButtonOnNavigation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +47,8 @@
 }
 
 - (void)addMedince:(id)sender {
-    
+    MedinceAddViewController *medinceAddCtl = [[MedinceAddViewController alloc] initWithCategory:21];
+    [self presentViewController:medinceAddCtl animated:YES completion:nil];
 }
 
 @end

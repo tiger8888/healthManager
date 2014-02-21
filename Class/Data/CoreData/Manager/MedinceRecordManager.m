@@ -17,7 +17,7 @@
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             sharedManager = [[MedinceRecordManager alloc] init];
-            sharedManager.entityName = @"Medicine";
+            sharedManager.entityName = @"MedinceRecord";
         });
     }
     return sharedManager;
@@ -31,6 +31,8 @@
         [object setValue:[model valueForKey:propertyItem] forKey:propertyItem];
         //        NSLog(@"addOne name %@ value is %@", propertyItem, [model valueForKey:propertyItem]);
     }
+    model.id = [NSString stringWithFormat:@"%@", object.objectID];
+    NSLog(@"model.id=%@", model.id);
     [self save];
 }
 -(NSArray *) propertyList {

@@ -128,5 +128,17 @@
 		<key>class</key>
 		<string>CodeInformationViewController</string>
 	</dict>
+    <dict>
+		<key>titleName</key>
+		<string>新增药品</string>
+		<key>class</key>
+		<string>MedinceAddViewController</string>
+	</dict>
+    <dict>
+		<key>titleName</key>
+		<string>服药提醒</string>
+		<key>class</key>
+		<string>SetUsingMedinceTimeViewController</string>
+	</dict>
 </array>
 </plist>
