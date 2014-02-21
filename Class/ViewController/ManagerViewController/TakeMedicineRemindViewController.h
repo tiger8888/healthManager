@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TakeMedicineRemindViewController : BackButtonViewController
+@interface TakeMedicineRemindViewController : SuperListViewController
 
 @end

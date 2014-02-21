@@ -14,6 +14,15 @@
 		37991D5518B32B8A005C0FDE /* BloodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37991D5418B32B8A005C0FDE /* BloodListCell.m */; };
 		37A1797618961CF9003AE118 /* DoctorBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A1797518961CF9003AE118 /* DoctorBusiness.m */; };
 		37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E56B187E31B500F075B0 /* AppPropertyList.plist */; };
+		37A73D8A18B6F12D005D4477 /* MedinceRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D8918B6F12D005D4477 /* MedinceRecordManager.m */; };
+		37A73D8D18B6F25B005D4477 /* MedinceRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D8C18B6F25B005D4477 /* MedinceRecordModel.m */; };
+		37A73D9118B6F459005D4477 /* MedinceAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D8F18B6F459005D4477 /* MedinceAddViewController.m */; };
+		37A73D9218B6F459005D4477 /* MedinceAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A73D9018B6F459005D4477 /* MedinceAddViewController.xib */; };
+		37A73D9618B6F4C8005D4477 /* SetUsingMedinceTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D9418B6F4C8005D4477 /* SetUsingMedinceTimeViewController.m */; };
+		37A73D9718B6F4C8005D4477 /* SetUsingMedinceTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A73D9518B6F4C8005D4477 /* SetUsingMedinceTimeViewController.xib */; };
+		37A73D9B18B6F666005D4477 /* btn_edit_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A73D9818B6F666005D4477 /* btn_edit_time.png */; };
+		37A73D9C18B6F666005D4477 /* btn_remind_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A73D9918B6F666005D4477 /* btn_remind_time.png */; };
+		37A73D9D18B6F666005D4477 /* btn_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A73D9A18B6F666005D4477 /* btn_add@2x.png */; };
 		37A8544F1888EB4500543874 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8544D1888EB4500543874 /* AnnouncementViewController.m */; };
 		37A854501888EB4500543874 /* AnnouncementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A8544E1888EB4500543874 /* AnnouncementViewController.xib */; };
 		37A854581889002C00543874 /* Announcement.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A854571889002C00543874 /* Announcement.m */; };
@@ -200,6 +209,20 @@
 		37A1797418961CF9003AE118 /* DoctorBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorBusiness.h; sourceTree = "<group>"; };
 		37A1797518961CF9003AE118 /* DoctorBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DoctorBusiness.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		37A3E56B187E31B500F075B0 /* AppPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppPropertyList.plist; path = HealthManager/AppPropertyList.plist; sourceTree = SOURCE_ROOT; };
+		37A73D8818B6F12D005D4477 /* MedinceRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedinceRecordManager.h; sourceTree = "<group>"; };
+		37A73D8918B6F12D005D4477 /* MedinceRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedinceRecordManager.m; sourceTree = "<group>"; };
+		37A73D8B18B6F25B005D4477 /* MedinceRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedinceRecordModel.h; sourceTree = "<group>"; };
+		37A73D8C18B6F25B005D4477 /* MedinceRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedinceRecordModel.m; sourceTree = "<group>"; };
+		37A73D8E18B6F459005D4477 /* MedinceAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedinceAddViewController.h; sourceTree = "<group>"; };
+		37A73D8F18B6F459005D4477 /* MedinceAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedinceAddViewController.m; sourceTree = "<group>"; };
+		37A73D9018B6F459005D4477 /* MedinceAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MedinceAddViewController.xib; sourceTree = "<group>"; };
+		37A73D9318B6F4C8005D4477 /* SetUsingMedinceTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUsingMedinceTimeViewController.h; sourceTree = "<group>"; };
+		37A73D9418B6F4C8005D4477 /* SetUsingMedinceTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUsingMedinceTimeViewController.m; sourceTree = "<group>"; };
+		37A73D9518B6F4C8005D4477 /* SetUsingMedinceTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetUsingMedinceTimeViewController.xib; sourceTree = "<group>"; };
+		37A73D9818B6F666005D4477 /* btn_edit_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_edit_time.png; sourceTree = "<group>"; };
+		37A73D9918B6F666005D4477 /* btn_remind_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_remind_time.png; sourceTree = "<group>"; };
+		37A73D9A18B6F666005D4477 /* btn_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_add@2x.png"; sourceTree = "<group>"; };
+		37A73D9E18B6FE68005D4477 /* HealthManager 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthManager 3.xcdatamodel"; sourceTree = "<group>"; };
 		37A8544C1888EB4500543874 /* AnnouncementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
 		37A8544D1888EB4500543874 /* AnnouncementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
 		37A8544E1888EB4500543874 /* AnnouncementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementViewController.xib; sourceTree = "<group>"; };
@@ -309,7 +332,7 @@
 		8B94AB121848663300CA5869 /* HealthManager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthManager-Prefix.pch"; sourceTree = "<group>"; };
 		8B94AB131848663300CA5869 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B94AB141848663300CA5869 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8B94AB171848663300CA5869 /* HealthManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthManager.xcdatamodel; sourceTree = "<group>"; };
+		8B94AB171848663300CA5869 /* HealthManager 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthManager 2.xcdatamodel"; sourceTree = "<group>"; };
 		8B94AB191848663300CA5869 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8B94AB1F1848663300CA5869 /* HealthManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B94AB201848663300CA5869 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -805,6 +828,8 @@
 				9C0BFF661886D944002845D9 /* BloodRecordModel.m */,
 				37CBF47318A8586B001DE66A /* AlertRecordModel.h */,
 				37CBF47418A8586B001DE66A /* AlertRecordModel.m */,
+				37A73D8B18B6F25B005D4477 /* MedinceRecordModel.h */,
+				37A73D8C18B6F25B005D4477 /* MedinceRecordModel.m */,
 			);
 			path = CoroDataModel;
 			sourceTree = "<group>";
@@ -818,6 +843,8 @@
 				37CBF47718A859EC001DE66A /* AlertRecordManager.m */,
 				37CBF47918A85B93001DE66A /* BaseManager.h */,
 				37CBF47A18A85B93001DE66A /* BaseManager.m */,
+				37A73D8818B6F12D005D4477 /* MedinceRecordManager.h */,
+				37A73D8918B6F12D005D4477 /* MedinceRecordManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -970,6 +997,12 @@
 				37C1D90D18B58EDD001CB98D /* CodeInformationViewController.xib */,
 				37C1D91418B5D43D001CB98D /* ScanCodeMaskView.h */,
 				37C1D91518B5D43D001CB98D /* ScanCodeMaskView.m */,
+				37A73D8E18B6F459005D4477 /* MedinceAddViewController.h */,
+				37A73D8F18B6F459005D4477 /* MedinceAddViewController.m */,
+				37A73D9018B6F459005D4477 /* MedinceAddViewController.xib */,
+				37A73D9318B6F4C8005D4477 /* SetUsingMedinceTimeViewController.h */,
+				37A73D9418B6F4C8005D4477 /* SetUsingMedinceTimeViewController.m */,
+				37A73D9518B6F4C8005D4477 /* SetUsingMedinceTimeViewController.xib */,
 			);
 			path = ManagerViewController;
 			sourceTree = "<group>";
@@ -1037,6 +1070,9 @@
 		B823225B185F48EA005F2409 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				37A73D9818B6F666005D4477 /* btn_edit_time.png */,
+				37A73D9918B6F666005D4477 /* btn_remind_time.png */,
+				37A73D9A18B6F666005D4477 /* btn_add@2x.png */,
 				37C1D91018B5CB1E001CB98D /* btn_bg_gray@2x.png */,
 				37C42AC818B43FED00C201C2 /* arrow_down.png */,
 				37C42AC918B43FED00C201C2 /* arrow_up.png */,
@@ -1187,6 +1223,7 @@
 				8B94AB0F1848663300CA5869 /* InfoPlist.strings in Resources */,
 				37B8A0641890FAC000FE7D44 /* SessionViewController.xib in Resources */,
 				9C0BFFC61886D944002845D9 /* KnowledgeViewController.xib in Resources */,
+				37A73D9D18B6F666005D4477 /* btn_add@2x.png in Resources */,
 				375ED8FD188F5F0500423CF8 /* FeedbackViewController.xib in Resources */,
 				B8232298185F48EA005F2409 /* Icon-114.png in Resources */,
 				37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */,
@@ -1200,6 +1237,8 @@
 				37C1D91118B5CB1E001CB98D /* btn_bg_gray@2x.png in Resources */,
 				9C0BFFCC1886D944002845D9 /* ManagerViewController.xib in Resources */,
 				B823229A185F48EA005F2409 /* Icon-Small@2x.png in Resources */,
+				37A73D9C18B6F666005D4477 /* btn_remind_time.png in Resources */,
+				37A73D9218B6F459005D4477 /* MedinceAddViewController.xib in Resources */,
 				37C1D91818B5EFE6001CB98D /* CodeFlowInfo in Resources */,
 				B8232296185F48EA005F2409 /* Default@2x.png in Resources */,
 				B8232290185F48EA005F2409 /* bt_logoff@2x.png in Resources */,
@@ -1207,6 +1246,7 @@
 				37C1D90A18B58E8C001CB98D /* InputCodeViewController.xib in Resources */,
 				B823229D185F48EA005F2409 /* main_btn_1@2x.png in Resources */,
 				37C64EA6188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib in Resources */,
+				37A73D9718B6F4C8005D4477 /* SetUsingMedinceTimeViewController.xib in Resources */,
 				B823228C185F48EA005F2409 /* blood_texfield_selected@2x.png in Resources */,
 				B82322A1185F48EA005F2409 /* main_btn_5@2x.png in Resources */,
 				37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */,
@@ -1218,6 +1258,7 @@
 				B8232297185F48EA005F2409 /* doctorButton@2x.png in Resources */,
 				37991D5118B2FF31005C0FDE /* arrow_down@2x.png in Resources */,
 				B82322A2185F48EA005F2409 /* main_btn_6@2x.png in Resources */,
+				37A73D9B18B6F666005D4477 /* btn_edit_time.png in Resources */,
 				37C1D8F918B58B9C001CB98D /* zbar-back.png in Resources */,
 				37A8BAA218AC9EA200321C31 /* main_btn_18@2x.png in Resources */,
 				9C0BFFD01886D944002845D9 /* SettingRemindTimeViewController.xib in Resources */,
@@ -1271,9 +1312,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37A73D8A18B6F12D005D4477 /* MedinceRecordManager.m in Sources */,
 				8BFE177C187FEC5700D1F48A /* AFHTTPRequestOperation.m in Sources */,
 				9C0BFFC91886D944002845D9 /* MainViewController.m in Sources */,
 				37A8BA9B18AC9B7B00321C31 /* ScanCodeViewController.m in Sources */,
+				37A73D9118B6F459005D4477 /* MedinceAddViewController.m in Sources */,
 				37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */,
 				37CBF47B18A85B93001DE66A /* BaseManager.m in Sources */,
 				8B94AB151848663300CA5869 /* AppDelegate.m in Sources */,
@@ -1326,6 +1369,7 @@
 				8BFE1785187FEC5700D1F48A /* LSBackGrayView.m in Sources */,
 				9C0BFFC51886D944002845D9 /* KnowledgeViewController.m in Sources */,
 				8B94AB111848663300CA5869 /* main.m in Sources */,
+				37A73D9618B6F4C8005D4477 /* SetUsingMedinceTimeViewController.m in Sources */,
 				8B94AB181848663300CA5869 /* HealthManager.xcdatamodeld in Sources */,
 				37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */,
 				7F37E18018A8A2A600E7EFAB /* JSBadgeView.m in Sources */,
@@ -1340,6 +1384,7 @@
 				8B9C96071888D6E000F87E00 /* SettingAndMoreSuperViewController.m in Sources */,
 				37BF92FC1891EAC900B50627 /* SessionMessage.m in Sources */,
 				9C0BFFB61886D944002845D9 /* RootSuperViewController.m in Sources */,
+				37A73D8D18B6F25B005D4477 /* MedinceRecordModel.m in Sources */,
 				8BFE1783187FEC5700D1F48A /* UIImageView+AFNetworking.m in Sources */,
 				37C1D91618B5D43D001CB98D /* ScanCodeMaskView.m in Sources */,
 			);
@@ -1577,9 +1622,10 @@
 		8B94AB161848663300CA5869 /* HealthManager.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8B94AB171848663300CA5869 /* HealthManager.xcdatamodel */,
+				37A73D9E18B6FE68005D4477 /* HealthManager 3.xcdatamodel */,
+				8B94AB171848663300CA5869 /* HealthManager 2.xcdatamodel */,
 			);
-			currentVersion = 8B94AB171848663300CA5869 /* HealthManager.xcdatamodel */;
+			currentVersion = 8B94AB171848663300CA5869 /* HealthManager 2.xcdatamodel */;
 			path = HealthManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
