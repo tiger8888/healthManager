@@ -186,6 +186,7 @@
 		B82322A4185F48EA005F2409 /* navigation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823227E185F48EA005F2409 /* navigation@2x.png */; };
 		B82322A5185F48EA005F2409 /* portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B823227F185F48EA005F2409 /* portrait@2x.png */; };
 		B82322A6185F48EA005F2409 /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8232280185F48EA005F2409 /* textfield@2x.png */; };
+		F193B98918B7918800D99594 /* HealthManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F193B98718B7918800D99594 /* HealthManager.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -475,6 +476,7 @@
 		B823227E185F48EA005F2409 /* navigation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation@2x.png"; sourceTree = "<group>"; };
 		B823227F185F48EA005F2409 /* portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portrait@2x.png"; sourceTree = "<group>"; };
 		B8232280185F48EA005F2409 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
+		F193B98818B7918800D99594 /* HealthManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HealthManager.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -661,6 +663,7 @@
 				8B94AB191848663300CA5869 /* Images.xcassets */,
 				8B94AB5B184866AE00CA5869 /* ConstantAndDefine.h */,
 				8B94AB0B1848663200CA5869 /* Supporting Files */,
+				F193B98718B7918800D99594 /* HealthManager.xcdatamodeld */,
 			);
 			path = HealthManager;
 			sourceTree = "<group>";
@@ -1329,6 +1332,7 @@
 				8BFE1782187FEC5700D1F48A /* AFXMLRequestOperation.m in Sources */,
 				9C0BFFCD1886D944002845D9 /* MoreViewController.m in Sources */,
 				37B8A05A1890AA9A00FE7D44 /* ViewBuilder.m in Sources */,
+				F193B98918B7918800D99594 /* HealthManager.xcdatamodeld in Sources */,
 				375ED8FC188F5F0500423CF8 /* FeedbackViewController.m in Sources */,
 				9C0BFFB01886D944002845D9 /* BloodRecordManager.m in Sources */,
 				9C911B0918810299004CD648 /* MBProgressHUD.m in Sources */,
@@ -1616,6 +1620,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F193B98718B7918800D99594 /* HealthManager.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F193B98818B7918800D99594 /* HealthManager.xcdatamodel */,
+			);
+			currentVersion = F193B98818B7918800D99594 /* HealthManager.xcdatamodel */;
+			path = HealthManager.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8B94AAF71848663200CA5869 /* Project object */;
 }

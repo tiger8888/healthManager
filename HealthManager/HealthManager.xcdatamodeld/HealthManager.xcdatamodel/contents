@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AlertRecordModel" syncable="YES">
+        <attribute name="bloodDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="bloodDateStr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="highPressure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="highPressureStatus" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lowPressure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lowPressureStatus" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="pulse" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pulseStatus" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="receiveDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="receiveDateStr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="BloodRecordDateData" syncable="YES">
+        <attribute name="dateStr" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="BloodRecordModel" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateStr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="highPressure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lowPressure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pulse" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="submit" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MedicineRemindTime" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remindTime" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Medince" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="period" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AlertRecordModel" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="BloodRecordDateData" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="BloodRecordModel" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Medince" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MedicineRemindTime" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

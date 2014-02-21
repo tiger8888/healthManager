@@ -17,7 +17,7 @@
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             sharedManager = [[MedinceRecordManager alloc] init];
-            sharedManager.entityName = @"MedinceRecord";
+            sharedManager.entityName = @"Medince";
         });
     }
     return sharedManager;
