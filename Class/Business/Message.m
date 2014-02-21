@@ -302,4 +302,32 @@ static Message *_sharedManager;
 //    ALERT(@"", message, @"确定");
     return NO;
 }
+
+- (BOOL)checkMedicinalCode:(NSString *)str {
+    NSString *message = @"";
+    if ( str == NULL || str == nil || [str isKindOfClass:[NSNull class]] ) {
+        //空值，返回假
+        message = @"请输入正确的药品监管码。";
+    }
+    NSString *codeStr = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (codeStr.length != 13 && codeStr.length != 16 && codeStr.length != 18 && codeStr.length != 20) {
+        //非法药监码
+        message = @"请输入正确的药品监管码。";
+    }
+    else {
+        NSString *num = @"\\d{13,20}";
+        NSPredicate *regexTextNumber = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", num];
+        if ( [regexTextNumber evaluateWithObject:codeStr] == YES ) {
+            //真正的药监码
+            return YES;
+        }
+        else {
+            //非法药监码
+            message = @"请输入正确的药品监管码。";
+        }
+    }
+    ALERT(@"", message, @"确定");
+    return NO;
+    
+}
 @end

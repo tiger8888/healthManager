@@ -28,6 +28,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     NSLog(@"code string = %@", self.codeStr);
+    
+    UIWebView *webView = [UIWebView new];
+    if (IS_IOS7) {
+        webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-44-20-20);
+    }
+    else {
+        webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-20);
+    }
+    
+    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"/CodeFlowInfo/codeflow" ofType:@"html"];
+    NSString *webViewHtml = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    [webView loadHTMLString:webViewHtml baseURL:[NSURL fileURLWithPath:[[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/CodeFlowInfo"]  ]];
+    [webViewHtml stringByReplacingOccurrencesOfString:@"pan" withString:@"dream"];
+    [webView stringByEvaluatingJavaScriptFromString:webViewHtml];
+    [self.view addSubview:webView];
 }
 
 - (void)didReceiveMemoryWarning

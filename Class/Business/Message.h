@@ -21,4 +21,5 @@
 - (BOOL)checkReturnInformationWithInterface:(NSDictionary *)dict;
 - (BOOL)bloodDataUpdateToServer:(NSDictionary *)dict;
 - (BOOL)deviceTokenToServer:(NSDictionary *)dict;
+- (BOOL)checkMedicinalCode:(NSString *)str;
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "InputCodeViewController.h"
+#import "ScanCodeViewController.h"
+#import "CodeInformationViewController.h"
 
 @interface InputCodeViewController ()
 
@@ -27,6 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.codeText becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +38,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)clickSubmit:(id)sender {
+    if ( [[Message sharedManager] checkMedicinalCode:self.codeText.text] ) {
+        CodeInformationViewController *codeInfoCtl = [[CodeInformationViewController alloc] initWithCategory:20];
+        codeInfoCtl.codeStr = self.codeText.text;
+        [self.navigationController pushViewController:codeInfoCtl animated:YES];
+    }
+}
+
+- (IBAction)cancel:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end
