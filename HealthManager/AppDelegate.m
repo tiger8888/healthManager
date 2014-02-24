@@ -37,6 +37,8 @@ NSDictionary *_pushInfo;
 //    }
 //    NSLog(@"ccc");
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
+   
     return YES;
 }
 
@@ -150,8 +152,14 @@ NSDictionary *_pushInfo;
          
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }    
+//        abort();
+        ////
+        NSDictionary *optionsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+        if ( ![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:optionsDictionary error:&error] ) {
+            NSLog(@"failed to add persistent store with type to persistent store coordinator");
+        }
+        ////
+    }
     
     return _persistentStoreCoordinator;
 }

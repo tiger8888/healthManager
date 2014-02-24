@@ -23,7 +23,7 @@
     return sharedManager;
 }
 
-- (void)addOne:(MedinceRecordModel *)model
+- (BOOL)addOne:(MedinceRecordModel *)model
 {
     NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:self.entityName  inManagedObjectContext:[self getManagedObjectContext]];
     
@@ -33,9 +33,31 @@
     }
     model.id = [NSString stringWithFormat:@"%@", object.objectID];
     NSLog(@"model.id=%@", model.id);
-    [self save];
+//    [self save];
+    return [self saveReturnFlag];
 }
+
+- (NSArray *)fetchAll:(NSString *)uid {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:[self getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"uid = %@", uid];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO];
+    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
+    NSError *error = nil;
+    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+//    for (NSManagedObject *item in objs) {
+//        NSLog(@"obj name is %@", [item valueForKey:@"name"]);
+//    }
+    if (error)
+    {
+        [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
+    }
+    return objs;
+}
+
 -(NSArray *) propertyList {
-    return @[@"createTime", @"id", @"name", @"period"];
+    return @[@"createTime", @"id", @"name", @"period", @"uid"];
 }
 @end

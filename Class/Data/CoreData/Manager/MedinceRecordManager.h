@@ -13,5 +13,6 @@
 @interface MedinceRecordManager : BaseManager
 + (id)sharedManager;
 
-- (void)addOne:(MedinceRecordModel *)model;
+- (BOOL)addOne:(MedinceRecordModel *)model;
+- (NSArray *)fetchAll:(NSString *)uid;
 @end

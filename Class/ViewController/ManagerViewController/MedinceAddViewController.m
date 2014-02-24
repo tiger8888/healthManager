@@ -126,6 +126,10 @@
     medinceRecord.name = self.medicineName.text;
     medinceRecord.createTime = [NSDate date];
     medinceRecord.period = [[_dataSourceCheck valueForKey:@"description"] componentsJoinedByString:@""];
-    [[MedinceRecordManager sharedManager] addOne:medinceRecord];
+    if ( [[MedinceRecordManager sharedManager] addOne:medinceRecord] ) {
+        ALERT(@"", @"新增药品成功。", @"确定");
+        self.medicineName.text = @"";
+        [_tableView reloadData];
+    }
 }
 @end

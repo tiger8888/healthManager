@@ -27,6 +27,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.timePicker.datePickerMode = UIDatePickerModeCountDownTimer;
+    self.timePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    [self.timePicker addTarget:self action:@selector(timeChange:) forControlEvents:UIControlEventValueChanged];
+    
+    self.name.text = [self.medince valueForKey:@"name"];
+    NSLog(@"timepicker locale is %@",self.timePicker.locale.localeIdentifier);
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +41,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)clickDelete:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //删除相应的时间记录
+}
+
+- (IBAction)clickSubmit:(id)sender {
+}
+
+- (void)timeChange:(id)sender {
+    NSLog(@"value is %@", self.timePicker.date);
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+}
 @end

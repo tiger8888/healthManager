@@ -13,5 +13,5 @@
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *period;
-
+@property (nonatomic, copy) NSString *uid;
 @end

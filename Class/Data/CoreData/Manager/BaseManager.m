@@ -19,4 +19,15 @@
 {
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]) saveContext];
 }
+
+- (BOOL)saveReturnFlag {
+    if ( [[self getManagedObjectContext] save:nil]) {
+//        NSLog(@"ok");
+        return YES;
+    }
+    else {
+//        NSLog(@"not ok");
+        return NO;
+    }
+}
 @end
