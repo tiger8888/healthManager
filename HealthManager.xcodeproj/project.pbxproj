@@ -44,6 +44,8 @@
 		37B51C4C1894EB4600954432 /* Renkoo in Resources */ = {isa = PBXBuildFile; fileRef = 37B51C4B1894EB4600954432 /* Renkoo */; };
 		37B66C2718BACF7200473090 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 37B66C2618BACF7200473090 /* Model.xcmappingmodel */; };
 		37B66C2918BAEDD000473090 /* btn_bg_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 37B66C2818BAEDD000473090 /* btn_bg_red.png */; };
+		37B66C2C18BB1B5A00473090 /* MedinceCodeBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B66C2B18BB1B5A00473090 /* MedinceCodeBusiness.m */; };
+		37B66C2F18BB280700473090 /* MedinceCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B66C2E18BB280700473090 /* MedinceCode.m */; };
 		37B6E070188E35FF00A273AB /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */; };
 		37B6E071188E35FF00A273AB /* ModifyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */; };
 		37B6E075188E6B6500A273AB /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B6E074188E6B6500A273AB /* Message.m */; };
@@ -255,6 +257,10 @@
 		37B66C2518BACDC800473090 /* HealthManager 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthManager 2.xcdatamodel"; sourceTree = "<group>"; };
 		37B66C2618BACF7200473090 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		37B66C2818BAEDD000473090 /* btn_bg_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_bg_red.png; sourceTree = "<group>"; };
+		37B66C2A18BB1B5A00473090 /* MedinceCodeBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedinceCodeBusiness.h; sourceTree = "<group>"; };
+		37B66C2B18BB1B5A00473090 /* MedinceCodeBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedinceCodeBusiness.m; sourceTree = "<group>"; };
+		37B66C2D18BB280700473090 /* MedinceCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedinceCode.h; sourceTree = "<group>"; };
+		37B66C2E18BB280700473090 /* MedinceCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedinceCode.m; sourceTree = "<group>"; };
 		37B6E06D188E35FF00A273AB /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
 		37B6E06E188E35FF00A273AB /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ModifyPasswordViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		37B6E06F188E35FF00A273AB /* ModifyPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyPasswordViewController.xib; sourceTree = "<group>"; };
@@ -541,6 +547,8 @@
 				37AACA6B1897693200438762 /* Algorithm.m */,
 				37C42ACC18B4530600C201C2 /* UserBusiness.h */,
 				37C42ACD18B4530600C201C2 /* UserBusiness.m */,
+				37B66C2A18BB1B5A00473090 /* MedinceCodeBusiness.h */,
+				37B66C2B18BB1B5A00473090 /* MedinceCodeBusiness.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -813,6 +821,8 @@
 				37A854571889002C00543874 /* Announcement.m */,
 				37BF92FA1891EAC900B50627 /* SessionMessage.h */,
 				37BF92FB1891EAC900B50627 /* SessionMessage.m */,
+				37B66C2D18BB280700473090 /* MedinceCode.h */,
+				37B66C2E18BB280700473090 /* MedinceCode.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1323,6 +1333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B66C2C18BB1B5A00473090 /* MedinceCodeBusiness.m in Sources */,
 				37A73D8A18B6F12D005D4477 /* MedinceRecordManager.m in Sources */,
 				8BFE177C187FEC5700D1F48A /* AFHTTPRequestOperation.m in Sources */,
 				9C0BFFC91886D944002845D9 /* MainViewController.m in Sources */,
@@ -1374,6 +1385,7 @@
 				9C0BFFBE1886D944002845D9 /* LineChartView.m in Sources */,
 				9C0BFFD11886D944002845D9 /* SettingViewController.m in Sources */,
 				9C0BFFB71886D944002845D9 /* SuperListViewController.m in Sources */,
+				37B66C2F18BB280700473090 /* MedinceCode.m in Sources */,
 				9C0BFFBC1886D944002845D9 /* BloodViewController.m in Sources */,
 				8BFE177F187FEC5700D1F48A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */,

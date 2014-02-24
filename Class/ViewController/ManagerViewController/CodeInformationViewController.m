@@ -7,9 +7,13 @@
 //
 
 #import "CodeInformationViewController.h"
+#import "MedinceCodeBusiness.h"
+#import "MedinceCode.h"
 
 @interface CodeInformationViewController ()
-
+{
+    MedinceCode *_medincecode;
+}
 @end
 
 @implementation CodeInformationViewController
@@ -43,6 +47,17 @@
     [webViewHtml stringByReplacingOccurrencesOfString:@"pan" withString:@"dream"];
     [webView stringByEvaluatingJavaScriptFromString:webViewHtml];
     [self.view addSubview:webView];
+    
+    [[MedinceCodeBusiness sharedManager] request:self.codeStr completionHandle:^(MedinceCode *obj){
+        //    NSString *webcontent = [[NSString alloc] initWithData:_tmpData encoding:NSUTF8StringEncoding];
+        //    NSLog(@"data is %@", webcontent);
+//           NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+//            MedinceCode *medinceCode = [MedinceCode new];
+//           [parser setDelegate:medinceCode];
+//        [parser parse];
+        NSLog(@"data is :%@", obj.firstQueryTime);
+        
+    }failed:nil hitSuperView:self.view requestMethod:kGet];
 }
 
 - (void)didReceiveMemoryWarning
