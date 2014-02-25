@@ -17,4 +17,5 @@
 @property (nonatomic, copy) void(^block)(void);
 
 @property (nonatomic, strong) NSManagedObject *medince;
+@property (nonatomic, strong) NSManagedObject *remindTime;
 @end

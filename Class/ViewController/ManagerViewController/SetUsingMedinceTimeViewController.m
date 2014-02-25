@@ -41,6 +41,8 @@
     
     _remindTimeModel = [MedinceRemindTimeModel new];
     _remindTimeModel.id = [self.medince valueForKey:@"id"];
+    
+    [self changePickerTime];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,14 +52,32 @@
 }
 
 - (IBAction)clickDelete:(id)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    //删除相应的时间记录
+    if (self.remindTime) {
+        if ([[MedinceRemindTimeManager sharedManager] deleteOne:self.remindTime]) {
+            ALERT(@"", @"删除提醒成功。", @"确定");
+        }
+        if (self.block) {
+            self.block();
+        }
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)clickSubmit:(id)sender {
     _remindTimeModel.createTime = [NSDate date];
-    if ( [[MedinceRemindTimeManager sharedManager] addOne:_remindTimeModel] ) {
+    if (self.remindTime) {
+        if ( [[MedinceRemindTimeManager sharedManager] updateOne:self.remindTime] ) {
+            ALERT(@"", @"提醒设置成功。", @"确定");
+            if (self.block) {
+                self.block();
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else {
+            ALERT(@"", @"提醒设置遇到点小问题，请稍后再试。。", @"确定");
+        }
+    }
+    else if ( [[MedinceRemindTimeManager sharedManager] addOne:_remindTimeModel] ) {
         ALERT(@"", @"提醒设置成功。", @"确定");
         if (self.block) {
             self.block();
@@ -68,13 +88,22 @@
         ALERT(@"", @"提醒设置遇到点小问题，请稍后再试。。", @"确定");
     }
 }
-
+- (void)changePickerTime {
+    if (self.remindTime && [self.remindTime valueForKey:@"remindTime"]) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"HH:mm";
+        self.timePicker.date = [formatter dateFromString:[self.remindTime valueForKey:@"remindTime"]];
+    }
+}
 - (void)timeChange:(id)sender {
     if (self.timePicker.date) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"HH:mm";
         NSLog(@"picker time is %@", [formatter stringFromDate:self.timePicker.date]);
         _remindTimeModel.remindTime = [formatter stringFromDate:self.timePicker.date];
+        if (self.remindTime) {
+            [self.remindTime setValue:[formatter stringFromDate:self.timePicker.date] forKey:@"remindTime"];
+        }
     }
     else {
         ALERT(@"", @"请选择提醒时间。", @"确定");

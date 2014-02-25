@@ -240,9 +240,4 @@ NSDictionary *_pushInfo;
             break;
     }
 }
-
-- (NSString *)getCurrentPatientID
-{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY];
-}
 @end

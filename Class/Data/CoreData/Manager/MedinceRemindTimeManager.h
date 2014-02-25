@@ -15,5 +15,7 @@
 + (id)sharedManager;
 
 - (BOOL)addOne:(MedinceRemindTimeModel *)model;
+- (BOOL)updateOne:(NSManagedObject *)object;
+- (BOOL)deleteOne:(NSManagedObject *)object;
 - (NSArray *)fetchAll:(NSString *)id;
 @end

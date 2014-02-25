@@ -154,7 +154,8 @@
     
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(DEVICE_WIDTH - 60, 6, 28, 28)];
     [btn setBackgroundImage:[UIImage imageNamed:@"btn_edit_time"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(addRemindTime:) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(updateRemindTime:) forControlEvents:UIControlEventTouchUpInside];
+    btn.tag = indexPath.section*1000 +indexPath.row;
     [cell addSubview:btn];
     return cell;
 }
@@ -166,6 +167,25 @@
         [self loadDataSource];
         [_tableView reloadData];
     }];
+    [self.navigationController pushViewController:setTimeCtl animated:YES];
+}
+
+- (void)updateRemindTime:(id)sender {
+    UIButton *btn= (UIButton *)sender;
+    int row = btn.tag % 1000;
+    int section = (int)floorf(btn.tag/1000);
+    
+    SetUsingMedinceTimeViewController *setTimeCtl = [[SetUsingMedinceTimeViewController alloc] initWithCategory:22];
+    setTimeCtl.medince = [_dataSource objectAtIndex:section];
+    [setTimeCtl setBlock:^(void){
+        [self loadDataSource];
+        [_tableView reloadData];
+    }];
+    
+    
+    NSLog(@"section=%d,row=%d",section, row);
+    NSArray *remindTimeArray = [_timeDataSource objectForKey:[self getRemindTimeKey:section]];
+    setTimeCtl.remindTime = [remindTimeArray objectAtIndex:(row-1)];
     [self.navigationController pushViewController:setTimeCtl animated:YES];
 }
 

@@ -44,8 +44,34 @@
 
 
 - (void)showMask {
-    self.bottomPlaceView.frame = CGRectMake(0, DEVICE_HEIGHT-40, DEVICE_WIDTH, 44);
-    ScanCodeMaskView *maskView = [[ScanCodeMaskView alloc] initWithFrame:CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT - 44-44-20)];
+    UIView *bottomView;
+    UIButton *btnSubmit, *btnCancel;
+    ScanCodeMaskView *maskView;
+    if (IS_IOS7) {
+//        self.webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-44-20-20-20-20);
+//        [self.toolBar setFrame:CGRectMake(0, DEVICE_HEIGHT - 44-20-20, DEVICE_WIDTH, 44)];
+//        self.readerView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-44-20-20-20-20);
+        self.bottomPlaceView.frame = CGRectMake(0, DEVICE_HEIGHT-80, DEVICE_WIDTH, 44);
+        maskView = [[ScanCodeMaskView alloc] initWithFrame:CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT - 44-44-20)];
+//        bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, DEVICE_HEIGHT-44-22+2, DEVICE_WIDTH, 44)];
+        
+        
+    }
+    else {
+//        self.webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-20);
+        self.bottomPlaceView.frame = CGRectMake(0, DEVICE_HEIGHT-40, DEVICE_WIDTH, 44);
+        maskView = [[ScanCodeMaskView alloc] initWithFrame:CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT - 44-44-20)];
+    }
+    
+//    btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 200, 120, 36)];
+//    btnCancel = [[UIButton alloc] initWithFrame:CGRectMake(0, DEVICE_HEIGHT - 80, 120, 36)];
+//    btnCancel.titleLabel.text = @"取消";
+//    btnSubmit.titleLabel.text = @"手动输入";
+//    [btnSubmit setBackgroundImage:[UIImage imageNamed:@"btn_bg_gray"] forState:UIControlStateNormal];
+//    [bottomView addSubview:btnSubmit];
+//    [bottomView addSubview:btnCancel];
+//    bottomView.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:bottomView];
     [self.view addSubview:maskView];
 }
 

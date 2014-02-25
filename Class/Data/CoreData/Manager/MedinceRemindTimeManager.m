@@ -35,6 +35,15 @@
     return [self saveReturnFlag];
 }
 
+- (BOOL)updateOne:(NSManagedObject *)object {
+    return [self saveReturnFlag];
+}
+
+- (BOOL)deleteOne:(NSManagedObject *)object {
+    [[self getManagedObjectContext] deleteObject:object];
+    return [self saveReturnFlag];
+}
+
 - (NSArray *)fetchAll:(NSString *)id {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:[self getManagedObjectContext]];
