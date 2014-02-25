@@ -38,6 +38,21 @@ NSDictionary *_pushInfo;
 //    NSLog(@"ccc");
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
+    //////
+    NSDateFormatter *aF = [[NSDateFormatter alloc] init];
+    aF.dateFormat = @"MMdd";
+    double timeDiff = [[aF dateFromString:@"0501"] timeIntervalSinceDate:[aF dateFromString:@"0401"]];
+    double timeDiff1 = [[aF dateFromString:@"0430"] timeIntervalSinceDate:[aF dateFromString:@"0401"]];
+    double timeDiff2 = [[aF dateFromString:@"0431"] timeIntervalSinceDate:[aF dateFromString:@"0401"]];
+    NSLog(@"diff %f", [[aF dateFromString:@"0401"] timeIntervalSinceDate:[aF dateFromString:@"0301"]]);
+    NSString *a = [NSString stringWithFormat:@"%ld", (long)[[aF dateFromString:@"0301"] timeIntervalSince1970] ];
+    NSString *b = [NSString stringWithFormat:@"%ld", (long)[[aF dateFromString:@"0401"] timeIntervalSince1970] ];
+    NSLog(@"a=%@, b=%@", a, b);
+    NSLog(@"a-b=%d", [a intValue]-[b intValue]);
+    NSLog(@"time diff = %f",timeDiff);
+    NSLog(@"time diff1 = %f",timeDiff1);
+    NSLog(@"time diff2 = %f",timeDiff2);
+    //////
    
     return YES;
 }

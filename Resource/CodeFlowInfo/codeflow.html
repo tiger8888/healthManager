@@ -10,20 +10,19 @@
 <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
 </head>
 <body>
-    
-    panpan
 	<div id="wrap">
 		<div id="codewrap" class="clearfix">
         <!--中间是内容区-->
 		</div>
 	</div>
 <script>
-	var drugJson = {"drugName" : "阿司匹林肠溶片","drugEnt" : "北京曙光药业有限责任公司",	"drugPNum" : "20120934343","drugPDate" : "2012-03-26","drugLDate" : "2年"}
+	var drugJson = {"drugName" : "DREAM-NAME","drugEnt" : "DREAM-COMPANY",	"drugPNum" : "DREAM-NUMBER","drugPDate" : "DREAM-DATE","drugLDate" : "DREAM-EXPIRE"}
 	var codeJson = [
-	{"areaName" : "北京",//地区
+	{"areaName" : "流向到",//地区
 	"colorType" : "color_t1",//地区块及线条颜色样式
-	"drugCode" : "81259123023567239716",//监管码
-	"entName":"四川蜀中制药有限公司"},
+	"drugCode" : "DREAM-CODE",//监管码
+	"entName":"DREAM-RECEIVE"}
+     /*               ,
 	{"areaName" : "河北",
 	"colorType" : "color_t2",
 	"entName":"安徽省宣城市医药有限公司"},
@@ -35,7 +34,7 @@
 	"entName":"安徽省宣城市医药有限公司"},
 	{"areaName" : "黑龙江",
 	"colorType" : "color_t5",
-	"entName":"安徽省宣城市医药有限公司"}
+	"entName":"安徽省宣城市医药有限公司"}*/
 	];
 
 	var drugDom = '<div id="drugInfo"><h2>'+drugJson.drugName+'</h2><p><span>生产企业：</span>'+drugJson.drugEnt+'</p><p><span>批准文号：</span>'+drugJson.drugPNum+'</p><p><span>生产日期：</span>'+drugJson.drugPDate+'</p><p><span>保质期：</span>'+drugJson.drugLDate+'</p></div>';
