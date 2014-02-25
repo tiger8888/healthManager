@@ -37,6 +37,9 @@
 		37A8BAA118AC9EA200321C31 /* main_btn_17@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A8BA9F18AC9EA200321C31 /* main_btn_17@2x.png */; };
 		37A8BAA218AC9EA200321C31 /* main_btn_18@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A8BAA018AC9EA200321C31 /* main_btn_18@2x.png */; };
 		37A8D5F61876A23C0015432A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A8D5F51876A23C0015432A /* QuartzCore.framework */; };
+		37A8EDBF18BC4294003678F2 /* MedinceRemindTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8EDBE18BC4294003678F2 /* MedinceRemindTimeModel.m */; };
+		37A8EDC218BC436B003678F2 /* MedinceRemindTimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A8EDC118BC436B003678F2 /* MedinceRemindTimeManager.m */; };
+		37A8EDC518BC6CBD003678F2 /* Model3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 37A8EDC418BC6CBD003678F2 /* Model3.xcmappingmodel */; };
 		37AACA69189749AC00438762 /* AlertCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AACA68189749AC00438762 /* AlertCustomCell.m */; };
 		37AACA6C1897693200438762 /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AACA6B1897693200438762 /* Algorithm.m */; };
 		37B51C441894983700954432 /* SessionMessageSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B51C431894983700954432 /* SessionMessageSqlite.m */; };
@@ -246,6 +249,13 @@
 		37A8BA9F18AC9EA200321C31 /* main_btn_17@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_btn_17@2x.png"; sourceTree = "<group>"; };
 		37A8BAA018AC9EA200321C31 /* main_btn_18@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_btn_18@2x.png"; sourceTree = "<group>"; };
 		37A8D5F51876A23C0015432A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		37A8EDBD18BC4294003678F2 /* MedinceRemindTimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedinceRemindTimeModel.h; sourceTree = "<group>"; };
+		37A8EDBE18BC4294003678F2 /* MedinceRemindTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedinceRemindTimeModel.m; sourceTree = "<group>"; };
+		37A8EDC018BC436B003678F2 /* MedinceRemindTimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedinceRemindTimeManager.h; sourceTree = "<group>"; };
+		37A8EDC118BC436B003678F2 /* MedinceRemindTimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedinceRemindTimeManager.m; sourceTree = "<group>"; };
+		37A8EDC318BC6A61003678F2 /* HealthManager 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HealthManager 3.xcdatamodel"; sourceTree = "<group>"; };
+		37A8EDC418BC6CBD003678F2 /* Model3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model3.xcmappingmodel; sourceTree = "<group>"; };
+		37A8EDC618BC7B7B003678F2 /* HealthManager 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HealthManager 4.xcdatamodel"; sourceTree = "<group>"; };
 		37AACA67189749AC00438762 /* AlertCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertCustomCell.h; sourceTree = "<group>"; };
 		37AACA68189749AC00438762 /* AlertCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertCustomCell.m; sourceTree = "<group>"; };
 		37AACA6A1897693200438762 /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
@@ -630,6 +640,7 @@
 			isa = PBXGroup;
 			children = (
 				37B66C2618BACF7200473090 /* Model.xcmappingmodel */,
+				37A8EDC418BC6CBD003678F2 /* Model3.xcmappingmodel */,
 				8BFE173C187FEC5600D1F48A /* Libs */,
 				9C0BFF5F1886D944002845D9 /* Class */,
 				8B94AB401848669F00CA5869 /* Resource */,
@@ -847,6 +858,8 @@
 				37CBF47418A8586B001DE66A /* AlertRecordModel.m */,
 				37A73D8B18B6F25B005D4477 /* MedinceRecordModel.h */,
 				37A73D8C18B6F25B005D4477 /* MedinceRecordModel.m */,
+				37A8EDBD18BC4294003678F2 /* MedinceRemindTimeModel.h */,
+				37A8EDBE18BC4294003678F2 /* MedinceRemindTimeModel.m */,
 			);
 			path = CoroDataModel;
 			sourceTree = "<group>";
@@ -862,6 +875,8 @@
 				37CBF47A18A85B93001DE66A /* BaseManager.m */,
 				37A73D8818B6F12D005D4477 /* MedinceRecordManager.h */,
 				37A73D8918B6F12D005D4477 /* MedinceRecordManager.m */,
+				37A8EDC018BC436B003678F2 /* MedinceRemindTimeManager.h */,
+				37A8EDC118BC436B003678F2 /* MedinceRemindTimeManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1384,9 +1399,11 @@
 				9C0BFFC11886D944002845D9 /* DoctorViewController.m in Sources */,
 				9C0BFFBE1886D944002845D9 /* LineChartView.m in Sources */,
 				9C0BFFD11886D944002845D9 /* SettingViewController.m in Sources */,
+				37A8EDBF18BC4294003678F2 /* MedinceRemindTimeModel.m in Sources */,
 				9C0BFFB71886D944002845D9 /* SuperListViewController.m in Sources */,
 				37B66C2F18BB280700473090 /* MedinceCode.m in Sources */,
 				9C0BFFBC1886D944002845D9 /* BloodViewController.m in Sources */,
+				37A8EDC518BC6CBD003678F2 /* Model3.xcmappingmodel in Sources */,
 				8BFE177F187FEC5700D1F48A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */,
 				9CFE4E09188826750048C4ED /* Base64.m in Sources */,
@@ -1399,6 +1416,7 @@
 				9C0BFFB11886D944002845D9 /* Knowledge.m in Sources */,
 				9C0BFFB81886D944002845D9 /* AlertViewController.m in Sources */,
 				37B51C441894983700954432 /* SessionMessageSqlite.m in Sources */,
+				37A8EDC218BC436B003678F2 /* MedinceRemindTimeManager.m in Sources */,
 				37B8A05D1890B0FC00FE7D44 /* UILabel+FitHeight.m in Sources */,
 				9C0BFFB41886D944002845D9 /* RootSuperCell.m in Sources */,
 				37A854581889002C00543874 /* Announcement.m in Sources */,
@@ -1456,7 +1474,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1496,7 +1514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1646,10 +1664,12 @@
 		F193B98718B7918800D99594 /* HealthManager.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				37A8EDC618BC7B7B003678F2 /* HealthManager 4.xcdatamodel */,
+				37A8EDC318BC6A61003678F2 /* HealthManager 3.xcdatamodel */,
 				37B66C2518BACDC800473090 /* HealthManager 2.xcdatamodel */,
 				F193B98818B7918800D99594 /* HealthManager.xcdatamodel */,
 			);
-			currentVersion = 37B66C2518BACDC800473090 /* HealthManager 2.xcdatamodel */;
+			currentVersion = 37A8EDC618BC7B7B003678F2 /* HealthManager 4.xcdatamodel */;
 			path = HealthManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MedinceAddViewController : NavigationBarViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface MedinceAddViewController : BackButtonViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 - (IBAction)cancel:(id)sender;
 
 - (IBAction)clickSubmit:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *medicineName;
-
+@property (nonatomic, copy) void(^block)(void);
 @end

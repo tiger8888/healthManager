@@ -1,23 +1,23 @@
 //
-//  MedinceRecordManager.m
+//  MedinceRemindTimeManager.m
 //  HealthManager
 //
-//  Created by user on 14-2-21.
+//  Created by user on 14-2-25.
 //  Copyright (c) 2014年 LiShuo. All rights reserved.
 //
 
-#import "MedinceRecordManager.h"
+#import "MedinceRemindTimeManager.h"
 
-@implementation MedinceRecordManager
+@implementation MedinceRemindTimeManager
 + (id)sharedManager
 {
-    static MedinceRecordManager *sharedManager;
+    static MedinceRemindTimeManager *sharedManager;
     
     if (sharedManager == Nil) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            sharedManager = [[MedinceRecordManager alloc] init];
-            sharedManager.entityName = @"Medince";
+            sharedManager = [[MedinceRemindTimeManager alloc] init];
+            sharedManager.entityName = @"MedicineRemindTime";
         });
     }
     return sharedManager;
@@ -29,36 +29,25 @@
     
     for (NSString *propertyItem in [self propertyList]) {
         [object setValue:[model valueForKey:propertyItem] forKey:propertyItem];
-                NSLog(@"addOne name :%@ value :%@", propertyItem, [model valueForKey:propertyItem]);
+        //        NSLog(@"addOne name %@ value is %@", propertyItem, [model valueForKey:propertyItem]);
     }
-    NSString *idStr = [self getObjectIdString:object];
-    NSLog(@"id=%@", idStr);
-    model.id = idStr;
-    [object setValue:idStr forKey:@"id"];
-//    [self save];
-    if ( [self saveReturnFlag] ) {
-        return YES;
-    }
-    else {
-        return NO;
-    }
-//    return YES;
+
+    return [self saveReturnFlag];
 }
 
-- (NSArray *)fetchAll:(NSString *)uid {
+- (NSArray *)fetchAll:(NSString *)id {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:[self getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"uid = %@", uid];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"id = %@", id];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO];
     fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
     NSError *error = nil;
     NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    for (NSManagedObject *item in objs) {
-        NSLog(@"obj name is %@", [item valueForKey:@"name"]);
-        NSLog(@"obj id is %@", [item valueForKey:@"id"]);
-    }
+    //    for (NSManagedObject *item in objs) {
+    //        NSLog(@"obj name is %@", [item valueForKey:@"name"]);
+    //    }
     if (error)
     {
         [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
@@ -66,7 +55,8 @@
     return objs;
 }
 
+
 -(NSArray *) propertyList {
-    return @[@"createTime", @"id", @"name", @"period", @"uid"];
+    return @[@"createTime", @"id", @"remindTime"];
 }
 @end

@@ -118,18 +118,27 @@
 
 }
 - (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)clickSubmit:(id)sender {
+    if ([self.medicineName.text isEqualToString:@""]) {
+        ALERT(@"", @"请输入药品名称。", @"确定");
+        return;
+    }
     MedinceRecordModel *medinceRecord = [MedinceRecordModel new];
     medinceRecord.name = self.medicineName.text;
+    medinceRecord.uid = [[UserBusiness sharedManager] getCurrentPatientID];
     medinceRecord.createTime = [NSDate date];
     medinceRecord.period = [[_dataSourceCheck valueForKey:@"description"] componentsJoinedByString:@""];
     if ( [[MedinceRecordManager sharedManager] addOne:medinceRecord] ) {
         ALERT(@"", @"新增药品成功。", @"确定");
-        self.medicineName.text = @"";
-        [_tableView reloadData];
+//        self.medicineName.text = @"";
+//        [_tableView reloadData];
+        if (self.block) {
+            self.block();
+        }
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 @end

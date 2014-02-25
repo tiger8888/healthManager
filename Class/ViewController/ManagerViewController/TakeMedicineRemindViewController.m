@@ -10,10 +10,13 @@
 #import "MedinceAddViewController.h"
 #import "SetUsingMedinceTimeViewController.h"
 #import "MedinceRecordManager.h"
+#import "MedinceRemindTimeManager.h"
 #import "SetUsingMedinceTimeViewController.h"
 
 @interface TakeMedicineRemindViewController ()
-
+{
+    NSMutableDictionary *_timeDataSource;
+}
 @end
 
 @implementation TakeMedicineRemindViewController
@@ -68,7 +71,19 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    NSString *key = [self getRemindTimeKey:section];
+    NSLog(@"key=%@", key);
+    if ( ![_timeDataSource objectForKey:key] ) {
+        NSLog(@"as");
+        
+        [_timeDataSource setObject:[[MedinceRemindTimeManager sharedManager] fetchAll:[[_dataSource objectAtIndex:section] valueForKey:@"id"]] forKey:key];
+    }
+    else {
+        NSLog(@"ddd");
+        
+    }
+    return [[_timeDataSource objectForKey:key] count] + 1;
+//    return 3;
 }
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -86,12 +101,17 @@
 
 - (void)addMedince:(id)sender {
     MedinceAddViewController *medinceAddCtl = [[MedinceAddViewController alloc] initWithCategory:21];
-    [self presentViewController:medinceAddCtl animated:YES completion:nil];
+    [medinceAddCtl setBlock:^(void){
+        [self loadDataSource];
+        [_tableView reloadData];
+    }];
+    [self.navigationController pushViewController:medinceAddCtl animated:YES];
 }
 
 - (void)loadDataSource {
     _dataSource = [NSArray new];
     _dataSource = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
+    _timeDataSource = [NSMutableDictionary new];
 //    [_tableView reloadData];
 //    for (NSManagedObject *item in _dataSource) {
 //        NSLog(@"obj name is %@", [item valueForKey:@"name"]);
@@ -127,7 +147,9 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTimeIdentity];
     }
-    cell.textLabel.text = @"ads";
+    
+    NSArray *remindTimeArray = [_timeDataSource objectForKey:[self getRemindTimeKey:indexPath.section]];
+    cell.textLabel.text = [[remindTimeArray objectAtIndex:(indexPath.row-1)]  valueForKey:@"remindTime"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(DEVICE_WIDTH - 60, 6, 28, 28)];
@@ -138,12 +160,19 @@
 }
 
 - (void)addRemindTime:(id)sender {
-    NSLog(@"aaa");
     SetUsingMedinceTimeViewController *setTimeCtl = [[SetUsingMedinceTimeViewController alloc] initWithCategory:22];
     setTimeCtl.medince = [_dataSource objectAtIndex:[(UIButton *)sender tag]];
-    [self presentViewController:setTimeCtl animated:YES completion:nil];
+    [setTimeCtl setBlock:^(void){
+        [self loadDataSource];
+        [_tableView reloadData];
+    }];
+    [self.navigationController pushViewController:setTimeCtl animated:YES];
 }
 
+- (NSString *)getRemindTimeKey:(NSInteger)section {
+    NSString *key = [NSString stringWithFormat:@"detail_%d", section];
+    return key;
+}
 - (NSString *)formatUsingMedincePeriod:(NSString *)period {
     if (period.length!=7) {
         return @"";

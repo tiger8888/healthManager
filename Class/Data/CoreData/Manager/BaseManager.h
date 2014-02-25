@@ -14,4 +14,5 @@
 - (NSManagedObjectContext *)getManagedObjectContext;
 - (void)save;
 - (BOOL)saveReturnFlag;
+- (NSString *)getObjectIdString:(NSManagedObject *)object;
 @end

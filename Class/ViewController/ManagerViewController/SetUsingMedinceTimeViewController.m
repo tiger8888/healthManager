@@ -7,9 +7,13 @@
 //
 
 #import "SetUsingMedinceTimeViewController.h"
+#import "MedinceRemindTimeManager.h"
+
 
 @interface SetUsingMedinceTimeViewController ()
-
+{
+    MedinceRemindTimeModel *_remindTimeModel;
+}
 @end
 
 @implementation SetUsingMedinceTimeViewController
@@ -33,6 +37,10 @@
     
     self.name.text = [self.medince valueForKey:@"name"];
     NSLog(@"timepicker locale is %@",self.timePicker.locale.localeIdentifier);
+    NSLog(@"id=%@", self.medince.objectID);
+    
+    _remindTimeModel = [MedinceRemindTimeModel new];
+    _remindTimeModel.id = [self.medince valueForKey:@"id"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,11 +56,28 @@
 }
 
 - (IBAction)clickSubmit:(id)sender {
+    _remindTimeModel.createTime = [NSDate date];
+    if ( [[MedinceRemindTimeManager sharedManager] addOne:_remindTimeModel] ) {
+        ALERT(@"", @"提醒设置成功。", @"确定");
+        if (self.block) {
+            self.block();
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        ALERT(@"", @"提醒设置遇到点小问题，请稍后再试。。", @"确定");
+    }
 }
 
 - (void)timeChange:(id)sender {
-    NSLog(@"value is %@", self.timePicker.date);
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    
+    if (self.timePicker.date) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"HH:mm";
+        NSLog(@"picker time is %@", [formatter stringFromDate:self.timePicker.date]);
+        _remindTimeModel.remindTime = [formatter stringFromDate:self.timePicker.date];
+    }
+    else {
+        ALERT(@"", @"请选择提醒时间。", @"确定");
+    }
 }
 @end

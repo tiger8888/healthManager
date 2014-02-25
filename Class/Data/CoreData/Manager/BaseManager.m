@@ -30,4 +30,13 @@
         return NO;
     }
 }
+
+- (NSString *)getObjectIdString:(NSManagedObject *)object {
+    NSString *objectId = [object.objectID description];
+    int position = [objectId rangeOfString:self.entityName].location + self.entityName.length + 1;
+    NSLog(@"position:%d", position);
+    NSString *idStr = [objectId substringFromIndex:position];
+    idStr = [idStr stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@">"]];
+    return idStr;
+}
 @end
