@@ -9,6 +9,8 @@
 #import "LocationNotificationBusiness.h"
 #import "MedinceRecordManager.h"
 #import "MedinceRemindTimeManager.h"
+#import "MedinceRecordModel.h"
+#import "MedinceRemindTimeModel.h"
 
 static LocationNotificationBusiness *_sharedManager;
 
@@ -74,8 +76,11 @@ static LocationNotificationBusiness *_sharedManager;
     NSLog(@"aaa");
     NSArray *result = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
     NSLog(@"count=%d", result.count);
-    for (NSManagedObject *obj in result) {
-        NSLog(@"period=%@", [obj.entity relationshipsByName]);
+    for (MedinceRecordModel *obj in result) {
+        NSLog(@"a count = %d", [obj.remindTimeShip count]);
+        for (MedinceRemindTimeModel *remindTimeObj in [obj.remindTimeShip allObjects]) {
+            NSLog(@"remindTime=%@", remindTimeObj.remindTime);
+        }
     }
 }
 
