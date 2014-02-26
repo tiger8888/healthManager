@@ -84,6 +84,7 @@ typedef enum {
 #import "NSDictionary+NullOBJForKey.h"
 #import "JSBadgeView.h"
 
+
 #import "UILabel+FitHeight.h"
 #import "ViewBuilder.h"
 
@@ -93,6 +94,7 @@ typedef enum {
 #import "UserBusiness.h"
 #import "DoctorBusiness.h"
 #import "Message.h"
+#import "LocationNotificationBusiness.h"
 #endif
 
 

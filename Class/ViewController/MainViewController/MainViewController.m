@@ -115,8 +115,9 @@
 {
     _nameLabel.text = nil;
 
-    _nameLabel.text = [@"你好，" stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
-    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"name"]) {
+        _nameLabel.text = [@"你好，" stringByAppendingString:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
+    }
     [self checkAlertMessage];
 }
 

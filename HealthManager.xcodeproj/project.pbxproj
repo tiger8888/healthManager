@@ -74,6 +74,7 @@
 		37C1D91118B5CB1E001CB98D /* btn_bg_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37C1D91018B5CB1E001CB98D /* btn_bg_gray@2x.png */; };
 		37C1D91618B5D43D001CB98D /* ScanCodeMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C1D91518B5D43D001CB98D /* ScanCodeMaskView.m */; };
 		37C1D91818B5EFE6001CB98D /* CodeFlowInfo in Resources */ = {isa = PBXBuildFile; fileRef = 37C1D91718B5EFE6001CB98D /* CodeFlowInfo */; };
+		37C3583918BD95B00014FD84 /* LocationNotificationBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C3583818BD95B00014FD84 /* LocationNotificationBusiness.m */; };
 		37C42ACA18B43FED00C201C2 /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 37C42AC818B43FED00C201C2 /* arrow_down.png */; };
 		37C42ACB18B43FED00C201C2 /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 37C42AC918B43FED00C201C2 /* arrow_up.png */; };
 		37C42ACE18B4530600C201C2 /* UserBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C42ACD18B4530600C201C2 /* UserBusiness.m */; };
@@ -253,9 +254,9 @@
 		37A8EDBE18BC4294003678F2 /* MedinceRemindTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedinceRemindTimeModel.m; sourceTree = "<group>"; };
 		37A8EDC018BC436B003678F2 /* MedinceRemindTimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedinceRemindTimeManager.h; sourceTree = "<group>"; };
 		37A8EDC118BC436B003678F2 /* MedinceRemindTimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedinceRemindTimeManager.m; sourceTree = "<group>"; };
-		37A8EDC318BC6A61003678F2 /* HealthManager 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HealthManager 3.xcdatamodel"; sourceTree = "<group>"; };
+		37A8EDC318BC6A61003678F2 /* HealthManager 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthManager 3.xcdatamodel"; sourceTree = "<group>"; };
 		37A8EDC418BC6CBD003678F2 /* Model3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model3.xcmappingmodel; sourceTree = "<group>"; };
-		37A8EDC618BC7B7B003678F2 /* HealthManager 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HealthManager 4.xcdatamodel"; sourceTree = "<group>"; };
+		37A8EDC618BC7B7B003678F2 /* HealthManager 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthManager 4.xcdatamodel"; sourceTree = "<group>"; };
 		37AACA67189749AC00438762 /* AlertCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertCustomCell.h; sourceTree = "<group>"; };
 		37AACA68189749AC00438762 /* AlertCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertCustomCell.m; sourceTree = "<group>"; };
 		37AACA6A1897693200438762 /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
@@ -325,6 +326,9 @@
 		37C1D91418B5D43D001CB98D /* ScanCodeMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCodeMaskView.h; sourceTree = "<group>"; };
 		37C1D91518B5D43D001CB98D /* ScanCodeMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCodeMaskView.m; sourceTree = "<group>"; };
 		37C1D91718B5EFE6001CB98D /* CodeFlowInfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CodeFlowInfo; sourceTree = "<group>"; };
+		37C3583718BD95B00014FD84 /* LocationNotificationBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationNotificationBusiness.h; sourceTree = "<group>"; };
+		37C3583818BD95B00014FD84 /* LocationNotificationBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationNotificationBusiness.m; sourceTree = "<group>"; };
+		37C3583A18BDCFCA0014FD84 /* HealthManager 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HealthManager 5.xcdatamodel"; sourceTree = "<group>"; };
 		37C42AC818B43FED00C201C2 /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
 		37C42AC918B43FED00C201C2 /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
 		37C42ACC18B4530600C201C2 /* UserBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBusiness.h; sourceTree = "<group>"; };
@@ -559,6 +563,8 @@
 				37C42ACD18B4530600C201C2 /* UserBusiness.m */,
 				37B66C2A18BB1B5A00473090 /* MedinceCodeBusiness.h */,
 				37B66C2B18BB1B5A00473090 /* MedinceCodeBusiness.m */,
+				37C3583718BD95B00014FD84 /* LocationNotificationBusiness.h */,
+				37C3583818BD95B00014FD84 /* LocationNotificationBusiness.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -1387,6 +1393,7 @@
 				9C0BFFB31886D944002845D9 /* BackButtonViewController.m in Sources */,
 				8BFE1787187FEC5700D1F48A /* LSTextField.m in Sources */,
 				9C0BFFCB1886D944002845D9 /* ManagerViewController.m in Sources */,
+				37C3583918BD95B00014FD84 /* LocationNotificationBusiness.m in Sources */,
 				37A1797618961CF9003AE118 /* DoctorBusiness.m in Sources */,
 				37CBF47518A8586B001DE66A /* AlertRecordModel.m in Sources */,
 				9C0BFFAE1886D944002845D9 /* BloodRecordDateData.m in Sources */,
@@ -1664,12 +1671,13 @@
 		F193B98718B7918800D99594 /* HealthManager.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				37C3583A18BDCFCA0014FD84 /* HealthManager 5.xcdatamodel */,
 				37A8EDC618BC7B7B003678F2 /* HealthManager 4.xcdatamodel */,
 				37A8EDC318BC6A61003678F2 /* HealthManager 3.xcdatamodel */,
 				37B66C2518BACDC800473090 /* HealthManager 2.xcdatamodel */,
 				F193B98818B7918800D99594 /* HealthManager.xcdatamodel */,
 			);
-			currentVersion = 37A8EDC618BC7B7B003678F2 /* HealthManager 4.xcdatamodel */;
+			currentVersion = 37C3583A18BDCFCA0014FD84 /* HealthManager 5.xcdatamodel */;
 			path = HealthManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

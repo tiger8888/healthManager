@@ -42,6 +42,13 @@
     _tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
     [self.view addSubview:_tableView];
+    if (IS_IOS7) {
+        self.medicineNameLabel.frame = CGRectMake(20, 44+20, DEVICE_WIDTH, 20);
+        self.medicineName.frame = CGRectMake(20, 74+20, DEVICE_WIDTH - 20*2, 20);
+        self.periodLabel.frame = CGRectMake(20, 104+20, DEVICE_WIDTH, 20);
+        self.btnCancel.frame = CGRectMake(DEVICE_WIDTH - 20 - 120, DEVICE_HEIGHT-44, 120, 30);
+        self.btnSubmit.frame = CGRectMake(20, DEVICE_HEIGHT-44, 120, 30);
+    }
 }
 
 - (void)didReceiveMemoryWarning

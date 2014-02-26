@@ -14,4 +14,8 @@
 - (IBAction)clickSubmit:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *medicineName;
 @property (nonatomic, copy) void(^block)(void);
+@property (weak, nonatomic) IBOutlet UILabel *medicineNameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+@property (weak, nonatomic) IBOutlet UIButton *btnCancel;
+@property (weak, nonatomic) IBOutlet UILabel *periodLabel;
 @end

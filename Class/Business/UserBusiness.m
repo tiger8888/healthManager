@@ -36,23 +36,25 @@ static UserBusiness *_sharedManager;
     return nil;
 }
 - (void)sendDeviceTokenToServer:(NSData *)str {
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSMutableString *deviceTokenSendKey = [[NSMutableString alloc] initWithString:@"devicetoke_sended_uid_"];
-    [deviceTokenSendKey appendString:[[UserBusiness sharedManager] getCurrentPatientID]];
-    
-    if ( ![[userDefault objectForKey:deviceTokenSendKey] isEqualToString:@"1"] ) {
-        NSString *deviceTokenStr = [[str description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-        deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if ([[UserBusiness sharedManager] getCurrentPatientID]) {
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSMutableString *deviceTokenSendKey = [[NSMutableString alloc] initWithString:@"devicetoke_sended_uid_"];
+        [deviceTokenSendKey appendString:[[UserBusiness sharedManager] getCurrentPatientID]];
         
-        NSString *url = [NSString stringWithFormat:@"device/%@/%@.json",[[UserBusiness sharedManager] getCurrentPatientID], deviceTokenStr];
-        [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url completionHandle:^(id returnObject) {
-            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
-            if ( [[Message sharedManager] deviceTokenToServer:[result objectForKey:@"resultInfo"]] ) {
-                [userDefault setObject:@"1" forKey:deviceTokenSendKey];
-            }
-        } failed:^{
-            NSLog(@"网络原因导致设备标识未上传服务器。");
-        } hitSuperView:nil method:kGet];
+        if ( ![[userDefault objectForKey:deviceTokenSendKey] isEqualToString:@"1"] ) {
+            NSString *deviceTokenStr = [[str description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+            deviceTokenStr = [deviceTokenStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+            NSString *url = [NSString stringWithFormat:@"device/%@/%@.json",[[UserBusiness sharedManager] getCurrentPatientID], deviceTokenStr];
+            [[HttpRequestManager sharedManager] requestWithParameters:nil interface:url completionHandle:^(id returnObject) {
+                NSDictionary *result = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+                if ( [[Message sharedManager] deviceTokenToServer:[result objectForKey:@"resultInfo"]] ) {
+                    [userDefault setObject:@"1" forKey:deviceTokenSendKey];
+                }
+            } failed:^{
+                NSLog(@"网络原因导致设备标识未上传服务器。");
+            } hitSuperView:nil method:kGet];
+        }
     }
 }
 

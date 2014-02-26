@@ -18,4 +18,5 @@
 - (BOOL)updateOne:(NSManagedObject *)object;
 - (BOOL)deleteOne:(NSManagedObject *)object;
 - (NSArray *)fetchAll:(NSString *)id;
+- (NSArray *)fetchAllWithUid:(NSString *)uid;
 @end

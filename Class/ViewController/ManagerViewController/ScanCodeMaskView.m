@@ -30,12 +30,12 @@
     int leftX = 30;
     int rightX = DEVICE_WIDTH - leftX;
     int topY = 44+20;
-    int bottomY = DEVICE_HEIGHT-44-44-20-44- topY;
+    int bottomY = DEVICE_HEIGHT-44-44-20- topY;
     int hornLength = 20;
     
     //画底部透明层
     CGContextSaveGState(context);
-    CGContextSetFillColorWithColor(context, [self colorWithRGB:0xff0000 withAlpha:1.0].CGColor);
+    CGContextSetFillColorWithColor(context, [self colorWithRGB:0x303030 withAlpha:1.0].CGColor);
     CGContextFillRect(context, CGRectMake(0, DEVICE_HEIGHT-44-44-20-44, DEVICE_WIDTH, 44));
     CGContextFillRect(context, CGRectMake(0, 0, DEVICE_WIDTH, 44));
     CGContextRestoreGState(context);

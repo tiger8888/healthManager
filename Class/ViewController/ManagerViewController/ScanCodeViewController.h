@@ -13,8 +13,6 @@
 {
     ZBarCameraSimulator *cameraSim;
 }
-- (IBAction)inputCodeClick:(id)sender;
-- (IBAction)cancel:(id)sender;
-@property (weak, nonatomic) IBOutlet UIView *bottomPlaceView;
+
 @property (nonatomic, retain) IBOutlet ZBarReaderView *readerView;
 @end

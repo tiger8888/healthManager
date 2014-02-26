@@ -47,31 +47,28 @@
     UIView *bottomView;
     UIButton *btnSubmit, *btnCancel;
     ScanCodeMaskView *maskView;
-    if (IS_IOS7) {
-//        self.webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-44-20-20-20-20);
-//        [self.toolBar setFrame:CGRectMake(0, DEVICE_HEIGHT - 44-20-20, DEVICE_WIDTH, 44)];
-//        self.readerView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-44-20-20-20-20);
-        self.bottomPlaceView.frame = CGRectMake(0, DEVICE_HEIGHT-80, DEVICE_WIDTH, 44);
-        maskView = [[ScanCodeMaskView alloc] initWithFrame:CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT - 44-44-20)];
-//        bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, DEVICE_HEIGHT-44-22+2, DEVICE_WIDTH, 44)];
-        
-        
-    }
-    else {
-//        self.webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-20);
-        self.bottomPlaceView.frame = CGRectMake(0, DEVICE_HEIGHT-40, DEVICE_WIDTH, 44);
-        maskView = [[ScanCodeMaskView alloc] initWithFrame:CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT - 44-44-20)];
-    }
+    maskView = [[ScanCodeMaskView alloc] initWithFrame:CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT - 44-44-20)];
     
-//    btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 200, 120, 36)];
-//    btnCancel = [[UIButton alloc] initWithFrame:CGRectMake(0, DEVICE_HEIGHT - 80, 120, 36)];
-//    btnCancel.titleLabel.text = @"取消";
-//    btnSubmit.titleLabel.text = @"手动输入";
-//    [btnSubmit setBackgroundImage:[UIImage imageNamed:@"btn_bg_gray"] forState:UIControlStateNormal];
-//    [bottomView addSubview:btnSubmit];
-//    [bottomView addSubview:btnCancel];
-//    bottomView.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:bottomView];
+    bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, DEVICE_HEIGHT-44-22+2, DEVICE_WIDTH, 44)];
+    bottomView.backgroundColor = [UIColor lightGrayColor];
+
+    
+    btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(20, 4, 120, 36)];
+    [btnSubmit setTitle:@"手动输入" forState:UIControlStateNormal];
+    [btnSubmit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btnSubmit setBackgroundImage:[UIImage imageNamed:@"btn_bg_gray"] forState:UIControlStateNormal];
+    [btnSubmit addTarget:self action:@selector(inputCodeClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    btnCancel = [[UIButton alloc] initWithFrame:CGRectMake(180, 4, 120, 36)];
+    [btnCancel setTitle:@"取消" forState:UIControlStateNormal];
+    [btnCancel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btnCancel setBackgroundImage:[UIImage imageNamed:@"btn_bg_gray"] forState:UIControlStateNormal];
+    [btnCancel addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+
+    [bottomView addSubview:btnSubmit];
+    [bottomView addSubview:btnCancel];
+    
+    [self.view addSubview:bottomView];
     [self.view addSubview:maskView];
 }
 
@@ -80,7 +77,7 @@
 //    提示：【中国药品电子监管码】一般位于药盒的背面或侧面
     [ZBarReaderView class];
     self.readerView.readerDelegate = self;
-    self.readerView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-88);
+    self.readerView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT);
     
     if(TARGET_IPHONE_SIMULATOR) {
         cameraSim = [[ZBarCameraSimulator alloc] initWithViewController:self];
@@ -134,12 +131,12 @@
     [self.navigationController pushViewController:codeInfoCtl animated:YES];
     
 }
-- (IBAction)inputCodeClick:(id)sender {
+- (void)inputCodeClick:(id)sender {
     InputCodeViewController *inputCodeCtl = [[InputCodeViewController alloc] initWithCategory:19];
     [self.navigationController pushViewController:inputCodeCtl animated:YES];
 }
 
-- (IBAction)cancel:(id)sender {
+- (void)cancel:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

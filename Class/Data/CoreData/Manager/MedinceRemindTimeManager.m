@@ -64,6 +64,27 @@
     return objs;
 }
 
+- (NSArray *)fetchAllWithUid:(NSString *)uid {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:[self getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+//    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"id = %@", id];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"1=1"];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO];
+    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
+    NSError *error = nil;
+    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    //    for (NSManagedObject *item in objs) {
+    //        NSLog(@"obj name is %@", [item valueForKey:@"name"]);
+    //    }
+    if (error)
+    {
+        [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
+    }
+    return objs;
+}
+
 
 -(NSArray *) propertyList {
     return @[@"createTime", @"id", @"remindTime"];
