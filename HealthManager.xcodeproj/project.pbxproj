@@ -261,6 +261,7 @@
 		37AACA68189749AC00438762 /* AlertCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertCustomCell.m; sourceTree = "<group>"; };
 		37AACA6A1897693200438762 /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
 		37AACA6B1897693200438762 /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Algorithm.m; sourceTree = "<group>"; };
+		37AD323218BEC67300C8509E /* HealthManager 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HealthManager 6.xcdatamodel"; sourceTree = "<group>"; };
 		37B51C421894983700954432 /* SessionMessageSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMessageSqlite.h; sourceTree = "<group>"; };
 		37B51C431894983700954432 /* SessionMessageSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMessageSqlite.m; sourceTree = "<group>"; };
 		37B51C451894984A00954432 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -328,7 +329,7 @@
 		37C1D91718B5EFE6001CB98D /* CodeFlowInfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CodeFlowInfo; sourceTree = "<group>"; };
 		37C3583718BD95B00014FD84 /* LocationNotificationBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationNotificationBusiness.h; sourceTree = "<group>"; };
 		37C3583818BD95B00014FD84 /* LocationNotificationBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationNotificationBusiness.m; sourceTree = "<group>"; };
-		37C3583A18BDCFCA0014FD84 /* HealthManager 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HealthManager 5.xcdatamodel"; sourceTree = "<group>"; };
+		37C3583A18BDCFCA0014FD84 /* HealthManager 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthManager 5.xcdatamodel"; sourceTree = "<group>"; };
 		37C42AC818B43FED00C201C2 /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
 		37C42AC918B43FED00C201C2 /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
 		37C42ACC18B4530600C201C2 /* UserBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBusiness.h; sourceTree = "<group>"; };
@@ -1671,13 +1672,14 @@
 		F193B98718B7918800D99594 /* HealthManager.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				37AD323218BEC67300C8509E /* HealthManager 6.xcdatamodel */,
 				37C3583A18BDCFCA0014FD84 /* HealthManager 5.xcdatamodel */,
 				37A8EDC618BC7B7B003678F2 /* HealthManager 4.xcdatamodel */,
 				37A8EDC318BC6A61003678F2 /* HealthManager 3.xcdatamodel */,
 				37B66C2518BACDC800473090 /* HealthManager 2.xcdatamodel */,
 				F193B98818B7918800D99594 /* HealthManager.xcdatamodel */,
 			);
-			currentVersion = 37C3583A18BDCFCA0014FD84 /* HealthManager 5.xcdatamodel */;
+			currentVersion = 37AD323218BEC67300C8509E /* HealthManager 6.xcdatamodel */;
 			path = HealthManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

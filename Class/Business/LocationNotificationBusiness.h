@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class MedinceRemindTimeModel;
+@class MedinceRecordModel;
+
 @interface LocationNotificationBusiness : NSObject
 {
     BOOL _enable;
@@ -16,8 +19,9 @@
 - (void)removeAll;
 - (void)add;
 - (void)loadAll;
-- (void)remove:(NSString *)key;
-- (void)update:(NSDictionary *)info;
+- (void)remove:(MedinceRemindTimeModel *)obj withPeriod:(NSString *)period;
+- (void)update:(MedinceRemindTimeModel *)timeObj withPeriod:(MedinceRecordModel *)medinceObj;
+
 @property (nonatomic, assign, getter=isEnable, setter=setEnable:) BOOL enable;
 
 @end

@@ -107,7 +107,10 @@
         [self unloadDetailList];
     }
     [self layoutIfNeeded];
-    [(UITableView *)self.superview reloadData];
+    if (self.parentView) {
+        [(UITableView *)self.parentView reloadData];
+    }
+    
 //    NSLog(@"click index:%d",_detailBtn.tag);
 //    NSLog(@"status:%@",_clickStatus);
 }
@@ -137,7 +140,7 @@
     tmp.textColor = _bloodLabelColor;
     tmp.backgroundColor = _backgroundColor;
     [tmp fitHeight];
-    tmp.tag = 201;
+    tmp.tag = _detailBtn.tag + 100;
         [self.contentView addSubview:tmp];
     
     _dateLabel.backgroundColor = _backgroundColor;
@@ -175,14 +178,16 @@
 }
 
 - (void)unloadDetailList {
-    for (int i=201; ; i++) {
-        if ([self viewWithTag:i]) {
-            [[self viewWithTag:i] removeFromSuperview];
-        }
-        else {
-            break;
-        }
-    }
+//    for (int i=201; ; i++) {
+//        if ([self viewWithTag:i]) {
+//            [[self viewWithTag:i] removeFromSuperview];
+//        }
+//        else {
+//            break;
+//        }
+//    }
+    [self viewWithTag:(_detailBtn.tag + 100)].hidden = YES;
+    [[self viewWithTag:(_detailBtn.tag + 100)] removeFromSuperview];
     UIImage *btnBgImage = [UIImage imageNamed:@"arrow_down"];
     [_detailBtn setBackgroundImage:btnBgImage forState:UIControlStateNormal];
     

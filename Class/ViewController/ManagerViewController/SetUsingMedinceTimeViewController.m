@@ -8,6 +8,7 @@
 
 #import "SetUsingMedinceTimeViewController.h"
 #import "MedinceRemindTimeManager.h"
+#import "LocationNotificationBusiness.h"
 
 
 @interface SetUsingMedinceTimeViewController ()
@@ -41,6 +42,7 @@
     
     _remindTimeModel = [MedinceRemindTimeModel new];
     _remindTimeModel.id = [self.medince valueForKey:@"id"];
+    _remindTimeModel.uid = [self.medince valueForKey:@"uid"];
     
     [self changePickerTime];
 }
@@ -55,6 +57,9 @@
     if (self.remindTime) {
         if ([[MedinceRemindTimeManager sharedManager] deleteOne:self.remindTime]) {
             ALERT(@"", @"删除提醒成功。", @"确定");
+            MedinceRemindTimeModel *remindTimeObj = (MedinceRemindTimeModel *)self.remindTime;
+            MedinceRecordModel *recordObj = (MedinceRecordModel *)self.medince;
+            [[LocationNotificationBusiness sharedManager] remove:remindTimeObj withPeriod:recordObj.period];
         }
         if (self.block) {
             self.block();
@@ -68,6 +73,7 @@
     if (self.remindTime) {
         if ( [[MedinceRemindTimeManager sharedManager] updateOne:self.remindTime] ) {
             ALERT(@"", @"提醒设置成功。", @"确定");
+            [[LocationNotificationBusiness sharedManager] add];
             if (self.block) {
                 self.block();
             }
@@ -77,8 +83,9 @@
             ALERT(@"", @"提醒设置遇到点小问题，请稍后再试。。", @"确定");
         }
     }
-    else if ( [[MedinceRemindTimeManager sharedManager] addOne:_remindTimeModel] ) {
+    else if ( [[MedinceRemindTimeManager sharedManager] addOne:_remindTimeModel withMedinceRecord:(MedinceRecordModel *)self.medince] ) {
         ALERT(@"", @"提醒设置成功。", @"确定");
+        [[LocationNotificationBusiness sharedManager] add];
         if (self.block) {
             self.block();
         }

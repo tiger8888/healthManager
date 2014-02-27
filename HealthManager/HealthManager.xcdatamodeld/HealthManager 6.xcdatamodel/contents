@@ -31,6 +31,7 @@
         <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="remindTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="medinceShip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Medince" inverseName="remindTimeShip" inverseEntity="Medince" syncable="YES"/>
     </entity>
     <entity name="Medince" syncable="YES">

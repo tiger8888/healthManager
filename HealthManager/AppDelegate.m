@@ -39,28 +39,6 @@ NSDictionary *_pushInfo;
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
     //////
-//    UILocalNotification *localNotication = [UILocalNotification new];
-//    localNotication.applicationIconBadgeNumber = 1;
-//    localNotication.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
-//    localNotication.timeZone = [NSTimeZone defaultTimeZone];
-//    localNotication.soundName = UILocalNotificationDefaultSoundName; //@"alertsound.wav";
-//    localNotication.repeatInterval = NSDayCalendarUnit;
-//    localNotication.repeatCalendar = nil;
-//    localNotication.alertBody = @"aaaa";
-//    localNotication.alertAction = @"bbb";
-//    localNotication.alertLaunchImage = @"btn_bg_red.png";
-//    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"1" forKey:@"key_10:11"];
-//    localNotication.userInfo = userInfo;
-//    
-//    NSArray *arr = [[UIApplication sharedApplication] scheduledLocalNotifications];
-//    for (UILocalNotification *item in arr) {
-//        NSLog(@"key = %@", [item.userInfo objectForKey:@"key_10:11"]);
-//        
-//    }
-//    
-//    [[UIApplication sharedApplication] scheduleLocalNotification:localNotication];
-    
-//    [UIApplication sharedApplication]
 //    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;//清除提示数字
 //    
     //////
@@ -78,8 +56,6 @@ NSDictionary *_pushInfo;
     NSLog(@"time diff = %f",timeDiff);
     NSLog(@"time diff1 = %f",timeDiff1);
     NSLog(@"time diff2 = %f",timeDiff2);
-    
-    [[LocationNotificationBusiness sharedManager] loadAll];
     //////
    
     UILocalNotification *receiveLocalNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey];

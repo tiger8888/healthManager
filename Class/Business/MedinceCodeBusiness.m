@@ -48,7 +48,7 @@ static MedinceCodeBusiness *_sharedManager;
 
 - (void)request:(NSString *)codeStr completionHandle:(ObjectBlock)block failed:(void(^)(void))failedBlock hitSuperView:(UIView *)superView requestMethod:(requestMethod)method;
 {
-    codeStr = @"81143850055271863898";
+//    codeStr = @"81143850055271863898";
     NSString *systemId = @"piats-mobile";//@"chronic";//@"piats-mobile";
     NSString *interfaceUrl = @"http://sp.drugadmin.com/ivr/code/codeQuery.jhtml?phone=13121993214&code=%@&searchthrough=6&fromChannel=1&systemId=%@";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:interfaceUrl, codeStr ,systemId ]]];

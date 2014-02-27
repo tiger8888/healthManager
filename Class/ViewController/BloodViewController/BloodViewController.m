@@ -211,6 +211,7 @@
     BloodListCell *cell = [tableView dequeueReusableCellWithIdentifier:customCellIdentifierWithCode];
     if (cell == nil) {
         cell = [[BloodListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:customCellIdentifierWithCode];
+        [cell setParentView:_tableView];
     }
     
     return cell;

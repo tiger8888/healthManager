@@ -23,7 +23,7 @@
     return sharedManager;
 }
 
-- (BOOL)addOne:(MedinceRecordModel *)model
+- (BOOL)addOne:(MedinceRemindTimeModel *)model
 {
     NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:self.entityName  inManagedObjectContext:[self getManagedObjectContext]];
     
@@ -32,6 +32,20 @@
         //        NSLog(@"addOne name %@ value is %@", propertyItem, [model valueForKey:propertyItem]);
     }
 
+    return [self saveReturnFlag];
+}
+
+- (BOOL)addOne:(MedinceRemindTimeModel *)model withMedinceRecord:(MedinceRecordModel *)medinceRecord
+{
+    MedinceRemindTimeModel *object = [NSEntityDescription insertNewObjectForEntityForName:self.entityName  inManagedObjectContext:[self getManagedObjectContext]];
+    
+    for (NSString *propertyItem in [self propertyList]) {
+        [object setValue:[model valueForKey:propertyItem] forKey:propertyItem];
+        //        NSLog(@"addOne name %@ value is %@", propertyItem, [model valueForKey:propertyItem]);
+    }
+    
+    medinceRecord.remindTimeShip = [NSSet setWithObjects:object, nil];
+    
     return [self saveReturnFlag];
 }
 
@@ -87,6 +101,6 @@
 
 
 -(NSArray *) propertyList {
-    return @[@"createTime", @"id", @"remindTime"];
+    return @[@"createTime", @"id", @"remindTime", @"uid"];
 }
 @end

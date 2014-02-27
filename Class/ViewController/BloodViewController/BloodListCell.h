@@ -10,5 +10,6 @@
 
 @interface BloodListCell : UITableViewCell
 @property (nonatomic, assign) BOOL show;
+@property (nonatomic, retain) UIView *parentView;
 -(void)setupCell:(NSArray *)data withClickStatus:(NSMutableArray *)clickStatus withIndex:(NSIndexPath *)indexPath;
 @end

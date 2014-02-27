@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSDate *createTime;
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, strong) NSString *remindTime;
-@property (nonatomic, weak) MedinceRecordModel *record;
+@property (nonatomic, copy) NSString *uid;
+@property (nonatomic, retain) MedinceRecordModel *record;
 @end
