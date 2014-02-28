@@ -42,6 +42,9 @@
 		37A8EDC518BC6CBD003678F2 /* Model3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 37A8EDC418BC6CBD003678F2 /* Model3.xcmappingmodel */; };
 		37AACA69189749AC00438762 /* AlertCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AACA68189749AC00438762 /* AlertCustomCell.m */; };
 		37AACA6C1897693200438762 /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AACA6B1897693200438762 /* Algorithm.m */; };
+		37AB59A118C022600093C2A4 /* BloodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37AB59A018C022600093C2A4 /* BloodListCell.xib */; };
+		37AB59A518C032210093C2A4 /* DPListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AB59A318C032210093C2A4 /* DPListCell.m */; };
+		37AB59A618C032210093C2A4 /* DPListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37AB59A418C032210093C2A4 /* DPListCell.xib */; };
 		37B51C441894983700954432 /* SessionMessageSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B51C431894983700954432 /* SessionMessageSqlite.m */; };
 		37B51C461894984A00954432 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B51C451894984A00954432 /* libsqlite3.dylib */; };
 		37B51C4C1894EB4600954432 /* Renkoo in Resources */ = {isa = PBXBuildFile; fileRef = 37B51C4B1894EB4600954432 /* Renkoo */; };
@@ -261,7 +264,11 @@
 		37AACA68189749AC00438762 /* AlertCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertCustomCell.m; sourceTree = "<group>"; };
 		37AACA6A1897693200438762 /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
 		37AACA6B1897693200438762 /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Algorithm.m; sourceTree = "<group>"; };
-		37AD323218BEC67300C8509E /* HealthManager 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HealthManager 6.xcdatamodel"; sourceTree = "<group>"; };
+		37AB59A018C022600093C2A4 /* BloodListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BloodListCell.xib; sourceTree = "<group>"; };
+		37AB59A218C032210093C2A4 /* DPListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPListCell.h; sourceTree = "<group>"; };
+		37AB59A318C032210093C2A4 /* DPListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPListCell.m; sourceTree = "<group>"; };
+		37AB59A418C032210093C2A4 /* DPListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPListCell.xib; sourceTree = "<group>"; };
+		37AD323218BEC67300C8509E /* HealthManager 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthManager 6.xcdatamodel"; sourceTree = "<group>"; };
 		37B51C421894983700954432 /* SessionMessageSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMessageSqlite.h; sourceTree = "<group>"; };
 		37B51C431894983700954432 /* SessionMessageSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMessageSqlite.m; sourceTree = "<group>"; };
 		37B51C451894984A00954432 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -540,6 +547,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37AB599C18C017D90093C2A4 /* BloodListCell */ = {
+			isa = PBXGroup;
+			children = (
+				37991D5318B32B8A005C0FDE /* BloodListCell.h */,
+				37991D5418B32B8A005C0FDE /* BloodListCell.m */,
+				37AB59A018C022600093C2A4 /* BloodListCell.xib */,
+				37AB59A218C032210093C2A4 /* DPListCell.h */,
+				37AB59A318C032210093C2A4 /* DPListCell.m */,
+				37AB59A418C032210093C2A4 /* DPListCell.xib */,
+			);
+			name = BloodListCell;
+			sourceTree = "<group>";
+		};
 		37B51C411894980800954432 /* sqlite */ = {
 			isa = PBXGroup;
 			children = (
@@ -947,6 +967,7 @@
 		9C0BFF801886D944002845D9 /* BloodViewController */ = {
 			isa = PBXGroup;
 			children = (
+				37AB599C18C017D90093C2A4 /* BloodListCell */,
 				9C0BFF811886D944002845D9 /* BloodRecord.h */,
 				9C0BFF821886D944002845D9 /* BloodRecord.m */,
 				9C0BFF831886D944002845D9 /* BloodRecord.xib */,
@@ -955,8 +976,6 @@
 				9C0BFF861886D944002845D9 /* BloodViewController.xib */,
 				9C0BFF871886D944002845D9 /* LineChartView.h */,
 				9C0BFF881886D944002845D9 /* LineChartView.m */,
-				37991D5318B32B8A005C0FDE /* BloodListCell.h */,
-				37991D5418B32B8A005C0FDE /* BloodListCell.m */,
 			);
 			path = BloodViewController;
 			sourceTree = "<group>";
@@ -1272,6 +1291,7 @@
 				B82322A6185F48EA005F2409 /* textfield@2x.png in Resources */,
 				37A8BAA118AC9EA200321C31 /* main_btn_17@2x.png in Resources */,
 				9C0BFFCA1886D944002845D9 /* MainViewController.xib in Resources */,
+				37AB59A118C022600093C2A4 /* BloodListCell.xib in Resources */,
 				37C1D8FC18B58B9C001CB98D /* zbar-samples.png in Resources */,
 				37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */,
 				B82322A3185F48EA005F2409 /* main_btn_7@2x.png in Resources */,
@@ -1294,6 +1314,7 @@
 				37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */,
 				B823229B185F48EA005F2409 /* Icon.png in Resources */,
 				8B94AB1A1848663300CA5869 /* Images.xcassets in Resources */,
+				37AB59A618C032210093C2A4 /* DPListCell.xib in Resources */,
 				B82322A0185F48EA005F2409 /* main_btn_4@2x.png in Resources */,
 				37C1D90F18B58EDD001CB98D /* CodeInformationViewController.xib in Resources */,
 				B8232294185F48EA005F2409 /* bt_save@2x.png in Resources */,
@@ -1361,6 +1382,7 @@
 				9C0BFFC91886D944002845D9 /* MainViewController.m in Sources */,
 				37A8BA9B18AC9B7B00321C31 /* ScanCodeViewController.m in Sources */,
 				37A73D9118B6F459005D4477 /* MedinceAddViewController.m in Sources */,
+				37AB59A518C032210093C2A4 /* DPListCell.m in Sources */,
 				37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */,
 				37CBF47B18A85B93001DE66A /* BaseManager.m in Sources */,
 				8B94AB151848663300CA5869 /* AppDelegate.m in Sources */,

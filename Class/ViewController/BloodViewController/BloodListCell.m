@@ -25,7 +25,20 @@
 }
 
 @end
+
 @implementation BloodListCell
+@synthesize isExpanded;
+@synthesize mainCellTitle, subCellTable, subCellTitle;
+@synthesize bloodListCell;
+@synthesize expandBtn;
+- (id) initWithCoder:(NSCoder *)aDecoder
+{
+    if((self = [super initWithCoder:aDecoder]))
+    {
+        
+    }
+    return self;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -131,7 +144,7 @@
         [str appendString:@"\n"];
     }
 //    NSLog(@"str=%@",str);
-    
+    _clickStatus[_detailBtn.tag] = @1;
     UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectMake(tmpX, tmpY, tmpLabelWidth, tmpLabelHeight)];
     tmp.lineBreakMode = NSLineBreakByWordWrapping;
     tmp.numberOfLines = 0;
@@ -186,8 +199,11 @@
 //            break;
 //        }
 //    }
-    [self viewWithTag:(_detailBtn.tag + 100)].hidden = YES;
-    [[self viewWithTag:(_detailBtn.tag + 100)] removeFromSuperview];
+    UILabel *tmp = (UILabel *)[self viewWithTag:(_detailBtn.tag + 100)];
+    NSLog(@"tmp tag:%d",_detailBtn.tag);
+    tmp.hidden = YES;
+    [tmp setBackgroundColor:[UIColor redColor]];
+    [tmp removeFromSuperview];
     UIImage *btnBgImage = [UIImage imageNamed:@"arrow_down"];
     [_detailBtn setBackgroundImage:btnBgImage forState:UIControlStateNormal];
     
@@ -201,7 +217,38 @@
     bgViewForCell.backgroundColor = [UIColor clearColor];
     self.backgroundView = bgViewForCell;
 }
+-(void) rotateExpandBtn:(id)sender
+{
+    isExpanded = !isExpanded;
+    switch (isExpanded) {
+        case 0:
+            [self rotateExpandBtnToCollapsed];
+            break;
+        case 1:
+            [self rotateExpandBtnToExpanded];
+            break;
+        default:
+            break;
+    }
+}
 
+- (void)rotateExpandBtnToExpanded
+{
+    [UIView beginAnimations:@"rotateDisclosureButt" context:nil];
+    [UIView setAnimationDuration:0.2];
+    expandBtn.transform = CGAffineTransformMakeRotation(M_PI*2.5);
+    [UIView commitAnimations];
+}
+
+- (void)rotateExpandBtnToCollapsed
+{
+    [UIView beginAnimations:@"rotateDisclosureButt" context:nil];
+    [UIView setAnimationDuration:0.2];
+    expandBtn.transform = CGAffineTransformMakeRotation(M_PI*2);
+    [UIView commitAnimations];
+}
+
+#pragma mark - 私有方法
 - (NSString *)formatBloodValue:(NSString *)str {
     if (str.length == 1) {
         str = [str stringByAppendingString:@"    "];

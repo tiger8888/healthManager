@@ -10,6 +10,7 @@
 #import "LineChartView.h"
 #import "BloodRecordManager.h"
 #import "BloodListCell.h"
+#import "DPListCell.h"
 
 @interface BloodViewController ()
 {
@@ -21,10 +22,12 @@
     BOOL _tableViewSelected;
     LSSegment *_lsSegment;
     NSMutableArray *_dataSourceClickStatus;
+    NSMutableArray *_detailData;
 }
 @end
 
 @implementation BloodViewController
+@synthesize bloodListCell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -151,10 +154,7 @@
     LineChartView *lineChartView = [[LineChartView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_HEIGHT, 20*16)];//DEVICE_HEIGHT -88 -20
     [lineChartView setHDesc:hArr];
     [lineChartView setVDesc:vArr];
-//    lineChartView.hGap = 25;
-//    lineChartView.vGap = 80;
-    
-//    [self setLineChartDataSource:lineChartView];
+
     return lineChartView;
 }
 
@@ -217,77 +217,42 @@
     return cell;
 }
 
+- (DPListCell *)customCellByXib:(UITableView *)tableView withIndexPath:(NSIndexPath *)indexPath {
+    DPListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BloodCell"];
+    
+    if (cell == nil)
+    {
+        cell = [[[NSBundle mainBundle] loadNibNamed:[self nibNameForMainCell] owner:self options:nil] firstObject];
+    }
+    [cell setParentTable: self];
+    return cell;
+}
+
+- (NSString *) nibNameForMainCell
+{
+    return @"DPListCell";
+}
 #pragma mark - TableView Delegate Method
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BloodListCell *cell = [self customCellByCode:tableView withIndexPath:indexPath];
-    [cell setupCell:[_dataSourceDetail objectForKey:[_dataSource[indexPath.row] stringByReplacingOccurrencesOfString:@"." withString:@"-"]] withClickStatus:_dataSourceClickStatus withIndex:indexPath];
-//    static NSString *cellIdentity = @"bloodCell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
-//    if (!cell) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentity];
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
-//        imageView.frame = CGRectMake(280, 4, 35, 35);
-//        [cell addSubview:imageView];
-//    }
-    
-    //从数据库取出的数据源，现在不用。直接映射网络资源
-//    cell.textLabel.text = [_dataSource[indexPath.row] valueForKey:@"dateStr"];
-    //直接引用json字段
-//    cell.textLabel.text = _dataSource[indexPath.row];
-//    NSArray *listItem = [_dataSourceDetail objectForKey:[_dataSource[indexPath.row] stringByReplacingOccurrencesOfString:@"." withString:@"-"]];
-//    NSDictionary *itemObj = [listItem lastObject];
-//    NSMutableString *detailLabelText = [NSMutableString stringWithString:@""];
-//    [detailLabelText appendString:[[itemObj objectForKey:@"dateStr"] substringWithRange:NSMakeRange(11, 5)]];
-//    [detailLabelText appendString:@"--高压"];
-//    [detailLabelText appendString:[itemObj objectForKey:@"highPressure"]];
-//    [detailLabelText appendString:@"  低压"];
-//    [detailLabelText appendString:[itemObj objectForKey:@"lowPressure"]];
-//    [detailLabelText appendString:@"  脉搏"];
-//    [detailLabelText appendString:[itemObj objectForKey:@"pulse"]];
-//    cell.detailTextLabel.text = detailLabelText;
-    
-//    [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
+    DPListCell *cell = [self customCellByXib:tableView withIndexPath:indexPath];
+    NSString *key = [_dataSource[indexPath.row] stringByReplacingOccurrencesOfString:@"." withString:@"-"];
+    [cell setupCell:[_dataSourceDetail objectForKey:key] withClickStatus:_dataSourceClickStatus withIndex:indexPath];
+ 
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([_dataSourceClickStatus[indexPath.row] intValue] == 1) {
-        int dataCount = [[_dataSourceDetail objectForKey:[_dataSource[indexPath.row] stringByReplacingOccurrencesOfString:@"." withString:@"-"]] count];
-        NSLog(@"data count:%d",dataCount);
-        return (dataCount)*16 + (dataCount-1)*4 + 60;
+    int amt = [[_detailData objectAtIndex:indexPath.row] count];
+    BOOL isExpanded = [_dataSourceClickStatus[indexPath.row] intValue] == 1;
+    if(isExpanded) {
+        return [DPListCell getHeight] + [DPListCell getsubCellHeight]*amt + 1;
     }
-    else {
-        return 60;
-    }
+    return [DPListCell getHeight];
 }
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
 }
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    //使用日期模型查找对应录入记录。现在以服务器为主
-////    //找出数据源对应的日期模型
-////    id dateModel = _dataSource[indexPath.row];
-////    
-////    [tableView cellForRowAtIndexPath:indexPath].selected = NO;
-////        //传入日期模型获取录入数据（现在时取最后一次所以用lastObject）
-////    NSManagedObject *recordModel = [[[BloodRecordManager sharedBloodRecordManager] fetchRecordBy:dateModel] lastObject];
-////    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-////    [formatter setDateFormat:@"yyyy.MM.dd  HH:mm"];
-////    NSString *date = [formatter stringFromDate:[recordModel valueForKey:@"date"]];
-////    NSString *hp = [NSString stringWithFormat:@"高压:  %@ mm/hg",[recordModel valueForKey:@"highPressure"]];
-////    NSString *lp = [NSString stringWithFormat:@"低压:  %@ mm/hg",[recordModel valueForKey:@"lowPressure"]];
-////    NSString *p = [NSString stringWithFormat:@"脉搏:  %@/min",[recordModel valueForKey:@"pulse"]];
-////    [self popUpBoxHighPressure:hp lowPressure:lp pulse:p date:date];
-//    //直接映射网络数据
-//    [self popUpBoxHighPressure:[_lineDataSource[indexPath.row] objectForKey:@"highPressure"] lowPressure:[_lineDataSource[indexPath.row] objectForKey:@"lowPressure"] pulse:[_lineDataSource[indexPath.row] objectForKey:@"pulse"] date:_dataSource[indexPath.row]];
-//    if (!_tableViewSelected) {
-//        _tableViewSelected = YES;
-//    }
-//    
-//}
 
 #pragma mark - ScrollView Delegate Method
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
@@ -407,8 +372,6 @@ BOOL stringIsValidNumber(NSString *checkString)
     
     NSString *url = [NSString stringWithFormat:@"bloodPressure/add/%@.json",[[UserBusiness sharedManager] getCurrentPatientID]];
     [[HttpRequestManager sharedManager] requestWithParameters:para interface:url completionHandle:^(id returnObject) {
-        
-//        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         if ( [[Message sharedManager] bloodDataUpdateToServer:[result objectForKey:@"resultInfo"]] ) {
             ALERT(@"", @"数据已经上传", @"确定");
@@ -440,8 +403,6 @@ BOOL stringIsValidNumber(NSString *checkString)
             
             NSString *url = [NSString stringWithFormat:@"bloodPressure/add/%@.json",[[UserBusiness sharedManager] getCurrentPatientID]];
             [[HttpRequestManager sharedManager] requestWithParameters:para interface:url completionHandle:^(id returnObject) {
-                
-                //        NSLog(@"%@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
                 NSDictionary *result = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
                 if ( [[Message sharedManager] bloodDataUpdateToServer:[result objectForKey:@"resultInfo"]] ) {
                     NSLog(@"数据已经同步");
@@ -464,9 +425,7 @@ BOOL stringIsValidNumber(NSString *checkString)
     
     NSTimeInterval lastUpdate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"bloodListUpdateCycle"] timeIntervalSinceNow];
     NSTimeInterval now = [[NSDate dateWithTimeIntervalSinceNow:0] timeIntervalSinceNow];
-//    NSLog(@"now:%f",now);
-//    NSLog(@"last update : %f",lastUpdate);
-//    NSLog(@"pan time:%f",now-lastUpdate);
+
     if ( now-lastUpdate > 60*60*24) {
         [self requestBloodPressureList];
     }
@@ -492,6 +451,7 @@ BOOL stringIsValidNumber(NSString *checkString)
 }
 
 - (void)getLocalDataSource {
+    _detailData = [NSMutableArray new];
     NSArray *result = [[BloodRecordManager sharedBloodRecordManager] fetchAllMyRecord:[[UserBusiness sharedManager] getCurrentPatientID]];
     if (result.count != 0) {
         NSMutableDictionary *listDataSource = [NSMutableDictionary new];
@@ -534,7 +494,7 @@ BOOL stringIsValidNumber(NSString *checkString)
         for (NSString *dateStr in _dataSource) {
             NSString *key = [dateStr stringByReplacingOccurrencesOfString:@"." withString:@"-"];
             NSArray *bloodList = [detail objectForKey:key];
-//            NSLog(@"key:%@ count:%d", key, [bloodList count]);
+            [_detailData addObject:bloodList];
             if ( [bloodList count] > 1 ) {
                 int highPressureValue = 0, lowPressureValue = 0, pulseValue = 0;
                 NSString *highPressureAverage;
@@ -585,29 +545,25 @@ BOOL stringIsValidNumber(NSString *checkString)
         NSString *pulse = [x categoryObjectForKey:@"pulseRate"];
         NSString *dateStr = [x categoryObjectForKey:@"measureTime"];
         [self addLocalRecord:highPressure withLowPressure:lowPressure withPulse:pulse withDate:[formatter dateFromString:dateStr] withDateStr:dateStr withSubmit:YES];
-//        NSString *dateStr = [[[x categoryObjectForKey:@"measureTime"] componentsSeparatedByString:@" "] firstObject];
-        
-//        long index = [_dataSource indexOfObject:dateStr];
-//        NSMutableDictionary *item = [NSMutableDictionary dictionaryWithObjectsAndKeys:[x categoryObjectForKey:@"systolicPressure"],@"highPressure",[x categoryObjectForKey:@"diastolicPressure"],@"lowPressure",[x categoryObjectForKey:@"pulseRate"],@"pulse", nil];
-        
-//        if (30 < index)
-//        {
-////            if (index < 35) {
-////                [(NSMutableArray *)_dataSource removeObjectAtIndex:0];
-////                [_lineDataSource removeObjectAtIndex:0];
-////            }
-//            [(NSMutableArray *)_dataSource addObject:dateStr];
-//            [_lineDataSource addObject:item];
-//        }
-//        else
-//        {
-//            [_lineDataSource replaceObjectAtIndex:index withObject:item];
-//        }
     }
-//    [_tableView reloadData];
-//    [self setLineChartDataSource:_bloodLineChar];
-//    [_bloodLineChar setNeedsDisplay];
+    
     [self getLocalDataSource];
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"bloodListUpdateCycle"];
+}
+
+- (void) collapsableButtonTapped: (UIControl *) button withEvent: (UIEvent *) event
+{
+    NSLog(@"%s",__func__);
+    NSIndexPath * indexPath = [_tableView indexPathForRowAtPoint: [[[event touchesForView: button] anyObject] locationInView: _tableView]];
+    if ( indexPath == nil )
+        return;
+    
+    if ([_dataSourceClickStatus[indexPath.row] intValue] == 1) {
+        _dataSourceClickStatus[indexPath.row] = @"2";;
+    } else {
+        _dataSourceClickStatus[indexPath.row] = @"1";
+    }
+    [_tableView beginUpdates];
+    [_tableView endUpdates];
 }
 @end

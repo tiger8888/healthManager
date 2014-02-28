@@ -8,7 +8,11 @@
 
 #import "RootSuperViewController.h"
 #import "LSSegment.h"
+#import "BloodListCell.h"
+#import "DPListCell.h"
 
 @interface BloodViewController : SuperListViewController <LSSegmentDelegate>
-
+@property (nonatomic, retain) BloodListCell *bloodListCell;
+//@property (nonatomic, retain) DPBloodListCell *dpbloodListCell;
+- (void) collapsableButtonTapped: (UIControl *)button withEvent: (UIEvent *)event;
 @end
