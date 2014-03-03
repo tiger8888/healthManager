@@ -9,13 +9,13 @@
 #import "UILabel+FitHeight.h"
 
 @implementation UILabel (FitHeight)
-- (void)fitHeight {
+- (void)fitHeight:(float)addHeight {
     CGSize contentSize = CGSizeMake(self.frame.size.width, CGFLOAT_MAX);
     NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName:self.font}];
     CGRect contentRect = [attributedText boundingRectWithSize:contentSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
     
     CGRect contentFrame = self.frame;//CGRectMake(left, top ,width , ceilf(contentRect.size.height*1.3));
-    contentFrame.size.height = contentRect.size.height;
+    contentFrame.size.height = contentRect.size.height+addHeight;
     self.frame = contentFrame;
     
     for (int i=0; i<5; i++) {

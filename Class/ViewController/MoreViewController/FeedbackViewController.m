@@ -9,7 +9,9 @@
 #import "FeedbackViewController.h"
 
 @interface FeedbackViewController ()
-
+{
+    UITextView *_textView;
+}
 @end
 
 @implementation FeedbackViewController
@@ -27,9 +29,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.textView.layer.borderColor = [UIColor grayColor].CGColor;
-    self.textView.layer.borderWidth = 1;
-    self.textView.delegate = self;
+    _textView = [[UITextView alloc] init];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
+    
+    _textView.layer.borderColor = [UIColor grayColor].CGColor;
+    _textView.layer.borderWidth = 1;
+    _textView.delegate = self;
+    
+    [self.view addSubview:_textView];
+    [_textView becomeFirstResponder];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,23 +47,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.textView resignFirstResponder];
-}
-
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    self.textView.layer.borderColor = [UIColor blueColor].CGColor;
-    if ([self.textView.text isEqualToString:@"您的意见能帮助我们进一步改进产品的服务"]) {
-        self.textView.text = @"";
+    _textView.layer.borderColor = [UIColor blueColor].CGColor;
+    if (_textView.text == NULL) {
+        _textView.text = @"您的意见能帮助我们进一步改进产品的服务";
+    }
+    if ([_textView.text isEqualToString:@"您的意见能帮助我们进一步改进产品的服务"]) {
+        _textView.text = @"";
     }
 }
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    self.textView.layer.borderColor = [UIColor grayColor].CGColor;
-    if ([self.textView.text isEqualToString:@""]) {
-        self.textView.text = @"您的意见能帮助我们进一步改进产品的服务";
+    _textView.layer.borderColor = [UIColor grayColor].CGColor;
+    if ([_textView.text isEqualToString:@""]) {
+        _textView.text = @"您的意见能帮助我们进一步改进产品的服务";
     }
 }
 - (IBAction)submitOnClick:(id)sender {
@@ -64,7 +71,7 @@
     NSString *feedbackUrl = [NSString stringWithFormat:@"suggest/%@.json", patientId];
     
     [parameters setObject:patientId forKey:@"patientId"];
-    [parameters setObject:self.textView.text forKey:@"content"];
+    [parameters setObject:_textView.text forKey:@"content"];
     
     [[HttpRequestManager sharedManager] requestWithParameters:parameters interface:feedbackUrl completionHandle:^(id returnObject) {
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
@@ -74,5 +81,20 @@
     } failed:^{
         
     } hitSuperView:self.view method:kPost];
+}
+
+#pragma mark - keyboard
+-(void)willShowKeyboard:(NSNotification *)notification{
+    int keyboardHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    NSLog(@"aaa");
+    float btnSubmitHeight = keyboardHeight;
+    if (IS_IOS7) {
+        btnSubmitHeight = keyboardHeight + 20;
+    }
+    
+    self.btnSubmit.frame = CGRectMake(self.btnSubmit.frame.origin.x, btnSubmitHeight, self.btnSubmit.frame.size.width, self.btnSubmit.frame.size.height);
+    _textView.frame = CGRectMake(20, 88, 280, 100);
+    NSLog(@"b=%f",self.btnSubmit.frame.origin.y - 20);
+    NSLog(@"c=%f",_textView.frame.size.height);
 }
 @end

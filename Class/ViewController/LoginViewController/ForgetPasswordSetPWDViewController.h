@@ -8,13 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ForgetPasswordSetPWDViewController : BackButtonViewController
+@interface ForgetPasswordSetPWDViewController : BackButtonViewController<UITextFieldDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *mobileLabel;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPassword;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *validationCode;
+@property (weak, nonatomic) IBOutlet UILabel *validationCodeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *confirmPasswordLabel;
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+@property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *mobileTipsLabel;
 
 @property (nonatomic, strong) NSString *mobileCode;
 

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UILabel (FitHeight)
-- (void)fitHeight;
+- (void)fitHeight:(float)addHeight;
 @end

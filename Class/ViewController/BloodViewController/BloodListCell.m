@@ -152,7 +152,7 @@
     tmp.font = _bloodLabelFont;
     tmp.textColor = _bloodLabelColor;
     tmp.backgroundColor = _backgroundColor;
-    [tmp fitHeight];
+    [tmp fitHeight:0.0];
     tmp.tag = _detailBtn.tag + 100;
         [self.contentView addSubview:tmp];
     

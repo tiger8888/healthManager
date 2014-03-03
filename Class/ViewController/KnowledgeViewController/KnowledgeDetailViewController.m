@@ -56,7 +56,7 @@
     contentLabel.numberOfLines = 0;
     contentLabel.lineBreakMode = NSLineBreakByWordWrapping;//UILineBreakModeWordWrap;
     contentLabel.text = self.knowledgeModel.content;
-    [contentLabel fitHeight];
+    [contentLabel fitHeight:40.0];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:FULLSCREEN];
     scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, titleLabel.frame.size.height+contentLabel.frame.size.height+20);

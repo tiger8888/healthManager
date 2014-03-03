@@ -14,6 +14,9 @@
 @interface SetUsingMedinceTimeViewController ()
 {
     MedinceRemindTimeModel *_remindTimeModel;
+    UIPickerView *_tpicker;
+    NSMutableArray *_hourArr;
+    NSMutableArray *_minArr;
 }
 @end
 
@@ -32,19 +35,36 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.timePicker.datePickerMode = UIDatePickerModeCountDownTimer;
+//    self.timePicker.hidden = YES;
+    self.timePicker.datePickerMode = UIDatePickerModeTime;
     self.timePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+//    self.timePicker.backgroundColor = UICOLORFROMRGB(0xffffff);
+    
+    
+//    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+//    dateFormatter.dateFormat = @"HH:mm";
+//    self.timePicker setDate:<#(NSDate *)#>
     [self.timePicker addTarget:self action:@selector(timeChange:) forControlEvents:UIControlEventValueChanged];
     
     self.name.text = [self.medince valueForKey:@"name"];
-    NSLog(@"timepicker locale is %@",self.timePicker.locale.localeIdentifier);
-    NSLog(@"id=%@", self.medince.objectID);
+//    NSLog(@"timepicker locale is %@",self.timePicker.locale.localeIdentifier);
+//    NSLog(@"id=%@", self.medince.objectID);
     
     _remindTimeModel = [MedinceRemindTimeModel new];
     _remindTimeModel.id = [self.medince valueForKey:@"id"];
     _remindTimeModel.uid = [self.medince valueForKey:@"uid"];
     
     [self changePickerTime];
+    
+//    [self buildHourData];
+//    [self buildMinuteData];
+//    
+//    _tpicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, DEVICE_WIDTH, 100)];
+//    _tpicker.backgroundColor = [UIColor redColor];
+//    _tpicker.dataSource = self;
+//    _tpicker.delegate = self;
+//    
+//    [self.view addSubview:_tpicker];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +90,8 @@
 
 - (IBAction)clickSubmit:(id)sender {
     _remindTimeModel.createTime = [NSDate date];
+
+    [self timeChange:nil];
     if (self.remindTime) {
         if ( [[MedinceRemindTimeManager sharedManager] updateOne:self.remindTime] ) {
             ALERT(@"", @"提醒设置成功。", @"确定");
@@ -103,17 +125,59 @@
     }
 }
 - (void)timeChange:(id)sender {
-    if (self.timePicker.date) {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"HH:mm";
-        NSLog(@"picker time is %@", [formatter stringFromDate:self.timePicker.date]);
-        _remindTimeModel.remindTime = [formatter stringFromDate:self.timePicker.date];
-        if (self.remindTime) {
-            [self.remindTime setValue:[formatter stringFromDate:self.timePicker.date] forKey:@"remindTime"];
-        }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"HH:mm";
+    NSLog(@"picker time is %@", [formatter stringFromDate:self.timePicker.date]);
+    _remindTimeModel.remindTime = [formatter stringFromDate:self.timePicker.date];
+    if (self.remindTime) {
+        [self.remindTime setValue:[formatter stringFromDate:self.timePicker.date] forKey:@"remindTime"];
+    }
+}
+#pragma mark - 私有方法
+- (void)buildHourData {
+    _hourArr = [NSMutableArray new];
+    for (int i=0; i<24; i++) {
+        [_hourArr addObject:[self formatNumberToDoubleString:i]];
+    }
+}
+- (void)buildMinuteData {
+    _minArr = [NSMutableArray new];
+    for (int i=0; i<60; i++) {
+        [_minArr addObject:[self formatNumberToDoubleString:i]];
+    }
+}
+- (NSString *)formatNumberToDoubleString:(int)num {
+    if (num<10) {
+        return [NSString stringWithFormat:@"0%d", num];
     }
     else {
-        ALERT(@"", @"请选择提醒时间。", @"确定");
+        return [NSString stringWithFormat:@"%d", num];
     }
+}
+#pragma mark - UIPickerView DataSource
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 2;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (component == 0) {
+        return _hourArr.count;
+    }
+    else {
+        return _minArr.count;
+    }
+}
+
+#pragma mark - UIPickerView Delegate
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (component == 0) {
+        return [_hourArr objectAtIndex:row];
+    }
+    else {
+        return [_minArr objectAtIndex:row];
+    }
+//    return @"aaa";
 }
 @end

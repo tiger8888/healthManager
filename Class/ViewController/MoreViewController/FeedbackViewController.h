@@ -10,7 +10,7 @@
 
 @interface FeedbackViewController : BackButtonViewController <UITextViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 
 - (IBAction)submitOnClick:(id)sender;
 

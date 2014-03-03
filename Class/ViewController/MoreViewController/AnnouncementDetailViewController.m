@@ -57,7 +57,7 @@
     contentLabel.numberOfLines = 0;
     contentLabel.lineBreakMode = NSLineBreakByWordWrapping;//UILineBreakModeWordWrap;
     contentLabel.text = self.announcement.content;
-    [contentLabel fitHeight];
+    [contentLabel fitHeight:40.0];
     
     /**
      *第二种创建自适应高度label的方法

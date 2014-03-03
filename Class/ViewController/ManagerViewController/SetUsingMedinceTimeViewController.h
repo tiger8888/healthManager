@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MedinceRemindTimeModel.h"
 
-@interface SetUsingMedinceTimeViewController : BackButtonViewController
+@interface SetUsingMedinceTimeViewController : BackButtonViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 - (IBAction)clickDelete:(id)sender;
 - (IBAction)clickSubmit:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *name;
