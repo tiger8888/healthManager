@@ -203,19 +203,18 @@
 		CGContextAddLineToPoint(context, goPoint.x, goPoint.y);
     }
     CGContextSetStrokeColorWithColor(context, colorRef);
-    CGContextSetFillColorWithColor(context, colorRef);
-    
     CGContextStrokePath(context);
     
+    //画端点圆
+    CGContextSaveGState(context);
+    CGContextSetFillColorWithColor(context, colorRef);
     for (id item in drawPoint)
 	{
         goPoint = [item CGPointValue];
-		CGContextAddLineToPoint(context, goPoint.x, goPoint.y);
-        //画端点圆
         CGContextAddArc(context, goPoint.x, goPoint.y, 2, 0, 2*M_PI, 0);
         CGContextFillPath(context);
     }
-
+    CGContextRestoreGState(context);
 }
 
 /**

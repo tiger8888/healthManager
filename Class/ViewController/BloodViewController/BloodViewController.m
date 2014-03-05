@@ -272,20 +272,20 @@
     switch (index) {
         case 0:
         {
-            NSLog(@"000");
+//            NSLog(@"000");
             [self cancelTableViewSelectedRowStatus];
         }
             break;
         case 1:
         {
-            NSLog(@"1");
+//            NSLog(@"1");
             [self getDataSource];
             [self cancelTableViewSelectedRowStatus];
         }
             break;
         case 2:
         {
-            NSLog(@"2");
+//            NSLog(@"2");
             [self getDataSource];
             [_tableView reloadData];
         }
@@ -485,7 +485,7 @@ BOOL stringIsValidNumber(NSString *checkString)
             [listDataSourceArray addObject:[listItem stringByReplacingOccurrencesOfString:@"-" withString:@"."]];
             [_dataSourceClickStatus addObject:@2];
         }
-        NSLog(@"data source clickStatus count:%d", [_dataSourceClickStatus count]);
+//        NSLog(@"data source clickStatus count:%d", [_dataSourceClickStatus count]);
         _dataSource = [listDataSourceArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
             NSString *firstDate = (NSString *)obj1;
             NSString *secondDate = (NSString *)obj2;

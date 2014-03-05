@@ -56,7 +56,7 @@
 
 - (IBAction)saveBTBClick:(id)sender
 {
-    NSLog(@"save");
+//    NSLog(@"save");
     if (_saveBlock)
     {
         _saveBlock(_highPressure.textField.text,_lowPressure.textField.text,_pulse.textField.text);
