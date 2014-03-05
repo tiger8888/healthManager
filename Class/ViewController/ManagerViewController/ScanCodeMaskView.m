@@ -29,17 +29,25 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     int leftX = 30;
     int rightX = DEVICE_WIDTH - leftX;
-    int topY = 44+20;
-    int bottomY = DEVICE_HEIGHT-44-44-20- topY;
+    int topY = 64+20;
+    int bottomY = DEVICE_HEIGHT-20-4-44-20- topY;
     int hornLength = 20;
     
     //画底部透明层
     CGContextSaveGState(context);
     CGContextSetFillColorWithColor(context, [self colorWithRGB:0x303030 withAlpha:1.0].CGColor);
     CGContextFillRect(context, CGRectMake(0, DEVICE_HEIGHT-44-44-20-44, DEVICE_WIDTH, 44));
-    CGContextFillRect(context, CGRectMake(0, 0, DEVICE_WIDTH, 44));
+    CGContextFillRect(context, CGRectMake(0, 0, DEVICE_WIDTH, 64));
     CGContextRestoreGState(context);
+    
     //画出提示文字
+    CGContextSaveGState(context);
+    CGContextSetTextDrawingMode(context, kCGTextFillStroke);
+    CGContextSetLineWidth(context, 0);
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+    NSString *tipsText = @"请将条形码置于扫描框的红线内，避免反光或阴影提示：【中国药品电子监管码】一般位于药盒的背面和侧面";
+    [tipsText drawInRect:CGRectMake(20, 4, DEVICE_WIDTH-40, 80) withFont:[UIFont systemFontOfSize:14] lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentLeft];
+    CGContextRestoreGState(context);
     
     CGColorRef hornColorRef = [UIColor greenColor].CGColor;
     //画左上角

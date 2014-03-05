@@ -279,6 +279,7 @@
         case 1:
         {
             NSLog(@"1");
+            [self getDataSource];
             [self cancelTableViewSelectedRowStatus];
         }
             break;
