@@ -35,7 +35,7 @@
     _textView.layer.borderColor = [UIColor grayColor].CGColor;
     _textView.layer.borderWidth = 1;
     _textView.delegate = self;
-    
+    _textView.frame = CGRectMake(20, 88, 280, 100);
     [self.view addSubview:_textView];
     [_textView becomeFirstResponder];
     
@@ -65,6 +65,17 @@
     }
 }
 - (IBAction)submitOnClick:(id)sender {
+    if ([_textView.text isEqualToString:@""]) {
+        ALERT(@"", @"还请多给点建议。", @"");
+        return;
+    }
+    NSString *feedbackContent = _textView.text;
+    feedbackContent = [feedbackContent stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
+    if ([feedbackContent isEqualToString:@""]) {
+        ALERT(@"", @"还请多给点建议。", @"");
+        _textView.text = @"";
+        return;
+    }
     NSMutableDictionary *parameters = [NSMutableDictionary new];
 
     NSString *patientId = [[UserBusiness sharedManager] getCurrentPatientID];
@@ -85,16 +96,20 @@
 
 #pragma mark - keyboard
 -(void)willShowKeyboard:(NSNotification *)notification{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.3];
+    
     int keyboardHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-    NSLog(@"aaa");
+
     float btnSubmitHeight = keyboardHeight;
     if (IS_IOS7) {
-        btnSubmitHeight = keyboardHeight + 20;
+        btnSubmitHeight = keyboardHeight + 88;
     }
-    
+
     self.btnSubmit.frame = CGRectMake(self.btnSubmit.frame.origin.x, btnSubmitHeight, self.btnSubmit.frame.size.width, self.btnSubmit.frame.size.height);
-    _textView.frame = CGRectMake(20, 88, 280, 100);
-    NSLog(@"b=%f",self.btnSubmit.frame.origin.y - 20);
-    NSLog(@"c=%f",_textView.frame.size.height);
+    _textView.frame = CGRectMake(20, 88, 280, self.btnSubmit.frame.origin.y - 20-_textView.frame.origin.y);
+    
+    [UIView commitAnimations];
 }
 @end

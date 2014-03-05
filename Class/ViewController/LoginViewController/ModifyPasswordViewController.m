@@ -9,7 +9,9 @@
 #import "ModifyPasswordViewController.h"
 
 @interface ModifyPasswordViewController ()
-
+{
+    CGRect _btnSubmitOriginalFrame;
+}
 @end
 
 @implementation ModifyPasswordViewController
@@ -28,6 +30,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    if (IS_IOS7) {
+        //不需要根据键盘高度调整布局
+    }else {
+        _btnSubmitOriginalFrame = self.btnSubmit.frame;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard) name:UIKeyboardWillHideNotification object:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,6 +138,56 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark - keyboard
+-(void)willShowKeyboard:(NSNotification *)notification{
+    //    NSLog(@"will show keyboard");
+    if (!self.oldPassword.isFirstResponder) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationDuration:0.3];
+        
+        int keyboardHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+        
+        self.btnSubmit.frame = CGRectOffset(self.btnSubmit.frame, 0, keyboardHeight-_btnSubmitOriginalFrame.origin.y);
+        self.btnReset.frame = CGRectOffset(self.btnReset.frame, 0, keyboardHeight-_btnSubmitOriginalFrame.origin.y);
+        [self resizeLayout:YES];
+        
+        [UIView commitAnimations];
+    }
+}
+-(void)willHideKeyboard{
+    //    NSLog(@"will hide keyboard");
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.3];
+    
+    self.btnSubmit.frame = CGRectOffset(self.btnSubmit.frame, 0, _btnSubmitOriginalFrame.origin.y-self.btnSubmit.frame.origin.y);
+    self.btnReset.frame = CGRectOffset(self.btnReset.frame, 0, _btnSubmitOriginalFrame.origin.y-self.btnReset.frame.origin.y);
+    [self resizeLayout:NO];
+    
+    [UIView commitAnimations];
+}
+
+- (void)resizeLayout:(BOOL)up {
+#define DREAM_FABS(ARG)  up?-fabs(ARG):fabs(ARG)
+    
+    
+    self.btnGetValidationCode.frame = CGRectOffset(self.btnGetValidationCode.frame, 0, DREAM_FABS(self.btnSubmit.frame.origin.y-62-self.btnGetValidationCode.frame.origin.y));
+    self.validationCode.frame = CGRectOffset(self.validationCode.frame, 0, DREAM_FABS(self.btnSubmit.frame.origin.y-62-self.validationCode.frame.origin.y));
+    
+
+    self.confirmPassword.frame = CGRectOffset(self.confirmPassword.frame, 0, DREAM_FABS(self.validationCode.frame.origin.y-44-self.confirmPassword.frame.origin.y));
+    self.nePassword.frame = CGRectOffset(self.nePassword.frame, 0, DREAM_FABS(self.confirmPassword.frame.origin.y-44-self.nePassword.frame.origin.y));
+    self.oldPassword.frame = CGRectOffset(self.oldPassword.frame, 0, DREAM_FABS(self.nePassword.frame.origin.y-44-self.oldPassword.frame.origin.y));
+    
+    self.validatonCodeLabel.frame = CGRectOffset(self.validatonCodeLabel.frame, 0, self.validationCode.frame.origin.y-self.validatonCodeLabel.frame.origin.y+8);
+    self.confirmPasswordLabel.frame = CGRectOffset(self.confirmPasswordLabel.frame, 0, self.confirmPassword.frame.origin.y-self.confirmPasswordLabel.frame.origin.y+8);
+    self.nePasswordLabel.frame = CGRectOffset(self.nePasswordLabel.frame, 0, self.nePassword
+                                              .frame.origin.y-self.nePasswordLabel.frame.origin.y+8);
+
+    self.oldPasswordLabel.frame = CGRectOffset(self.oldPasswordLabel.frame, 0, self.oldPassword.frame.origin.y-self.oldPasswordLabel.frame.origin.y+8);
 }
 
 @end

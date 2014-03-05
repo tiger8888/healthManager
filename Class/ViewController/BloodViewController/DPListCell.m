@@ -78,7 +78,7 @@
     NSDictionary *itemObj = [_detailData objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:_bloodValueFormat, [[itemObj objectForKey:@"dateStr"] substringWithRange:NSMakeRange(11, 5)], [itemObj objectForKey:@"highPressure"], [itemObj objectForKey:@"lowPressure"], [itemObj objectForKey:@"pulse"] ];
     
-    cell.textLabel.textColor = UICOLORFROMRGB(0xd3d3d3);
+    cell.textLabel.textColor = UICOLORFROMRGB(0x636363);
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

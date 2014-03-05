@@ -85,6 +85,7 @@
 		37C64EA1188CEF970041BAA7 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64E9F188CEF970041BAA7 /* ForgetPasswordViewController.xib */; };
 		37C64EA5188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */; };
 		37C64EA6188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C64EA4188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib */; };
+		37CAEDF118C5593400E82575 /* btn_pwd_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CAEDF018C5593400E82575 /* btn_pwd_1.png */; };
 		37CBF47518A8586B001DE66A /* AlertRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CBF47418A8586B001DE66A /* AlertRecordModel.m */; };
 		37CBF47818A859EC001DE66A /* AlertRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CBF47718A859EC001DE66A /* AlertRecordManager.m */; };
 		37CBF47B18A85B93001DE66A /* BaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CBF47A18A85B93001DE66A /* BaseManager.m */; };
@@ -347,6 +348,7 @@
 		37C64EA2188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordSetPWDViewController.h; sourceTree = "<group>"; };
 		37C64EA3188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordSetPWDViewController.m; sourceTree = "<group>"; };
 		37C64EA4188CFF010041BAA7 /* ForgetPasswordSetPWDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordSetPWDViewController.xib; sourceTree = "<group>"; };
+		37CAEDF018C5593400E82575 /* btn_pwd_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_pwd_1.png; sourceTree = "<group>"; };
 		37CBF47318A8586B001DE66A /* AlertRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertRecordModel.h; sourceTree = "<group>"; };
 		37CBF47418A8586B001DE66A /* AlertRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertRecordModel.m; sourceTree = "<group>"; };
 		37CBF47618A859EC001DE66A /* AlertRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertRecordManager.h; sourceTree = "<group>"; };
@@ -1128,6 +1130,7 @@
 		B823225B185F48EA005F2409 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				37CAEDF018C5593400E82575 /* btn_pwd_1.png */,
 				37B66C2818BAEDD000473090 /* btn_bg_red.png */,
 				37A73D9F18B73430005D4477 /* btn_bg_checked.png */,
 				37A73D9818B6F666005D4477 /* btn_edit_time.png */,
@@ -1358,6 +1361,7 @@
 				B8232286185F48EA005F2409 /* blood_segment_3@2x.png in Resources */,
 				37A8545D1889012500543874 /* AnnouncementDetailViewController.xib in Resources */,
 				9C0BFFBB1886D944002845D9 /* BloodRecord.xib in Resources */,
+				37CAEDF118C5593400E82575 /* btn_pwd_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

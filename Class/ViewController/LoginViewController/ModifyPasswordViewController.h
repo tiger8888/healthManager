@@ -14,6 +14,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *validationCode;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPassword;
 @property (weak, nonatomic) IBOutlet UITextField *oldPassword;
+@property (weak, nonatomic) IBOutlet UILabel *oldPasswordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nePasswordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *validatonCodeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *confirmPasswordLabel;
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+@property (weak, nonatomic) IBOutlet UIButton *btnGetValidationCode;
+@property (weak, nonatomic) IBOutlet UIButton *btnReset;
 
 - (IBAction)getValidationCode:(id)sender;
 - (IBAction)submitOnClick:(id)sender;
