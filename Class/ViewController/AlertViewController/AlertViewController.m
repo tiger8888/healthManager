@@ -43,11 +43,6 @@
     
 
     NSArray *alertRecordList = [[AlertRecordManager sharedManager] fetchAll];
-//    NSLog(@"alert record count is : %d", [alertRecordList count]);
-    for (NSDictionary *item in alertRecordList) {
-//        NSLog(@"item is : %@",[item valueForKey:@"content"]);
-        
-    }
     _dataSource = alertRecordList;
     [_tableView reloadData];
 }
@@ -55,7 +50,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     NSLog(@"alert view controller view will disappear");
-    [[AlertRecordManager sharedManager] updateAllAlertRecordStatusToRead];
+//    [[AlertRecordManager sharedManager] updateAllAlertRecordStatusToRead];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,7 +62,7 @@
 #pragma mark - TableView Delegate Method
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *item = [_dataSource objectAtIndex:[indexPath row]];
+    NSManagedObject *item = [_dataSource objectAtIndex:[indexPath row]];
 
     AlertCustomCell *cell = [self customCellByCode:tableView withIndexPath:indexPath];
     CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
@@ -94,10 +89,11 @@
 
     
     UITextView *label = [[UITextView alloc] initWithFrame:CGRectMake(10, 30, 240, DEVICE_HEIGHT -64 -90)];
-    label.text = [NSString stringWithFormat:@"预警详细信息:%@",[_dataSource[indexPath.row] objectForKey:@"content"]];
+    label.text = [NSString stringWithFormat:@"预警详细信息:%@",[_dataSource[indexPath.row] valueForKey:@"content"]];
     label.editable = NO;
     label.font = [UIFont systemFontOfSize:16];
     [tmpView addSubview:label];
+    [[AlertRecordManager sharedManager] updateAlertRecordStatusToRead:_dataSource[indexPath.row]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

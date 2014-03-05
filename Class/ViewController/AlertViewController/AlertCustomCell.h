@@ -13,6 +13,7 @@
     CGFloat _heightSingleLineTextLabel;
 }
 //@property (nonatomic, retain) UITextView *content;
+@property (nonatomic, retain) UILabel *flag;
 @property (nonatomic, retain) UILabel *content;
 @property (nonatomic, retain) UILabel *timeLabel;
 
@@ -25,5 +26,5 @@
 @property (nonatomic, retain) UILabel *receiveTimeLabel;
 @property (nonatomic, retain) UILabel *receiveTimeText;
 
--(void)setupCell:(NSDictionary *)data withHeight:(CGFloat)height;
+-(void)setupCell:(NSManagedObject *)data withHeight:(CGFloat)height;
 @end

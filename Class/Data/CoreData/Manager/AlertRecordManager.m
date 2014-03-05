@@ -38,6 +38,11 @@
         //设置记录状态为已读，不必向用户提示处理结果
     }
 }
+
+- (void)updateAlertRecordStatusToRead:(NSManagedObject *)model {
+    [model setValue:[NSNumber numberWithBool:YES] forKey:@"isRead"];
+    [self save];
+}
 - (NSArray *)fetchAll
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -53,32 +58,33 @@
         [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
     }
     
-    NSMutableArray *result = [NSMutableArray new];
-
-    for (NSManagedObject *item in objs) {
-        NSMutableDictionary *resultItem = [NSMutableDictionary new];
-        for (NSString *propertyItem in [self propertyList]) {
-            id value = [item valueForKey:propertyItem];
-//            NSLog(@"property %@ is : %@", propertyItem, value);
-            if (!value) {
-//                NSLog(@"==========");
-                if ([propertyItem isEqualToString:@"bloodDate"] || [propertyItem isEqualToString:@"receiveDate"]) {
-                    value =[NSNull null];
-                }
-                else {
-                    value = @" ";
-                }
-            }
-            else if ([propertyItem isEqualToString:@"bloodDateStr"] || [propertyItem isEqualToString:@"receiveDateStr"]) {
-                value = [value substringToIndex:[value length]-3];
-            }
-            [resultItem setObject:[value copy] forKey:propertyItem];
-        }
-//        NSLog(@"--------------");
-        [result addObject:resultItem];
-    }
-//    NSLog(@"db record count is %d", [result count]);
-    return result;
+//    NSMutableArray *result = [NSMutableArray new];
+//
+//    for (NSManagedObject *item in objs) {
+//        NSMutableDictionary *resultItem = [NSMutableDictionary new];
+//        for (NSString *propertyItem in [self propertyList]) {
+//            id value = [item valueForKey:propertyItem];
+////            NSLog(@"property %@ is : %@", propertyItem, value);
+//            if (!value) {
+////                NSLog(@"==========");
+//                if ([propertyItem isEqualToString:@"bloodDate"] || [propertyItem isEqualToString:@"receiveDate"]) {
+//                    value =[NSNull null];
+//                }
+//                else {
+//                    value = @" ";
+//                }
+//            }
+//            else if ([propertyItem isEqualToString:@"bloodDateStr"] || [propertyItem isEqualToString:@"receiveDateStr"]) {
+//                value = [value substringToIndex:[value length]-3];
+//            }
+//            [resultItem setObject:[value copy] forKey:propertyItem];
+//        }
+////        NSLog(@"--------------");
+//        [result addObject:resultItem];
+//    }
+////    NSLog(@"db record count is %d", [result count]);
+//    return result;
+    return objs;
 }
 
 -(NSArray *) propertyList {

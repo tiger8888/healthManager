@@ -29,6 +29,12 @@
 //        NSLog(@"self.frame.size.height=%f", self.superview.frame.size.height);
 //        self.content = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, self.superview.frame.size.height)];//uitextview需要加的代码
         left = 8;
+        self.flag = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineOne-4, 14,_heightSingleLineTextLabel)];
+        self.flag.backgroundColor = clearColor;
+        self.flag.font = [UIFont boldSystemFontOfSize:60];
+        [self.contentView addSubview:self.flag];
+        
+        left = self.flag.frame.size.width + left + 8;
         self.content = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineOne, DEVICE_WIDTH-20,_heightSingleLineTextLabel)];
         self.content.backgroundColor = clearColor;
         self.content.font = conntFont;
@@ -110,29 +116,37 @@
 }
 
 #pragma mark - Custom Method
--(void)setupCell:(NSDictionary *)data  withHeight:(CGFloat)height{
-    if (![[data objectForKey:@"isRead"] boolValue]) {
+-(void)setupCell:(NSManagedObject *)data  withHeight:(CGFloat)height{
+    UIColor *flagColor;
+    if (![[data valueForKey:@"isRead"] boolValue]) {
         self.content.font = [UIFont boldSystemFontOfSize:18];
+        flagColor = [UIColor redColor];
     }
-    self.content.text = [data objectForKey:@"content"]?[data objectForKey:@"content"]:@"";
-    self.timeLabel.text = [data objectForKey:@"receiveDateStr"]?[data objectForKey:@"receiveDateStr"]:@"";
+    else {
+        flagColor = [UIColor lightGrayColor];
+    }
+    self.flag.text = @"·";
+    self.flag.textColor = flagColor;
+    
+    self.content.text = [data valueForKey:@"content"]?[data valueForKey:@"content"]:@"";
+    self.timeLabel.text = [data valueForKey:@"receiveDateStr"]?[data valueForKey:@"receiveDateStr"]:@"";
     self.highLabel.text = @"高压";
     self.lowLabel.text = @"低压";
     self.pulseLabel.text = @"脉搏";
-    if ([[data objectForKey:@"highPressureStatus"] boolValue]) {
+    if ([[data valueForKey:@"highPressureStatus"] boolValue]) {
         self.highText.textColor = UICOLORFROMRGB(0xe60012);
     }
-    if ([[data objectForKey:@"lowPressureStatus"] boolValue]) {
+    if ([[data valueForKey:@"lowPressureStatus"] boolValue]) {
         self.lowText.textColor = UICOLORFROMRGB(0xe60012);
     }
-    if ([[data objectForKey:@"pulseStatus"] boolValue]) {
+    if ([[data valueForKey:@"pulseStatus"] boolValue]) {
         self.pulseText.textColor = UICOLORFROMRGB(0xe60012);
     }
-    self.highText.text = [data objectForKey:@"highPressure"]?[data objectForKey:@"highPressure"]:@"";
-    self.lowText.text = [data objectForKey:@"lowPressure"]?[data objectForKey:@"lowPressure"]:@"";
-    self.pulseText.text = [data objectForKey:@"pulse"]?[data objectForKey:@"pulse"]:@"";
+    self.highText.text = [data valueForKey:@"highPressure"]?[data valueForKey:@"highPressure"]:@"";
+    self.lowText.text = [data valueForKey:@"lowPressure"]?[data valueForKey:@"lowPressure"]:@"";
+    self.pulseText.text = [data valueForKey:@"pulse"]?[data valueForKey:@"pulse"]:@"";
     self.receiveTimeLabel.text = @"消息接收时间";
-    self.receiveTimeText.text = [data objectForKey:@"receiveDateStr"]?[data objectForKey:@"receiveDateStr"]:@"";
+    self.receiveTimeText.text = [data valueForKey:@"receiveDateStr"]?[data valueForKey:@"receiveDateStr"]:@"";
     
 //    [self controlPosition:height];//uitextview需要加的代码
 }

@@ -17,6 +17,7 @@
 
 - (void)addOne:(AlertRecordModel *)model;
 - (void)updateAllAlertRecordStatusToRead;
+- (void)updateAlertRecordStatusToRead:(NSManagedObject *)model;
 
 //- (NSArray *)fetchBy:(NSManagedObject *)model;
 - (NSArray *)fetchAll;
