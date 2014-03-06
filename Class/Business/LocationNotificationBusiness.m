@@ -154,7 +154,7 @@ static LocationNotificationBusiness *_sharedManager;
     UILocalNotification *localNotication = [UILocalNotification new];
     localNotication.applicationIconBadgeNumber = 1;//[self notificationCount];
     localNotication.fireDate = date;//[NSDate dateWithTimeIntervalSinceNow:10];
-    localNotication.timeZone = [NSTimeZone defaultTimeZone];
+    localNotication.timeZone = [NSTimeZone localTimeZone];
     localNotication.soundName = UILocalNotificationDefaultSoundName; //@"alertsound.wav";
     if (repeat == 1) {
         localNotication.repeatInterval = NSDayCalendarUnit;
