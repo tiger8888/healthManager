@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TakeMedicineRemindViewController : SuperListViewController
+@interface TakeMedicineRemindViewController : SuperListViewController<UIAlertViewDelegate>
 
 @end

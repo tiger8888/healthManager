@@ -40,6 +40,7 @@
     _tableView.layer.borderWidth = 1;
     _tableView.layer.cornerRadius = 5;
     _tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _tableView.scrollEnabled = NO;
     
     [self.view addSubview:_tableView];
     if (IS_IOS7) {
@@ -72,18 +73,19 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-    cell.textLabel.text = [_dataSource objectAtIndex:[indexPath row]];
     
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 10, 14, 14)];
-    btn.tag = [indexPath row];
+    PPCheckBox *btn = [[PPCheckBox alloc] initWithDelegate:self normalImage:[UIImage imageNamed:@"btn_bg_unchecked"] selectedImage:[UIImage imageNamed:@"btn_bg_checked_border"]];
+    [btn setTitle:[_dataSource objectAtIndex:[indexPath row]] forState:UIControlStateNormal];
     if ( [[_dataSourceCheck objectAtIndex:[indexPath row]] intValue] == 1 ) {
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn_bg_checked"] forState:UIControlStateNormal];
+        [btn setChecked:YES];
     }
-    [btn addTarget:self action:@selector(clickButtonCheck:) forControlEvents:UIControlEventTouchUpInside];
-    btn.layer.borderWidth = 1;
-    btn.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    btn.frame = CGRectMake(10, 10, 100, 14);
+    btn.tag = [indexPath row];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
     [cell addSubview:btn];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,29 +109,23 @@
     [self.medicineName resignFirstResponder];
 }
 
+#pragma mark - PPCheckBox delegate
+- (void)didSelectedCheckBox:(PPCheckBox *)checkbox checked:(BOOL)checked {
+    [_dataSourceCheck setObject:[NSNumber numberWithInt:checked]  atIndexedSubscript:checkbox.tag];
+}
 #pragma mark - 自定义方法
 - (void)reloadDataSource {
     _dataSource = [NSArray new];
     _dataSource = @[@"周一",@"周二",@"周三",@"周四",@"周五",@"周六",@"周日"];
     _dataSourceCheck = [[NSMutableArray alloc] initWithObjects:@1,@1,@1,@1,@1,@1,@1, nil];
 }
-- (void)clickButtonCheck:(id)sender {
-    UIButton *btn = (UIButton *)sender;
-    [_dataSourceCheck setObject:[NSNumber numberWithInt:[[_dataSourceCheck objectAtIndex:btn.tag] intValue] == 1?0:1]  atIndexedSubscript:btn.tag];
-    if ( [[_dataSourceCheck objectAtIndex:btn.tag] intValue] == 1) {
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn_bg_checked"] forState:UIControlStateNormal];
-    }
-    else {
-        [btn setBackgroundImage:nil forState:UIControlStateNormal];
-    }
 
-}
 - (IBAction)cancel:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)clickSubmit:(id)sender {
-    if ([self.medicineName.text isEqualToString:@""]) {
+    if (self.medicineName.text == NULL || [self.medicineName.text isEqualToString:@""]) {
         ALERT(@"", @"请输入药品名称。", @"确定");
         return;
     }
@@ -140,8 +136,6 @@
     medinceRecord.period = [[_dataSourceCheck valueForKey:@"description"] componentsJoinedByString:@""];
     if ( [[MedinceRecordManager sharedManager] addOne:medinceRecord] ) {
         ALERT(@"", @"新增药品成功。", @"确定");
-//        self.medicineName.text = @"";
-//        [_tableView reloadData];
         if (self.block) {
             self.block();
         }

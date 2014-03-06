@@ -44,6 +44,7 @@ static BOOL isLoadAllSession = FALSE;
     else {
         self.webView.frame = CGRectMake(0, 44, DEVICE_WIDTH, DEVICE_HEIGHT-20);
     }
+    self.webView.delegate = self;
     
     [self addRefreshButtonOnNavigation];
     
@@ -57,9 +58,13 @@ static BOOL isLoadAllSession = FALSE;
     [[DoctorBusiness sharedManager] setMyDoctorInfoSync];
     _titleLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:DOCTOR_NAME_KEY] stringByAppendingString: @"医生"];
     
-
+    
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+//    [self getAllSessionInfo];
+}
 - (void)viewDidDisappear:(BOOL)animated
 {
     [autoRefreshTimer setFireDate:[NSDate distantFuture]];
@@ -136,6 +141,7 @@ static BOOL isLoadAllSession = FALSE;
 }
 
 - (void)getAllSessionInfo {
+    NSLog(@"%s", __func__);
     NSArray *sessionMsgArr = [[DoctorBusiness sharedManager] getMyDoctorAllSessionInfo];
     for (SessionMessage *msgItem in sessionMsgArr) {
         [self appendMessage:msgItem];
@@ -174,5 +180,11 @@ static BOOL isLoadAllSession = FALSE;
     [UIView setAnimationDuration:0.3];
     [self.toolBar setFrame:CGRectMake(0, DEVICE_HEIGHT - 44-20, DEVICE_WIDTH, 44)];
     [UIView commitAnimations];
+}
+
+#pragma mark - UIWebView delegate
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self getAllSessionInfo];
 }
 @end

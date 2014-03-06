@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SessionMessage.h"
 
-@interface SessionViewController : BackButtonViewController<UITextFieldDelegate>
+@interface SessionViewController : BackButtonViewController<UITextFieldDelegate, UIWebViewDelegate>
 {
     NSArray *_styleArray;
     SessionMessage *_sessionMessage;

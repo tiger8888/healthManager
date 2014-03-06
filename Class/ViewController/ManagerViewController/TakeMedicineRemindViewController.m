@@ -16,6 +16,7 @@
 @interface TakeMedicineRemindViewController ()
 {
     NSMutableDictionary *_timeDataSource;
+    NSMutableDictionary *_deleteObject;
 }
 @end
 
@@ -50,6 +51,7 @@
     _tableView = [[UITableView alloc] initWithFrame:FULLSCREEN style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
+//    _tableView.editing = YES;
     [self.view addSubview:_tableView];
 }
 
@@ -74,12 +76,12 @@
     NSString *key = [self getRemindTimeKey:section];
     NSLog(@"key=%@", key);
     if ( ![_timeDataSource objectForKey:key] ) {
-        NSLog(@"as");
+//        NSLog(@"as");
         
         [_timeDataSource setObject:[[MedinceRemindTimeManager sharedManager] fetchAll:[[_dataSource objectAtIndex:section] valueForKey:@"id"]] forKey:key];
     }
     else {
-        NSLog(@"ddd");
+//        NSLog(@"ddd");
         
     }
     return [[_timeDataSource objectForKey:key] count] + 1;
@@ -90,6 +92,99 @@
     return NO;
 }
 
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    [_tableView setEditing:editing animated:animated];
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if (indexPath.row == 0) {
+            NSLog(@"delete medince");
+            NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
+            NSString *name = [obj valueForKey:@"name"];
+            if (name == NULL) name = @"";
+            _deleteObject = [NSMutableDictionary new];
+            [_deleteObject setObject:obj forKey:@"obj"];
+            [_deleteObject setObject:indexPath forKey:@"index"];
+            NSString *alertMessage = [NSString stringWithFormat:@"删除药品【%@】及其提醒？", name];
+            ALERTOPRATE(@"", alertMessage, 901);
+        }
+        else if (indexPath.row > 0) {
+            NSLog(@"delete time");
+            NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
+            NSString *name = [obj valueForKey:@"name"];
+            if (name == NULL) name = @"";
+            
+            NSArray *remindTimeArray = [_timeDataSource objectForKey:[self getRemindTimeKey:indexPath.section]];
+            NSManagedObject *detailObj = [remindTimeArray objectAtIndex:(indexPath.row-1)];
+            NSString *time = [detailObj  valueForKey:@"remindTime"];
+
+            NSString *alertMessage = [NSString stringWithFormat:@"删除药品【%@】在【%@】时的提醒？", name, time];
+
+            _deleteObject = [NSMutableDictionary new];
+            [_deleteObject setObject:detailObj forKey:@"obj"];
+            [_deleteObject setObject:indexPath forKey:@"index"];
+            ALERTOPRATE(@"", alertMessage, 902);
+        }
+    }
+}
+#pragma mark - AlertDelegate Method
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (alertView.tag) {
+        case 901:
+        {
+            if (buttonIndex == 0) {
+                NSLog(@"alert 901 click 0");
+                return;
+            }
+            else if (buttonIndex == 1)
+            {
+                NSLog(@"alert 901 click 1");
+                NSLog(@"%@", _deleteObject);
+                if (_deleteObject) {
+                    NSDictionary *obj = [_deleteObject copy];
+                    _deleteObject = nil;
+                    UITableViewCell *cell = [_tableView cellForRowAtIndexPath:(NSIndexPath *)[obj objectForKey:@"index"]];
+                    NSLog(@"cell text is :%@", cell.textLabel.text);
+                    cell.hidden = YES;
+                    [[MedinceRecordManager sharedManager] deleteOne:[obj objectForKey:@"obj"]];
+                    [self loadDataSource];
+                    [_tableView reloadData];
+                }
+            }
+        }
+            break;
+        case 902:
+        {
+            if (buttonIndex == 0) {
+                NSLog(@"alert 902 click 0");
+                return;
+            }
+            else if (buttonIndex == 1)
+            {
+                NSLog(@"alert 902 click 1");
+                NSLog(@"%@", _deleteObject);
+                if (_deleteObject) {
+                    NSDictionary *obj = [_deleteObject copy];
+                    _deleteObject = nil;
+                    UITableViewCell *cell = [_tableView cellForRowAtIndexPath:(NSIndexPath *)[obj objectForKey:@"index"]];
+                    NSLog(@"cell text is :%@", cell.textLabel.text);
+                    cell.hidden = YES;
+                    [[MedinceRemindTimeManager sharedManager] deleteOne:[obj objectForKey:@"obj"]];
+                    [self loadDataSource];
+                    [_tableView reloadData];
+                }
+            }
+
+        }
+            break;
+        default:
+            break;
+    }
+}
 #pragma mark - 自定义方法
 - (void)addAddButtonOnNavigation {
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -112,11 +207,6 @@
     _dataSource = [NSArray new];
     _dataSource = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
     _timeDataSource = [NSMutableDictionary new];
-//    [_tableView reloadData];
-//    for (NSManagedObject *item in _dataSource) {
-//        NSLog(@"obj name is %@", [item valueForKey:@"name"]);
-//    }
-
 }
 
 - (UITableViewCell *)buildTitleCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {

@@ -45,6 +45,9 @@
 		37AB59A118C022600093C2A4 /* BloodListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37AB59A018C022600093C2A4 /* BloodListCell.xib */; };
 		37AB59A518C032210093C2A4 /* DPListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AB59A318C032210093C2A4 /* DPListCell.m */; };
 		37AB59A618C032210093C2A4 /* DPListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37AB59A418C032210093C2A4 /* DPListCell.xib */; };
+		37AFC02F18C81F9100FA0CE9 /* PPCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AFC02E18C81F9100FA0CE9 /* PPCheckBox.m */; };
+		37AFC03118C838C500FA0CE9 /* btn_bg_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 37AFC03018C838C500FA0CE9 /* btn_bg_unchecked.png */; };
+		37AFC03318C8668200FA0CE9 /* btn_bg_checked_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 37AFC03218C8668200FA0CE9 /* btn_bg_checked_border.png */; };
 		37B51C441894983700954432 /* SessionMessageSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B51C431894983700954432 /* SessionMessageSqlite.m */; };
 		37B51C461894984A00954432 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B51C451894984A00954432 /* libsqlite3.dylib */; };
 		37B51C4C1894EB4600954432 /* Renkoo in Resources */ = {isa = PBXBuildFile; fileRef = 37B51C4B1894EB4600954432 /* Renkoo */; };
@@ -270,6 +273,10 @@
 		37AB59A318C032210093C2A4 /* DPListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPListCell.m; sourceTree = "<group>"; };
 		37AB59A418C032210093C2A4 /* DPListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DPListCell.xib; sourceTree = "<group>"; };
 		37AD323218BEC67300C8509E /* HealthManager 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HealthManager 6.xcdatamodel"; sourceTree = "<group>"; };
+		37AFC02D18C81F9100FA0CE9 /* PPCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPCheckBox.h; sourceTree = "<group>"; };
+		37AFC02E18C81F9100FA0CE9 /* PPCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPCheckBox.m; sourceTree = "<group>"; };
+		37AFC03018C838C500FA0CE9 /* btn_bg_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_bg_unchecked.png; sourceTree = "<group>"; };
+		37AFC03218C8668200FA0CE9 /* btn_bg_checked_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_bg_checked_border.png; sourceTree = "<group>"; };
 		37B51C421894983700954432 /* SessionMessageSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionMessageSqlite.h; sourceTree = "<group>"; };
 		37B51C431894983700954432 /* SessionMessageSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionMessageSqlite.m; sourceTree = "<group>"; };
 		37B51C451894984A00954432 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -562,6 +569,15 @@
 			name = BloodListCell;
 			sourceTree = "<group>";
 		};
+		37AFC02C18C81F6600FA0CE9 /* PPCheckBox */ = {
+			isa = PBXGroup;
+			children = (
+				37AFC02D18C81F9100FA0CE9 /* PPCheckBox.h */,
+				37AFC02E18C81F9100FA0CE9 /* PPCheckBox.m */,
+			);
+			path = PPCheckBox;
+			sourceTree = "<group>";
+		};
 		37B51C411894980800954432 /* sqlite */ = {
 			isa = PBXGroup;
 			children = (
@@ -780,6 +796,7 @@
 		8BFE173C187FEC5600D1F48A /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				37AFC02C18C81F6600FA0CE9 /* PPCheckBox */,
 				37C1D8DA18B58B9C001CB98D /* ZBarSDK */,
 				7F37E17D18A8A2A600E7EFAB /* JSBadgeView */,
 				8B9BEEBB18877F6E00A669C1 /* Tool */,
@@ -1130,6 +1147,8 @@
 		B823225B185F48EA005F2409 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				37AFC03218C8668200FA0CE9 /* btn_bg_checked_border.png */,
+				37AFC03018C838C500FA0CE9 /* btn_bg_unchecked.png */,
 				37CAEDF018C5593400E82575 /* btn_pwd_1.png */,
 				37B66C2818BAEDD000473090 /* btn_bg_red.png */,
 				37A73D9F18B73430005D4477 /* btn_bg_checked.png */,
@@ -1274,6 +1293,7 @@
 			files = (
 				9C0BFFBD1886D944002845D9 /* BloodViewController.xib in Resources */,
 				B8232283185F48EA005F2409 /* bbi_left@2x.png in Resources */,
+				37AFC03318C8668200FA0CE9 /* btn_bg_checked_border.png in Resources */,
 				37A854501888EB4500543874 /* AnnouncementViewController.xib in Resources */,
 				B823229E185F48EA005F2409 /* main_btn_2@2x.png in Resources */,
 				B823228D185F48EA005F2409 /* bt_cancel@2x.png in Resources */,
@@ -1301,6 +1321,7 @@
 				B823228B185F48EA005F2409 /* blood_texfield@2x.png in Resources */,
 				37C1D91118B5CB1E001CB98D /* btn_bg_gray@2x.png in Resources */,
 				9C0BFFCC1886D944002845D9 /* ManagerViewController.xib in Resources */,
+				37AFC03118C838C500FA0CE9 /* btn_bg_unchecked.png in Resources */,
 				B823229A185F48EA005F2409 /* Icon-Small@2x.png in Resources */,
 				37A73D9C18B6F666005D4477 /* btn_remind_time.png in Resources */,
 				37A73D9218B6F459005D4477 /* MedinceAddViewController.xib in Resources */,
@@ -1382,6 +1403,7 @@
 			files = (
 				37B66C2C18BB1B5A00473090 /* MedinceCodeBusiness.m in Sources */,
 				37A73D8A18B6F12D005D4477 /* MedinceRecordManager.m in Sources */,
+				37AFC02F18C81F9100FA0CE9 /* PPCheckBox.m in Sources */,
 				8BFE177C187FEC5700D1F48A /* AFHTTPRequestOperation.m in Sources */,
 				9C0BFFC91886D944002845D9 /* MainViewController.m in Sources */,
 				37A8BA9B18AC9B7B00321C31 /* ScanCodeViewController.m in Sources */,

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPCheckBox.h"
 
-@interface MedinceAddViewController : BackButtonViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface MedinceAddViewController : BackButtonViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, PPCheckBoxDelegate>
 - (IBAction)cancel:(id)sender;
 
 - (IBAction)clickSubmit:(id)sender;

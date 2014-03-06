@@ -66,6 +66,11 @@
     return objs;
 }
 
+- (BOOL)deleteOne:(NSManagedObject *)object {
+    [[self getManagedObjectContext] deleteObject:object];
+    return [self saveReturnFlag];
+}
+
 -(NSArray *) propertyList {
     return @[@"createTime", @"id", @"name", @"period", @"uid"];
 }
