@@ -97,7 +97,7 @@
         }
         return;
     }
-    NSLog(@"btn tag is : %ld", (long)button.tag);
+//    NSLog(@"btn tag is : %ld", (long)button.tag);
     [self goToFunctionPart:button.tag];
 }
 
@@ -124,6 +124,11 @@
 #pragma mark - Other Method
 - (void)refreshBadgeView
 {
+    [self alertBadeView];
+    [self sessionBadeView];
+}
+
+- (void)alertBadeView {
     NSArray *alerts = [[AlertRecordManager sharedManager] fetchUnread];
     if (alerts.count != 0) {
         UIView *superView = [self.view viewWithTag:3];
@@ -144,14 +149,39 @@
             }
         }
     }
+}
 
+- (void)sessionBadeView {
+    [[DoctorBusiness sharedManager] getMyDoctorSessionCount:^(int count) {
+        UIView *superView = [self.view viewWithTag:2];
+        
+        JSBadgeView *badgeView = [[JSBadgeView alloc] initWithParentView:superView alignment:JSBadgeViewAlignmentTopRightInside];
+//        badgeView.tag = 101;
+        badgeView.hasStroke = NO;
+        badgeView.hasShadow = NO;
+        badgeView.badgeTextFont = [UIFont boldSystemFontOfSize:18];
+        badgeView.badgeText = [NSString stringWithFormat:@"%d",count];
+    }];
+//    NSArray *alerts = [[AlertRecordManager sharedManager] fetchUnread];
+//    if (alerts.count != 0) {
+//        
+//        //    badgeView.transform = CGAffineTransformMakeScale(1,1);
+//    }
+//    else {
+//        UIView *superView = [self.view viewWithTag:3];
+//        for (UIView *subview in [superView subviews]) {
+//            if (subview.tag == 101) {
+//                [subview removeFromSuperview];
+//            }
+//        }
+//    }
 }
 
 - (void)checkAlertMessage
 {
     NSString *interfaceUrl = [NSString stringWithFormat:@"warn/list/%d.json", [[[NSUserDefaults standardUserDefaults] objectForKey:PATIENTID_KEY] intValue]];
     [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
-        NSLog(@"announcement data is : %@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
+//        NSLog(@"announcement data is : %@",[[NSString alloc] initWithData:returnObject encoding:NSUTF8StringEncoding]);
         NSDictionary *returnDict = [[NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil] categoryObjectForKey:@"resultInfo"];
         if ([[returnDict objectForKey:@"retCode"] intValue] == 3) {
             return ;

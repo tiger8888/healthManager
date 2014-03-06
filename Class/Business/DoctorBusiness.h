@@ -25,6 +25,7 @@
 - (void)addMyDoctor:(id)obj;
 - (void)deleteMyDoctor;
 
+- (void)getMyDoctorSessionCount:(void(^)(int count))block;
 - (void)getMyDoctorSessionInfo:(void(^)(SessionMessage* msg))block withSuperView:(UIView *)superView;
 - (NSArray *)getMyDoctorAllSessionInfo;
 - (void)sendSessionMessageToMydoctor:(SessionMessage *)msg withBlock:(void(^)(void))block superView:(UIView *)superView;

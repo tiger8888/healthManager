@@ -150,6 +150,37 @@ static DoctorBusiness *_sharedManager;
     [userDefaults synchronize];
 }
 
+- (void)getMyDoctorSessionCount:(void(^)(int count))block
+{
+    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/list/%@.json", [[UserBusiness sharedManager] getCurrentPatientID]];
+    
+    [[HttpRequestManager sharedManager] requestWithParameters:nil interface:interfaceUrl completionHandle:^(id returnObject) {
+        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
+        NSDictionary *result = [dataDictionary objectForKey:@"resultInfo"];
+        if ( [[Message sharedManager] checkReturnInformationWithInterface:result] == YES ) {
+            NSArray *sessionMessageInfoArray = [result objectForKey:@"list"];
+            SessionMessage *sessionMsg = [SessionMessage new];
+            sessionMsg.patientId = [[[UserBusiness sharedManager] getCurrentPatientID] intValue];
+            
+            for (NSDictionary *msgItem in sessionMessageInfoArray ) {
+                sessionMsg.id = 0;
+                sessionMsg.senderId = [[msgItem objectForKey:@"doctorId"] intValue];
+                sessionMsg.doctorId = [[msgItem objectForKey:@"doctorId"] intValue];
+                sessionMsg.senderName = [msgItem objectForKey:@"doctorName"];
+                sessionMsg.sendType = SessionMessageSendTypeOther;
+                sessionMsg.content = [msgItem objectForKey:@"msg"];
+                sessionMsg.timeStamp = [msgItem objectForKey:@"createTime"];
+                
+                [[SessionMessageSqlite sharedManager] insertOne:sessionMsg];
+            }
+            block(sessionMessageInfoArray.count);
+        }        
+    } failed:^{
+        ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
+    } hitSuperView:nil method:kGet];
+}
+
+
 - (void)getMyDoctorSessionInfo:(void(^)(SessionMessage* msg))block withSuperView:(UIView *)superView
 {    NSString *interfaceUrl = [NSString stringWithFormat:@"chat/list/%@.json", [[UserBusiness sharedManager] getCurrentPatientID]];
     

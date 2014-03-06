@@ -25,7 +25,7 @@ static BOOL isLoadAllSession = FALSE;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        autoRefreshTimer =  [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getDoctorSessionInfo:) userInfo:nil repeats:YES];
+        autoRefreshTimer =  [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(getDoctorSessionInfo:) userInfo:nil repeats:YES];
         dateFormater = [[NSDateFormatter alloc] init];
         dateFormater.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     }
@@ -56,6 +56,8 @@ static BOOL isLoadAllSession = FALSE;
     
     [[DoctorBusiness sharedManager] setMyDoctorInfoSync];
     _titleLabel.text = [[[NSUserDefaults standardUserDefaults] objectForKey:DOCTOR_NAME_KEY] stringByAppendingString: @"医生"];
+    
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -161,7 +163,7 @@ static BOOL isLoadAllSession = FALSE;
     [UIView setAnimationDuration:0.3];
     
     int keyboardHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-    NSLog(@"keyboard height is :%d",keyboardHeight);
+//    NSLog(@"keyboard height is :%d",keyboardHeight);
     [self.toolBar setFrame:CGRectMake(0,DEVICE_HEIGHT-keyboardHeight-44-20, DEVICE_WIDTH, 44)];
     [UIView commitAnimations];
 }
