@@ -76,7 +76,10 @@ static BOOL isLoadAllSession = FALSE;
     // Dispose of any resources that can be recreated.
     [[SessionMessageSqlite sharedManager] closeDB];
 }
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 #pragma mark - Event Method
 - (void)backButtonClick
 {

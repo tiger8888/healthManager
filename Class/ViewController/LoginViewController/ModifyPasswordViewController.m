@@ -45,7 +45,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)dealloc
+{
+    if (IS_IOS7) {
+        
+    }
+    else {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+    }
+}
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.oldPassword resignFirstResponder];

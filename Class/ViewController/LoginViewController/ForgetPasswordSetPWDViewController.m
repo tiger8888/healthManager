@@ -47,7 +47,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.validationCode resignFirstResponder];

@@ -111,11 +111,9 @@ static LocationNotificationBusiness *_sharedManager;
 - (void)loadAll {
     NSLog(@"%s", __FUNCTION__);
     NSArray *result = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
-    NSLog(@"count=%d", result.count);
+//    NSLog(@"count=%d", result.count);
     for (MedinceRecordModel *obj in result) {
-        NSLog(@"a count = %d", [obj.remindTimeShip count]);
         for (MedinceRemindTimeModel *remindTimeObj in [obj.remindTimeShip allObjects]) {
-            NSLog(@"remindTime=%@",remindTimeObj.remindTime);
             NSArray *week = [self formatPeriodToNumber:remindTimeObj withPeriod:obj.period];
 //             NSLog(@"week=%@",week);
             if (week) {
@@ -238,16 +236,16 @@ static LocationNotificationBusiness *_sharedManager;
     
     if ( 0< weekIndex <8 ) {
         NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:nowDate];
-//        NSLog(@"week is %d", [comps weekday]);
-//        NSLog(@"index is %d", weekIndex);
         int dayDiff;
-        if (weekIndex ==7) {
-            //因为week=1是周日，要对周日做特殊处理，4的偏移
-            dayDiff = ([comps weekday]-weekIndex + 4+1)*(24*60*60);
+        int nowIndex = [comps weekday];
+        if (nowIndex == 1) {
+            //因为nowIndex=1是周日，要对周日做特殊处理
+            dayDiff = weekIndex - 7;
         }
         else {
-            dayDiff = ([comps weekday]-weekIndex)*(24*60*60);
+            dayDiff = weekIndex - nowIndex +1;
         }
+        dayDiff = dayDiff * (24*60*60);
         returnDateStr = [formater stringFromDate:[NSDate dateWithTimeIntervalSinceNow:dayDiff]];
     }
     else {
