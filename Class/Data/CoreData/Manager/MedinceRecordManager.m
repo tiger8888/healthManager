@@ -7,6 +7,7 @@
 //
 
 #import "MedinceRecordManager.h"
+#import "MedinceRemindTimeManager.h"
 
 @implementation MedinceRecordManager
 + (id)sharedManager
@@ -68,6 +69,12 @@
 
 - (BOOL)deleteOne:(NSManagedObject *)object {
     [[self getManagedObjectContext] deleteObject:object];
+    
+    NSSet *detailSet = [[object valueForKey:@"remindTimeShip"] copy];
+    for (NSManagedObject *detailObj in detailSet) {
+        [[MedinceRemindTimeManager sharedManager] deleteOne:detailObj];
+    }
+    
     return [self saveReturnFlag];
 }
 
