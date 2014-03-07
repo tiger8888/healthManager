@@ -103,13 +103,13 @@ static LocationNotificationBusiness *_sharedManager;
 
 
 - (void)removeAll {
-    NSLog(@"%s", __FUNCTION__);
+//    NSLog(@"%s", __FUNCTION__);
     //取消其它本地通知
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 
 - (void)loadAll {
-    NSLog(@"%s", __FUNCTION__);
+//    NSLog(@"%s", __FUNCTION__);
     NSArray *result = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
 //    NSLog(@"count=%d", result.count);
     for (MedinceRecordModel *obj in result) {
@@ -131,7 +131,7 @@ static LocationNotificationBusiness *_sharedManager;
     if (arr.count>0) {
         if ( key.length>0) {
             for (UILocalNotification *item in arr) {
-                NSLog(@"exist notification key:%@ value:%@", key, [item.userInfo objectForKey:key]);
+//                NSLog(@"exist notification key:%@ value:%@", key, [item.userInfo objectForKey:key]);
                 if ([[item.userInfo objectForKey:key] isEqualToString:@"1"]) {
                     [[UIApplication sharedApplication] cancelLocalNotification:item];
                     return YES;
