@@ -74,7 +74,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSString *key = [self getRemindTimeKey:section];
-    NSLog(@"key=%@", key);
     if ( ![_timeDataSource objectForKey:key] ) {
 //        NSLog(@"as");
         
@@ -87,11 +86,15 @@
     return [[_timeDataSource objectForKey:key] count] + 1;
 //    return 3;
 }
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return NO;
+//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return NO;
+    NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
+    [self goToAddMedince:obj];
 }
-
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
@@ -137,19 +140,13 @@
         case 901:
         {
             if (buttonIndex == 0) {
-                NSLog(@"alert 901 click 0");
                 return;
             }
             else if (buttonIndex == 1)
             {
-                NSLog(@"alert 901 click 1");
-                NSLog(@"%@", _deleteObject);
                 if (_deleteObject) {
                     NSDictionary *obj = [_deleteObject copy];
                     _deleteObject = nil;
-                    UITableViewCell *cell = [_tableView cellForRowAtIndexPath:(NSIndexPath *)[obj objectForKey:@"index"]];
-                    NSLog(@"cell text is :%@", cell.textLabel.text);
-                    cell.hidden = YES;
                     [[MedinceRecordManager sharedManager] deleteOne:[obj objectForKey:@"obj"]];
                     [self loadDataSource];
                     [_tableView reloadData];
@@ -160,20 +157,13 @@
         case 902:
         {
             if (buttonIndex == 0) {
-                NSLog(@"alert 902 click 0");
                 return;
             }
             else if (buttonIndex == 1)
             {
-                NSLog(@"alert 902 click 1");
-                NSLog(@"%@", _deleteObject);
                 if (_deleteObject) {
                     NSDictionary *obj = [_deleteObject copy];
-                    _deleteObject = nil;
-                    UITableViewCell *cell = [_tableView cellForRowAtIndexPath:(NSIndexPath *)[obj objectForKey:@"index"]];
-                    NSLog(@"cell text is :%@", cell.textLabel.text);
-                    cell.hidden = YES;
-                    [[MedinceRemindTimeManager sharedManager] deleteOne:[obj objectForKey:@"obj"]];
+                    _deleteObject = nil;                    [[MedinceRemindTimeManager sharedManager] deleteOne:[obj objectForKey:@"obj"]];
                     [self loadDataSource];
                     [_tableView reloadData];
                 }
@@ -195,7 +185,11 @@
 }
 
 - (void)addMedince:(id)sender {
+    [self goToAddMedince:nil];
+}
+- (void)goToAddMedince:(NSManagedObject *)obj {
     MedinceAddViewController *medinceAddCtl = [[MedinceAddViewController alloc] initWithCategory:21];
+    medinceAddCtl.medince = obj;
     [medinceAddCtl setBlock:^(void){
         [self loadDataSource];
         [_tableView reloadData];

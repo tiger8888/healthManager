@@ -19,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 @property (weak, nonatomic) IBOutlet UIButton *btnCancel;
 @property (weak, nonatomic) IBOutlet UILabel *periodLabel;
+
+@property (nonatomic, strong) NSManagedObject *medince;
 @end

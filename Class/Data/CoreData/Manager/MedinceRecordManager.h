@@ -14,6 +14,7 @@
 + (id)sharedManager;
 
 - (BOOL)addOne:(MedinceRecordModel *)model;
+- (BOOL)updateOne:(NSManagedObject *)model;
 - (NSArray *)fetchAll:(NSString *)uid;
 - (BOOL)deleteOne:(NSManagedObject *)object;
 @end
