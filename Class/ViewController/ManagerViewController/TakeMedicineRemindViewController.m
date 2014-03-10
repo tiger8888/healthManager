@@ -17,6 +17,7 @@
 {
     NSMutableDictionary *_timeDataSource;
     NSMutableDictionary *_deleteObject;
+    NSDate *_updateDate;
 }
 @end
 
@@ -35,10 +36,28 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    if ( _refreshHeaderView == nil) {
+        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0, 0-self.view.bounds.size.height, self.view.frame.size.width, self.view.bounds.size.height) arrowImageName:@"pull_refresh_downArrow" textColor:[UIColor grayColor]];
+        view.delegate = self;
+        [_tableView addSubview:view];
+        _refreshHeaderView = view;
+        view = nil;
+    }
+    
+    [_refreshHeaderView refreshLastUpdatedDate];
+    
     [self addAddButtonOnNavigation];
     [self loadDataSource];
 }
 
+- (void)viewDidUnload
+{
+    _refreshHeaderView = nil;
+}
+- (void)dealloc
+{
+    _refreshHeaderView = nil;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -59,20 +78,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    if ( indexPath.row == 0) {
-        cell = [self buildTitleCell:tableView indexPath:indexPath];
+    if (indexPath.section>=_dataSource.count) {
+        cell = [self buildMoreCell:tableView indexPath:indexPath];
     }
     else {
-        cell = [self buildTimeCell:tableView indexPath:indexPath];
+        if ( indexPath.row == 0) {
+            cell = [self buildTitleCell:tableView indexPath:indexPath];
+        }
+        else {
+            cell = [self buildTimeCell:tableView indexPath:indexPath];
+        }
     }
     return cell;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return  _dataSource.count;
+    return  _dataSource.count>0?(_dataSource.count+1):0;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section>=_dataSource.count) {
+        return 1;
+    }
+    
     NSString *key = [self getRemindTimeKey:section];
     if ( ![_timeDataSource objectForKey:key] ) {
 //        NSLog(@"as");
@@ -102,6 +130,9 @@
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section>=_dataSource.count) {
+        return;
+    }
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         if (indexPath.row == 0) {
             NSLog(@"delete medince");
@@ -201,6 +232,25 @@
     _dataSource = [NSArray new];
     _dataSource = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
     _timeDataSource = [NSMutableDictionary new];
+    _updateDate = [NSDate date];
+    NSLog(@"data source count is :%d",_dataSource.count);
+}
+
+- (UITableViewCell *)buildMoreCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    static NSString *cellTitleIdentity = @"remindCellMore";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellTitleIdentity];
+    if (!cell)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTitleIdentity];
+    }
+    
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake((DEVICE_WIDTH - 120)/2, 8, 120, 28)];
+    [btn setBackgroundImage:[UIImage imageNamed:@"btn_bg_gray"] forState:UIControlStateNormal];
+    [btn setTitle:@"更多" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(fetchNextPageData:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:btn];
+    return cell;
 }
 
 - (UITableViewCell *)buildTitleCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
@@ -273,6 +323,16 @@
     [self.navigationController pushViewController:setTimeCtl animated:YES];
 }
 
+- (void)fetchNextPageData:(id)sender {
+    NSArray *nextPageData = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
+    NSMutableArray *tmpData = [NSMutableArray arrayWithArray:_dataSource];
+    for (NSManagedObject *item in nextPageData) {
+        [tmpData addObject:item];
+    }
+    _dataSource = tmpData;    
+    [_tableView reloadData];
+    _updateDate = [NSDate date];
+}
 - (NSString *)getRemindTimeKey:(NSInteger)section {
     NSString *key = [NSString stringWithFormat:@"detail_%d", section];
     return key;
@@ -324,5 +384,53 @@
     }
     
     return weekName;
+}
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	[self reloadTableViewDataSource];
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+	
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	return _reloading; // should return if data source model is reloading
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+//	return [NSDate date]; // should return date data source was last changed
+    return _updateDate?_updateDate:[NSDate date];
+}
+
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{
+	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+	_reloading = YES;
+	[self loadDataSource];
+    [_tableView reloadData];
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
+	
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 @end

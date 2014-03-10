@@ -14,6 +14,11 @@
 		37991D5518B32B8A005C0FDE /* BloodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37991D5418B32B8A005C0FDE /* BloodListCell.m */; };
 		37A1797618961CF9003AE118 /* DoctorBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A1797518961CF9003AE118 /* DoctorBusiness.m */; };
 		37A3E56C187E31B500F075B0 /* AppPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37A3E56B187E31B500F075B0 /* AppPropertyList.plist */; };
+		37A411C518CD5F13008A2241 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A411C418CD5F13008A2241 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		37A411C818CD80E8008A2241 /* pull_refresh_downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A411C618CD80E8008A2241 /* pull_refresh_downArrow.png */; };
+		37A411C918CD80E8008A2241 /* pull_refresh_downArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A411C718CD80E8008A2241 /* pull_refresh_downArrow@2x.png */; };
+		37A411CE18CD8C59008A2241 /* HealthManager-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37A411CC18CD8C59008A2241 /* HealthManager-Info.plist */; };
+		37A411D518CD8EF3008A2241 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37A411D718CD8EF3008A2241 /* Localizable.strings */; };
 		37A73D8A18B6F12D005D4477 /* MedinceRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D8918B6F12D005D4477 /* MedinceRecordManager.m */; };
 		37A73D8D18B6F25B005D4477 /* MedinceRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D8C18B6F25B005D4477 /* MedinceRecordModel.m */; };
 		37A73D9118B6F459005D4477 /* MedinceAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D8F18B6F459005D4477 /* MedinceAddViewController.m */; };
@@ -225,6 +230,16 @@
 		37A1797418961CF9003AE118 /* DoctorBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorBusiness.h; sourceTree = "<group>"; };
 		37A1797518961CF9003AE118 /* DoctorBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DoctorBusiness.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		37A3E56B187E31B500F075B0 /* AppPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppPropertyList.plist; path = HealthManager/AppPropertyList.plist; sourceTree = SOURCE_ROOT; };
+		37A411C318CD5F13008A2241 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		37A411C418CD5F13008A2241 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		37A411C618CD80E8008A2241 /* pull_refresh_downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pull_refresh_downArrow.png; sourceTree = "<group>"; };
+		37A411C718CD80E8008A2241 /* pull_refresh_downArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_refresh_downArrow@2x.png"; sourceTree = "<group>"; };
+		37A411CD18CD8C59008A2241 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = "en.lproj/HealthManager-Info.plist"; sourceTree = "<group>"; };
+		37A411CF18CD8D2F008A2241 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/HealthManager-Info.plist"; sourceTree = "<group>"; };
+		37A411D018CD8D2F008A2241 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		37A411D118CD8D2F008A2241 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		37A411D618CD8EF3008A2241 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		37A411D818CD8EF5008A2241 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		37A73D8818B6F12D005D4477 /* MedinceRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedinceRecordManager.h; sourceTree = "<group>"; };
 		37A73D8918B6F12D005D4477 /* MedinceRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedinceRecordManager.m; sourceTree = "<group>"; };
 		37A73D8B18B6F25B005D4477 /* MedinceRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedinceRecordModel.h; sourceTree = "<group>"; };
@@ -369,7 +384,6 @@
 		8B94AB041848663200CA5869 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8B94AB061848663200CA5869 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8B94AB081848663200CA5869 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		8B94AB0C1848663300CA5869 /* HealthManager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HealthManager-Info.plist"; sourceTree = "<group>"; };
 		8B94AB0E1848663300CA5869 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8B94AB101848663300CA5869 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8B94AB121848663300CA5869 /* HealthManager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HealthManager-Prefix.pch"; sourceTree = "<group>"; };
@@ -556,6 +570,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37A411C218CD5F13008A2241 /* RefreshTableHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				37A411C318CD5F13008A2241 /* EGORefreshTableHeaderView.h */,
+				37A411C418CD5F13008A2241 /* EGORefreshTableHeaderView.m */,
+			);
+			path = RefreshTableHeaderView;
+			sourceTree = "<group>";
+		};
+		37A411D218CD8EC9008A2241 /* i18n */ = {
+			isa = PBXGroup;
+			children = (
+				37A411D718CD8EF3008A2241 /* Localizable.strings */,
+			);
+			name = i18n;
+			path = ../Resource;
+			sourceTree = "<group>";
+		};
 		37AB599C18C017D90093C2A4 /* BloodListCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +760,7 @@
 		8B94AB0A1848663200CA5869 /* HealthManager */ = {
 			isa = PBXGroup;
 			children = (
+				37A411CC18CD8C59008A2241 /* HealthManager-Info.plist */,
 				8B94AB131848663300CA5869 /* AppDelegate.h */,
 				8B94AB141848663300CA5869 /* AppDelegate.m */,
 				8B94AB191848663300CA5869 /* Images.xcassets */,
@@ -741,7 +774,7 @@
 		8B94AB0B1848663200CA5869 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8B94AB0C1848663300CA5869 /* HealthManager-Info.plist */,
+				37A411D218CD8EC9008A2241 /* i18n */,
 				8B94AB0D1848663300CA5869 /* InfoPlist.strings */,
 				8B94AB101848663300CA5869 /* main.m */,
 				8B94AB121848663300CA5869 /* HealthManager-Prefix.pch */,
@@ -796,6 +829,7 @@
 		8BFE173C187FEC5600D1F48A /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				37A411C218CD5F13008A2241 /* RefreshTableHeaderView */,
 				37AFC02C18C81F6600FA0CE9 /* PPCheckBox */,
 				37C1D8DA18B58B9C001CB98D /* ZBarSDK */,
 				7F37E17D18A8A2A600E7EFAB /* JSBadgeView */,
@@ -1147,6 +1181,8 @@
 		B823225B185F48EA005F2409 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				37A411C618CD80E8008A2241 /* pull_refresh_downArrow.png */,
+				37A411C718CD80E8008A2241 /* pull_refresh_downArrow@2x.png */,
 				37AFC03218C8668200FA0CE9 /* btn_bg_checked_border.png */,
 				37AFC03018C838C500FA0CE9 /* btn_bg_unchecked.png */,
 				37CAEDF018C5593400E82575 /* btn_pwd_1.png */,
@@ -1274,6 +1310,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 8B94AAF61848663200CA5869;
 			productRefGroup = 8B94AB001848663200CA5869 /* Products */;
@@ -1295,11 +1332,13 @@
 				B8232283185F48EA005F2409 /* bbi_left@2x.png in Resources */,
 				37AFC03318C8668200FA0CE9 /* btn_bg_checked_border.png in Resources */,
 				37A854501888EB4500543874 /* AnnouncementViewController.xib in Resources */,
+				37A411D518CD8EF3008A2241 /* Localizable.strings in Resources */,
 				B823229E185F48EA005F2409 /* main_btn_2@2x.png in Resources */,
 				B823228D185F48EA005F2409 /* bt_cancel@2x.png in Resources */,
 				B8232282185F48EA005F2409 /* arrow@2x.png in Resources */,
 				B8232287185F48EA005F2409 /* blood_segment_selected_1@2x.png in Resources */,
 				B82322A5185F48EA005F2409 /* portrait@2x.png in Resources */,
+				37A411C818CD80E8008A2241 /* pull_refresh_downArrow.png in Resources */,
 				B823228F185F48EA005F2409 /* bt_login@2x.png in Resources */,
 				8B9BEEB61887736200A669C1 /* defaultProfile.png in Resources */,
 				B8232293185F48EA005F2409 /* bt_pop_ok@2x.png in Resources */,
@@ -1358,6 +1397,7 @@
 				37C42ACB18B43FED00C201C2 /* arrow_up.png in Resources */,
 				37A8BA9218AC4FE100321C31 /* btn_bg_1@2x.png in Resources */,
 				9C0BFFB91886D944002845D9 /* AlertViewController.xib in Resources */,
+				37A411C918CD80E8008A2241 /* pull_refresh_downArrow@2x.png in Resources */,
 				B8232284185F48EA005F2409 /* blood_segment_1@2x.png in Resources */,
 				B8232291185F48EA005F2409 /* bt_ok@2x.png in Resources */,
 				B823228E185F48EA005F2409 /* bt_forget@2x.png in Resources */,
@@ -1366,6 +1406,7 @@
 				B823229C185F48EA005F2409 /* login_background@2x.png in Resources */,
 				9C0BFFC21886D944002845D9 /* DoctorViewController.xib in Resources */,
 				B8232289185F48EA005F2409 /* blood_segment_selected_3@2x.png in Resources */,
+				37A411CE18CD8C59008A2241 /* HealthManager-Info.plist in Resources */,
 				B8232285185F48EA005F2409 /* blood_segment_2@2x.png in Resources */,
 				37BF94371891EE8300B50627 /* Template.html in Resources */,
 				9C0BFFCE1886D944002845D9 /* MoreViewController.xib in Resources */,
@@ -1408,6 +1449,7 @@
 				9C0BFFC91886D944002845D9 /* MainViewController.m in Sources */,
 				37A8BA9B18AC9B7B00321C31 /* ScanCodeViewController.m in Sources */,
 				37A73D9118B6F459005D4477 /* MedinceAddViewController.m in Sources */,
+				37A411C518CD5F13008A2241 /* EGORefreshTableHeaderView.m in Sources */,
 				37AB59A518C032210093C2A4 /* DPListCell.m in Sources */,
 				37C64EA0188CEF970041BAA7 /* ForgetPasswordViewController.m in Sources */,
 				37CBF47B18A85B93001DE66A /* BaseManager.m in Sources */,
@@ -1507,10 +1549,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		37A411CC18CD8C59008A2241 /* HealthManager-Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				37A411CD18CD8C59008A2241 /* en */,
+				37A411CF18CD8D2F008A2241 /* zh-Hans */,
+			);
+			name = "HealthManager-Info.plist";
+			sourceTree = "<group>";
+		};
+		37A411D718CD8EF3008A2241 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				37A411D618CD8EF3008A2241 /* en */,
+				37A411D818CD8EF5008A2241 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		8B94AB0D1848663300CA5869 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8B94AB0E1848663300CA5869 /* en */,
+				37A411D018CD8D2F008A2241 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1519,6 +1580,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B94AB2B1848663300CA5869 /* en */,
+				37A411D118CD8D2F008A2241 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

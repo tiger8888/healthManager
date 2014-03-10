@@ -1,0 +1,19 @@
+/* 
+  i18n.strings
+  HealthManager
+
+  Created by user on 14-3-10.
+  Copyright (c) 2014年 LiShuo. All rights reserved.
+*/
+
+//Pull down to refresh status
+"Pull down to refresh..." = "Pull down to refresh status";
+
+//Release to refresh status
+"Release to refresh..." = "Release to refresh status";
+
+//Loading Status
+"Loading..." = "Loading Status";
+
+//Last Updated
+"Last Updated..." = "Last Updated";
