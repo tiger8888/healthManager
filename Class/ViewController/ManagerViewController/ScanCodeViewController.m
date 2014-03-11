@@ -52,24 +52,26 @@
     bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, DEVICE_HEIGHT-44-22+2, DEVICE_WIDTH, 44)];
     bottomView.backgroundColor = [UIColor lightGrayColor];
 
-    
-    btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(20, 4, 120, 36)];
-    [btnSubmit setTitle:@"手动输入" forState:UIControlStateNormal];
-    [btnSubmit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btnSubmit setBackgroundImage:[UIImage imageNamed:@"btn_bg_gray"] forState:UIControlStateNormal];
-    [btnSubmit addTarget:self action:@selector(inputCodeClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-    btnCancel = [[UIButton alloc] initWithFrame:CGRectMake(180, 4, 120, 36)];
-    [btnCancel setTitle:@"取消" forState:UIControlStateNormal];
-    [btnCancel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btnCancel setBackgroundImage:[UIImage imageNamed:@"btn_bg_gray"] forState:UIControlStateNormal];
-    [btnCancel addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+    btnSubmit = [self buildUIButton:CGRectMake(20, 4, 120, 36) title:@"手动输入" selector:@selector(inputCodeClick:)];
+    btnCancel = [self buildUIButton:CGRectMake(180, 4, 120, 36) title:@"取消" selector:@selector(cancel:)];
 
     [bottomView addSubview:btnSubmit];
     [bottomView addSubview:btnCancel];
     
     [self.view addSubview:bottomView];
     [self.view addSubview:maskView];
+}
+
+- (UIButton *)buildUIButton:(CGRect)frame title:(NSString *)title selector:(SEL)selector {
+    UIButton *btn = [[UIButton alloc] initWithFrame:frame];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
+    
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:@"btn_bg_gray"] forState:UIControlStateNormal];
+    
+
+    return btn;
 }
 
 - (void)showScanView {

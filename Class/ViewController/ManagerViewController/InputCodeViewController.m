@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.codeText becomeFirstResponder];
-    self.codeText.text = @"81290090508502782164";
+//    self.codeText.text = @"81290090508502782164";
 }
 
 - (void)didReceiveMemoryWarning

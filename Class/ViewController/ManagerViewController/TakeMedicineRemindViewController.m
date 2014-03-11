@@ -31,7 +31,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -39,7 +38,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     _recorderPage = 1;
     _recorderLimit = 10;
@@ -79,7 +77,6 @@
     _tableView = [[UITableView alloc] initWithFrame:FULLSCREEN style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-//    _tableView.editing = YES;
     [self.view addSubview:_tableView];
 }
 
@@ -100,6 +97,7 @@
     }
     return cell;
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (_dataSource.count>0) {
@@ -115,6 +113,7 @@
     }
 //    return  _dataSource.count>0?(_dataSource.count+1):0;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section>=_dataSource.count) {
@@ -124,7 +123,6 @@
     NSString *key = [self getRemindTimeKey:section];
     if ( ![_timeDataSource objectForKey:key] ) {
 //        NSLog(@"as");
-        
         [_timeDataSource setObject:[[MedinceRemindTimeManager sharedManager] fetchAll:[[_dataSource objectAtIndex:section] valueForKey:@"id"]] forKey:key];
     }
     else {
@@ -134,10 +132,7 @@
     return [[_timeDataSource objectForKey:key] count] + 1;
 //    return 3;
 }
-//- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return NO;
-//}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==_dataSource.count) {
@@ -148,11 +143,13 @@
         [self goToAddMedince:obj];
     }
 }
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
     [_tableView setEditing:editing animated:animated];
 }
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section>=_dataSource.count) {
@@ -161,34 +158,15 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         if (indexPath.row == 0) {
 //            NSLog(@"delete medince");
-            NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
-            NSString *name = [obj valueForKey:@"name"];
-            if (name == NULL) name = @"";
-            _deleteObject = [NSMutableDictionary new];
-            [_deleteObject setObject:obj forKey:@"obj"];
-            [_deleteObject setObject:indexPath forKey:@"index"];
-            NSString *alertMessage = [NSString stringWithFormat:@"删除药品【%@】及其提醒？", name];
-            ALERTOPRATE(@"", alertMessage, 901);
+            [self readyForDeleteMedinceRecord:indexPath];
         }
         else if (indexPath.row > 0) {
 //            NSLog(@"delete time");
-            NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
-            NSString *name = [obj valueForKey:@"name"];
-            if (name == NULL) name = @"";
-            
-            NSArray *remindTimeArray = [_timeDataSource objectForKey:[self getRemindTimeKey:indexPath.section]];
-            NSManagedObject *detailObj = [remindTimeArray objectAtIndex:(indexPath.row-1)];
-            NSString *time = [detailObj  valueForKey:@"remindTime"];
-
-            NSString *alertMessage = [NSString stringWithFormat:@"删除药品【%@】在【%@】时的提醒？", name, time];
-
-            _deleteObject = [NSMutableDictionary new];
-            [_deleteObject setObject:detailObj forKey:@"obj"];
-            [_deleteObject setObject:indexPath forKey:@"index"];
-            ALERTOPRATE(@"", alertMessage, 902);
+            [self readyForDeleteMedinceRemindTimeRecord:indexPath];
         }
     }
 }
+
 #pragma mark - AlertDelegate Method
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -200,13 +178,7 @@
             }
             else if (buttonIndex == 1)
             {
-                if (_deleteObject) {
-                    NSDictionary *obj = [_deleteObject copy];
-                    _deleteObject = nil;
-                    [[MedinceRecordManager sharedManager] deleteOne:[obj objectForKey:@"obj"]];
-                    [self loadDataSource];
-                    [_tableView reloadData];
-                }
+                [self deleteMedinceRecord];
             }
         }
             break;
@@ -217,12 +189,7 @@
             }
             else if (buttonIndex == 1)
             {
-                if (_deleteObject) {
-                    NSDictionary *obj = [_deleteObject copy];
-                    _deleteObject = nil;                    [[MedinceRemindTimeManager sharedManager] deleteOne:[obj objectForKey:@"obj"]];
-                    [self loadDataSource];
-                    [_tableView reloadData];
-                }
+                [self deleteMedinceRemindTimeRecord];
             }
 
         }
@@ -231,6 +198,7 @@
             break;
     }
 }
+
 #pragma mark - 自定义方法
 - (void)addAddButtonOnNavigation {
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -240,6 +208,52 @@
     [_navigationBar addSubview:addBtn];
 }
 
+- (void)readyForDeleteMedinceRecord:(NSIndexPath *)indexPath {
+    NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
+    NSString *name = [obj valueForKey:@"name"];
+    if (name == NULL) name = @"";
+    _deleteObject = [NSMutableDictionary new];
+    [_deleteObject setObject:obj forKey:@"obj"];
+    [_deleteObject setObject:indexPath forKey:@"index"];
+    NSString *alertMessage = [NSString stringWithFormat:@"删除药品【%@】及其提醒？", name];
+    ALERTOPRATE(@"", alertMessage, 901);
+}
+
+- (void)readyForDeleteMedinceRemindTimeRecord:(NSIndexPath *)indexPath {
+    NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
+    NSString *name = [obj valueForKey:@"name"];
+    if (name == NULL) name = @"";
+    
+    NSArray *remindTimeArray = [_timeDataSource objectForKey:[self getRemindTimeKey:indexPath.section]];
+    NSManagedObject *detailObj = [remindTimeArray objectAtIndex:(indexPath.row-1)];
+    NSString *time = [detailObj  valueForKey:@"remindTime"];
+    
+    NSString *alertMessage = [NSString stringWithFormat:@"删除药品【%@】在【%@】时的提醒？", name, time];
+    
+    _deleteObject = [NSMutableDictionary new];
+    [_deleteObject setObject:detailObj forKey:@"obj"];
+    [_deleteObject setObject:indexPath forKey:@"index"];
+    ALERTOPRATE(@"", alertMessage, 902);
+}
+
+- (void)deleteMedinceRecord {
+    if (_deleteObject) {
+        NSDictionary *obj = [_deleteObject copy];
+        _deleteObject = nil;
+        [[MedinceRecordManager sharedManager] deleteOne:[obj objectForKey:@"obj"]];
+        [self reloadDataSourceAndRefresh];
+    }
+}
+
+- (void)deleteMedinceRemindTimeRecord {
+    if (_deleteObject) {
+        NSDictionary *obj = [_deleteObject copy];
+        _deleteObject = nil;
+        [[MedinceRemindTimeManager sharedManager] deleteOne:[obj objectForKey:@"obj"]];
+        [self reloadDataSourceAndRefresh];
+    }
+}
+
 - (void)addMedince:(id)sender {
     [self goToAddMedince:nil];
 }
@@ -247,28 +261,30 @@
     MedinceAddViewController *medinceAddCtl = [[MedinceAddViewController alloc] initWithCategory:21];
     medinceAddCtl.medince = obj;
     [medinceAddCtl setBlock:^(void){
-        [self loadDataSource];
-        [_tableView reloadData];
+        [self reloadDataSourceAndRefresh];
     }];
     [self.navigationController pushViewController:medinceAddCtl animated:YES];
 }
 
 - (void)loadDataSource {
     _dataSource = [NSArray new];
-//    _dataSource = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
-     _dataSource = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID] page:_recorderPage++ num:_recorderLimit];
+    _dataSource = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID] page:_recorderPage num:_recorderLimit];
     if (_dataSource.count<=0) {
         _recorderFetchAll = YES;
-        _recorderPage--;
+//        _recorderPage--;
     }
     _timeDataSource = [NSMutableDictionary new];
     _updateDate = [NSDate date];
 //    NSLog(@"data source count is :%d",_dataSource.count);
 }
 
+- (void)reloadDataSourceAndRefresh {
+    [self loadDataSource];
+    [_tableView reloadData];
+}
+
 - (UITableViewCell *)buildMoreCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     //////
-//    [self fetchNextPageData:nil];
     [self performSelectorInBackground:@selector(fetchNextPageData:) withObject:nil];
     //////
     static NSString *cellTitleIdentity = @"remindCellMore";
@@ -332,8 +348,7 @@
     SetUsingMedinceTimeViewController *setTimeCtl = [[SetUsingMedinceTimeViewController alloc] initWithCategory:22];
     setTimeCtl.medince = [_dataSource objectAtIndex:[(UIButton *)sender tag]];
     [setTimeCtl setBlock:^(void){
-        [self loadDataSource];
-        [_tableView reloadData];
+        [self reloadDataSourceAndRefresh];
     }];
     [self.navigationController pushViewController:setTimeCtl animated:YES];
 }
@@ -346,8 +361,7 @@
     SetUsingMedinceTimeViewController *setTimeCtl = [[SetUsingMedinceTimeViewController alloc] initWithCategory:22];
     setTimeCtl.medince = [_dataSource objectAtIndex:section];
     [setTimeCtl setBlock:^(void){
-        [self loadDataSource];
-        [_tableView reloadData];
+        [self reloadDataSourceAndRefresh];
     }];
     
     
@@ -358,10 +372,12 @@
 }
 
 - (void)fetchNextPageData:(id)sender {
-    NSLog(@"page=%d",_recorderPage);
+//    NSLog(@"page=%d",_recorderPage);
+    _recorderPage++;
+    
     NSArray *nextPageData = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID] page:_recorderPage num:_recorderLimit];
     if (nextPageData.count>0) {
-        _recorderPage++;
+//        _recorderPage++;
         
         NSMutableArray *tmpData = [NSMutableArray arrayWithArray:_dataSource];
         for (NSManagedObject *item in nextPageData) {
@@ -371,6 +387,7 @@
     }
     else {
         _recorderFetchAll = YES;
+        _recorderPage--;
     }
     [_tableView reloadData];
     _updateDate = [NSDate date];
@@ -455,8 +472,7 @@
 	_reloading = YES;
     _recorderPage = 1;
     _recorderFetchAll = NO;
-	[self loadDataSource];
-    [_tableView reloadData];
+	[self reloadDataSourceAndRefresh];
 }
 
 - (void)doneLoadingTableViewData{
