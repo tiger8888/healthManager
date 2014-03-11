@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Class/ViewController/BloodViewController/LineChartView.m"
-            timestampString = "415699773.61934"
+            timestampString = "416220315.725406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "-drawRect:"
             landmarkType = "5">
          </BreakpointContent>

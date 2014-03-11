@@ -59,6 +59,7 @@
     int coordinateLabelWidth = vOrdinateLabelWidth;
     
     UIColor *coordinateLabelFontColor = UICOLORFROMRGB(0x333333);
+    UIFont *coordinateLabelFont = [UIFont systemFontOfSize:12];
 
     _newCoordinateX = vOrdinateLabelWidth;//x位置由纵坐标数值的标签宽度决定
     _newCoordinateY = coordinateLabelHeight/2;
@@ -80,6 +81,7 @@
         [label setBackgroundColor:[UIColor clearColor]];
         [label setTextColor:coordinateLabelFontColor];
         [label setText:[vDesc objectAtIndex:i]];
+        [label setFont:coordinateLabelFont];
         [self addSubview:label];
         
         CGContextMoveToPoint(context, beginPoint.x, beginPoint.y);
@@ -98,6 +100,7 @@
     [label setBackgroundColor:[UIColor clearColor]];
     [label setTextColor:coordinateLabelFontColor];
     [label setText:[vDesc objectAtIndex:0]];
+    [label setFont:coordinateLabelFont];
     [self addSubview:label];
     [self drawCoordinateBorderLineWith:context withBeginPoint:beginPoint withEndPoint:endPoint withColor:borderLineColorRef];
     y +=vGap;
@@ -123,6 +126,7 @@
             [label setBackgroundColor:[UIColor clearColor]];
             [label setTextColor:coordinateLabelFontColor];
             [label setText:[NSString stringWithFormat:@"%@", [hDesc objectAtIndex:i] ]];
+            [label setFont:coordinateLabelFont];
             [self addSubview:label];
         }
         
