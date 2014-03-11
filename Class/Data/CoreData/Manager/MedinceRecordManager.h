@@ -16,5 +16,6 @@
 - (BOOL)addOne:(MedinceRecordModel *)model;
 - (BOOL)updateOne:(NSManagedObject *)model;
 - (NSArray *)fetchAll:(NSString *)uid;
+- (NSArray *)fetchAll:(NSString *)uid page:(int)page num:(int)num;
 - (BOOL)deleteOne:(NSManagedObject *)object;
 @end

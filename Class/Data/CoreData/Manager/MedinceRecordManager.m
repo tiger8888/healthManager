@@ -50,7 +50,29 @@
 {
     return [self saveReturnFlag];
 }
+- (NSArray *)fetchAll:(NSString *)uid page:(int)page num:(int)num {
+    if (page<1) page = 1;
+    if (num<1) num = 10;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:[self getManagedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"uid = %@", uid];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"createTime" ascending:NO];
+    fetchRequest.sortDescriptors = [NSArray arrayWithObject:sort];
+    [fetchRequest setFetchLimit:num];
+    [fetchRequest setFetchOffset:((page-1)*num)];
+    NSError *error = nil;
+    NSArray *objs = [[self getManagedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    
+    if (error)
+    {
+        [NSException raise:@"查询错误" format:@"%@", [error localizedDescription]];
+    }
+    return objs;
 
+}
 - (NSArray *)fetchAll:(NSString *)uid {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:[self getManagedObjectContext]];

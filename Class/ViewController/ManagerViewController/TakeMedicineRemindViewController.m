@@ -18,6 +18,10 @@
     NSMutableDictionary *_timeDataSource;
     NSMutableDictionary *_deleteObject;
     NSDate *_updateDate;
+
+    int _recorderPage;
+    int _recorderLimit;
+    BOOL _recorderFetchAll;
 }
 @end
 
@@ -36,6 +40,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    _recorderPage = 1;
+    _recorderLimit = 10;
+    _recorderFetchAll = NO;
+    
     if ( _refreshHeaderView == nil) {
         EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0, 0-self.view.bounds.size.height, self.view.frame.size.width, self.view.bounds.size.height) arrowImageName:@"pull_refresh_downArrow" textColor:[UIColor grayColor]];
         view.delegate = self;
@@ -93,7 +102,18 @@
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return  _dataSource.count>0?(_dataSource.count+1):0;
+    if (_dataSource.count>0) {
+        if (_recorderFetchAll) {
+            return _dataSource.count;
+        }
+        else {
+            return _dataSource.count+1;
+        }
+    }
+    else {
+        return 0;
+    }
+//    return  _dataSource.count>0?(_dataSource.count+1):0;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -120,8 +140,13 @@
 //}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
-    [self goToAddMedince:obj];
+    if (indexPath.section==_dataSource.count) {
+        return;
+    }
+    else {
+        NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
+        [self goToAddMedince:obj];
+    }
 }
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
@@ -135,7 +160,7 @@
     }
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         if (indexPath.row == 0) {
-            NSLog(@"delete medince");
+//            NSLog(@"delete medince");
             NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
             NSString *name = [obj valueForKey:@"name"];
             if (name == NULL) name = @"";
@@ -146,7 +171,7 @@
             ALERTOPRATE(@"", alertMessage, 901);
         }
         else if (indexPath.row > 0) {
-            NSLog(@"delete time");
+//            NSLog(@"delete time");
             NSManagedObject *obj = (NSManagedObject *)[_dataSource objectAtIndex:[indexPath section]];
             NSString *name = [obj valueForKey:@"name"];
             if (name == NULL) name = @"";
@@ -230,13 +255,22 @@
 
 - (void)loadDataSource {
     _dataSource = [NSArray new];
-    _dataSource = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
+//    _dataSource = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
+     _dataSource = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID] page:_recorderPage++ num:_recorderLimit];
+    if (_dataSource.count<=0) {
+        _recorderFetchAll = YES;
+        _recorderPage--;
+    }
     _timeDataSource = [NSMutableDictionary new];
     _updateDate = [NSDate date];
-    NSLog(@"data source count is :%d",_dataSource.count);
+//    NSLog(@"data source count is :%d",_dataSource.count);
 }
 
 - (UITableViewCell *)buildMoreCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    //////
+//    [self fetchNextPageData:nil];
+    [self performSelectorInBackground:@selector(fetchNextPageData:) withObject:nil];
+    //////
     static NSString *cellTitleIdentity = @"remindCellMore";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellTitleIdentity];
     if (!cell)
@@ -317,19 +351,27 @@
     }];
     
     
-    NSLog(@"section=%d,row=%d",section, row);
+//    NSLog(@"section=%d,row=%d",section, row);
     NSArray *remindTimeArray = [_timeDataSource objectForKey:[self getRemindTimeKey:section]];
     setTimeCtl.remindTime = [remindTimeArray objectAtIndex:(row-1)];
     [self.navigationController pushViewController:setTimeCtl animated:YES];
 }
 
 - (void)fetchNextPageData:(id)sender {
-    NSArray *nextPageData = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID]];
-    NSMutableArray *tmpData = [NSMutableArray arrayWithArray:_dataSource];
-    for (NSManagedObject *item in nextPageData) {
-        [tmpData addObject:item];
+    NSLog(@"page=%d",_recorderPage);
+    NSArray *nextPageData = [[MedinceRecordManager sharedManager] fetchAll:[[UserBusiness sharedManager] getCurrentPatientID] page:_recorderPage num:_recorderLimit];
+    if (nextPageData.count>0) {
+        _recorderPage++;
+        
+        NSMutableArray *tmpData = [NSMutableArray arrayWithArray:_dataSource];
+        for (NSManagedObject *item in nextPageData) {
+            [tmpData addObject:item];
+        }
+        _dataSource = tmpData;    
     }
-    _dataSource = tmpData;    
+    else {
+        _recorderFetchAll = YES;
+    }
     [_tableView reloadData];
     _updateDate = [NSDate date];
 }
@@ -411,6 +453,8 @@
 	//  should be calling your tableviews data source model to reload
 	//  put here just for demo
 	_reloading = YES;
+    _recorderPage = 1;
+    _recorderFetchAll = NO;
 	[self loadDataSource];
     [_tableView reloadData];
 }
