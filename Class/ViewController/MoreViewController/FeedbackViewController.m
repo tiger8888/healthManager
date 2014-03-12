@@ -93,6 +93,7 @@
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
         if ( [[Message sharedManager] checkReturnInfor:[dataDictionary objectForKey:@"resultInfo"]] ) {
             ALERT(@"提示信息", @"非常感谢您在百忙之中提出的好建议，希望您继续支持我们", @"确定");
+            [self.navigationController popViewControllerAnimated:YES];
         }
     } failed:^{
         
@@ -107,12 +108,9 @@
     
     int keyboardHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
 
-    float btnSubmitHeight = keyboardHeight;
-    if (IS_IOS7) {
-        btnSubmitHeight = keyboardHeight + 88;
-    }
+    float btnSubmitTop = DEVICE_HEIGHT - keyboardHeight - 60;
 
-    self.btnSubmit.frame = CGRectMake(self.btnSubmit.frame.origin.x, btnSubmitHeight, self.btnSubmit.frame.size.width, self.btnSubmit.frame.size.height);
+    self.btnSubmit.frame = CGRectMake(self.btnSubmit.frame.origin.x, btnSubmitTop, self.btnSubmit.frame.size.width, self.btnSubmit.frame.size.height);
     _textView.frame = CGRectMake(20, 88, 280, self.btnSubmit.frame.origin.y - 20-_textView.frame.origin.y);
     
     [UIView commitAnimations];
