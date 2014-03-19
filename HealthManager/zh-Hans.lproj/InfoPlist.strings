@@ -1,2 +1,3 @@
 /* Localized versions of Info.plist keys */
 CFBundleDisplayName="慢性病管理系统";
+CFBundleName="慢性病管理系统";
