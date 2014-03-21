@@ -31,6 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self customInit];
+    
     if (IS_IOS7) {
         //不需要根据键盘高度调整布局
     }else {
@@ -39,7 +41,58 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard) name:UIKeyboardWillHideNotification object:nil];
     }
 }
-
+- (void)customInit {
+    int textFieldX = 104;
+    int textFieldY = 86;
+    int textFieldHeight = 36;
+    int textFieldWidth = 196;
+    
+    _lsOldPassword = [[LSTextField alloc] initWithFrame:CGRectMake(textFieldX, textFieldY, textFieldWidth, textFieldHeight) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _lsOldPassword.retract = 4;
+    _lsOldPassword.textField.placeholder = @"请输入旧密码";
+    _lsOldPassword.textField.keyboardType = UIKeyboardTypeDefault;
+    _lsOldPassword.textField.textAlignment = NSTextAlignmentCenter;
+    _lsOldPassword.textField.secureTextEntry = YES;
+    _lsOldPassword.layer.zPosition = -1;
+    [self.view addSubview:_lsOldPassword];
+    
+    textFieldY += 44;
+    _lsNePassword = [[LSTextField alloc] initWithFrame:CGRectMake(textFieldX, textFieldY, textFieldWidth, textFieldHeight) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _lsNePassword.retract = 4;
+    _lsNePassword.textField.placeholder = @"请输入新密码";
+    _lsNePassword.textField.keyboardType = UIKeyboardTypeDefault;
+    _lsNePassword.textField.textAlignment = NSTextAlignmentCenter;
+    _lsNePassword.textField.secureTextEntry = YES;
+    _lsNePassword.layer.zPosition = -1;
+    [self.view addSubview:_lsNePassword];
+    
+    textFieldY += 44;
+    _lsConfirmPassword = [[LSTextField alloc] initWithFrame:CGRectMake(textFieldX, textFieldY, textFieldWidth, textFieldHeight) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _lsConfirmPassword.retract = 4;
+    _lsConfirmPassword.textField.placeholder = @"请输入确认新密码";
+    _lsConfirmPassword.textField.keyboardType = UIKeyboardTypeDefault;
+    _lsConfirmPassword.textField.textAlignment = NSTextAlignmentCenter;
+    _lsConfirmPassword.textField.secureTextEntry = YES;
+    _lsConfirmPassword.layer.zPosition = -1;
+    [self.view addSubview:_lsConfirmPassword];
+    
+    textFieldY += 44;
+    _lsValidationCode = [[LSTextField alloc] initWithFrame:CGRectMake(textFieldX, textFieldY, 102, textFieldHeight) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _lsValidationCode.retract = 4;
+    _lsValidationCode.textField.placeholder = @"输入验证码";
+    _lsValidationCode.textField.keyboardType = UIKeyboardTypeDefault;
+    _lsValidationCode.textField.textAlignment = NSTextAlignmentCenter;
+     _lsValidationCode.layer.zPosition = -1;
+    [self.view addSubview:_lsValidationCode];
+    
+    /**
+     *正式通过后，删除与下边4项有关的代码
+     */
+    self.nePassword.hidden = YES;
+    self.oldPassword.hidden = YES;
+    self.confirmPassword.hidden = YES;
+    self.validationCode.hidden = YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -56,6 +109,12 @@
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [_lsOldPassword.textField resignFirstResponder];
+    [_lsNePassword.textField resignFirstResponder];
+    [_lsConfirmPassword.textField resignFirstResponder];
+    [_lsValidationCode.textField resignFirstResponder];
+    
+    ////
     [self.oldPassword resignFirstResponder];
     [self.nePassword resignFirstResponder];
     [self.confirmPassword resignFirstResponder];
@@ -85,17 +144,17 @@
 }
 
 - (IBAction)submitOnClick:(id)sender {
-    if ( ![[Message sharedManager] checkPassword:self.oldPassword.text] ) {
+    if ( ![[Message sharedManager] checkPassword:_lsOldPassword.textField.text] ) {
 //        [self.oldPassword becomeFirstResponder];
         return;
     }
-    if ( ![[Message sharedManager] checkPassword:self.nePassword.text] ) {
+    if ( ![[Message sharedManager] checkPassword:_lsNePassword.textField.text] ) {
         return;
     }
-    if ( ![[Message sharedManager] checkPassword:self.confirmPassword.text] ) {
+    if ( ![[Message sharedManager] checkPassword:_lsConfirmPassword.textField.text] ) {
         return;
     }
-    if ( ![[Message sharedManager] checkValidationCode:self.validationCode.text] ) {
+    if ( ![[Message sharedManager] checkValidationCode:_lsValidationCode.textField.text] ) {
         return;
     }
     
@@ -109,6 +168,7 @@
         NSDictionary *resultInfo = [returnDict categoryObjectForKey:@"resultInfo"];
         if ( [[Message sharedManager] checkReturnInfor:resultInfo] ) {
             ALERT(@"修改密码", @"密码修改成功，请记住您的新密码", @"确定");
+            [self resetOnClick:nil];
         }
     } failed:^{
         ALERT(@"网络错误", @"您当前的网络不可用，请检查网络后重试", @"返回");
@@ -116,6 +176,11 @@
 }
 
 - (IBAction)resetOnClick:(id)sender {
+    _lsValidationCode.textField.text = @"";
+    _lsNePassword.textField.text = @"";
+    _lsConfirmPassword.textField.text = @"";
+    _lsOldPassword.textField.text = @"";
+    /////
     self.oldPassword.text = @"";
     self.nePassword.text = @"";
     self.confirmPassword.text = @"";
@@ -129,10 +194,10 @@
     NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
     [parameter setObject:mobile forKey:@"m"];
     [parameter setObject:[[UserBusiness sharedManager] getCurrentPatientID] forKey:@"patientId"];
-    [parameter setObject:self.oldPassword.text forKey:@"oldPassword"];
-    [parameter setObject:self.validationCode.text forKey:@"verifyCode"];
-    [parameter setObject:self.nePassword.text forKey:@"newPassword"];
-    [parameter setObject:self.confirmPassword.text forKey:@"rePassword"];
+    [parameter setObject:_lsOldPassword.textField.text forKey:@"oldPassword"];
+    [parameter setObject:_lsValidationCode.textField.text forKey:@"verifyCode"];
+    [parameter setObject:_lsNePassword.textField.text forKey:@"newPassword"];
+    [parameter setObject:_lsConfirmPassword.textField.text forKey:@"rePassword"];
     
     NSData *tmpDate = [NSJSONSerialization dataWithJSONObject:parameter options:NSJSONWritingPrettyPrinted error:nil];
     
@@ -151,7 +216,8 @@
 #pragma mark - keyboard
 -(void)willShowKeyboard:(NSNotification *)notification{
     //    NSLog(@"will show keyboard");
-    if (!self.oldPassword.isFirstResponder) {
+//    if (!self.oldPassword.isFirstResponder) {
+    if (!_lsOldPassword.textField.isFirstResponder) {
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
         [UIView setAnimationDuration:0.3];
@@ -179,10 +245,14 @@
 }
 
 - (void)resizeLayout:(BOOL)up {
-#define DREAM_FABS(ARG)  up?-fabs(ARG):fabs(ARG)
-    
-    
+#define DREAM_FABS(ARG)  up?-fabs(ARG):fabs(ARG)    
     self.btnGetValidationCode.frame = CGRectOffset(self.btnGetValidationCode.frame, 0, DREAM_FABS(self.btnSubmit.frame.origin.y-62-self.btnGetValidationCode.frame.origin.y));
+    _lsValidationCode.frame = CGRectOffset(_lsValidationCode.frame, 0, DREAM_FABS(self.btnSubmit.frame.origin.y-62-_lsValidationCode.frame.origin.y));
+    _lsConfirmPassword.frame = CGRectOffset(_lsConfirmPassword.frame, 0, DREAM_FABS(_lsValidationCode.frame.origin.y-44-_lsConfirmPassword.frame.origin.y));
+    _lsNePassword.frame = CGRectOffset(_lsNePassword.frame, 0, DREAM_FABS(_lsConfirmPassword.frame.origin.y-44-_lsNePassword.frame.origin.y));
+    _lsOldPassword.frame = CGRectOffset(_lsOldPassword.frame, 0, DREAM_FABS(_lsNePassword.frame.origin.y-44-_lsOldPassword.frame.origin.y));
+    
+    /////////
     self.validationCode.frame = CGRectOffset(self.validationCode.frame, 0, DREAM_FABS(self.btnSubmit.frame.origin.y-62-self.validationCode.frame.origin.y));
     
 

@@ -32,8 +32,11 @@
     _textView = [[UITextView alloc] init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
     
-    _textView.layer.borderColor = [UIColor grayColor].CGColor;
+    _textView.layer.borderColor = UICOLORFROMRGB(0xcccccc).CGColor;
     _textView.layer.borderWidth = 1;
+    _textView.layer.cornerRadius = 10;
+    _textView.font = [UIFont systemFontOfSize:16];
+    _textView.showsVerticalScrollIndicator = YES;
     _textView.delegate = self;
     _textView.frame = CGRectMake(20, 88, 280, 100);
     [self.view addSubview:_textView];
@@ -54,7 +57,8 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    _textView.layer.borderColor = [UIColor blueColor].CGColor;
+    _textView.layer.borderColor = UICOLORFROMRGB(0x39b3d2).CGColor;
+    _textView.layer.borderWidth = 3;
     if (_textView.text == NULL) {
         _textView.text = @"您的意见能帮助我们进一步改进产品的服务";
     }

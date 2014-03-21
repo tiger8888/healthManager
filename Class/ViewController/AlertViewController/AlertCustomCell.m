@@ -31,10 +31,10 @@
         left = 8;
         self.flag = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineOne-4, 14,_heightSingleLineTextLabel)];
         self.flag.backgroundColor = clearColor;
-        self.flag.font = [UIFont boldSystemFontOfSize:60];
+        self.flag.font = [UIFont boldSystemFontOfSize:30];
         [self.contentView addSubview:self.flag];
         
-        left = self.flag.frame.size.width + left + 8;
+        left = self.flag.frame.size.width + left - 4;
         self.content = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineOne, DEVICE_WIDTH-20,_heightSingleLineTextLabel)];
         self.content.backgroundColor = clearColor;
         self.content.font = conntFont;
@@ -44,7 +44,7 @@
         [self.contentView addSubview:self.content];
         
         left = 8;
-        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 120, _heightSingleLineTextLabel)];
+        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 134, _heightSingleLineTextLabel)];
         self.timeLabel.backgroundColor = clearColor;
         self.timeLabel.font = font;
         [self.contentView addSubview:self.timeLabel];
@@ -61,7 +61,7 @@
         self.highText.font = font;
         [self.contentView addSubview:self.highText];
         
-        left += self.highText.frame.size.width + 10;//188
+        left += self.highText.frame.size.width + 8;//188
         self.lowLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 34, _heightSingleLineTextLabel)];
         self.lowLabel.backgroundColor = clearColor;
         self.lowLabel.font = font;
@@ -73,7 +73,7 @@
         self.lowText.font = font;
         [self.contentView addSubview:self.lowText];
         
-        left += self.lowText.frame.size.width + 10;//252
+        left += self.lowText.frame.size.width + 8;//252
         self.pulseLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, topLineTwo, 34, _heightSingleLineTextLabel)];
         self.pulseLabel.backgroundColor = clearColor;
         self.pulseLabel.font = font;
@@ -118,6 +118,8 @@
 #pragma mark - Custom Method
 -(void)setupCell:(NSManagedObject *)data  withHeight:(CGFloat)height{
     UIColor *flagColor;
+    UIColor *subTitleColor = [UIColor lightGrayColor];
+    
     if (![[data valueForKey:@"isRead"] boolValue]) {
         self.content.font = [UIFont boldSystemFontOfSize:18];
         flagColor = [UIColor redColor];
@@ -130,23 +132,40 @@
     
     self.content.text = [data valueForKey:@"content"]?[data valueForKey:@"content"]:@"";
     self.timeLabel.text = [data valueForKey:@"receiveDateStr"]?[data valueForKey:@"receiveDateStr"]:@"";
+    self.timeLabel.textColor = subTitleColor;
     self.highLabel.text = @"高压";
+    self.highLabel.textColor = subTitleColor;
     self.lowLabel.text = @"低压";
+    self.lowLabel.textColor = subTitleColor;
     self.pulseLabel.text = @"脉搏";
+    self.pulseLabel.textColor = subTitleColor;
+    
     if ([[data valueForKey:@"highPressureStatus"] boolValue]) {
         self.highText.textColor = UICOLORFROMRGB(0xe60012);
+    }
+    else {
+        self.highText.textColor = subTitleColor;
     }
     if ([[data valueForKey:@"lowPressureStatus"] boolValue]) {
         self.lowText.textColor = UICOLORFROMRGB(0xe60012);
     }
+    else {
+        self.lowText.textColor = subTitleColor;
+    }
     if ([[data valueForKey:@"pulseStatus"] boolValue]) {
         self.pulseText.textColor = UICOLORFROMRGB(0xe60012);
     }
+    else {
+        self.pulseText.textColor = subTitleColor;
+    }
+    
     self.highText.text = [data valueForKey:@"highPressure"]?[data valueForKey:@"highPressure"]:@"";
     self.lowText.text = [data valueForKey:@"lowPressure"]?[data valueForKey:@"lowPressure"]:@"";
     self.pulseText.text = [data valueForKey:@"pulse"]?[data valueForKey:@"pulse"]:@"";
     self.receiveTimeLabel.text = @"消息接收时间";
+    self.receiveTimeLabel.textColor = subTitleColor;
     self.receiveTimeText.text = [data valueForKey:@"receiveDateStr"]?[data valueForKey:@"receiveDateStr"]:@"";
+    self.receiveTimeText.textColor = subTitleColor;
     
 //    [self controlPosition:height];//uitextview需要加的代码
 }

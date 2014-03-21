@@ -32,6 +32,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 //    [self createBackButton];
+    
+    _lsMobile = [[LSTextField alloc] initWithFrame:CGRectMake(80, 129, 193, 36) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _lsMobile.retract = 4;
+    _lsMobile.textField.placeholder = @"请输入您的手机号码";
+    _lsMobile.textField.keyboardType = UIKeyboardTypeNumberPad;
+    _lsMobile.textField.textAlignment = NSTextAlignmentCenter;
+//    _lsMobile.layer.zPosition = -1;
+    [self.view addSubview:_lsMobile];
+    
+    self.mobile.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +52,8 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [_lsMobile.textField resignFirstResponder];
+    
     [self.mobile resignFirstResponder];
 }
 
@@ -55,10 +67,10 @@
 //    }];
 //}
 - (IBAction)next:(id)sender {
-    if ( ![[Message sharedManager] checkMobile:self.mobile.text] ) {
+    if ( ![[Message sharedManager] checkMobile:_lsMobile.textField.text] ) {
         return;
     }
-    NSString *message = [NSString stringWithFormat:@"我们将发送验证码短信到这个号码：%@", self.mobile.text];
+    NSString *message = [NSString stringWithFormat:@"我们将发送验证码短信到这个号码：%@", _lsMobile.textField.text];
     ALERTOPRATE(@"确认手机号", message, 1);
 }
 
@@ -76,15 +88,16 @@
                 NSLog(@"开始发送短信");
                 
                 NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
-                [parameter setObject:self.mobile.text forKey:@"mobileNo"];
-                NSString *interfaceUrl = [NSString stringWithFormat:@"generateVerifyCode/%@.json", self.mobile.text];
+                NSString *mobileCode = _lsMobile.textField.text;
+                [parameter setObject:mobileCode forKey:@"mobileNo"];
+                NSString *interfaceUrl = [NSString stringWithFormat:@"generateVerifyCode/%@.json", mobileCode];
                 
                 [[HttpRequestManager sharedManager] requestWithParameters:parameter interface:interfaceUrl completionHandle:^(id returnObject) {
                     NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:returnObject options:NSJSONReadingAllowFragments error:nil];
                     NSString *result = [[dataDictionary objectForKey:@"resultInfo"] objectForKey:@"retCode"];
                     NSLog(@"code=%@", result);
                     ForgetPasswordSetPWDViewController *setPWDViewCtl = [[ForgetPasswordSetPWDViewController alloc] initWithCategory:14];
-                    setPWDViewCtl.mobileCode = self.mobile.text;
+                    setPWDViewCtl.mobileCode = mobileCode;
                     [self.navigationController pushViewController:setPWDViewCtl animated:YES];
                     
                 } failed:^{

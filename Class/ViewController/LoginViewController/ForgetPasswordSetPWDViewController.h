@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ForgetPasswordSetPWDViewController : BackButtonViewController<UITextFieldDelegate>
-
+{
+    LSTextField *_lsNePassword;
+    LSTextField *_lsValidationCode;
+    LSTextField *_lsConfirmPassword;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *mobileLabel;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPassword;

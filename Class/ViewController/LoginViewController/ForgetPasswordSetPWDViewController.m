@@ -32,6 +32,8 @@
     // Do any additional setup after loading the view from its nib.
     self.mobileLabel.text = self.mobileCode;
     
+    [self customInit];
+    
     if (IS_IOS7) {
         //不需要根据键盘高度调整布局
     }else {
@@ -40,6 +42,47 @@
     }
     
     _btnSubmitOriginalFrame = self.btnSubmit.frame;
+}
+- (void)customInit {
+    int textFieldX = 108;
+    int textFieldY = 140;
+    int textFieldHeight = 36;
+    int textFieldWidth = 192;
+    _lsValidationCode = [[LSTextField alloc] initWithFrame:CGRectMake(textFieldX, textFieldY, textFieldWidth, textFieldHeight) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _lsValidationCode.retract = 4;
+    _lsValidationCode.textField.placeholder = @"请输入验证码";
+    _lsValidationCode.textField.keyboardType = UIKeyboardTypeDefault;
+    _lsValidationCode.textField.textAlignment = NSTextAlignmentCenter;
+    _lsValidationCode.layer.zPosition = -1;
+    [self.view addSubview:_lsValidationCode];
+    
+    textFieldY += 52;
+    _lsNePassword = [[LSTextField alloc] initWithFrame:CGRectMake(textFieldX, textFieldY, textFieldWidth, textFieldHeight) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _lsNePassword.retract = 4;
+    _lsNePassword.textField.placeholder = @"请输入新密码";
+    _lsNePassword.textField.keyboardType = UIKeyboardTypeDefault;
+    _lsNePassword.textField.textAlignment = NSTextAlignmentCenter;
+    _lsNePassword.textField.secureTextEntry = YES;
+    _lsNePassword.layer.zPosition = -1;
+    [self.view addSubview:_lsNePassword];
+    
+    textFieldY += 52;
+    _lsConfirmPassword = [[LSTextField alloc] initWithFrame:CGRectMake(textFieldX, textFieldY, textFieldWidth, textFieldHeight) andBackgroundImage:@"blood_texfield" andEditingBackgroundImage:@"blood_texfield_selected"];
+    _lsConfirmPassword.retract = 4;
+    _lsConfirmPassword.textField.placeholder = @"请输入确认新密码";
+    _lsConfirmPassword.textField.keyboardType = UIKeyboardTypeDefault;
+    _lsConfirmPassword.textField.textAlignment = NSTextAlignmentCenter;
+    _lsConfirmPassword.textField.secureTextEntry = YES;
+    _lsConfirmPassword.layer.zPosition = -1;
+    [self.view addSubview:_lsConfirmPassword];
+    
+    
+    /**
+     *正式通过后，删除与下边4项有关的代码
+     */
+    self.password.hidden = YES;
+    self.confirmPassword.hidden = YES;
+    self.validationCode.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,6 +96,13 @@
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+//    _lsValidationCode.textField.text = @"";
+//    _lsNePassword.textField.text = @"";
+//    _lsConfirmPassword.textField.text = @"";
+    [_lsValidationCode.textField resignFirstResponder];
+    [_lsNePassword.textField resignFirstResponder];
+    [_lsConfirmPassword.textField resignFirstResponder];
+    
     [self.validationCode resignFirstResponder];
     [self.password resignFirstResponder];
     [self.confirmPassword resignFirstResponder];
@@ -66,13 +116,13 @@
 //    } failed:^{
 //        
 //    } hitSuperView:];
-    if ( ![[Message sharedManager] checkValidationCode:self.validationCode.text] ) {
+    if ( ![[Message sharedManager] checkValidationCode:_lsValidationCode.textField.text] ) {
         return;
     }
-    if ( ![[Message sharedManager] checkPassword:self.password.text] ) {
+    if ( ![[Message sharedManager] checkPassword:_lsNePassword.textField.text] ) {
         return;
     }
-    if ( ![[Message sharedManager] checkPassword:self.confirmPassword.text] ) {
+    if ( ![[Message sharedManager] checkPassword:_lsConfirmPassword.textField.text] ) {
         return;
     }
 
@@ -96,9 +146,9 @@
 {
     NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
     [parameter setObject:self.mobileCode forKey:@"m"];
-    [parameter setObject:self.validationCode.text forKey:@"verifyCode"];
-    [parameter setObject:self.password.text forKey:@"newPassword"];
-    [parameter setObject:self.confirmPassword.text forKey:@"rePassword"];
+    [parameter setObject:_lsValidationCode.textField.text forKey:@"verifyCode"];
+    [parameter setObject:_lsNePassword.textField.text forKey:@"newPassword"];
+    [parameter setObject:_lsConfirmPassword.textField.text forKey:@"rePassword"];
     
     NSData *tmpDate = [NSJSONSerialization dataWithJSONObject:parameter options:NSJSONWritingPrettyPrinted error:nil];
     
@@ -138,16 +188,18 @@
 #pragma mark - keyboard
 -(void)willShowKeyboard:(NSNotification *)notification{
     //    NSLog(@"will show keyboard");
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.3];
-    
-    int keyboardHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-    
-    self.btnSubmit.frame = CGRectOffset(self.btnSubmit.frame, 0, keyboardHeight-_btnSubmitOriginalFrame.origin.y);
-    [self resizeLayout:YES];
-    
-    [UIView commitAnimations];
+    if (!_lsValidationCode.textField.isFirstResponder) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationDuration:0.3];
+        
+        int keyboardHeight = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+        
+        self.btnSubmit.frame = CGRectOffset(self.btnSubmit.frame, 0, keyboardHeight-_btnSubmitOriginalFrame.origin.y);
+        [self resizeLayout:YES];
+        
+        [UIView commitAnimations];
+    }
 }
 -(void)willHideKeyboard{
     //    NSLog(@"will hide keyboard");
@@ -164,6 +216,11 @@
 - (void)resizeLayout:(BOOL)up {
     #define DREAM_FABS(ARG)  up?-fabs(ARG):fabs(ARG)
     
+    _lsConfirmPassword.frame = CGRectOffset(_lsConfirmPassword.frame, 0, DREAM_FABS(self.btnSubmit.frame.origin.y-52-_lsConfirmPassword.frame.origin.y));
+    _lsNePassword.frame = CGRectOffset(_lsNePassword.frame, 0, DREAM_FABS(_lsConfirmPassword.frame.origin.y-52-_lsNePassword.frame.origin.y));
+    _lsValidationCode.frame = CGRectOffset(_lsValidationCode.frame, 0, DREAM_FABS(_lsNePassword.frame.origin.y-52-_lsValidationCode.frame.origin.y));
+    
+    ///////
     self.confirmPassword.frame = CGRectOffset(self.confirmPassword.frame, 0, DREAM_FABS(self.btnSubmit.frame.origin.y-52-self.confirmPassword.frame.origin.y));
     self.password.frame = CGRectOffset(self.password.frame, 0, DREAM_FABS(self.confirmPassword.frame.origin.y-52-self.password.frame.origin.y));
     

@@ -37,7 +37,7 @@
     titleLabel.text = self.announcement.title;
     
     UILabel *timeLabel = [UILabel new];
-    timeLabel.frame = CGRectMake(DEVICE_WIDTH-200, 30, 160, 20);
+    timeLabel.frame = CGRectMake((DEVICE_WIDTH-160)/2, 30, 160, 20);
     timeLabel.textColor = UICOLORFROMRGB(0x666666);
     timeLabel.text = self.announcement.time;
     
@@ -45,7 +45,7 @@
     separateLine.backgroundColor = UICOLORFROMRGB(0xc9c9c9);
     separateLine.frame = CGRectMake(10, 60, DEVICE_WIDTH-20, 1);
     
-    UIFont *contentFont = [UIFont systemFontOfSize:15.0];
+    UIFont *contentFont = [UIFont systemFontOfSize:16.0];
     int contentSizeWidth = DEVICE_WIDTH-20;
     CGRect contentFrame = CGRectMake(10, 80 ,contentSizeWidth , 0);
     

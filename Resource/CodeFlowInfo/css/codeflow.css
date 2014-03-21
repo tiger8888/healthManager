@@ -27,7 +27,7 @@ h3 span{ color:#999}
 .vertline{width:4px;height:100%;position: relative;display:inline-block;position:absolute;left:30px;top:0;z-index:0;-moz-box-shadow:2px 2px 3px #999; -webkit-box-shadow:2px 2px 3px #999; box-shadow:2px 2px 3px #999;}
 #drugInfo{color:#333;text-align:left}
 #drugInfo h2{font: 22px/20px "Microsoft YaHei"; text-indent:20px}
-#drugInfo p{font: 16px/12px "Microsoft YaHei";}
-#drugInfo span{ display:inline-block; width:100px; text-align:right;}
+#drugInfo p{ position:relative; padding-left:100px; font: 16px/22px "Microsoft YaHei";}
+#drugInfo span{ position:absolute; left:0; top:0; display:inline-block; width:100px; text-align:right;}
 /*无监管码页面样式*/
 .exc_mark{ width:200px; font: 14px/38px "Microsoft YaHei"; margin:30px auto; text-indent:36px}

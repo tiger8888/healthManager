@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ForgetPasswordViewController : BackButtonViewController
+{
+    LSTextField *_lsMobile;
+}
 - (IBAction)next:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *mobile;
 
